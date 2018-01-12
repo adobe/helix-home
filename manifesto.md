@@ -11,7 +11,7 @@ If we don't have a good reason why something should be private, it should be pub
 We are a diverse team in every respect.
 
 ## APIs first
-Everything has an API, of course.
+Everything has an API, REST of course.
 
 ## Serverless
 period.
@@ -34,5 +34,41 @@ Discussions and decisions are open, asynchronous and archived.
 ## No Meetings
 Get-togethers and hackathons only.
 
+## Mobile first
+Native.
+
+## Latency is not an option.
+Things are fast. <300ms fast. always.
+
+## AI/ML
+Are not an after thought or features.
+
+
+# Project Helix - Product Manifesto
+
 ## GitHub & Markdown
-GitHub and Markdown are the default persistence and serialization for structured documents.
+Anything that smells like a structured document by default stored in markdown in github
+
+## Frying Architecture
+Output is assembled on request.
+
+## Spark
+Start with spark authoring experience.
+
+## Google Docs style collaboration
+See what others do right now in authoring.
+
+## 0-60 in 1.9s
+Enter your domain name, import, done.
+
+## AI/ML
+URI, CSS, Client Code, Server Code.
+
+## Extensible Delivery
+URI, CSS, Client Code, Server Code.
+
+## Extensible Authoring
+JavaScript -> Native Client Code, Server Code.
+
+## REST & SEO
+Are King.
