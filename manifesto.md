@@ -1,4 +1,4 @@
-# Project Helix - Manifesto
+# Project Helix - Community Manifesto
 
 
 ## Open Meritocracy
@@ -34,4 +34,5 @@ Discussions and decisions are open, asynchronous and archived.
 ## No Meetings
 Get-togethers and hackathons only.
 
-
+## GitHub & Markdown
+GitHub and Markdown are the default persistence and serialization for structured documents.
