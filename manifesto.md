@@ -48,6 +48,10 @@ Native.
 ## Latency is not an option.
 Things are fast. <300ms fast. always.
 
+## Parametric Design Built-In
+
+Run your app with content variants, code variants, or configuration variants at any time  
+
 ## AI/ML
 Are not an after thought or features.
 
