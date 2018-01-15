@@ -99,3 +99,7 @@ Are King.
 
 ## Global By Design
 As global as the web with regards to languages, delivery, and performance
+
+## Get Jobs Done
+
+The goal of the service is not to deliver features, but to get jobs done for our users and customers. 
