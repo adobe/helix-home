@@ -53,6 +53,10 @@ Are not an after thought or features.
 ## GitHub & Markdown
 Anything that smells like a structured document by default stored in markdown in github
 
+## Markdown++
+
+Simple formatting, powerful expressions.
+
 ## Frying Architecture
 Output is assembled on request.
 
