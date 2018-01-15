@@ -20,6 +20,10 @@ Everything has an API, REST of course.
 ## Serverless
 period.
 
+## Service, not Software
+
+The software is secondary, what we build is a service
+
 ## Local Development
 Support for simple local development is imperative. Low entry barrier.
 
@@ -59,6 +63,10 @@ Simple formatting, powerful expressions.
 
 ## Frying Architecture
 Output is assembled on request.
+
+## Serviceful
+
+Make maximum use of available services.
 
 ## Spark
 Start with spark authoring experience.
