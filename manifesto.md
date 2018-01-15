@@ -28,6 +28,10 @@ The software is secondary, what we build is a service
 
 Consumer-grade quality can't allow false (non-viable) MVPs
 
+## Closed Loop
+
+Listen closely to customer and user feedback. Measure qualitatively and quantitatively.
+
 ## Local Development
 Support for simple local development is imperative. Low entry barrier.
 
