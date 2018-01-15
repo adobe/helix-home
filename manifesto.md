@@ -24,7 +24,7 @@ period.
 Support for simple local development is imperative. Low entry barrier.
 
 ## CI/CD
-Push to production often and small.
+Results of commits can be seen in a production environment in 60 seconds or less.
 
 ## JavaScript and Python
 On the server-side JavaScript and Python are used for the respectively intuitive payloads.
