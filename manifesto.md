@@ -96,3 +96,6 @@ JavaScript -> Native Client Code, Server Code.
 
 ## REST & SEO
 Are King.
+
+## Global By Design
+As global as the web with regards to languages, delivery, and performance
