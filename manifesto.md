@@ -10,17 +10,33 @@ If we don't have a good reason why something should be private, it should be pub
 ## Diversity
 We are a diverse team in every respect.
 
+## Resources and Events
+
+Everything is a resource, every change an event. 
+
 ## APIs first
 Everything has an API, REST of course.
 
 ## Serverless
 period.
 
+## Service, not Software
+
+The software is secondary, what we build is a service
+
+## No False Minimum Viability
+
+Consumer-grade quality can't allow false (non-viable) MVPs
+
+## Closed Loop
+
+Listen closely to customer and user feedback. Measure qualitatively and quantitatively.
+
 ## Local Development
 Support for simple local development is imperative. Low entry barrier.
 
 ## CI/CD
-Push to production often and small.
+Results of commits can be seen in a production environment in 60 seconds or less.
 
 ## JavaScript and Python
 On the server-side JavaScript and Python are used for the respectively intuitive payloads.
@@ -40,6 +56,10 @@ Native.
 ## Latency is not an option.
 Things are fast. <300ms fast. always.
 
+## Parametric Design Built-In
+
+Run your app with content variants, code variants, or configuration variants at any time  
+
 ## AI/ML
 Are not an after thought or features.
 
@@ -49,8 +69,16 @@ Are not an after thought or features.
 ## GitHub & Markdown
 Anything that smells like a structured document by default stored in markdown in github
 
+## Markdown++
+
+Simple formatting, powerful expressions.
+
 ## Frying Architecture
 Output is assembled on request.
+
+## Serviceful
+
+Make maximum use of available services.
 
 ## Spark
 Start with spark authoring experience.
@@ -60,6 +88,10 @@ See what others do right now in authoring.
 
 ## 0-60 in 1.9s
 Enter your domain name, import, done.
+
+## Components & Composition
+
+Create content, compose content, transform content, deliver content
 
 ## AI/ML
 URI, CSS, Client Code, Server Code.
@@ -72,3 +104,14 @@ JavaScript -> Native Client Code, Server Code.
 
 ## REST & SEO
 Are King.
+
+## Global By Design
+As global as the web with regards to languages, delivery, and performance
+
+## Get Jobs Done
+
+The goal of the service is not to deliver features, but to get jobs done for our users and customers. 
+
+## Enable the Marketplace
+
+Use behance and other marketplaces to source content, design, and apps.
