@@ -77,6 +77,10 @@ See what others do right now in authoring.
 ## 0-60 in 1.9s
 Enter your domain name, import, done.
 
+## Components & Composition
+
+Create content, compose content, transform content, deliver content
+
 ## AI/ML
 URI, CSS, Client Code, Server Code.
 
