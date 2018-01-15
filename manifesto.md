@@ -10,6 +10,10 @@ If we don't have a good reason why something should be private, it should be pub
 ## Diversity
 We are a diverse team in every respect.
 
+## Resources and Events
+
+Everything is a resource, every change an event. 
+
 ## APIs first
 Everything has an API, REST of course.
 
