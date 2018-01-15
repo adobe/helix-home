@@ -24,6 +24,10 @@ period.
 
 The software is secondary, what we build is a service
 
+## No False Minimum Viability
+
+Consumer-grade quality can't allow false (non-viable) MVPs
+
 ## Local Development
 Support for simple local development is imperative. Low entry barrier.
 
