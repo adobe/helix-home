@@ -84,6 +84,10 @@ Are not an after thought or features.
 
 # Project Helix - Product Manifesto
 
+## Beautiful Creations
+
+Well designed, beautiful output.
+
 ## GitHub & Markdown
 
 Anything that smells like a structured document by default stored in markdown in github
