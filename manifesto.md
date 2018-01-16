@@ -63,14 +63,6 @@ Run your app with content variants, code variants, or configuration variants at 
 ## AI/ML
 Are not an after thought or features.
 
-## `DECISIONS.md`
-
-Is where we document big decisions and trade-offs.
-
-## Calibrated Risk-Taking
-
-> If we don’t make a wrong decision once in six months, we are not ambitious enough. (Or self-critical)
-
 # Project Helix - Product Manifesto
 
 ## GitHub & Markdown
