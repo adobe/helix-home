@@ -67,6 +67,9 @@ Are not an after thought or features.
 
 Is where we document big decisions and trade-offs.
 
+## Calibrated Risk-Taking
+
+> If we don’t make a wrong decision once in six months, we are not ambitious enough. (Or self-critical)
 
 # Project Helix - Product Manifesto
 
