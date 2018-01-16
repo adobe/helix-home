@@ -50,6 +50,9 @@ Discussions and decisions are open, asynchronous and archived.
 ## No Meetings
 Get-togethers and hackathons only.
 
+## Intuitive, Simple & Consistent
+In that order.
+
 ## Mobile first
 Native.
 
