@@ -63,6 +63,7 @@ Run your app with content variants, code variants, or configuration variants at 
 ## AI/ML
 Are not an after thought or features.
 
+
 # Project Helix - Product Manifesto
 
 ## GitHub & Markdown
