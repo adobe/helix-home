@@ -63,6 +63,10 @@ Run your app with content variants, code variants, or configuration variants at 
 ## AI/ML
 Are not an after thought or features.
 
+## `DECISIONS.md`
+
+Is where we document big decisions and trade-offs.
+
 
 # Project Helix - Product Manifesto
 
