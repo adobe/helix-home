@@ -122,3 +122,7 @@ The goal of the service is not to deliver features, but to get jobs done for our
 ## Enable the Marketplace
 
 Use behance and other marketplaces to source content, design, and apps.
+
+## Opinionated, but Open
+
+a.k.a. polished, but tweakable.
