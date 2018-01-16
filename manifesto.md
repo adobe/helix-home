@@ -109,6 +109,10 @@ Create content, compose content, transform content, deliver content
 
 Are King.
 
+### Opinionated, but Open
+
+a.k.a. polished, but tweakable.
+
 ---
 
 ## Culture & Team
@@ -141,6 +145,10 @@ Get-togethers and hackathons only.
 
 Code wins. Everybody codes. Commits.
 
+### Calibrated Risk-Taking
+
+> If we don’t make a wrong decision once in six months, we are not ambitious enough. (Or self-critical)
+
 ---
 
 ## Tools of the Trade
@@ -162,3 +170,7 @@ Discussions and decisions are open, asynchronous and archived.
 ### Local Development
 
 Support for simple local development is imperative. Low entry barrier.
+
+### `DECISIONS.md`
+
+Is where we document big decisions and trade-offs.
