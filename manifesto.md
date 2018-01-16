@@ -2,10 +2,10 @@
 
 The Helix PACT is:
 
-* **P**roduct experience
-* **A**rchitecture & technology
-* **C**ulture & team
-* **T**tools of the trade
+* [**P**roduct experience](#product-experience)
+* [**A**rchitecture & technology](#architecture-technology)
+* [**C**ulture & team](#culture-team)
+* [**T**tools of the trade](#tools-of-the-trade)
 
 ## Product Experience
 
