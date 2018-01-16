@@ -141,6 +141,10 @@ Get-togethers and hackathons only.
 
 Code wins. Everybody codes. Commits.
 
+### Reluctant Dictator
+
+Whether he wants it or not, @davidnuescheler has the last word on product and architecture
+
 ---
 
 ## Tools of the Trade
