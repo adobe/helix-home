@@ -1,4 +1,4 @@
-# The Helix PACT
+# The Helix Manifesto
 
 The Helix PACT is:
 
