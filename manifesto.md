@@ -103,9 +103,13 @@ Create content, compose content, transform content, deliver content
 
 Are King.
 
+### Lean and Mean `#architecture`
+
+Less code is better. Actively manage the dependency graph to an absolute minimum.
+
 ### Open Meritocracy `#culture`
 
-We will work as meritocracy, input from others, and reviewing PRs and contributing to other projects it a top priority.
+We will work as meritocracy, input from others, and reviewing PRs and contributing to other projects is a top priority.
 
 ### Open Source `#culture`
 
