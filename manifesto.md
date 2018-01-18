@@ -115,7 +115,7 @@ Are King.
 
 ### Open Meritocracy
 
-We will work as meritocracy, input from others, and reviewing PRs and contributing to other projects it a top priority.
+We will work as meritocracy, input from others, and reviewing PRs and contributing to other projects is a top priority.
 
 ### Open Source
 
