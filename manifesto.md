@@ -19,6 +19,10 @@ In that order.
 
 As global as the web with regards to languages, delivery, and performance
 
+### Latency is not an option. `#product`
+
+Things are fast. <300ms fast. always.
+
 ### Get Jobs Done `#product`
 
 The goal of the service is not to deliver features, but to get jobs done for our users and customers. 
@@ -35,14 +39,6 @@ URI, CSS, Client Code, Server Code.
 
 JavaScript → Native Client Code, Server Code.
 
-### Latency is not an option. `#product`
-
-Things are fast. <300ms fast. always.
-
-### Parametric Design Built-In `#product`
-
-Run your site with content variants, code variants, or configuration variants at any time  
-
 ### Spark `#product`
 
 Start with spark authoring experience.
@@ -54,6 +50,10 @@ See what others do right now in authoring.
 ### 0-60 in 1.9s `#product`
 
 Enter your domain name, import, done.
+
+### Parametric Design Built-In `#product`
+
+Run your site with content variants, code variants, or configuration variants at any time  
 
 ### Resources and Events `#architecture`
 
@@ -136,7 +136,7 @@ Get-togethers and hackathons only.
 Code wins. Everybody codes. Commits.
 
 
-### AI/ML `#tools` `#architecture`
+### AI/ML `#tools`
 
 power content, workflows, designs, operations.
 
