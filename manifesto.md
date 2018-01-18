@@ -139,6 +139,10 @@ Get-togethers and hackathons only.
 
 Code wins. Everybody codes. Commits.
 
+### Reluctant Dictator `#culture`
+
+Whether he wants it or not, the dictator has the last word on product and architecture
+
 ### Calibrated Risk-Taking `#culture`
 
 If we don’t make a wrong decision once in six months, we are not ambitious enough. (Or self-critical)
