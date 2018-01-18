@@ -103,6 +103,10 @@ Create content, compose content, transform content, deliver content
 
 Are King.
 
+### Opinionated, but Open `#architecture`
+
+a.k.a. polished, but tweakable.
+
 ### Lean and Mean `#architecture`
 
 Less code is better. Actively manage the dependency graph to an absolute minimum.
@@ -135,6 +139,9 @@ Get-togethers and hackathons only.
 
 Code wins. Everybody codes. Commits.
 
+### Calibrated Risk-Taking `#culture`
+
+If we don’t make a wrong decision once in six months, we are not ambitious enough. (Or self-critical)
 
 ### AI/ML `#tools`
 
@@ -153,3 +160,7 @@ Discussions and decisions are open, asynchronous and archived.
 ### Local Development `#tools`
 
 Support for simple local development is imperative. Low entry barrier.
+
+### `DECISIONS.md` `#tools`
+
+Is where we document big decisions and trade-offs.
