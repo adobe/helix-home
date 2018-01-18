@@ -109,6 +109,10 @@ Create content, compose content, transform content, deliver content
 
 Are King.
 
+### Lean and Mean
+
+Less code is better. Actively manage the dependency graph to an absolute minimum.
+
 ---
 
 ## Culture & Team
