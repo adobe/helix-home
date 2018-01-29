@@ -158,7 +158,7 @@ a.k.a. polished, but tweakable.
 ### Local Development `#t`
 
 Support for simple local development is imperative. Low entry barrier.
-(Discuss? #19)
+([Discuss?](https://github.com/adobe/project-helix/issues/19))
 
 ### AI/ML `#t`
 
