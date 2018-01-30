@@ -168,6 +168,7 @@ power content, workflows, designs, operations.
 
 Is where we document big decisions and trade-offs.
 
-### Powerpointless
+### Powerpointless `#t`
 
-We communicate ideas through writing and status through issue trackers and automated dashboards
+We communicate ideas through writing and status through issue trackers and automated dashboards 
+([Discuss?](https://github.com/adobe/project-helix/issues/23))
