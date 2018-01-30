@@ -35,6 +35,10 @@ Well designed, beautiful output.
 
 In that order.
 
+### Available, Secure, Compliant  `#a` `#p` 
+
+Always.
+
 ### Global By Design `#p`
 
 As global as the web with regards to languages, delivery, and performance
