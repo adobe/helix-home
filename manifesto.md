@@ -167,3 +167,7 @@ power content, workflows, designs, operations.
 ### `DECISIONS.md` `#t`
 
 Is where we document big decisions and trade-offs.
+
+### QoS '#t'
+
+Always available, secure, compliant.
