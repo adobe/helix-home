@@ -35,6 +35,10 @@ Well designed, beautiful output.
 
 In that order.
 
+### Available, Secure, Compliant  `#a` `#p` 
+
+Always.
+
 ### Global By Design `#p`
 
 As global as the web with regards to languages, delivery, and performance
@@ -168,6 +172,7 @@ power content, workflows, designs, operations.
 
 Is where we document big decisions and trade-offs.
 
-### QoS '#t'
+### Powerpointless `#t`
 
-Always available, secure, compliant.
+We communicate ideas through writing and status through issue trackers and automated dashboards 
+([Discuss?](https://github.com/adobe/project-helix/issues/23))
