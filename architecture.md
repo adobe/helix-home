@@ -16,7 +16,7 @@ It is generally accepted that the "frying" architecture is more flexible and sca
 
 The initial block diagram looks as follows.
 
-~~~~
+```
 
                   +-----------------------------+
                   |                             |
@@ -47,7 +47,7 @@ Repository        |       API Abstraction       |
 Layer             |      Git[Hub], Markdown     |
                   |                             |
                   +-----------------------------+
-~~~~                  
+```                  
                   
                   
 # Authoring Architecture
@@ -58,7 +58,7 @@ Some form of intermittently disconnected experiences need to be supported along 
 
 The general block diagram would look like this.
 
-~~~~
+```
                   +-----------------------------+
                   |                             |
 Authoring App     |         Native (+web)       |
@@ -82,7 +82,7 @@ Repository        |       API Abstraction       |
 Layer             |      Git[Hub], Markdown     |
                   |                             |
                   +-----------------------------+
-~~~~                  
+```                  
 
 
 # Extensibility
