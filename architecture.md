@@ -105,3 +105,13 @@ The concept of preparing content in one environment (branch, fork in GitHub spea
 The number of stages (think forks) as well as the approval processes (think PR in github) vary greatly.
 
 In very small organizations the act of publishing is more of a hurdle than really desired, especially when it comes to quick iterations.
+
+# Open Questions
+
+- What is the .md of something like an adobe.com website going to look like? Can we keep it still readable?
+- How does serverless work in a request/response environment?
+- How do we have to batch-up edits into commits and PRs to get to a place where it makes sense?
+- Is +1m md files in a single github repo feasible?
+- Do repository references work virtually tie together code and content?
+- Should very small, non-extensible (think Spark Page) projects be persisted as md outside of git (probably)?
+- _<add questions here>_
