@@ -1,7 +1,21 @@
 # Project Helix
 
+## Coming Up: Helix Hackathon
+
+The Helix Hackathon will be a weeklong event focussed on writing code (Helix is a [meeting-free project](https://github.com/adobe/project-helix/blob/master/manifesto.md#no-meetings-t)) for the Helix prototype [open to anyone at Adobe](https://github.com/adobe/project-helix/blob/master/manifesto.md#open-meritocracy-c) who's interested in Project Helix. 
+
+We are currently nailing down the date, location will be Utah. Non-binding votes can be made in [this Doodle poll](https://doodle.com/poll/sn75bawbbd57ny3y#).
+
+## Background
+
+Read all of this.
+
 * [How we work, who we are, what we use, what we build](manifesto.md)
 * [Product Vision](product-vision.md)
 * [Business Whitepaper Pitch](whitepaper.md)
 * [Top 10](top10.md)
 * [Technology Architecture Vision](architecture.md)
+
+## Communication
+
+We hang out in the `#helix-chat` Slack channel (Enterprise Grid) and notifications go to `#helix-noisy`
