@@ -2,7 +2,7 @@
 
 ## Coming Up: Helix Hackathon
 
-The Helix Hackathon will be a weeklong event focussed on writing code (Helix is a [meeting-free project](https://github.com/adobe/project-helix/blob/master/manifesto.md#no-meetings-t)) for the Helix prototype [open to anyone at Adobe](https://github.com/adobe/project-helix/blob/master/manifesto.md#open-meritocracy-c) who's interested in Project Helix. 
+The Helix Hackathon will be a weeklong event focussed on writing code (Helix is a [meeting-free project](https://github.com/adobe/project-helix/blob/master/manifesto.md#no-meetings-t)) for the Helix prototype [open to anyone at Adobe](https://github.com/adobe/project-helix/blob/master/manifesto.md#open-meritocracy-c) who's interested in Project Helix. [Read more](hackathon.md)
 
 ![](./Helix%20Save%20the%20Date.jpg)
 
