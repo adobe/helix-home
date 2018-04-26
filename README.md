@@ -4,7 +4,7 @@
 
 The Helix Hackathon will be a weeklong event focussed on writing code (Helix is a [meeting-free project](https://github.com/adobe/project-helix/blob/master/manifesto.md#no-meetings-t)) for the Helix prototype [open to anyone at Adobe](https://github.com/adobe/project-helix/blob/master/manifesto.md#open-meritocracy-c) who's interested in Project Helix. 
 
-We are currently nailing down the date, location will be Utah. Non-binding votes can be made in [this Doodle poll](https://doodle.com/poll/sn75bawbbd57ny3y#).
+![Helix Save the Date.jpg](Helix Save the Date.jpg)
 
 ## Background
 
