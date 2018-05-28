@@ -16,6 +16,10 @@ Read all of this.
 * [Top 10](top10.md)
 * [Technology Architecture Vision](architecture.md)
 
+## Developing Helix
+
+* [What Services we use – get access to those to code for Helix](SERVICES.md)
+
 ## Communication
 
-We hang out in the `#helix-chat` Slack channel (Enterprise Grid) and notifications go to `#helix-noisy`
+We hang out in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid) and notifications go to [`#helix-noisy`](https://adobe.slack.com/messages/C9HH8J553/)
