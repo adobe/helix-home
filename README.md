@@ -19,6 +19,7 @@ Read all of this.
 ## Developing Helix
 
 * [What Services we use – get access to those to code for Helix](SERVICES.md)
+* [Contributing to the Primordial Soup Prototype](prototypes/CONTRIBUTING.md)
 
 ## Communication
 
