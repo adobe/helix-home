@@ -106,6 +106,17 @@ The number of stages (think forks) as well as the approval processes (think PR i
 
 In very small organizations the act of publishing is more of a hurdle than really desired, especially when it comes to quick iterations.
 
+# Assets
+
+Binary assets can either be in an:
+
+* _internal DAM_: included in the git content repository itself, often in a dedicated subfolder `assets`, and linked as relative paths in markdown
+* _external DAM_: stored by some full fledged asset management solution or Dropbox-like drive, in which case they are referenced by some kind of URL
+
+In both cases, a delivery compatible raster image (jpeg or png) or servable binary has to be provided by the DAM. Meaning Helix would not be responsible for turning a PSD into a JPEG. _Delivery compatible_ means the CDN (Fastly) can handle it and apply resize, crop and other dynamic & responsive operations for the final delivery.
+
+The DAM would also provide metadata such as crop coordinates, alt texts, etc. through sidecar files or an API.
+
 # Open Questions
 
 - What is the .md of something like an adobe.com website going to look like? Can we keep it still readable?
