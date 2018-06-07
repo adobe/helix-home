@@ -108,16 +108,59 @@ In very small organizations the act of publishing is more of a hurdle than reall
 
 # Assets
 
-Binary assets can either be in an:
+## What is an Asset?
 
-* _internal DAM_: included in the git content repository itself, often in a dedicated subfolder `/assets`, and linked as relative paths in markdown
-* _external DAM_: stored by some full fledged asset management solution or Dropbox-like drive, in which case they are referenced by some kind of URL
+For the purposes of Helix, an asset is a piece of content that is not diffable at a line by line level in a human readable way. 
 
-In both cases, a delivery compatible raster image (jpeg or png) or servable binary has to be provided by the DAM. Meaning Helix would not be responsible for turning a PSD into a JPEG. _Delivery compatible_ means the CDN (Fastly) can handle it and apply resize, crop and other dynamic & responsive operations for the final delivery.
+Selected Asset examples:
 
-The DAM would also provide metadata such as crop coordinates, alt texts, etc. through sidecar files or an API.
+* Rasterized binary formats
+ * Jpeg
+ * GIF
+ * PNG
+* Text formats
+ * PostScript 
+ * SVG
+* Composite formats
+ * PDF
+ * Indesign
+ * PSD
+ * Word
+* Web formats
+ * DCX
 
-For an _internal DAM_, it is higly recommended to leverage [Git LFS](https://git-lfs.github.com) for all the binaries. This will keep the authoring workflows, consisting of git cloning and pushing, efficient and the entire git repo smaller. Assuming assets are stored in a subdirectory `/assets`, a `.gitattributes` file in there could enable LFS for all the binaries in it, not affecting markdown files.
+## Requirements for delivery via Fastly
+
+Fastly has specific delivery requirements for dynamic delivery of assets. These assets must have a final rendition in [jpeg, png, gif, or webbp](https://docs.fastly.com/guides/imageopto-setup-use/serving-images.html#input-and-output-formats) format to deliver dynamic content. 
+
+For delivering experiences from Helix, the content must either be stored directly in one of these formats or it must be served natively by the browser/app providing the delivery. Careful consideration for the format of your assets must be considered for this purpose.
+
+When in one of the supported Fastly formats, Fastly enables [resizing, cropping, and other transformations](https://docs.fastly.com/guides/imageopto-setup-use/serving-images.html#transformation-order)
+
+## Location of Asset Storage
+
+### Github Storage
+
+Github does not offer renditions of asset formats, meaning that for any assets stored in git, they must be in one of the formats described in [Requirements for delivery via Fastly](#requirements-for-delivery-via-fastly) 
+
+Github offers two storage models: [Git LFS](https://git-lfs.github.com) and direct storage in git.
+
+Direct storage of assets in git is **NOT RECOMMEENDED**. When assets are directly stored in git, all versions, of all assets, on all branches must be downloaded on any clone operation. With even moderately sized assets, this will quickly become untenable for content authors.
+
+Git LFS allows git to store assets externally, but requires some setup on all machines.  
+It is higly recommended to leverage LFS for all the binaries. This will keep the authoring workflows, consisting of git cloning and pushing, efficient and the entire git repo smaller. Assuming assets are stored in a subdirectory `/assets`, a `.gitattributes` file in there could enable LFS for all the binaries in it, not affecting markdown files.
+
+Git LFS will still place the requirement on content authors to download the version of the binaries for the branch they are working on. For this reason, it is recommended not to store master assets in github, only renditions with adequate quality to serve to Fastly.
+
+[Git LFS setup howto](https://help.github.com/articles/configuring-git-large-file-storage/)
+
+### DAM Storage
+
+DAM storage, through services such as AEM Assets is **RECOMMENDED** over git storage models, because the master digital asset can be ingested, stored, versioned, etc. without the limitations of git described in [Github Storage)(#github-storage). 
+
+Most DAM services provide the ability to access a rendition of the content in one of the [Fastly formats](#requirements-for-delivery-via-fastly).
+
+To provide responsive experiences via Fastly metadata such as crop coordinates, alt texts, etc. through sidecar files or an API must be provided in association with an asset.
 
 # Open Questions
 
@@ -127,4 +170,7 @@ For an _internal DAM_, it is higly recommended to leverage [Git LFS](https://git
 - Is +1m md files in a single github repo feasible?
 - Do repository references work virtually tie together code and content?
 - Should very small, non-extensible (think Spark Page) projects be persisted as md outside of git (probably)?
+- How would Helix read the crop metadata on an asset and provide this to Fastly? What about other responsive experiences?
+- We are conveying a lot of specific details how Fastly serves assets to our implementations. Is there a better way to make this generic, or translate/transcode content that fastly doesn't serve?
+- What about video delivery?
 - _<add questions here>_
