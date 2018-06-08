@@ -115,19 +115,19 @@ For the purposes of Helix, an asset is a piece of content that is not diffable a
 Selected Asset examples:
 
 * Rasterized binary formats
- * Jpeg
- * GIF
- * PNG
+  * Jpeg
+  * GIF
+  * PNG
 * Text formats
- * PostScript 
- * SVG
+  * PostScript 
+  * SVG
 * Composite formats
- * PDF
- * Indesign
- * PSD
- * Word
+  * PDF
+  * Indesign
+  * PSD
+  * Word
 * Web formats
- * DCX
+  * DCX
 
 ## Requirements for delivery via Fastly
 
@@ -145,7 +145,7 @@ Github does not offer renditions of asset formats, meaning that for any assets s
 
 Github offers two storage models: [Git LFS](https://git-lfs.github.com) and direct storage in git.
 
-Direct storage of assets in git is **NOT RECOMMEENDED**. When assets are directly stored in git, all versions, of all assets, on all branches must be downloaded on any clone operation. With even moderately sized assets, this will quickly become untenable for content authors.
+Direct storage of assets in git is **NOT RECOMMENDED**. When assets are directly stored in git, all versions, of all assets, on all branches must be downloaded on any clone operation. With even moderately sized assets, this will quickly become untenable for content authors.
 
 Git LFS allows git to store assets externally, but requires some setup on all machines.  
 It is higly recommended to leverage LFS for all the binaries. This will keep the authoring workflows, consisting of git cloning and pushing, efficient and the entire git repo smaller. Assuming assets are stored in a subdirectory `/assets`, a `.gitattributes` file in there could enable LFS for all the binaries in it, not affecting markdown files.
