@@ -133,7 +133,7 @@ Selected Asset examples:
 
 Fastly has specific delivery requirements for dynamic delivery of assets. These assets must have a final rendition in [jpeg, png, gif, or webbp](https://docs.fastly.com/guides/imageopto-setup-use/serving-images.html#input-and-output-formats) format to deliver dynamic content. 
 
-For delivering experiences from Helix, the content must either be stored directly in one of these formats or it must be served natively by the browser/app providing the delivery. Careful consideration for the format of your assets must be considered for this purpose.
+For delivering experiences from Helix, the content must either be stored directly in one of these formats or it must be a format natively supported by the browser/app. Careful consideration for the format of your assets must be considered for this purpose.
 
 When in one of the supported Fastly formats, Fastly enables [resizing, cropping, and other transformations](https://docs.fastly.com/guides/imageopto-setup-use/serving-images.html#transformation-order)
 
@@ -156,7 +156,7 @@ Git LFS will still place the requirement on content authors to download the vers
 
 ### DAM Storage
 
-DAM storage, through services such as AEM Assets is **RECOMMENDED** over git storage models, because the master digital asset can be ingested, stored, versioned, etc. without the limitations of git described in [Github Storage)(#github-storage). 
+DAM storage, through services such as AEM Assets is **RECOMMENDED** over git storage models, because the master digital asset can be ingested, stored, versioned, etc. without the limitations of git described in [Github Storage](#github-storage). 
 
 Most DAM services provide the ability to access a rendition of the content in one of the [Fastly formats](#requirements-for-delivery-via-fastly).
 
