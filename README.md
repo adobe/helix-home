@@ -34,7 +34,7 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 
 The Helix team is inviting everyone interested to join us for quarterly hackathons. You can find the archives here:
 
-* [Hackathon #1 – June 2018 in Salt Lake City](hackathon.md)
+* [Hackathon #1 – June 2018 in Salt Lake City](hackathons/1-slc.md)
 
 ## Communication
 
