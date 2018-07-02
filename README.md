@@ -1,5 +1,9 @@
 # Project Helix
 
+![](./Helix%20Save%20the%20Date.jpg)
+
+There's another [Hackathon](hackathon.md) coming.
+
 ## Background
 
 Read all of this.
