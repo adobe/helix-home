@@ -20,6 +20,7 @@ Read all of this.
 * [Contributing to the Primordial Soup Prototype](prototypes/CONTRIBUTING.md)
 * *New:* [What the new Pipeline looks like](prototypes/PIPELINE_FAQ.md)
 * *New:* [All Helix Repositories](https://github.com/search?q=topic%3Ahelix+org%3Aadobe&type=Repositories)
+* *New:* [Helix Project Board](https://github.com/orgs/adobe/projects/2)
 * The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in Helix document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 * Javacript code style should follow the [Airbnb JavaScript Style Guide()](https://github.com/airbnb/javascript)
 
@@ -44,7 +45,7 @@ We hang out in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) 
 
 ### Related Repositories
 
-Related [helix repositories](https://github.com/search?q=topic%3Ahelix+org%3Aadobe&type=Repositories):
+This umbrella project contains a [gitslave](http://gitslave.sourceforge.net) config that can be used to check out all relevant modules that are hosted as individual repositories:
 
 - https://github.com/adobe/helix-cli
 - https://github.com/adobe/petridish
@@ -55,8 +56,6 @@ Related [helix repositories](https://github.com/search?q=topic%3Ahelix+org%3Aado
 - https://github.com/adobe/parcel-plugin-jst
 - https://github.com/adobe/openwhisk-loggly-wrapper
 - https://github.com/adobe/htlengine
-
-This umbrella project contains [gitslave](http://gitslave.sourceforge.net) config that can be used to check out all modules listed above that are hosted as individual repositories:
 
 ### Setup
 
