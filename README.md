@@ -13,6 +13,7 @@ Read all of this.
 * [Business Whitepaper Pitch](whitepaper.md)
 * [Top 10](top10.md)
 * [Technology Architecture Vision](architecture.md)
+* *New*: [How to contribute](CONTRIBUTING.md)
 
 ## Developing Helix
 
@@ -40,44 +41,3 @@ The Helix team is inviting everyone interested to join us for quarterly hackatho
 ## Communication
 
 We hang out in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid) and notifications go to [`#helix-noisy`](https://adobe.slack.com/messages/C9HH8J553/)
-
-## Development - Check out all modules
-
-### Related Repositories
-
-This umbrella project contains a [gitslave](http://gitslave.sourceforge.net) config that can be used to check out all relevant modules that are hosted as individual repositories:
-
-- https://github.com/adobe/helix-cli
-- https://github.com/adobe/petridish
-- https://github.com/adobe/hypermedia-pipeline
-- https://github.com/adobe/git-server
-- https://github.com/adobe/helix-helpx
-- https://github.com/adobe/parcel-plugin-htl
-- https://github.com/adobe/parcel-plugin-jst
-- https://github.com/adobe/openwhisk-loggly-wrapper
-- https://github.com/adobe/htlengine
-
-### Setup
-
-This requires [gitslave](http://gitslave.sourceforge.net).
-
-#### Mac
-
-    $ brew install gitslave
-
-### Working with gitslave
-
-When checking out for the first time, do this:
-
-    $ git clone git@github.com:adobe/project-helix.git
-    $ cd project-helix
-    $ gits populate
-
-To update later, do this (inside the `project-helix` dir):
-
-    $ git pull && gits pull
-
-
-If the `.gitslave` config has changed, just re-populate and pull again:
-
-    $ gits populate && gits pull
