@@ -7,6 +7,7 @@ Thank you for your interest in contributing to Project Helix. As an Open Develop
 1. Start with [whitepaper.md](whitepaper.md) to understand why we build Project Helix
 2. Then read [manifesto.md](manifesto.md) to learn about the unique way the team works
 3. Get an overview of the architecture from [prototypes/README.md](prototypes/README.md)
+4. Also check out [SERVICES.md](SERVICES.md) for a list of external services we are using
 
 ## Where to contribute in Project Helix
 
