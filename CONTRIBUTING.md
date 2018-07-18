@@ -84,3 +84,30 @@ To update later, do this (inside the `project-helix` dir):
 If the `.gitslave` config has changed, just re-populate and pull again:
 
     $ gits populate && gits pull
+
+## Debugging Tips
+
+Some random debugging tips for Helix developers
+
+### Debug Header for Fastly
+
+When making requests to a site in production, you can add the `X-Debug` HTTP header to your request to get more information in the response headers.
+
+### Using `npm link` for Modules
+
+When developing locally it might be neccessary to make changes to a downstream dependency. `npm link` allows you to let a local checkout of an NPM project satisfy a dependency in your `package.json`.
+
+Let's say you want to work on `parcel-plugin-htl`, but you need access to `htlengine` code:
+
+```bash
+# check out htlengine
+$ git checkout `https://github.com/adobe/htlengine.git`
+$ cd htlengine
+$ npm install
+# make this version of htlenine available to all npm projects
+$ npm link
+# we're done here, let's go back to parcel-plugin-htl
+$ cd ../parcel-plugin-htl
+# tell npm to use the htlengine from above instead of downloading a package from npmjs
+$ npm link @adobe/htlengine
+```
