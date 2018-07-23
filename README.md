@@ -1,4 +1,5 @@
-# Project Helix
+![logo](helix_logo.png)
+
 
 ![](./Helix%20Save%20the%20Date.jpg)
 
