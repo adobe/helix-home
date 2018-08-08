@@ -17,37 +17,37 @@ It is generally accepted that the "frying" architecture is more flexible and sca
 The initial block diagram looks as follows.
 
 ```
-
   ^               +-----------------------------+
-  |               |                             |
-  |               |   Browser, Client, Device   |
-  |               |                             |
-  |               +--------------+--------------+
-Delivery                         |             
-Layer                            |             
+  |               |                             |
+  |               |   Browser, Client, Device  |
+  |               |                             |
+  |               +--------------+--------------+
+Delivery                         |             
+Layer                            |             
   |               +--------------v--------------+
-  |               |                             |
+  |               |                             |
   |               |             CDN             |
-  |               |            Cache            |
-  |               |                             |
-  v               +--------------+--------------+
-                                 |             
-                                 |             
+  |               |            Cache            |
+  |               |                             |
+  v               +--------------+--------------+
+                                 |             
+                                 |             
                   +--------------v--------------+
-                  |                             |
-Rendering         |          Serverless         |
-Layer             |        Template Engine      |
-                  |                             |
-                  +--------------+--------------+
-                                 |             
-                                 |             
+                  |                             |
+Rendering         |          Serverless         |
+Layer             |        Template Engine      |
+                  |                             |
+                  +--------------+--------------+
+                                 |             
+                                 |             
                   +--------------v--------------+
-                  |                             |
-Repository        |       API Abstraction       |
-Layer             |      Git[Hub], Markdown     |
-                  |                             |
-                  +-----------------------------+
+                  |                             |
+Repository        |       API Abstraction       |
+Layer             |      Git[Hub], Markdown     |
+                  |                             |
+                  +-----------------------------+
 ```                  
+                  
                   
                   
 # Authoring Architecture
@@ -60,28 +60,28 @@ The general block diagram would look like this.
 
 ```
                   +-----------------------------+
-                  |                             |
-Authoring App     |         Native (+web)       |
+                  |                             |
+Authoring App     |         Native (+web)       |
                   |            Spark            |
-                  |                             |
-                  +--------------+--------------+
-                                 |             
-                                 |             
+                  |                             |
+                  +--------------+--------------+
+                                 |             
+                                 |             
                   +--------------v--------------+
-                  |                             |
-Authoring         |          Serverless         |
-Service           |        Authoring Service    |
+                  |                             |
+Authoring         |          Serverless         |
+Service           |        Authoring Service    |
                   |        Template Engine      |
-                  |                             |
-                  +--------------+--------------+
-                                 |             
-                                 |             
+                  |                             |
+                  +--------------+--------------+
+                                 |             
+                                 |             
                   +--------------v--------------+
-                  |                             |
-Repository        |       API Abstraction       |
-Layer             |      Git[Hub], Markdown     |
-                  |                             |
-                  +-----------------------------+
+                  |                             |
+Repository        |       API Abstraction       |
+Layer             |      Git[Hub], Markdown     |
+                  |                             |
+                  +-----------------------------+
 ```                  
 
 
