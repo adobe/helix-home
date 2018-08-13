@@ -82,21 +82,21 @@ Goal: create the new content-manageable website [](https://mytestproject.primord
 
 #### Onboarding a Domain
 
-1. log in to https://manage.fastly.com/account/tls/domains
-2. click "create TLS domain" https://manage.fastly.com/account/tls/domains/new
-3. enter the domain name with a wildcard qualifier: e.g. `*.experience-adobe.com`
-4. click next
-5. in the list of domains, click "verify" next to your new domain name
-6. copy the `TXT` record and set it as a new DNS record (for `@`)
-7. be patient, as DNS propagation can take an hour
-8. click verify
+1. Log in to https://manage.fastly.com/account/tls/domains
+2. Click "create TLS domain" https://manage.fastly.com/account/tls/domains/new
+3. Enter the domain name with a wildcard qualifier: e.g. `*.experience-adobe.com`
+4. Click next
+5. In the list of domains, click "verify" next to your new domain name
+6. Copy the `TXT` record and set it as a new DNS record (for `@`)
+7. Be patient, as DNS propagation can take an hour
+8. Click verify
 
 #### Creating a Fastly Service
 
-1. log in to https://manage.fastly.com/services/all
-2. click "create service" or go to https://manage.fastly.com/configure/services/new
-3. enter name for the service, e.g. `experience-adobe.com`
-4. enter the domain, using the wildcard qualifier, e.g. `*.experience-adobe.com` (this allows you to easily map subdomains to strains)
+1. Log in to https://manage.fastly.com/services/all
+2. Click "create service" or go to https://manage.fastly.com/configure/services/new
+3. Enter name for the service, e.g. `experience-adobe.com`
+4. Enter the domain, using the wildcard qualifier, e.g. `*.experience-adobe.com` (this allows you to easily map subdomains to strains)
 5. Enter `example.com` for "Address" – this field will be overridden later on
 6. Click "no, do not verify my TLS certificate"
 7. Click "create"
