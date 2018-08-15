@@ -1,4 +1,4 @@
-![logo](helix_logo.png)
+![logo](helix_logo.svg)
 
 
 ![](./Helix%20Save%20the%20Date.jpg)
