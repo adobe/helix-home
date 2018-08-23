@@ -111,3 +111,60 @@ $ cd ../parcel-plugin-htl
 # tell npm to use the htlengine from above instead of downloading a package from npmjs
 $ npm link @adobe/htlengine
 ```
+
+# Releasing
+
+## NPM Packages
+
+Package version follow [semantic versioning](https://github.com/npm/node-semver). But since most of
+our packages still are on 0.x, it is rather good practice to use minor / patch versions accordingly.
+
+Our CI automatically creates a new [pre-release](https://semver.org/#spec-item-9) versions for every 
+merged pull request.  The _pre-release_ versions have the form `x.y.z-pre.c` (where `c` is a counter). 
+The subsequent release version `(x.y.z)` will take [precedence](https://semver.org/#spec-item-11)
+over the _pre-release_ version. 
+
+the _pre-release_ versions are attributed with the [dist-tag](https://docs.npmjs.com/cli/dist-tag) `@next`.
+
+### How to cut a release
+
+Based on the changes that follow up a release, we used [semantic versioning](https://github.com/npm/node-semver)
+to define the next release type: `major`, `minor` or `patch`: 
+
+> **Note:** The packages have a `postversion` script that will push the updated package.json along
+> with the git-tag. so no need to do this manually
+  
+Creating a _patch_ release:
+   
+```bash
+$ npm version patch
+$ npm publish --tag latest --access public
+```
+
+Creating a _minor_ release:
+   
+```bash
+$ npm version minor
+$ npm publish --tag latest --access public
+```
+
+Creating a _major_ release:
+   
+```bash
+$ npm version major
+$ npm publish --tag latest --access public
+```
+
+### Adding release notes
+
+It is good practice to write some release notes on git for the respective release.
+For example: https://github.com/adobe/helix-cli/releases/tag/v0.3.1
+
+In the future, the release notes can be generated automatically from the information from git issues
+and commits.
+
+
+
+
+
+
