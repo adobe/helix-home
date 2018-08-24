@@ -1,9 +1,5 @@
-![logo](helix_logo.svg)
+![logo](helix_logo.png)
 
-
-![](./Helix%20Save%20the%20Date.jpg)
-
-There's another [Hackathon](hackathon.md) coming.
 
 ## Background
 
@@ -35,6 +31,10 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 * [May 28th 2018: @trieloff describes the Primordial Soup Prototype](https://my.adobeconnect.com/pe0gjswvlm7n/)
 
 ## Hackathons
+
+![](./Helix%20Save%20the%20Date.jpg)
+
+There's another [Hackathon](hackathon.md) coming.
 
 The Helix team is inviting everyone interested to join us for quarterly hackathons. You can find the archives here:
 
