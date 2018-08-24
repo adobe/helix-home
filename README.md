@@ -30,6 +30,7 @@ Read all of this.
 
 To catch a glimpse of Helix, check out these video walkthoughs:
 
+* [August 14th 2018: Things that changed over the summer](https://vimeo.com/285070570) (password: `helixsummer`)
 * [June 8th 2018: Re-Cap of the first Helix Hackathon in Salt Lake City](https://vimeo.com/274350388/afe38b8c33)
 * [May 28th 2018: @trieloff describes the Primordial Soup Prototype](https://my.adobeconnect.com/pe0gjswvlm7n/)
 
