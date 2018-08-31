@@ -11,7 +11,7 @@ Thank you for your interest in contributing to Project Helix. As an Open Develop
 
 ## Where to contribute in Project Helix
 
-Most of the code of Project Helix and most of the most exciting areas for contributions are already Open Source, so some of the most interesting areas for contributions are:
+A lot of the code of Project Helix and many of the most exciting areas for contributions are already Open Source, so some of the more interesting areas for contributions are:
 
 1. [HTL Engine](https://github.com/adobe/htlengine)
 2. [HelpX on Helix](https://github.com/adobe/helix-helpx)
