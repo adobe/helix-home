@@ -21,7 +21,7 @@ npm install -g @adobe/helix-cli
 Run:
 
 ```bash
-hlx init mytestproject
+hlx demo mytestproject
 cd mytestproject
 ```
 
