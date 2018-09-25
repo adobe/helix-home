@@ -1,7 +1,5 @@
 # Project Helix Hackathon
 
-(See the [Hackathon Archive](./hackathon/) for past Hackathons)
-
 ## Second Project Helix Hackathon
 
 ### Agenda
