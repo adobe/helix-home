@@ -26,18 +26,18 @@ Read all of this.
 
 To catch a glimpse of Helix, check out these video walkthoughs:
 
+* [Sept 15th 2018: Re-Cap of the second Helix Hackathon in Basel](https://vimeo.com/290650915/6a68ba7af8)
 * [August 14th 2018: Things that changed over the summer](https://vimeo.com/285070570) (password: `helixsummer`)
 * [June 8th 2018: Re-Cap of the first Helix Hackathon in Salt Lake City](https://vimeo.com/274350388/afe38b8c33)
 * [May 28th 2018: @trieloff describes the Primordial Soup Prototype](https://my.adobeconnect.com/pe0gjswvlm7n/)
 
 ## Hackathons
 
-![](./Helix%20Save%20the%20Date.jpg)
-
-There's another [Hackathon](hackathon.md) coming.
+There will be another [Hackathon](hackathon.md) coming soon.
 
 The Helix team is inviting everyone interested to join us for quarterly hackathons. You can find the archives here:
 
+* [Hackathon #2 – Sept 2018 in Basel](hackathons/2-bsl.md)
 * [Hackathon #1 – June 2018 in Salt Lake City](hackathons/1-slc.md)
 
 ## Communication
