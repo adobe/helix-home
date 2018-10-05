@@ -1,5 +1,8 @@
 ![logo](helix_logo.png)
 
+## TL;DR?
+
+* [Start Developing Your First Helix Project in 60 Seconds](start-developing-your-first-helix-project-in60-seconds.md)
 
 ## Background
 
