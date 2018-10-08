@@ -36,7 +36,7 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 
 ## Hackathons
 
-![](./Helix%20Save%20the%20Date.jpg)		 There will be another [Hackathon](hackathon.md) coming soon.
+![](./Helix%20Save%20the%20Date.jpg)
 		
  There's another [Hackathon](hackathon.md) coming.
 
