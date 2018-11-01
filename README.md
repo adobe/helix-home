@@ -36,9 +36,11 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 
 ## Hackathons
 
-![](./Helix%20Save%20the%20Date.jpg)
+[![](./Helix%20Save%20the%20Date.jpg)](hackathon.md)
 		
- There's another [Hackathon](hackathon.md) coming.
+ There's another [Hackathon](hackathon.md) coming – and another one [right before Tech Summit](hackathons/4-sfo.md).
+
+[![](./Helix%20Save%20the%20Date%204.jpg)](hackathons/4-sfo.md)
 
 The Helix team is inviting everyone interested to join us for quarterly hackathons. You can find the archives here:
 
