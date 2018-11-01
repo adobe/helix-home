@@ -42,6 +42,7 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 * @trieloff (Monday to Thursday)
 * @stefan-guggisberg
 * @alexkli (some days at least)
+* @tripodsan
 
 Please share this page with people inside Adobe that you'd like to invite. 
 
