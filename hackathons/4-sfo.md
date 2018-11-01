@@ -4,7 +4,9 @@
 
 ## (Upcoming) Forth Project Helix Hackathon
 
-The fourth Project Helix Hackathon will happen in the week of January 28th to February 1st, i.e. just before Adobe Tech Summit.
+![](../Helix%20Save%20the%20Date%204.jpg)
+
+The fourth Project Helix Hackathon will happen in the week of January 28th to February 1st, i.e. just before Adobe Tech Summit. This is **not** the [next Project Helix hackathon](../hackathon.md), but the one after the next.
 
 ### Agenda
 
