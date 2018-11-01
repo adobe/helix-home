@@ -28,6 +28,9 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 [1841 Parker St,
 Berkeley, CA, 94703](https://www.peerspace.com/invite/pid-HkP_k90iX)
+
+For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.com) is in walking distance (15 minutes) and seems reasonably priced and furnished.
+
 ### Goal
 
 > What are you planning to show at the end of the week?
@@ -36,7 +39,7 @@ Berkeley, CA, 94703](https://www.peerspace.com/invite/pid-HkP_k90iX)
 
 > Who is going to be there? Can I come?
 
-* @trieloff
+* @trieloff (Monday to Thursday)
 * @stefan-guggisberg
 
 Please share this page with people inside Adobe that you'd like to invite. 
