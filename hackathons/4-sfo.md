@@ -24,8 +24,10 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-As this is just the week before Tech Summit, we are looking for a location in the San Francisco Bay Area, but outside San Francisco or San Jose. Booking flights to SFO or SJC is safe.
+![](https://img.peerspace.com/image/upload/c_crop,g_custom/w_1200,c_limit/g_auto,c_fill,f_auto,q_auto,dpr_2.0/l_pswm_gqnx1g,g_north_west,x_5,y_5,w_60,o_50/rnsqgwdtpy27gpjmut9m)
 
+[1841 Parker St,
+Berkeley, CA, 94703](www.peerspace.com/invite/pid-HkP_k90iX)
 ### Goal
 
 > What are you planning to show at the end of the week?
