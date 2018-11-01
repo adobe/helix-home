@@ -37,6 +37,7 @@ Berkeley, CA, 94703](www.peerspace.com/invite/pid-HkP_k90iX)
 > Who is going to be there? Can I come?
 
 * @trieloff
+* @stefan-guggisberg
 
 Please share this page with people inside Adobe that you'd like to invite. 
 
