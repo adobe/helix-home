@@ -52,15 +52,25 @@ A good start point is to check the issue tagged with ["good first issue"](https:
 
 This umbrella project contains a [gitslave](http://gitslave.sourceforge.net) config that can be used to check out all relevant modules that are hosted as individual repositories:
 
+**Code**
 - https://github.com/adobe/helix-cli
-- https://github.com/adobe/petridish
+- https://github.com/adobe/helix-simulator
+- https://github.com/adobe/helix-shared
 - https://github.com/adobe/hypermedia-pipeline
 - https://github.com/adobe/git-server
-- https://github.com/adobe/helix-helpx
 - https://github.com/adobe/parcel-plugin-htl
 - https://github.com/adobe/parcel-plugin-jst
 - https://github.com/adobe/openwhisk-loggly-wrapper
+- https://github.com/adobe/helix-dockerimage
 - https://github.com/adobe/htlengine
+
+**Projects**
+- https://github.com/adobe/helix-helpx
+- https://github.com/adobe/project-helix.io
+
+**Related**
+- https://github.com/tripodsan/probot-serverless-openwhisk
+- https://github.com/tripodsan/probot-openwhisk-docker
 
 ### Setup
 
