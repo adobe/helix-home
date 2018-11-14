@@ -10,11 +10,7 @@ This page demonstrates how to develop a website from scratch with Helix and depl
 
 2. `git` & GitHub account
 
-3. Helix CLI from https://github.com/adobe/helix-cli
-
-```bash
-npm install -g @adobe/helix-cli
-```
+3. [Helix CLI](https://github.com/adobe/helix-cli) (see [Installation](https://github.com/adobe/helix-cli/blob/master/README.md#installation))
 
 ### Initialize your new project with sample code
 
