@@ -1,6 +1,6 @@
 # Overall thoughts
 
-Generally a digital content management architecture consist of a an "authoring experience" and a "content delivery experience".
+Generally a digital content management architecture consist of an "authoring experience" and a "content delivery experience".
 
 The authoring experience is used by the content managers, contributors, communicators to produce the digital experience for the consumer.
 
@@ -93,7 +93,7 @@ Whenever extensibility is needed developers play a crucial role. GitHub gives de
 
 # Local Development
 
-Serverless is great for deployment and scalability, but a dog develop and work with.
+Serverless is great for deployment and scalability, but a dog to develop and work with.
 
 So it is important that we get to a place where a developer can start extending in minutes, without any unreasonable cloud dependencies against their local checkout in the filesystem.
 
