@@ -14,11 +14,11 @@ The fourth Project Helix Hackathon will happen in the week of January 28th to Fe
 
 Although this is a hackathon, we won't be hacking all the time, there will also be plenty of programming and coding.
 
-| Time      | Monday         | Tuesday            | Wednesday   | Thursday    | Friday    |
-| --------: | -------------- | ------------------ | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction | Programming | Programming | Demos     |
-| Afternoon | Arrival        | Coding             | Coding      | Coding      | Departure |
-|   Evening | Set-up, drinks | Hacking            | Team dinner | Hacking     | -         |
+| Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
+| --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
+|   Morning | -              | Helix Introduction & Demo Format | Programming | Programming | Demos     |
+| Afternoon | Arrival        | Coding                           | Coding      | Coding      | Departure |
+|   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
 
 ### Location
 
