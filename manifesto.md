@@ -159,7 +159,7 @@ Less code is better. Actively manage the dependency graph to an absolute minimum
 
 a.k.a. polished, but tweakable.
 
-#### Content and View are Separate  `#a`
+### Content and View are Separate  `#a`
 
 Content must not contain display logic. Display logic must not contain content. Binary content should be re-renderable.
 
