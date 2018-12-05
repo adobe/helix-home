@@ -8,7 +8,7 @@ This page demonstrates how to develop a website from scratch with Helix and depl
 
 1. Node 8 (or later) and corresponding `npm` 
 
-2. `git` & [GitHub](https://github.com) account
+2. [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine. You also need a [GitHub](https://github.com/join) account.
 
 3. [Install](https://github.com/adobe/helix-cli/blob/master/README.md#installation) Helix Client
 
