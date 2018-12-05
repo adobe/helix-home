@@ -105,7 +105,7 @@ Run:
 
 ```bash
 hlx build
-hlx deploy --wsk-namespace <your_openwisk_namespace> --wsk-auth <your_openwisk_auth> --fastly-namespace <your_fastly_namespace> --fastly-auth <your_fastly_service_id>
+hlx deploy --wsk-namespace <your_openwisk_namespace> --wsk-auth <your_openwisk_auth>
 ```
 
 `--dirty` might be needed if you have local changes, which in theory should not be the case for a "go live".
