@@ -170,7 +170,7 @@ Support for simple local development is imperative. Low entry barrier.
 
 ### AI/ML `#t`
 
-power content, workflows, designs, operations.
+Power content, workflows, designs, and operations.
 
 ### `DECISIONS.md` `#t`
 
