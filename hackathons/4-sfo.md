@@ -1,6 +1,6 @@
 # Project Helix Hackathon
 
-(See the [Hackathon Archive](./hackathons/) for past Hackathons)
+(See the [Hackathon Archive](.) for past Hackathons)
 
 ## (Upcoming) Forth Project Helix Hackathon
 
