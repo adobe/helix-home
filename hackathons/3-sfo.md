@@ -4,7 +4,7 @@
 
 ## Third Project Helix Hackathon
 
-![](./Helix%20Save%20the%20Date.jpg)
+![](./Helix%20Save%20the%20Date%203.jpg)
 
 More info coming soon...
 
