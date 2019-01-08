@@ -38,13 +38,14 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 
 [![](./Helix%20Save%20the%20Date.jpg)](hackathon.md)
 		
- There's another [Hackathon](hackathon.md) coming – and another one [right before Tech Summit](hackathons/4-sfo.md).
+ There's another Hackathon coming [right before Tech Summit](hackathons/4-sfo.md).
 
 [![](./Helix%20Save%20the%20Date%204.jpg)](hackathons/4-sfo.md)
 
 The Helix team is inviting everyone interested to join us for quarterly hackathons. You can find the archives here:
 
-* [Hackathon #2 – Sept 2018 in Basel](hackathons/2-bsl.md)
+* [Hackathon #3 – December 2018 in San Francisco](hackathons/3-sfo.md)
+* [Hackathon #2 – September 2018 in Basel](hackathons/2-bsl.md)
 * [Hackathon #1 – June 2018 in Salt Lake City](hackathons/1-slc.md)
 
 ## Communication
