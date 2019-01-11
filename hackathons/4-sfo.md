@@ -48,6 +48,7 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 * @steveng
 * @uncled
 * @hirenoble
+* @mcorlan (only Thursday)
 
 Please share this page with people inside Adobe that you'd like to invite. 
 
