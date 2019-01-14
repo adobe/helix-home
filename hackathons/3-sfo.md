@@ -79,6 +79,8 @@ Friday, 10 am to noon. We can host up to 20 additional guests. Please sign up he
 
 Please share this page with people inside Adobe that you'd like to invite. 
 
+* [BlueJeans Recording](https://bluejeans.com/s/j3i9f/)
+
 ### Preparation
 
 > What can I do to prepare for the Hackathon?
