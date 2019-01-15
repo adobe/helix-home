@@ -35,6 +35,10 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 
 > What are you planning to show at the end of the week?
 
+* discuss operational logging (i.e. how can we see what's going on with the Helix microservices and bots) – @tripodsan, @mcorlan, @trieloff
+* discuss customer logging (i.e. how can our customers see what's going on with their own actions) – @tripodsan, @mcorlan, @trieloff
+* review and improve the default Helix VCL and get ideas how to solve [open VCL features](https://github.com/adobe/helix-cli/issues?q=is%3Aopen+is%3Aissue+label%3Avcl) – @drwilco, @ejthurgo, @trieloff
+
 ### Attendees
 
 > Who is going to be there? Can I come?
@@ -50,6 +54,8 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 * @hirenoble
 * @mcorlan (only Thursday)
 * @kgera
+* @drwilco
+* @ejthurgo 
 
 Please share this page with people inside Adobe that you'd like to invite. 
 
