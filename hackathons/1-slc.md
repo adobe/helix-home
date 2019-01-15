@@ -42,15 +42,15 @@ A couple of things we want to validate are:
 
 > Who is going to be there? Can I come?
 
-* @davidnuescheler
-* @trieloff
-* @stefan-guggisberg
-* @alexkli
-* @kptdobe
-* @ruxandraburtica
-* @cgoudie
-* @gipaul
-* @kgera
+1. @davidnuescheler
+2. @trieloff
+3. @stefan-guggisberg
+4. @alexkli
+5. @kptdobe
+6. @ruxandraburtica
+7. @cgoudie
+8. @kgera
+9. ~~@gipaul~~
 
 The Helix Hackathon (just like the rest of Project Helix) is an Open Development project. If you are interested and can make it to Utah, you are welcome to join.
 
