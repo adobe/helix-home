@@ -49,21 +49,22 @@ A couple of things we want to validate are:
 
 > Who is going to be there? Can I come?
 
-* @davidnuescheler
-* @trieloff
-* @stefan-guggisberg
-* @tripodsan
-* @acapt
-* @dominique-pfister
-* @tiberiu44 a.k.a. @boros
-* @markusheer
-* @kgera
-* @simonwex
-* @lcrabb
-* @andreaskuefer (tuesday morning, maybe monday afternoon)
-* @ruxandraburtica
-* @rofe (friday morning, maybe monday evening)
-* @cwoeltge
+1. @davidnuescheler
+2. @trieloff
+3. @stefan-guggisberg
+4. @tripodsan
+5. @acapt
+6. @dominique-pfister
+7. @tiberiu44 a.k.a. @boros
+8. @markusheer
+9. @kgera
+10. @simonwex
+11. @lcrabb
+12. @ruxandraburtica
+13. @rofe (friday morning, maybe monday evening)
+14. @cwoeltge
+15. ~~@andreaskuefer (tuesday morning, maybe monday afternoon)~~
+
 
 The Helix Hackathon (just like the rest of Project Helix) is an Open Development project. If you are interested and can make it to Basel, you are welcome to join.
 
