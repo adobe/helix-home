@@ -48,28 +48,28 @@ We should finally come to a conclusion regarding potential export restrictions f
 
 **Registration closed, but you can still sign up for the demo day on Friday**
 
-* @steveng
-* @alexkli
-* @stefan-guggisberg
-* @smacdona
-* @trieloff
-* @ddascal
-* @davidnuescheler
-* @dominique-pfister
-* @simonwex
-* @acapt
-* @purplecabbage
-* @tripodsan
-* @rofe
-* @auniverseaway
-* @chrischrischris
-* @hirenoble
-* @maj
-* @kgera
-* @gipaul
-* @jahoni
-* @andreaskuefer
-* @mbrooks
+1. @steveng
+2. @alexkli
+3. @stefan-guggisberg
+4. @smacdona
+5. @trieloff
+6. @ddascal
+7. @davidnuescheler
+8. @dominique-pfister
+9. @simonwex
+10. @acapt
+11. @purplecabbage
+12. @tripodsan
+13. @rofe
+14. @auniverseaway
+15. @chrischrischris
+16. @hirenoble
+17. @maj
+18. @jahoni
+19. @andreaskuefer
+20. @mbrooks
+21. ~~@kgera~~
+22. ~~@gipaul~~
 
 ### Demo Day
 
