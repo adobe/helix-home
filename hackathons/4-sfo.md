@@ -43,21 +43,21 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 
 > Who is going to be there? Can I come?
 
-* @trieloff (Monday to Thursday)
-* @stefan-guggisberg
-* @alexkli (some days at least)
-* @tripodsan
-* @rofe
-* @acapt
-* @steveng
-* @uncled
-* @hirenoble
-* @mcorlan (only Thursday)
-* @kgera
-* @drwilco
-* @ejthurgo 
+1. @trieloff (Monday to Thursday)
+2. @stefan-guggisberg
+3. @alexkli (some days at least)
+4. @tripodsan
+5. @rofe
+6. @acapt
+7. @steveng
+8. @uncled
+9. @hirenoble
+10. @mcorlan (only Thursday)
+11. @kgera
+12. @drwilco
+13. @ejthurgo 
 
-Please share this page with people inside Adobe that you'd like to invite. 
+Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
 ### Preparation
 
