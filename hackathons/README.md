@@ -28,5 +28,6 @@ Just put your idea on the list:
 1. Start a few months in advance, so that people have time to plan and get travel budget
 2. Suggest a couple of dates and share a [Doodle survey](https://doodle.com/poll/g9y6sb72nz9yb7rw) on `#helix-chat`
 3. Find and book a venue with: Wifi, space to work, hotels and restaurants nearby
-4. Copy one of the existing Hackathon pages
-5. Invite everyone
+4. Measure the network speed at the venue (in Basel we had 10MBps up, which was a bit on the slow side)
+5. Copy one of the existing Hackathon pages
+6. Invite everyone
