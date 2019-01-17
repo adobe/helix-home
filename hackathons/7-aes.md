@@ -23,7 +23,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 The outdoor team event will be either hiking or kayaking. You can vote below:
 
 * 🥾 |||
-* 🛶 
+* 🛶 |
 
 ### Location
 
