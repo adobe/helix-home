@@ -20,6 +20,7 @@
 Just put your idea on the list:
 
 - Antarctica
+- Japan (mountains, cool city (not Tokyo or Kyoto :-)
 
 ## Let's do it!
 
