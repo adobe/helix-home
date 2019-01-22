@@ -40,6 +40,7 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 * review and improve the default Helix VCL and get ideas how to solve [open VCL features](https://github.com/adobe/helix-cli/issues?q=is%3Aopen+is%3Aissue+label%3Avcl) – @drwilco, @ejthurgo, @trieloff
 * continue discussing [Helix as a Service|https://github.com/adobe/project-helix/pull/353] - @ktpdobe, @rofe, @trieloff, @dulvac?
 * work on Collaborative Authoring POC - @stefan-guggisberg, @rofe, @davidnuescheler? 
+* state of the bots – @tripodsan @trieloff
 
 ### Attendees
 
