@@ -20,6 +20,8 @@
 Just put your idea on the list:
 
 - Japan (somewhere in the mountains or in a cool city (not Tokyo or Kyoto :-)
+- Barcelona
+- Bordeaux ( [Cité du Vin](https://www.bedouk.fr/la-cite-du-vin,L89668), [Opéra National](https://www.bedouk.fr/opera-national-de-bordeaux,L90884) )
 
 ## Let's do it!
 
