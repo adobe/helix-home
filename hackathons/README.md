@@ -3,9 +3,9 @@
 ## Upcoming Hackathons
 
 4. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
-5. May 20th-25th 2019, TDB
+5. May 20th-24th 2019, TDB
 6. Summer 2019, TDB
-7. [October 20th-25th, Norddal, Norway](7-aes.md)
+7. [October 21th-25th, Norddal, Norway](7-aes.md)
 
 ## Past Hackathons
 
