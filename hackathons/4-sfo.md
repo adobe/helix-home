@@ -59,6 +59,7 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 11. @kgera
 12. @drwilco
 13. @ejthurgo 
+14. @faithwyu
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
