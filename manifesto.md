@@ -184,3 +184,7 @@ We communicate ideas through writing and status through issue trackers and autom
 ### Don't let Markdown get weird `#a`
 
 All Markdown documents should read well and logically when viewed through Github's view interface.
+
+### Nobody designs a list view before 2022
+
+Let's design interfaces that are bold now, we can go back to safe and boring later on.
