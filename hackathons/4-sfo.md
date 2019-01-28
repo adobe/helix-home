@@ -29,6 +29,13 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 [1841 Parker St,
 Berkeley, CA, 94703](https://www.peerspace.com/invite/pid-HkP_k90iX)
 
+### Wifi
+
+* ESSID: `Hammertime`
+* Password: `pray1841!`
+
+### Lodging
+
 For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.com) is in walking distance (15 minutes) and seems reasonably priced and furnished.
 
 ### Goal
