@@ -23,6 +23,7 @@ Just put your idea on the list:
 - Barcelona
 - Bordeaux ( [Cité du Vin](https://www.bedouk.fr/la-cite-du-vin,L89668), [Opéra National](https://www.bedouk.fr/opera-national-de-bordeaux,L90884) )
 - [Basel](https://www.basel.com/en) :)
+- [De Watertoren](https://www.watertorenvlissingen.com/), Vlissingen, Netherlands
 
 ## Let's do it!
 
