@@ -34,6 +34,8 @@ Berkeley, CA, 94703](https://www.peerspace.com/invite/pid-HkP_k90iX)
 * ESSID: `Hammertime`
 * Password: `pray1841!`
 
+Fun fact: the venue was featured in [MC Hammer's 1990 music video "Pray"](https://www.youtube.com/watch?v=mye1aCskFcM)
+
 ### Lodging
 
 For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.com) is in walking distance (15 minutes) and seems reasonably priced and furnished.
