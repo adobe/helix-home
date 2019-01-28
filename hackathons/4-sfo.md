@@ -42,13 +42,14 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 
 > What are you planning to show at the end of the week?
 
+* Get a beta of the new developer site live
 * discuss operational logging (i.e. how can we see what's going on with the Helix microservices and bots) – @tripodsan, @mcorlan, @trieloff
 * discuss customer logging (i.e. how can our customers see what's going on with their own actions) – @tripodsan, @mcorlan, @trieloff
 * review and improve the default Helix VCL and get ideas how to solve [open VCL features](https://github.com/adobe/helix-cli/issues?q=is%3Aopen+is%3Aissue+label%3Avcl) – @drwilco, @ejthurgo, @trieloff
-* continue discussing [Helix as a Service|https://github.com/adobe/project-helix/pull/353] - @ktpdobe, @rofe, @trieloff, @dulvac?
+* continue discussing [Helix as a Service](https://github.com/adobe/project-helix/pull/353) - @ktpdobe, @rofe, @trieloff, @dulvac?
 * work on Collaborative Authoring POC - @stefan-guggisberg, @rofe, @kptdobe, @davidnuescheler? 
 * state of the bots - map out api and data flow – @tripodsan @trieloff
-* managing multiple variants / strains of a site (config "wizard" or helper): @kptdobe, @tripodsan, @trieloff, @steveng
+* managing multiple variants/strains of a site (config "wizard" or helper): @kptdobe, @tripodsan, @trieloff, @steveng
 
 ### Attendees
 
@@ -68,6 +69,7 @@ For out-of-town visitors, [Hotel Shattuck Plaza](http://www.hotelshattuckplaza.c
 12. @drwilco
 13. @ejthurgo 
 14. @faithwyu
+15. @koraa
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
