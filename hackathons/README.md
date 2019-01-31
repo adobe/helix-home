@@ -4,7 +4,7 @@
 
 4. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
 5. May 20th-24th 2019, TDB
-6. Revelstoke Summer 2019, [Doodle poll for dates](https://doodle.com/poll/vemua4iag3trvy8k
+6. Revelstoke Summer 2019, [Doodle poll for dates](https://doodle.com/poll/vemua4iag3trvy8k)
 7. [October 21th-25th, Norddal, Norway](7-aes.md)
 
 ## Past Hackathons
