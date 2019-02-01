@@ -6,7 +6,7 @@
 
 ![](./Helix%20Save%20the%20Date%205.png)
 
-The fifth Project Helix Hackathon will happen in the week of May 20th (per [Doodle](https://doodle.com/poll/g9y6sb72nz9yb7rw) concensus). If you feel like attending, please sign up [here](#Attendees).
+The fifth Project Helix Hackathon will happen in Basel, Switzerland during the week of May 20th. If you feel like attending, please sign up [here](#Attendees).
 
 ### Location
 
@@ -14,7 +14,7 @@ The fifth Project Helix Hackathon will happen in the week of May 20th (per [Dood
 
 ![orangerie-basel.jpg](https://www.designersfactory.com/orangerie/img/orangerie/01.jpg)
 
-The hackathon will take place at the [Orangerie](https://www.designersfactory.com/orangerie/) at [Grellingerstrasse 75, 4052 Basel, Switzerland](https://goo.gl/maps/PY9tarrnA2S2). The nearest international airports are `BSL` and `ZRH`.
+The hackathon will take place at the [Orangerie](https://www.designersfactory.com/orangerie/) at [Grellingerstrasse 75, 4052 Basel](https://goo.gl/maps/PY9tarrnA2S2). The nearest international airports are `BSL` and `ZRH`.
 
 ### Agenda
 
