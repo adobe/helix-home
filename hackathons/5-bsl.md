@@ -4,7 +4,7 @@
 
 ## Fifth Project Helix Hackathon
 
-<!-- [![](./Helix%20Save%20the%20Date%205.jpg)]() -->
+![](./Helix%20Save%20the%20Date%205.png)
 
 The fifth Project Helix Hackathon will happen in the week of May 20th (per [Doodle](https://doodle.com/poll/g9y6sb72nz9yb7rw) concensus). If you feel like attending, please sign up [here](#Attendees).
 
