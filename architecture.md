@@ -165,6 +165,7 @@ To provide responsive experiences via Fastly metadata such as crop coordinates, 
 # Open Questions
 
 - What is the .md of something like an adobe.com website going to look like? Can we keep it still readable?
+  - Answer: take a look at the work-in-progress [developer.adobe.com index.md](https://github.com/adobe/developer.adobe.com/blob/master/index.md)
 - How does serverless work in a request/response environment?
 - How do we have to batch-up edits into commits and PRs to get to a place where it makes sense?
 - Is +1m md files in a single github repo feasible?
