@@ -39,6 +39,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 > Who is going to be there? Can I come?
 
 1. @rofe
+2. @tripodsan
 
 We have room for 20 people. First come, first served :)
 
