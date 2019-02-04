@@ -6,65 +6,76 @@ This page demonstrates how to develop a website from scratch with Helix and depl
 
 ### Pre-Requisites
 
-1. Node 8 (or later) and corresponding `npm` 
+* [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine. You also need a [GitHub](https://github.com/join) account.
 
-2. [Git](https://git-scm.com/) should be [installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) on your machine. You also need a [GitHub](https://github.com/join) account.
 
-3. [Install](https://github.com/adobe/helix-cli/blob/master/README.md#installation) Helix Client
+### Install the Helix Command Line Interface
+Install `hlx` as a global command (Node 8 or higher required)
+```bash
+$ npm install -g @adobe/helix-cli
+```
+Alternatively, you can install the latest binary version of `hlx` using `curl` (no Node required):
+```bash
+$ curl -sL http://www.project-helix.io/cli.sh | sh
+```
 
-### Initialize your new project with sample code
+### Initiate your Helix project
 
-Run:
-
+Create a demo project:
 ```bash
 hlx demo mytestproject
 cd mytestproject
-```
-
-The `mytestproject` folder contains everything you need to start "coding" your website. Main entry point is the HTL template `src/html.htl` that defines the HTML of your webpages.
-
-While Helix supports a pure local developement code base, it could be a good idea to set the `git remote`, the place where you will store your code.
-
-* Go to [http://github.com/](http://github.com/) and create a new `mytestprojectcode` repository in your favorite org.
-* Add the remote locally:
-
-```bash
-git remote add origin <mytestprojectcode_git_repo_url>
-```
-(Make sure your GithUb URL ends with `.git`)
-
-You can then commit and push your code.
-
-### Develop locally
-
-Run:
-
-```bash
 hlx up
 ```
 
-Open the url [http://localhost:3000/](http://localhost:3000/)
+This will open your default browser with [http://localhost:3000/](http://localhost:3000/).
 
-A default page is rendered. You can change the HTL template `src/html.htl` and reload the page, changes will be automatically applied.
+The `mytestproject` folder contains everything you need to start coding. For instance, you can change the HTL template `src/html.htl` and refresh the page. Changes will be applied automatically.
 
-### Where is the content?
+Helix also created a content file locally: `index.md`. You can change its markdown content and refresh the page. Changes will be applied automatically. You can also create additional files. For example, in order to render a `test.md`, request [http://localhost:3000/test.html](http://localhost:3000/test.html).
 
-#### Local content
-During the project init, one file has been created locally: `index.md`. You can change the content and reload the page, changes will be automatically applied. You can create more files, like a `test.md` and request [http://localhost:3000/test.html](http://localhost:3000/test.html) to see the content.
+## Set up GitHub repositories
 
-This is really useful for local and offline development but this is not where the content should reside.
+### Commit your code
 
-#### Content stored on GitHub
+While Helix supports a pure local developement code base, you will eventually need a code repository in GutHub in order to be able to deploy and publish your project:
+1. Go to [http://github.com/](http://github.com/) and create a new `mytestprojectcode` repository in your favorite org
+2. Add the remote locally:
+```bash
+git remote add origin <mytestprojectcode_repo_url>.git
+```
+(Make sure your GitHub URL ends with `.git`)
+3. Commit and push your code:
+```bash
+git commit -m"initial commit"
+git push --set-upstream <mytestprojectcode_repo_url>.git --force --allow-unrelated-histories
+```
+(Double check if your `git remote` is set to the correct GitHub repository!)
+4. If you don't have a `helix-config.yaml` file yet, you can now have Helix create one for you:
+```bash
+hlx up --save-config
+```
+5. Point the `&defaultRepo` in `helix-config.yaml` to your code repository:
+```
+    - &defaultRepo "<mytestprojectcode_repo_url>.git#master"
+```
 
-* Go to [http://github.com/](http://github.com/) and create a new `mytestprojectcontent` repository in your favorite org. Add an `index.md` file in there.
-* In mytestproject, edit the `helix-config.yaml`: uncomment the `content` property and add your repository URL.
-* Restart `hlx up`
+### Commit your content
 
-Open the url [http://localhost:3000/](http://localhost:3000/): the content is now coming from the `mytestprojectcontent` GitHub repository.
+Having content locally in your code checkout is practical for local and offline development, but it should eventually move to its dedicated GitHub repository.
+
+1. Go to [http://github.com/](http://github.com/) and create a new `mytestprojectcontent` repository in your favorite org. Add an `index.md` file in there.
+2. Add the content repository to the `default` strain in `helix-config.yaml`: 
+```
+    content: <mytestprojectcontent_repo_url>#master
+```
+3. Restart `hlx up`
+
+[http://localhost:3000/](http://localhost:3000/) will now show the content coming from the `mytestprojectcontent` GitHub repository.
 
 ## Deploy your Helix Site
 
-### Pre-requisites
+### Pre-Requisites
 
 1. Get [access](https://github.com/adobe/project-helix/blob/master/SERVICES.md#adobe-io-runtime) to Adobe I/O Runtine.
 2. Get [access](https://github.com/adobe/project-helix/blob/master/SERVICES.md#fastly) to Fastly.
@@ -78,7 +89,7 @@ Open the url [http://localhost:3000/](http://localhost:3000/): the content is no
 
 1. Log in to https://manage.fastly.com/account/tls/domains
 2. Click "create TLS domain" https://manage.fastly.com/account/tls/domains/new
-3. Enter the domain name with a wildcard qualifier: e.g. `*.experience-adobe.com`
+3. Enter the domain name with a wild card qualifier: e.g. `*.experience-adobe.com`
 4. Click next
 5. In the list of domains, click "verify" next to your new domain name
 6. Copy the `TXT` record and set it as a new DNS record (for `@`)
@@ -97,18 +108,15 @@ Open the url [http://localhost:3000/](http://localhost:3000/): the content is no
 8. Copy and remember the service ID
 
 
-### Go Live
+### Deploy the action
 
-#### Build and deploy the action
-
-Run:
+Deploy your Helix Site:
 
 ```bash
-hlx build
 hlx deploy --wsk-namespace <your_openwisk_namespace> --wsk-auth <your_openwisk_auth>
 ```
 
-`--dirty` might be needed if you have local changes, which in theory should not be the case for a "go live".
+The `--dirty` option might be needed if you have uncommitted changes, which should not be the case for a "go live".
 
 This deploys your code to Adobe I/O Runtime. The action name should be something like `local--mytestproject--html` if you do not have set a GitHub remote url, or `/<your_openwisk_namespace>/<mytestprojectcode-git-url-dash-encoded>--html` if set. To be sure, copy it from `default.code` in `.hlx/strains.json` generated by `hlx deploy`.
 
@@ -145,26 +153,13 @@ Note:
   * Running `wsk activation poll` in a terminal should show you some logs of the rendering process (action activation)
 
 
-#### Publish
-
-Configure default strain:
-
-Add the following section to your `helix-config.yaml`:
-```
-strains:
-  default:
-    code: /<your_openwisk_namespace>/<mytestprojectcode-git-url-dash-encoded>
-    content: <mytestprojectcontent_git_repo_url>
-    static: <mytestprojectcode_git_repo_url>
-```
-
-Run:
+### Publish your Helix Site
 
 ```bash
 hlx publish --wsk-namespace <your_openwisk_namespace> --wsk-auth <your_openwisk_auth> --fastly-namespace <your_fastly_namespace> --fastly-auth <your_fastly_service_id>
 ```
 
-Open https://<your_domain>/ in the browser: your site is live!
+Open https://<your_domain>/ in the browser: your site is now live!
 
 #### Debug
 
