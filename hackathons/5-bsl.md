@@ -40,6 +40,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 1. @rofe
 2. @tripodsan
+3. @kptdobe
 
 We have room for 20 people. First come, first served :)
 
