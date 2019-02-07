@@ -42,6 +42,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 2. @tripodsan
 3. @kptdobe
 4. @simonwex
+5. @koraa
 
 We have room for 20 people. First come, first served :)
 
