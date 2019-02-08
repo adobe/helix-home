@@ -16,7 +16,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 | Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Programming | Programming | Demos     |
+|   Morning | -              | Helix Introduction & Demo Format | Programming | Programming | [Demos](#demos)     |
 | Afternoon | Arrival        | Coding                           | Coding      | Coding      | Departure |
 |   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
 
@@ -83,3 +83,11 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 2. Join `#helix-chat` on Slack
 3. Install the `hlx` Command Line app and create your first project
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
+
+### Demos
+
+Add your demo recording links here:
+- [Fastly: Audience Pre-Flight Requests and Static Redirect Handling](https://bluejeans.com/s/8mcae)
+- [Collaborative authoring](https://bluejeans.com/s/otkcm/)
+- Adobe Developer Site 
+- Sensei Auto Crop
