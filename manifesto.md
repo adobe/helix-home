@@ -21,7 +21,7 @@ We are a diverse team in every respect.
 
 ### No Meetings `#t`
 
-Get-togethers and hackathons only.
+Get-togethers and [hackathons](./hackathons/README.md) only.
 
 ### More code, less blah, blah `#c`
 
