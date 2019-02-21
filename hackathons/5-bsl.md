@@ -44,6 +44,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 4. @simonwex
 5. @koraa
 6. @trieloff (Monday-Thursday night)
+7. @stefan-guggisberg
 
 We have room for 20 people. First come, first served :)
 
