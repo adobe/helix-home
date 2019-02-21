@@ -166,7 +166,6 @@ Content must not contain display logic. Display logic must not contain content. 
 ### Local Development `#t`
 
 Support for simple local development is imperative. Low entry barrier.
-([Discuss?](https://github.com/adobe/project-helix/issues/19))
 
 ### AI/ML `#t`
 
@@ -179,7 +178,6 @@ Is where we document big decisions and trade-offs.
 ### Powerpointless `#t`
 
 We communicate ideas through writing and status through issue trackers and automated dashboards 
-([Discuss?](https://github.com/adobe/project-helix/issues/23))
 
 ### Don't let Markdown get weird `#a`
 
