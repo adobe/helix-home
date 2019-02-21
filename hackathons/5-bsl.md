@@ -28,6 +28,18 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 | Afternoon | Airport Transfer & Arrival       | Coding                           | Coding      | Coding     | Departure & Airport Transfer |
 |   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
 
+### Lodging
+
+Recommended hotels for our out-of-town visitors:
+- [Sevogelhof](http://www.sevogelhof.ch/english/index.html) - Bed & Breakfast in historic 19th century building in the Gellert borough(5 min walk)
+- [ibis budget](https://www.accorhotels.com/gb/hotel-8211-ibis-budget-basel-city/index.shtml) simple & modern 1-star hotel (8 min walk)
+- [Novotel](https://www.accorhotels.com/gb/hotel-8215-novotel-basel-city/index.shtml) modern 4-star hotel (10 min walk)
+- [DASBREITEHOTEL](https://www.dasbreitehotel.ch/en/) - ecologically & socially sustainable hotel overlooking the Rhine (15 min walk, or 2 min by tram #3 + 8 min walk)
+- [Motel One](https://www.motel-one.com/en/hotels/basel/hotel-basel/) - great 1-star hotel in the city center, right next to Adobe Basel (20 min walk, or 7 min by tram #14 + 3 min walk)
+- [Hotel Alfa](https://www.alfa-hotel-birsfelden.ch/en/) classic 3-star hotel in Birsfelden (20 min walk, or 3 min by tram #3 + 8 min walk)
+- [Radisson Blu](https://www.radissonblu.com/en/hotel-basel) modern 4-star hotel in the city center (22 min walk, or 5 min by tram #14 + 7 min walk)
+- [Hotel Euler](https://www.hoteleuler.ch/en/) century-old 4-star hotel at the train station (19 min walk, or 4 min by tram #14 + 8 min walk)
+
 ### Goal
 
 > What are you planning to show at the end of the week?
