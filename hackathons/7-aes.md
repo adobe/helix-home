@@ -54,6 +54,7 @@ Airport transfer from and to Ålesund (AES) airport will be provided.
 5. @stefan-guggisberg
 6. @dominique-pfister
 7. @koraa
+8. @alexkli
 
 We have 13 rooms – if we get past 13 attendees, please find someone to share a room.
 
