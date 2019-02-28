@@ -58,6 +58,7 @@ Recommended hotels for our out-of-town visitors:
 6. @trieloff (Monday-Thursday night)
 7. @stefan-guggisberg
 8. @royfielding
+9. @kgera
 
 We have room for 20 people. First come, first served :)
 
