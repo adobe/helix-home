@@ -6,7 +6,7 @@
 
 ![Helix - Save the date VI](./Helix%20Save%20the%20Date%206.jpeg)
 
-The sixth Project Helix Hackathon will happen in Strasbourg, France during the week of Aug 26th. If you feel like attending, please sign up [here](#Attendees).
+The sixth Project Helix Hackathon will happen in Strasbourg, France end of August. If you feel like attending, please sign up [here](#Attendees) and vote for a week: https://doodle.com/poll/kffbvwc5r7cu6kct
 
 ### Location
 
