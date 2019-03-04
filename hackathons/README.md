@@ -3,7 +3,7 @@
 ## Upcoming Hackathons
 
 5. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
-6. Revelstoke Summer 2019, [Doodle poll for dates](https://doodle.com/poll/vemua4iag3trvy8k)
+6. [August 2019, Strasbourg, France](6-sxb.md)
 7. [October 21th-25th, Norddal, Norway](7-aes.md)
 
 ## Past Hackathons
