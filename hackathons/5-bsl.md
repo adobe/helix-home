@@ -61,6 +61,7 @@ Recommended hotels for our out-of-town visitors:
 7. @stefan-guggisberg
 8. @royfielding
 9. @kgera
+10. @kamendola
 
 We have room for 20 people. First come, first served :)
 
