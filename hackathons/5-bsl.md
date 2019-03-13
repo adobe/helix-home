@@ -44,6 +44,8 @@ Recommended hotels for our out-of-town visitors:
 
 > What are you planning to show at the end of the week?
 
+* Refine our on-call policy (see [here](https://github.com/adobe/project-helix/pull/382) for initial discussion)
+* Discuss and work on next UI iteration with @kamendola
 * put down the topic – and the people that would like to discuss it like @mygithubid
 
 ### Attendees
