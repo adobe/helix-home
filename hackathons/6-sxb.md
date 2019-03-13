@@ -48,6 +48,7 @@ Recommended hotels:
 > Who is going to be there? Can I come?
 
 1. @acapt
+2. @simonwex
 
 We have room for 20 people. First come, first served :)
 
