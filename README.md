@@ -9,20 +9,13 @@
 Read all of this.
 
 * [How we work, who we are, what we use, what we build](manifesto.md)
-* [Product Vision](product-vision.md)
-* [Business Whitepaper Pitch](whitepaper.md)
-* [Top 10](top10.md)
 * [Technology Architecture Vision](architecture.md)
 * *New*: [How to contribute](CONTRIBUTING.md)
 
 ## Developing Helix
 
-* [What Services we use – get access to those to code for Helix](SERVICES.md)
-* [Contributing to the Primordial Soup Prototype](prototypes/CONTRIBUTING.md)
-* *New:* [What the new Pipeline looks like](prototypes/PIPELINE_FAQ.md)
 * *New:* [All Helix Repositories](https://github.com/search?q=topic%3Ahelix+org%3Aadobe&type=Repositories)
 * *New:* [Helix Project Board](https://github.com/orgs/adobe/projects/2)
-* The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in Helix document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 * Javacript code style should follow the [Airbnb JavaScript Style Guide()](https://github.com/airbnb/javascript)
 
 ## Video Walkthoughs
@@ -37,7 +30,6 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 ## Hackathons
 		
  There's always a next [hackathon](hackathons/). Check the list and sign up!
-
 
 ## Communication
 
