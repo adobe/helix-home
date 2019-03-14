@@ -2,7 +2,7 @@
 
 ## TL;DR?
 
-* [Start Developing Your First Helix Project in 60 Seconds](start-developing-your-first-helix-project-in-60-seconds.md)
+* [Start Developing Your First Helix Project in 60 Seconds](https://www.project-helix.io/)
 
 ## Background
 
