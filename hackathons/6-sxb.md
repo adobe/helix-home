@@ -49,6 +49,7 @@ Recommended hotels:
 
 1. @acapt
 2. @simonwex
+3. @trieloff
 
 We have room for 20 people. First come, first served :)
 
