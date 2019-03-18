@@ -6,7 +6,7 @@
 
 ![Helix - Save the date VI](./Helix%20Save%20the%20Date%206.jpeg)
 
-The sixth Project Helix Hackathon will happen in Strasbourg, France end of August. If you feel like attending, please sign up [here](#Attendees) and vote for a week: https://doodle.com/poll/kffbvwc5r7cu6kct
+The sixth Project Helix Hackathon will happen in Strasbourg, France during the week of Aug 26th. If you feel like attending, please sign up [here](#Attendees).
 
 ### Location
 
@@ -51,7 +51,7 @@ Recommended hotels:
 2. @simonwex
 3. @trieloff
 
-We have room for 20 people. First come, first served :)
+We have room for 16 people. First come, first served :)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
