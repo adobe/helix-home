@@ -53,7 +53,7 @@ Airport transfer from and to Ålesund (AES) airport will be provided.
 2. @uncled
 3. @rofe
 4. @tripodsan
-5. @stefan-guggisberg (arriving AES Sunday 11:40AM, KL1325) 
+5. @stefan-guggisberg (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
 6. @dominique-pfister
 7. @koraa
 8. @alexkli
