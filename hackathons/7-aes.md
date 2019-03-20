@@ -12,13 +12,15 @@ The seventh Project Helix Hackathon will happen in the week of October 20th. It 
 
 > I hear this is a hackathon, are you going to hack all day?
 
+We do have the hotel from **Sunday** to Friday, so if you can accommodate, I recommend to fly in on Sunday.
+
 Although this is a hackathon, we won't be hacking all the time, there will also be plenty of programming and coding.
 
-| Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
-| --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Programming | Programming | Demos     |
-| Afternoon | Airport Transfer & Arrival       | Coding                           | Coding      | Outdoor Team Event 🥾🛶     | Departure & Airport Transfer |
-|   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
+| Time      | Sunday                     | Monday                           | Tuesday     | Wednesday   | Thursday              | Friday                       |
+| --------: | -------------------------- | -------------------------------- | ----------- | ----------- | --------------------- | ---------------------------- |
+|   Morning | -                          | Helix Introduction & Demo Format | Discussions | Programming | Programming           | Demos                        |
+| Afternoon | Airport Transfer & Arrival | Software Engineering             | Coding      | Coding      | Outdoor Team Event 🥾🛶 | Departure & Airport Transfer |
+|   Evening | Set-up, drinks             | Fiddling with Code               | Hacking     | Team dinner | Hacking               | -                            |
 
 The outdoor team event will be either hiking or kayaking. You can vote below:
 
