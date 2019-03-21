@@ -34,7 +34,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 Recommended hotels:
 
-- [Hôtel Les Haras](http://www.les-haras-hotel.com/) - On site 4-star hotel! Limited number of rooms
+- [Hôtel Les Haras](http://www.les-haras-hotel.com/) - On site 4-star hotel! Hotel is available in Concur with free cancellation policy. **Limited number of rooms**, reserve early!
 - Any hotel in Strasbourg city center should be at walking distance
 
 ### Goal
