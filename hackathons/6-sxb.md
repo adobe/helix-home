@@ -50,6 +50,7 @@ Recommended hotels:
 1. @acapt
 2. @simonwex
 3. @trieloff
+4. @rofe (from Tuesday 10 AM)
 
 We have room for 16 people. First come, first served :)
 
