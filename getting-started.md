@@ -156,6 +156,10 @@ hlx publish --fastly-namespace <your_fastly_namespace> --fastly-auth <your_fastl
 
 Open https://<your_domain>/ in the browser: your site is now live!
 
+### (Optional) Use environment variables in an `.env` file
+
+The authentication parameters used by the Helix client can also be specified using an `.env` file. The supported environment variables are `HLX_WSK_NAMESPACE`, `HLX_WSK_AUTH`, `HLX_CIRCLECI_AUTH`, `HLX_FASTLY_NAMESPACE`, and `HLX_FASTLY_AUTH`.
+
 #### Debug
 
 Run:
