@@ -52,7 +52,7 @@ A couple of things we want to validate are:
 8. @kgera
 9. ~~@gipaul~~
 
-The Helix Hackathon (just like the rest of Project Helix) is an Open Development project. If you are interested and can make it to Utah, you are welcome to join.
+The Helix Hackathon (just like the rest of Project Helix) is an Open Development project. If you are interested and can make it to Utah, you are welcome to join.please
 
 Interested in attending? Just edit this file, add your name, and make a Pull Request.
 
@@ -67,4 +67,4 @@ Interested in attending? Just edit this file, add your name, and make a Pull Req
 
 ### Outcomes
 
-The outcomes of the hackathon can be watched here: https://vimeo.com/274350388/afe38b8c33 – please don't share the video URL outside Adobe, it is not for public consumption.
+The outcomes of the hackathon can be watched here: https://vimeo.com/274350388/afe38b8c33 
