@@ -2,13 +2,6 @@
 
 Thank you for your interest in contributing to Project Helix. As an Open Development project, Project Helix is not just open to contributions, but we actively encourage and seek contributions from across Adobe. **We are thrilled to have you on board.**
 
-## Understanding Project Helix
-
-1. Start with [whitepaper.md](whitepaper.md) to understand why we build Project Helix
-2. Then read [manifesto.md](manifesto.md) to learn about the unique way the team works
-3. Get an overview of the architecture from [prototypes/README.md](prototypes/README.md)
-4. Also check out [SERVICES.md](SERVICES.md) for a list of external services we are using
-
 ## Where to contribute in Project Helix
 
 A lot of the code of Project Helix and many of the most exciting areas for contributions are already Open Source, so some of the more interesting areas for contributions are:
@@ -44,7 +37,7 @@ A good start point is to check the issue tagged with ["good first issue"](https:
 ## How to communicate with Project Helix
 
 1. Join us in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid)
-2. Come to the next [Project Helix Hackathon](hackathon.md)
+2. Come to the next [Project Helix Hackathon](/hackathons)
 
 ## Development - Check out all modules
 
