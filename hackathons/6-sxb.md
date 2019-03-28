@@ -12,9 +12,9 @@ The sixth Project Helix Hackathon will happen in Strasbourg, France during the w
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-![biocluster.jpg](http://www.les-haras-biocluster.com/images/header_bg.jpg)
+![Anticafé](https://www.anticafe.eu/wp-content/uploads/2018/09/anticafe_strasbourg-salle4.jpg)
 
-The hackathon will take place at the [Biocluster Les Haras](http://www.les-haras-biocluster.com/) at [1 rue Ste Elisabeth, 67000 Strasbourg](https://goo.gl/maps/fD8HL2Jpjcx).
+The hackathon will take place at the [Anticafé Strasbourg](https://www.anticafe.eu/lieux/strasbourg-67000/) at [1 rue de la Division Leclerc 67000 Strasbourg](https://goo.gl/maps/W2QJRc3uW182).
 
 The nearest airport is `SXB` (30 mins) which have connections from `AMS`. Other option: train from `BSL`, `ZUR` or `Paris`. The venue is 15 mins walk from train station.
 
@@ -34,8 +34,8 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 Recommended hotels:
 
-- [Hôtel Les Haras](http://www.les-haras-hotel.com/) - On site 4-star hotel! Hotel is available in Concur with free cancellation policy. **Limited number of rooms**, reserve early!
 - Any hotel in Strasbourg city center should be at walking distance
+- [Hôtel Les Haras](http://www.les-haras-hotel.com/) - (previous planned location) is at 10mins walking distance. Still a good choice.
 
 ### Goal
 
