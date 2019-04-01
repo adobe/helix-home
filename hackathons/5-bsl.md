@@ -47,6 +47,7 @@ Recommended hotels for our out-of-town visitors:
 * Refine our on-call policy (see [here](https://github.com/adobe/project-helix/pull/382) for initial discussion)
 * Discuss and work on next UI iteration with @kamendola
 * Where and how do we document Helix?
+* Improve Developer Experience for devs new to Helix, see [helix-cli/711](https://github.com/adobe/helix-cli/issues/711) (@stefan-guggisberg, @rofe, ...)
 
 ### Attendees
 
