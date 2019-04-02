@@ -10,13 +10,9 @@ This page demonstrates how to develop a website from scratch with Helix and depl
 
 
 ### Install the Helix Command Line Interface
-Install `hlx` as a global command (Node 8 or higher required)
+Install `hlx` as a global command (Node 8.9 or higher required)
 ```bash
 $ npm install -g @adobe/helix-cli
-```
-Alternatively, you can install the latest binary version of `hlx` using `curl` (no Node required):
-```bash
-$ curl -sL http://www.project-helix.io/cli.sh | sh
 ```
 
 ### Initiate your Helix project
