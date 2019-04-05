@@ -114,7 +114,7 @@ hlx deploy --wsk-namespace <your_openwisk_namespace> --wsk-auth <your_openwisk_a
 
 The `--dirty` option might be needed if you have uncommitted changes, which should not be the case for a "go live".
 
-Deploying will add/update the `package` value to your strain(s). Its value contains your `wsk-namespace` as well as the ID of the deployed action.
+Deploying will add/update the `package` value to your strain(s). Its value contains your `wsk-namespace` as well as the name of the deployed action.
 
 List all actions deployed in your namespace:
 ```bash
