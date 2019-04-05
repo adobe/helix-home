@@ -10,7 +10,8 @@ Read all of this.
 
 * [How we work, who we are, what we use, what we build](manifesto.md)
 * [Technology Architecture Vision](architecture.md)
-* *New*: [How to contribute](CONTRIBUTING.md)
+* [How to contribute](CONTRIBUTING.md)
+* [Getting Started Guide](getting-started.md)
 
 ## Developing Helix
 
