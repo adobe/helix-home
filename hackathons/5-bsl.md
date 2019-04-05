@@ -48,6 +48,7 @@ Recommended hotels for our out-of-town visitors:
 * Discuss and work on next UI iteration with @kamendola
 * Where and how do we document Helix?
 * Improve Developer Experience for devs new to Helix, see [helix-cli/711](https://github.com/adobe/helix-cli/issues/711) (@stefan-guggisberg, @rofe, ...)
+* Integration with project management tools (@bdelacretaz), looking at parallels with similar work that I'm doing for assets management.
 
 ### Attendees
 
@@ -63,6 +64,7 @@ Recommended hotels for our out-of-town visitors:
 8. @royfielding
 9. @kgera
 10. @kamendola
+11. @bdelacretaz (Thuesday-Thursday)
 
 We have room for 20 people. First come, first served :)
 
