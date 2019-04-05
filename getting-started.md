@@ -114,6 +114,8 @@ hlx deploy --wsk-namespace <your_openwisk_namespace> --wsk-auth <your_openwisk_a
 
 The `--dirty` option might be needed if you have uncommitted changes, which should not be the case for a "go live".
 
+Deploying will add/update the `package` value to your strain(s). Its value contains your `wsk-namespace` as well as the ID of the deployed action.
+
 List all actions deployed in your namespace:
 ```bash
 wsk action list # check if your action is in your namespace
@@ -126,7 +128,7 @@ wsk activation poll # show action activation logs
 For debugging purposes and checking the internals, you can invoke the action locally:
 
 ```bash
-wsk action invoke -r --blocking /<your_openwhisk_namespace>/<action_id>/html -p owner <your_org> -p repo mytestprojectcontent -p ref master -p path /index.md
+wsk action invoke -r --blocking /<package_id>/html -p owner <your_org> -p repo mytestprojectcontent -p ref master -p path /index.md
 ```
 
 This should return the rendered HTML.
@@ -134,7 +136,7 @@ This should return the rendered HTML.
 Invoke the action remotely:
 
 ```bash
- wsk action get --url /<your_openwhisk_namespace>/default/<action_id>/html
+ wsk action get --url /<package_id>/html
 ```
 
 This gives you a URL to use in your browser, adding the following request parameters: `<runtime_url>?owner=<your_org>&repo=mytestprojectcontent&ref=master&path=/index.md`
