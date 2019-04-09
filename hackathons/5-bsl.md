@@ -24,9 +24,19 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 | Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Programming | Programming | Demos     |
-| Afternoon | Airport Transfer & Arrival       | Coding                           | Coding      | Coding     | Departure & Airport Transfer |
+|   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | Demos     |
+| Afternoon | Airport Transfer & Arrival       | Coding                           | Documentaton      | Coding     | Departure & Airport Transfer |
 |   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
+
+We will have two documentathons; during these, each of us will work to improve the documentation on some helix component they did not write themselves:
+
+* What is the api of that component
+* Why was it build?
+* What is it good for?
+* What should it not be used for?
+* Are there any caveats to using that module?
+
+The goal of this event is to improve the documentation, share knowledge of parts of helix and reduce the truck factor in the helix team.
 
 ### Lodging
 
