@@ -76,6 +76,8 @@ Recommended hotels for our out-of-town visitors:
 10. @kamendola
 11. @bdelacretaz (Thuesday-Thursday)
 11. @dominique-pfister
+12. @lkrapf (Thursday)
+13. @asanso (Thursday)
 
 We have room for 20 people. First come, first served :)
 
