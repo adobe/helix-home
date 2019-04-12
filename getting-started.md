@@ -166,7 +166,7 @@ curl -v -H "X-Debug: true" https://<your_domain>/
 
 ### (Optional) Use environment variables
 
-The authentication parameters used by the `hlx deploy` and `hlx publish` tasks can also be specified as environment variables. You can put this variables into an `.env` file which will be automatically picked up the the client.
+Every command line argument of `hlx` can also be provided via an _environment variable_, by prefixing its name with `HLX_`. For example the `--wsk-namespace` via `HLX_WSK_NAMESPACE`, the `--log-level` can be set via the `HLX_LOG_LEVEL` variable  etc. You can store those variables in an `.env` file which will be picked up automatically by `hlx`. 
 
 The relevant environment variables are
 - `HLX_WSK_NAMESPACE`
@@ -177,5 +177,7 @@ The relevant environment variables are
 - `HLX_FASTLY_AUTH`
 - `HLX_LOGGLY_AUTH`
 - `HLX_LOGGLY_HOST`
-
-
+- `HLX_LOG_LEVEL`
+- `HLX_HOST`
+- `HLX_LOCAL_REPO`
+- `HLX_OPEN`
