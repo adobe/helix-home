@@ -161,3 +161,21 @@ Run:
 ```bash
 curl -v -H "X-Debug: true" https://<your_domain>/
 ```
+
+### (Optional) Use environment variables
+
+Every command line argument of `hlx` can also be provided via an _environment variable_, by prefixing its name with `HLX_`. For example the `--wsk-namespace` via `HLX_WSK_NAMESPACE`, the `--log-level` can be set via the `HLX_LOG_LEVEL` variable  etc. You can store those variables in an `.env` file which will be picked up automatically by `hlx`. 
+
+The relevant environment variables are
+- `HLX_WSK_NAMESPACE`
+- `HLX_WSK_HOST`
+- `HLX_WSK_AUTH` 
+- `HLX_CIRCLECI_AUTH` 
+- `HLX_FASTLY_NAMESPACE`
+- `HLX_FASTLY_AUTH`
+- `HLX_LOGGLY_AUTH`
+- `HLX_LOGGLY_HOST`
+- `HLX_LOG_LEVEL`
+- `HLX_HOST`
+- `HLX_LOCAL_REPO`
+- `HLX_OPEN`
