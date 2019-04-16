@@ -71,7 +71,6 @@ Recommended hotels for our out-of-town visitors:
 5. @koraa
 6. @trieloff (Monday-Thursday night)
 7. @stefan-guggisberg
-8. @royfielding
 9. @kgera
 10. @kamendola
 11. @bdelacretaz (Thuesday-Thursday)
