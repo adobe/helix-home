@@ -26,8 +26,8 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 | Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Programming | Programming | Demos     |
-| Afternoon | Airport Transfer & Arrival       | Coding                           | Coding      | Coding     | Departure & Airport Transfer |
+|   Morning | -              | Helix Introduction & Demo Format | Documentathon | Programming | Demos     |
+| Afternoon | Airport Transfer & Arrival       | Coding                           | Coding      | Documentathon     | Departure & Airport Transfer |
 |   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
 
 ### Lodging
