@@ -79,7 +79,8 @@ Recommended hotels for our out-of-town visitors:
 13. @asanso (Thursday)
 14. @acollign (Thursday)
 15. @meryllblanchet (Tuesday, Wednesday evening, Friday)
-
+16. @raho (Tuesday, Wednesday evening, Friday)
+17. @dunguyen (Tuesday, Wednesday evening, Friday)
 
 We have room for 20 people. First come, first served :)
 
