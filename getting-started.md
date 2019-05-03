@@ -43,8 +43,7 @@ git remote add origin <mytestprojectcode_repo_url>.git
 (Make sure your GitHub URL ends with `.git`)
 3. Commit and push your code:
 ```bash
-git commit -m"initial commit"
-git push --set-upstream <mytestprojectcode_repo_url>.git --force --allow-unrelated-histories
+git push -u origin master
 ```
 (Double check if your `git remote` is set to the correct GitHub repository!)
 4. If you don't have a `helix-config.yaml` file yet, you can now have Helix create one for you:
