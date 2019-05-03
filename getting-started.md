@@ -35,7 +35,7 @@ Helix also created a content file locally: `index.md`. You can change its markdo
 ### Commit your code
 
 While Helix supports a pure local developement code base, you will eventually need a code repository in GutHub in order to be able to deploy and publish your project:
-1. Go to [http://github.com/](http://github.com/) and create a new `mytestprojectcode` repository in your favorite org
+1. Go to [http://github.com/](http://github.com/) and create a new public `mytestprojectcode` repository in your favorite org
 2. Add the remote locally:
 ```bash
 git remote add origin <mytestprojectcode_repo_url>.git
