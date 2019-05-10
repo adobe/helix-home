@@ -1,18 +1,26 @@
-# Project Helix Hackathon
+![](./5-bsl-michael-weibel-244784-unsplash.jpg)
 
-(See the [Hackathon Archive](.) for past Hackathons)
+# Helix Hackathon Part V
+May 20-24 2019 - Basel, Switzerland
+
+---
+
 
 ## Fifth Project Helix Hackathon
 
-![](./Helix%20Save%20the%20Date%205.png)
-
 The fifth Project Helix Hackathon will happen in Basel, Switzerland during the week of May 20th. If you feel like attending, please sign up [here](#Attendees).
+
+(See the [Hackathon Archive](.) for past Hackathons)
 
 ### Location
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
+---
+
 ![orangerie-basel.jpg](https://www.designersfactory.com/orangerie/img/orangerie/01.jpg)
+
+---
 
 The hackathon will take place at the [Orangerie](https://www.designersfactory.com/orangerie/) at [Grellingerstrasse 75, 4052 Basel](https://goo.gl/maps/PY9tarrnA2S2). The nearest international airports are `BSL` and `ZRH`.
 
