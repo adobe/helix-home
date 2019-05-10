@@ -1,4 +1,8 @@
-# Project Helix Hackathon
+![](./6-sxb-hugues-de-buyer-mimeure-334018-unsplash.jpg)
+
+# Project Helix Hackathon Part VI
+Aug 26-30 2019 - Strasbourg, France
+
 
 (See the [Hackathon Archive](.) for past Hackathons)
 
@@ -12,7 +16,11 @@ The sixth Project Helix Hackathon will happen in Strasbourg, France during the w
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
+---
+
 ![Anticafé](https://www.anticafe.eu/wp-content/uploads/2018/09/anticafe_strasbourg-salle4.jpg)
+
+---
 
 The hackathon will take place at the [Anticafé Strasbourg](https://www.anticafe.eu/lieux/strasbourg-67000/) at [1 rue de la Division Leclerc 67000 Strasbourg](https://goo.gl/maps/W2QJRc3uW182).
 
