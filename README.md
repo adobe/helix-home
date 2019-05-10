@@ -1,6 +1,12 @@
-![logo](helix_logo.png)
+![helix bridge](robynne-292082-unsplash.jpg)
+
+# Project Helix
+
+---
 
 ## TL;DR?
+
+![logo](helix_logo.png)
 
 * [Start Developing Your First Helix Project in 60 Seconds](https://www.project-helix.io/)
 
