@@ -7,7 +7,7 @@
 [&times;](#)
 - [Home](/README.md)
 - [Getting Started](/getting-started.md)
-- [Hackathons](/hackathons.md)
+- [Hackathons](/hackathons/README.md)
 - [Manifesto](/manifesto.md)
 - [Architecture](/architecture.md)
 
