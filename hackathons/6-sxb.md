@@ -3,12 +3,12 @@
 # Project Helix Hackathon Part VI
 Aug 26-30 2019 - Strasbourg, France
 
+---
 
-(See the [Hackathon Archive](.) for past Hackathons)
 
 ## Sixth Project Helix Hackathon
 
-![Helix - Save the date VI](./Helix%20Save%20the%20Date%206.jpeg)
+(See the [Hackathon Archive](.) for past Hackathons)
 
 The sixth Project Helix Hackathon will happen in Strasbourg, France during the week of Aug 26th. If you feel like attending, please sign up [here](#Attendees).
 
