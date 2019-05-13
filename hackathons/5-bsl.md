@@ -46,6 +46,58 @@ We will have two documentathons; during these, each of us will work to improve t
 
 The goal of this event is to improve the documentation, share knowledge of parts of helix and reduce the truck factor in the helix team.
 
+#### Breakouts
+
+As part of the hackathon there are a couple of items that require more attention and alignment, please find below a couple of proposals for breakouts and breakout hosts...
+
+##### Breakout #1: Helix Pages and Overall Strategy
+
+Proposed Time: Tuesday 14h-16h
+
+Moderated by Karolin
+
+* Pre-requisite: Have some exposure/understanding of helix pages 
+* Roundtable: What do you think of helix pages and how does it fit into your overall vision of helix.
+  * Everyone should be able to voice their opinion even if it is not a popular opinion
+  * We accept all opinions for now; this is a brainstorming
+  * I (Karolin) do have some controversial opinions to voice here; I know that and that's
+    OK; I will also accept if we as a group decide to go in a different opinion (although no decisions are absolutely final)
+  * We will at first just collect opinions (white board?); we will discuss them at the end
+* Discussion
+
+*Goals:* 
+Shared understanding and definition of terminology and scope of things like Helix Pages, helix-cli, Bot, etc.
+Come up with specific areas for an overall Roadmap (inclusive of helix pages) and architecture
+Roadmaps should be specific, try to include who is most suited to perform the tasks, what needs to be done and how hard the task is.
+Come up with a documented development plan, who does what?
+
+
+#####  Breakout #2: Operations
+
+Proposed Time: Wednesday 14h-16h
+
+Moderated by ?Rofe & Alex? 
+
+Some ideas for the breakout...
+
+* Statement: What is the current state of operations?
+* Who will be responsible to react to outages
+  * Who can be notified when that person needs to escalate
+  * Who from the adobe.io team can be contacted
+  * How can we determine which person is qualified to fix what error
+  * Who is level one
+* Will there be an oncall rotation
+* How to deal with nights?
+* How will devs be notified about incidents
+  * Just looking at a slack channel seems unsafe
+* SLA? What are our performance targets? How will we define those?
+* What will be our process to perform post mortems
+* Who will manage the on call schedules, organize post mortems and such?
+
+*Goal:* 
+Come up with a documented plan, and assign responsibilities to implement a plan.
+
+
 ### Lodging
 
 Recommended hotels for our out-of-town visitors:
