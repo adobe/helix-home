@@ -125,4 +125,17 @@ For occasional contributors to Helix it can get hard to keep track of what has c
 
 ### Helix Pipeline
 
+- The `content.html` property has been removed from the `context` [v0.11.0](https://github.com/adobe/helix-pipeline/releases/tag/v0.11.0)
+- In section-content-detection, the `is-paragraph` class name is now called `is-text` [v1.0.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.0.0)
+- The HTML pipeline now has additional extension points with `before` and `after` that can be used in a `pre.js` [v1.1.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.1.0)
+- Some pipeline steps are now allowed to mutate the return value (this disables merging for the current step) [v1.2.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.2.0)
+- The context dumps in (`logs/debug`) now have more meaningful file names [v1.3.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.3.0)
+- HTML heading tags (`h1`, `h2`, etc.) now have `id` attributes, so that they can be used as link targets for deep linking [v1.5.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.5.0)
+- The XML pipeline exposes the same extension points as the HTML pipeline [v1.7.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.7.0)
+- Markdown documents can now have internal embeds (include another Markdown document) [v1.8.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.8.0)
+- HTML in Markdown is now supported [v1.8.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.8.0)
+- Links to static assets are now detected and rewritten into URLs that are cachable for a long time [v1.10.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.10.0)
+- HTTP headers can now be set from a HTL template by using `<link>` or `<meta>` tags [v1.11.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.11.0)
+- The HTML pipeline now parses the complete HTML document before it is rendered, allowing modifications through the `hast` extension point [v1.12.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.12.0)
+
 ### Other Parts of Helix
