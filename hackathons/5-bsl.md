@@ -34,7 +34,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
 |   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | Demos     |
 | Afternoon | Airport Transfer & Arrival       | Coding                           | Documentaton      | Coding     | Departure & Airport Transfer |
-|   Evening | Set-up, drinks | Hacking                          | Team dinner | Hacking     | -         |
+|   Evening | Set-up, drinks | Hacking                          | [Team dinner @ Mägd](https://doodle.com/poll/kubgs9aq6pv6kicy) | Hacking     | -         |
 
 We will have two documentathons; during these, each of us will work to improve the documentation on some helix component they did not write themselves:
 
