@@ -104,3 +104,25 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 2. Join `#helix-chat` on Slack
 3. Install the `hlx` Command Line app and create your first project
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
+5. Check out the [changes](#changes) made to Helix since the last Hackathon
+
+## Changes
+
+For occasional contributors to Helix it can get hard to keep track of what has changed in Helix since the last hackathon. Below, you can find a curated (i.e. incomplete) list of some of the most interesting changes to Helix since [the fourth Hackathon, i.e. Feb 1st, 2019](4-sfo.md).
+
+### Helix CLI
+
+- You can no longer use custom Docker containers for Helix, and Helix is using the Adobe I/O Runtime standard node.js by default, which speeds up cold starts [v0.13.4](https://github.com/adobe/helix-cli/releases/tag/v0.13.4)
+- When starting a Helix project, make sure to run `hlx auth`, which will authenticate the Helix GitHub app with your repository [v0.13.9](https://github.com/adobe/helix-cli/releases/tag/v0.13.9)
+- You can now use `.env` files to keep track of frequenly used environment variables like `HLX_FASTLY_AUTH` [v0.13.9](https://github.com/adobe/helix-cli/releases/tag/v0.13.9)
+- `hlx publish` now uses a remote service to update your Fastly config, so that you always have the lastest VCL, even when your `hlx` is slightly outdated. You can specify with service to use with the new `--api-publish` flag [v0.13.12](https://github.com/adobe/helix-cli/releases/tag/v0.13.12)
+- There is no longer a binary distribition for macOS. You have to install Helix CLI now using `npm i -g @adobe/helix-cli` [v0.13.13](https://github.com/adobe/helix-cli/releases/tag/v0.13.13)
+- The default pipelines are now even more customizable using the new `before` and `after` extension points [v0.13.13](https://github.com/adobe/helix-cli/releases/tag/v0.13.13)
+- In production, static assets will now get URLs that are immutable and can be cached in the browser for a long time. This improves performance [v2.0.0](https://github.com/adobe/helix-cli/releases/tag/v2.0.0)
+- Selective publishing is possible through the `--only` and `--exclude` flags in `hlx publish`. All non-matched strains will get published with the latest configuration from `master`. [v2.1.0](https://github.com/adobe/helix-cli/releases/tag/v2.1.0)
+- You can now create (but not yet use) `cgi-bin` actions [v2.2.0](https://github.com/adobe/helix-cli/releases/tag/v2.2.0)
+- Helix supports JSX as an additional templating language [v2.5.0](https://github.com/adobe/helix-cli/releases/tag/v2.5.0)
+
+### Helix Pipeline
+
+### Other Parts of Helix
