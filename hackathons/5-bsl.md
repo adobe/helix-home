@@ -19,107 +19,9 @@ The fifth Project Helix Hackathon will happen in Basel, Switzerland during the w
 ---
 
 ![orangerie-basel.jpg](https://www.designersfactory.com/orangerie/img/orangerie/01.jpg)
-
----
-
 The hackathon will take place at the [Orangerie](https://www.designersfactory.com/orangerie/) at [Grellingerstrasse 75, 4052 Basel](https://goo.gl/maps/PY9tarrnA2S2). The nearest international airports are `BSL` and `ZRH`.
 
-### Agenda
-
-> I hear this is a hackathon, are you going to hack all day?
-
-Although this is a hackathon, we won't be hacking all the time, there will also be plenty of programming and coding.
-
-| Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
-| --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | Demos     |
-| Afternoon | Airport Transfer & Arrival       | Coding                           | Documentaton      | Coding     | Departure & Airport Transfer |
-|   Evening | Set-up, drinks | Hacking                          | [Team dinner @ Mägd](https://doodle.com/poll/kubgs9aq6pv6kicy) | Hacking     | -         |
-
-We will have two documentathons; during these, each of us will work to improve the documentation on some helix component they did not write themselves:
-
-* What is the api of that component
-* Why was it build?
-* What is it good for?
-* What should it not be used for?
-* Are there any caveats to using that module?
-
-The goal of this event is to improve the documentation, share knowledge of parts of helix and reduce the truck factor in the helix team.
-
-#### Breakouts
-
-As part of the hackathon there are a couple of items that require more attention and alignment, please find below a couple of proposals for breakouts and breakout hosts...
-
-##### Breakout #1: Helix Pages and Overall Strategy
-
-Proposed Time: Tuesday 14h-16h
-
-Moderated by Karolin
-
-* Pre-requisite: Have some exposure/understanding of helix pages 
-* Roundtable: What do you think of helix pages and how does it fit into your overall vision of helix.
-  * Everyone should be able to voice their opinion even if it is not a popular opinion
-  * We accept all opinions for now; this is a brainstorming
-  * I (Karolin) do have some controversial opinions to voice here; I know that and that's
-    OK; I will also accept if we as a group decide to go in a different opinion (although no decisions are absolutely final)
-  * We will at first just collect opinions (white board?); we will discuss them at the end
-* Discussion
-
-*Goals:* 
-Shared understanding and definition of terminology and scope of things like Helix Pages, helix-cli, Bot, etc.
-Come up with specific areas for an overall Roadmap (inclusive of helix pages) and architecture
-Roadmaps should be specific, try to include who is most suited to perform the tasks, what needs to be done and how hard the task is.
-Come up with a documented development plan, who does what?
-
-
-#####  Breakout #2: Operations
-
-Proposed Time: Wednesday 14h-16h
-
-Moderated by ?Rofe & Alex? 
-
-Some ideas for the breakout...
-
-* Statement: What is the current state of operations?
-* Who will be responsible to react to outages
-  * Who can be notified when that person needs to escalate
-  * Who from the adobe.io team can be contacted
-  * How can we determine which person is qualified to fix what error
-  * Who is level one
-* Will there be an oncall rotation
-* How to deal with nights?
-* How will devs be notified about incidents
-  * Just looking at a slack channel seems unsafe
-* SLA? What are our performance targets? How will we define those?
-* What will be our process to perform post mortems
-* Who will manage the on call schedules, organize post mortems and such?
-
-*Goal:* 
-Come up with a documented plan, and assign responsibilities to implement a plan.
-
-
-### Lodging
-
-Recommended hotels for our out-of-town visitors:
-- [Sevogelhof](http://www.sevogelhof.ch/english/index.html) - Bed & Breakfast in historic 19th century building in the Gellert borough(5 min walk)
-- [ibis budget](https://www.accorhotels.com/gb/hotel-8211-ibis-budget-basel-city/index.shtml) simple & modern 1-star hotel (8 min walk)
-- [Novotel](https://www.accorhotels.com/gb/hotel-8215-novotel-basel-city/index.shtml) modern 4-star hotel (10 min walk)
-- [DASBREITEHOTEL](https://www.dasbreitehotel.ch/en/) - ecologically & socially sustainable hotel overlooking the Rhine (15 min walk, or 2 min by tram #3 + 8 min walk)
-- [Motel One](https://www.motel-one.com/en/hotels/basel/hotel-basel/) - great 1-star hotel in the city center, right next to Adobe Basel (20 min walk, or 7 min by tram #14 + 3 min walk)
-- [Hotel Alfa](https://www.alfa-hotel-birsfelden.ch/en/) classic 3-star hotel in Birsfelden (20 min walk, or 3 min by tram #3 + 8 min walk)
-- [Radisson Blu](https://www.radissonblu.com/en/hotel-basel) modern 4-star hotel in the city center (22 min walk, or 5 min by tram #14 + 7 min walk)
-- [Hotel Euler](https://www.hoteleuler.ch/en/) century-old 4-star hotel at the train station (19 min walk, or 4 min by tram #14 + 8 min walk)
-
-### Goal
-
-> What are you planning to show at the end of the week?
-
-* Refine our on-call policy (see [here](https://github.com/adobe/project-helix/pull/382) for initial discussion)
-* Discuss and work on next UI iteration with @kamendola
-* Where and how do we document Helix?
-* Improve Developer Experience for devs new to Helix, see [helix-cli/711](https://github.com/adobe/helix-cli/issues/711) (@stefan-guggisberg, @rofe, ...)
-* Integration with project management tools (@bdelacretaz), looking at parallels with similar work that I'm doing for assets management.
-* Discuss cold-start timing issues and expectations (@meryllblanchet @dunguyen @tripodsan @davidnuescheler)
+---
 
 ### Attendees
 
@@ -148,6 +50,106 @@ Recommended hotels for our out-of-town visitors:
 We have room for 20 people. First come, first served :)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
+
+### Agenda
+
+> I hear this is a hackathon, are you going to hack all day?
+
+Although this is a hackathon, we won't be hacking all the time, there will also be plenty of programming and coding.
+
+| Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
+| --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
+|   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | Demos     |
+| Afternoon | Airport Transfer & Arrival       | Coding                           | Documentaton      | Coding     | Departure & Airport Transfer |
+|   Evening | Set-up, drinks | Hacking                          | [Team dinner @ Mägd](https://doodle.com/poll/kubgs9aq6pv6kicy) | Hacking     | -         |
+
+### Goals
+
+> What are you planning to show at the end of the week?
+
+* Refine our on-call policy (see [here](https://github.com/adobe/project-helix/pull/382) for initial discussion)
+* Discuss and work on next UI iteration with @kamendola
+* Where and how do we document Helix?
+* Improve Developer Experience for devs new to Helix, see [helix-cli/711](https://github.com/adobe/helix-cli/issues/711) (@stefan-guggisberg, @rofe, ...)
+* Integration with project management tools (@bdelacretaz), looking at parallels with similar work that I'm doing for assets management.
+* Discuss cold-start timing issues and expectations (@meryllblanchet @dunguyen @tripodsan @davidnuescheler)
+
+#### Breakouts
+
+As part of the hackathon there are a couple of items that require more attention and alignment, please find below a couple of proposals for breakouts and breakout hosts...
+
+##### Breakout #1: Helix Pages and Overall Strategy
+
+Proposed Time: Tuesday 14h-16h
+
+Moderated by Karolin
+
+* Pre-requisite: Have some exposure/understanding of helix pages 
+* Roundtable: What do you think of helix pages and how does it fit into your overall vision of helix.
+  * Everyone should be able to voice their opinion even if it is not a popular opinion
+  * We accept all opinions for now; this is a brainstorming
+  * I (Karolin) do have some controversial opinions to voice here; I know that and that's
+    OK; I will also accept if we as a group decide to go in a different opinion (although no decisions are absolutely final)
+  * We will at first just collect opinions (white board?); we will discuss them at the end
+* Discussion
+
+*Goals:* 
+Shared understanding and definition of terminology and scope of things like Helix Pages, helix-cli, Bot, etc.
+Come up with specific areas for an overall Roadmap (inclusive of helix pages) and architecture
+Roadmaps should be specific, try to include who is most suited to perform the tasks, what needs to be done and how hard the task is.
+Come up with a documented development plan, who does what?
+
+#####  Breakout #2: Operations
+
+Proposed Time: Wednesday 14h-16h
+
+Moderated by Rofe
+
+Some ideas for the breakout...
+
+* Statement: What is the current state of operations?
+* Who will be responsible to react to outages
+  * Who can be notified when that person needs to escalate
+  * Who from the adobe.io team can be contacted
+  * How can we determine which person is qualified to fix what error
+  * Who is level one
+* Will there be an oncall rotation
+* How to deal with nights?
+* How will devs be notified about incidents
+  * Just looking at a slack channel seems unsafe
+* SLA? What are our performance targets? How will we define those?
+* What will be our process to perform post mortems
+* Who will manage the on call schedules, organize post mortems and such?
+
+*Goal:* 
+Come up with a documented plan, and assign responsibilities to implement a plan.
+
+##### Breakout #3: Documentation
+
+We plan to have two documentathons; during these, each of us will work to improve the documentation on some helix component they did not write themselves:
+
+* What is the api of that component
+* Why was it build?
+* What is it good for?
+* What should it not be used for?
+* Are there any caveats to using that module?
+
+*Goal:* 
+Improve the documentation, share knowledge of parts of helix and reduce the truck factor in the helix team.
+
+
+### Lodging
+
+Recommended hotels for our out-of-town visitors:
+- [Sevogelhof](http://www.sevogelhof.ch/english/index.html) - Bed & Breakfast in historic 19th century building in the Gellert borough(5 min walk)
+- [ibis budget](https://www.accorhotels.com/gb/hotel-8211-ibis-budget-basel-city/index.shtml) simple & modern 1-star hotel (8 min walk)
+- [Novotel](https://www.accorhotels.com/gb/hotel-8215-novotel-basel-city/index.shtml) modern 4-star hotel (10 min walk)
+- [DASBREITEHOTEL](https://www.dasbreitehotel.ch/en/) - ecologically & socially sustainable hotel overlooking the Rhine (15 min walk, or 2 min by tram #3 + 8 min walk)
+- [Motel One](https://www.motel-one.com/en/hotels/basel/hotel-basel/) - great 1-star hotel in the city center, right next to Adobe Basel (20 min walk, or 7 min by tram #14 + 3 min walk)
+- [Hotel Alfa](https://www.alfa-hotel-birsfelden.ch/en/) classic 3-star hotel in Birsfelden (20 min walk, or 3 min by tram #3 + 8 min walk)
+- [Radisson Blu](https://www.radissonblu.com/en/hotel-basel) modern 4-star hotel in the city center (22 min walk, or 5 min by tram #14 + 7 min walk)
+- [Hotel Euler](https://www.hoteleuler.ch/en/) century-old 4-star hotel at the train station (19 min walk, or 4 min by tram #14 + 8 min walk)
+
 
 ### Preparation
 
