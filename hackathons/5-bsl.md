@@ -126,6 +126,8 @@ Come up with a documented plan, and assign responsibilities to implement a plan.
 
 ##### Breakout #3: Documentation
 
+Moderated by Karolin
+
 We plan to have two documentathons; during these, each of us will work to improve the documentation on some helix component they did not write themselves:
 
 * What is the api of that component
@@ -145,6 +147,9 @@ Improve the documentation, share knowledge of parts of helix and reduce the truc
 *Goal:*
 Iterate/implement mock for error page, discuss & refine needs for config/admin UI in Helix Pages
 
+##### Breakout #5: Querterly planning for the Helix Development Team
+
+Moderated by Rofe
 
 ### Lodging
 
