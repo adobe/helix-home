@@ -137,6 +137,14 @@ We plan to have two documentathons; during these, each of us will work to improv
 *Goal:* 
 Improve the documentation, share knowledge of parts of helix and reduce the truck factor in the helix team.
 
+##### Breakout #4: UX
+
+* [Awesome error messages](https://github.com/adobe/helix-simulator/issues/17)
+* Helix Pages Admin UI
+
+*Goal:*
+Iterate/implement mock for error page, discuss & refine needs for config/admin UI in Helix Pages
+
 
 ### Lodging
 
