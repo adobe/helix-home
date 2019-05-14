@@ -19,6 +19,9 @@ The fifth Project Helix Hackathon will happen in Basel, Switzerland during the w
 ---
 
 ![orangerie-basel.jpg](https://www.designersfactory.com/orangerie/img/orangerie/01.jpg)
+
+---
+
 The hackathon will take place at the [Orangerie](https://www.designersfactory.com/orangerie/) at [Grellingerstrasse 75, 4052 Basel](https://goo.gl/maps/PY9tarrnA2S2). The nearest international airports are `BSL` and `ZRH`.
 
 ---
@@ -147,7 +150,7 @@ Improve the documentation, share knowledge of parts of helix and reduce the truc
 *Goal:*
 Iterate/implement mock for error page, discuss & refine needs for config/admin UI in Helix Pages
 
-##### Breakout #5: Querterly planning for the Helix Development Team
+##### Breakout #5: Quarterly planning for the Helix Development Team
 
 Moderated by Rofe
 
