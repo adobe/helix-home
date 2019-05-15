@@ -46,13 +46,14 @@ git remote add origin <mytestprojectcode_repo_url>.git
 git push -u origin master
 ```
 (Double check if your `git remote` is set to the correct GitHub repository!)
+
 4. If you don't have a `helix-config.yaml` file yet, you can now have Helix create one for you:
 ```bash
 hlx up --save-config
 ```
-5. Point the `&defaultRepo` in `helix-config.yaml` to your code repository:
-```
-    - &defaultRepo "<mytestprojectcode_repo_url>.git#master"
+5. Commit your `helix-config.yaml`:
+```bash
+git add helix-config.yaml && git ci -m"add config" && git push
 ```
 
 ### Commit your content
@@ -67,6 +68,11 @@ Having content locally in your code checkout is practical for local and offline 
 3. Restart `hlx up`
 
 [http://localhost:3000/](http://localhost:3000/) will now show the content coming from the `mytestprojectcontent` GitHub repository.
+
+4. Commit your `helix-config.yaml`:
+```bash
+git add helix-config.yaml && git ci -m"added content repo" && git push
+```
 
 ## Deploy your Helix Site
 
