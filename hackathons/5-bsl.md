@@ -63,7 +63,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 | Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
 |   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | Demos     |
-| Afternoon | Airport Transfer & Arrival       | Coding                           | Documentaton      | Coding     | Departure & Airport Transfer |
+| Afternoon | Airport Transfer & Arrival       | Coding                           | Documentathon      | Coding     | Departure & Airport Transfer |
 |   Evening | Set-up, drinks | Hacking                          | [Team dinner @ Mägd](https://doodle.com/poll/kubgs9aq6pv6kicy) | Hacking     | -         |
 
 ### Goals
@@ -153,6 +153,15 @@ Iterate/implement mock for error page, discuss & refine needs for config/admin U
 ##### Breakout #5: Quarterly planning for the Helix Development Team
 
 Moderated by Rofe
+
+##### Breakout #6: 
+
+Moderated by Stefan
+
+Work on [helix-cli/711](https://github.com/adobe/helix-cli/issues/711) 
+
+*Goal:* 
+Improve Developer Experience for devs new to Helix. A Developer new to Helix should be able to get his first Helix project running locally (including debugging), customized and published within half an hour, by just following a short concise tutorial and without any need for external help.
 
 ### Lodging
 
