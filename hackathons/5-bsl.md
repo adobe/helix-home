@@ -217,5 +217,6 @@ For occasional contributors to Helix it can get hard to keep track of what has c
 - Links to static assets are now detected and rewritten into URLs that are cachable for a long time [v1.10.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.10.0)
 - HTTP headers can now be set from a HTL template by using `<link>` or `<meta>` tags [v1.11.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.11.0)
 - The HTML pipeline now parses the complete HTML document before it is rendered, allowing modifications through the `hast` extension point [v1.12.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.12.0)
+- **breaking change:** Helix Pipeline now allows Pipeline steps to modify the `context`, which means all custom pipeline steps need review. [v2.0.0](https://github.com/adobe/helix-pipeline/releases/tag/v2.0.0) 
 
 ### Other Parts of Helix
