@@ -1,4 +1,4 @@
-![Helix](/helix_logo.png "") Home
+![Helix](/helix_logo_dark.png "") Home
 
 [&#9776;](#menu)
 
