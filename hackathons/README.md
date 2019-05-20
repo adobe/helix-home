@@ -24,6 +24,7 @@ Just put your idea on the list:
 - Bordeaux ( [Cité du Vin](https://www.bedouk.fr/la-cite-du-vin,L89668), [Opéra National](https://www.bedouk.fr/opera-national-de-bordeaux,L90884) )
 - [Basel](https://www.basel.com/en) :)
 - [De Watertoren](https://www.watertorenvlissingen.com/), Vlissingen, Netherlands
+- New York City ([https://www.wework.com/l/new-york-city--NY](https://www.wework.com/l/new-york-city--NY), [https://privateevents.neuehouse.com/the-boardroom](https://privateevents.neuehouse.com/the-boardroom)...)
 
 ## Let's do it!
 
