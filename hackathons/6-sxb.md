@@ -60,6 +60,7 @@ Recommended hotels:
 3. @trieloff
 4. @rofe (from Tuesday 10 AM)
 5. @koraa
+6. @kgera (From Tuesday)
 99. <del>@tripodsan</del> (partially remote)
 
 We have room for 16 people. First come, first served :)
