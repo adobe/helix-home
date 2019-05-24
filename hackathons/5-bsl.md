@@ -62,7 +62,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 | Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | Demos     |
+|   Morning | -              | Helix Introduction & Demo Format | Programming | Documentathon | [Demos](#demos)     |
 | Afternoon | Airport Transfer & Arrival       | Coding                           | Documentathon      | Coding     | Departure & Airport Transfer |
 |   Evening | Set-up, drinks | Hacking                          | [Team dinner @ Mägd](https://doodle.com/poll/kubgs9aq6pv6kicy) | Hacking     | -         |
 
@@ -219,4 +219,12 @@ For occasional contributors to Helix it can get hard to keep track of what has c
 - The HTML pipeline now parses the complete HTML document before it is rendered, allowing modifications through the `hast` extension point [v1.12.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.12.0)
 - **breaking change:** Helix Pipeline now allows Pipeline steps to modify the `context`, which means all custom pipeline steps need review. [v2.0.0](https://github.com/adobe/helix-pipeline/releases/tag/v2.0.0) 
 
-### Other Parts of Helix
+### Demos
+You can watch the entire recording [here](https://bluejeans.com/s/elM6g/).
+1. Server timing & DOM based HTL engine (@tripodsan)
+2. Helix Pages & auto-generated sequence diagrams (@ktpdobe)
+3. Performance analysis of Helix OpenWhisk actions (@dunguyen)
+4. Authoring user journey (@kamendola)
+5. Dev experience: Helix 6 months ago and today (@anfibiacreativa)
+
+Thanks a lot to all presenters!
