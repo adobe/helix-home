@@ -221,6 +221,7 @@ For occasional contributors to Helix it can get hard to keep track of what has c
 
 ### Demos
 You can watch the entire recording [here](https://bluejeans.com/s/elM6g/).
+
 1. Server timing & DOM based HTL engine (@tripodsan)
 2. Helix Pages & auto-generated sequence diagrams (@ktpdobe)
 3. Performance analysis of Helix OpenWhisk actions (@dunguyen)
