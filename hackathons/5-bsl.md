@@ -81,6 +81,8 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 As part of the hackathon there are a couple of items that require more attention and alignment, please find below a couple of proposals for breakouts and breakout hosts...
 
+- [Whiteboards](./5-bsl-whiteboards.pdf)
+
 ##### Breakout #1: Helix Pages and Overall Strategy
 
 Proposed Time: Tuesday 14h-16h
