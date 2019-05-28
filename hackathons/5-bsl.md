@@ -223,7 +223,7 @@ For occasional contributors to Helix it can get hard to keep track of what has c
 
 ### Security
 
-Find security report in [here](docs/5-bsl-security.pdf)
+Find security report in [here](../docs/5-bsl-security.pdf)
 
 ### Demos
 You can watch the entire recording [here](https://bluejeans.com/s/elM6g/).
