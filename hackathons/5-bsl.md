@@ -221,6 +221,10 @@ For occasional contributors to Helix it can get hard to keep track of what has c
 - The HTML pipeline now parses the complete HTML document before it is rendered, allowing modifications through the `hast` extension point [v1.12.0](https://github.com/adobe/helix-pipeline/releases/tag/v1.12.0)
 - **breaking change:** Helix Pipeline now allows Pipeline steps to modify the `context`, which means all custom pipeline steps need review. [v2.0.0](https://github.com/adobe/helix-pipeline/releases/tag/v2.0.0) 
 
+### Security
+
+Find security report in [here](../docs/5-bsl-security.pdf)
+
 ### Demos
 You can watch the entire recording [here](https://bluejeans.com/s/elM6g/).
 
