@@ -61,6 +61,7 @@ Recommended hotels:
 4. @rofe (from Tuesday 10 AM)
 5. @koraa
 6. @kgera (From Tuesday)
+7. @weilmic
 99. <del>@tripodsan</del> (partially remote)
 7. @MarquiseRosier
 
