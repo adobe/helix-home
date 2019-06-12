@@ -56,7 +56,7 @@ If you have existing HTML files or snippets that you wish to reuse, you can simp
 
 > **Hint:** If you add a `header.html` or `footer.html`, _Helix Pages_ will embed them for you.
 
-## Add your own styling
+## Step 4: Add your own styling
 
 > You'll need:
 > - basic CSS knowledge
@@ -102,7 +102,7 @@ Type `git add style.css && git commit -m"custom styling" && git push`
 
 > **Hint:** If you use `hlx up` with the `--no-open` argument, it won't open a browser window.
 
-## Add your own code
+## Step 5: Add your own code
 
 > You'll need:
 > - basic JavaScript knowledge
@@ -133,11 +133,11 @@ Type `git add src/* && git commit -m"custom code" && git push`
 11. Go to `https://<my-repo>-<my-name>.project-helix.page/` and observe the published page being rendered with your custom code:  
 ![](./dummy.png "TODO: Helix Pages rendering your content with custom code")
 
-## Add your own domain
+## Step 6: Add your own domain
 
 Coming soon...
 
-## Separate code and content
+## Step 7: Separate code and content
 
 > You'll need:
 > - An [Adobe I/O Runtime](https://github.com/adobe/project-helix/blob/master/SERVICES.md#adobe-io-runtime) account
@@ -145,8 +145,8 @@ Coming soon...
 
 Coming soon ...
 
-## Proxy your legacy web site
+## Step 8: Proxy your legacy web site
 
 Coming soon ...
 
-## ...
+## Step 9: ...
