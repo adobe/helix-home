@@ -53,7 +53,7 @@ _Helix Pages_ can render a header and footer based on Markdown content in your G
 > You'll need:
 > - basic HTML knowledge
 
-If you have existing HTML files or snippets that you wish to reuse, you can simply add them to your GitHub repository and have _Helix_Pages_ merge and deliver them for you:
+If you have existing HTML files or snippets that you wish to reuse, you can simply add them to your GitHub repository and have _Helix Pages_ merge and deliver them for you:
 
 1. Add a `about.html` file to your GitHub repository. The file name can be anything, just make sure it has a `.html` extension.
 1. Add your HTML. Maybe [like so](https://raw.githubusercontent.com/adobe/helix-example-first/master/htdocs/about.html "example HTML file")?
