@@ -104,7 +104,7 @@ This will build a _Helix Pages_ project locally, start a local web server and op
 1. Repeat steps 8 - 10 until you are happy with how your page looks.
 1. Persist your local style changes to your GitHub repository. For example,  
 Type `git add style.css && git commit -m"custom styling" && git push`
-1. Now reload `https://<my_repo>-<my-name>.project-helix.page/` and admire your published page with custom styling. 
+1. Now reload `https://<my-repo>-<my-name>.project-helix.page/` and admire your published page with custom styling.
 
 > **Hint:** You can stop the server using the `ctrl + c` key combination.
 
