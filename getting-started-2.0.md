@@ -2,8 +2,7 @@
 
 This guide helps you as a web developer get started with Helix with very little effort, then progressively discover more features as you need them.
 
-## Step 1: Publish you
-r content (look ma, no hands!)
+## Step 1: Publish your content (look ma, no hands!)
 
 > You'll need:
 > - a [GitHub](https://github.com/join) account
