@@ -21,5 +21,6 @@ Create a new repository with the name `helix-…`
 > *Note:* Greenkeeper will find your new repository automatically, but it might file an issue that it cannot get the build status if you haven't set up CircleCI yet. In this case, go to [Greenkeeper](https://account.greenkeeper.io/account/adobe) and click the "fix repo" button
 - [ ] Set up [LGTM](https://github.com/organizations/adobe/settings/installations/870657)
 - [ ] Set up [Commitlint](https://github.com/organizations/adobe/settings/installations/728398)
-- [ ] Follow the project in Slack channel `#helix-chat`
+- [ ] Follow the project in Slack channel [`#helix-chat`](https://cq-dev.slack.com/archives/C9HH8J553/)
+> Oopen the [`#helix-chat`](https://cq-dev.slack.com/archives/C9HH8J553/) Slack channel, then type `/github subscribe adobe/helix-…`
 - [ ] Set up Snyk
