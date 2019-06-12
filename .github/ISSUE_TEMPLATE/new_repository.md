@@ -10,10 +10,11 @@ Create a new repository with the name `helix-…`
 
 - [ ] Use `helix-library` or `helix-service` template
 - [ ] Add tags to the repository
-- [ ] Add the groups `helix-admin` and `helix-guests` to the list of Collaborators
+- [ ] Add the groups `helix-admin` (admin), `project helix` and `helix-guests` (both write) to the list of Collaborators
 - [ ] Upload a social media image
 - [ ] Set the repository description
 - [ ] Update the repository `README.md`
+- [ ] Set up Project Bot
 - [ ] Set up CircleCI
 - [ ] Set up Greenkeeper
 - [ ] Set up [LGTM](https://github.com/organizations/adobe/settings/installations/870657)
