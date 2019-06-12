@@ -88,8 +88,8 @@ For an improved developer experience, using a local environment and the IDE of y
 1. Clone your GitHub repository into a local directory with the same name. For example,  
 Type `git clone https://github.com/<my-name>/<my-repo>.git`
 1. Type `cd <my-repo>`
-1. Type `hlx up &`  
-This will build a _Helix Pages_ project locally, start a local web server in the background and open a new browser window at [`http://localhost:3000/`](http://localhost:3000/ "your local Helix server") when done.
+1. Type `hlx up`  
+This will build a _Helix Pages_ project locally, start a local web server and open a new browser window at [`http://localhost:3000/`](http://localhost:3000/ "your local Helix server") when done.
 1. View your page rendered locally by _Helix Pages_ using the default page styling.
 1. Create a `style.css` file using your favorite text editor or IDE and insert your CSS rules. See the [default CSS](https://raw.githubusercontent.com/adobe/helix-pages/master/htdocs/style.css "Default CSS") for pointers where you can add overrides.
 1. Save your changes.
@@ -98,6 +98,8 @@ This will build a _Helix Pages_ project locally, start a local web server in the
 1. Persist your local style changes to your GitHub repository. For example,  
 Type `git add style.css && git commit -m"custom styling" && git push`
 1. Now reload `https://<my_repo>-<my-name>.project-helix.page/` and admire your published page with custom styling. 
+
+> **Hint:** You can stop the server using the `ctrl + c` key combination.
 
 > **Hint:** If you use `hlx up` with the `--no-open` argument, it won't open a browser window.
 
