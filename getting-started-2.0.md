@@ -1,6 +1,13 @@
+
+---
+
+_**DISCLAIMER:** This guide is work in progress and documents a desired future scenario. Parts of it may not work as described (or at all) yet, and links to resources may not exist yet. If you wish to get up to speed on Helix, please refer to the [current getting started guide](./getting-started.md) for the time being._
+
+---
+
 # Getting Started with Helix
 
-- Already familiar with GitHub, Markdown, HTML and CSS? You may want to proceed directly to the [first example](http://github.com/adobe/helix-example-first "First example"): This repository shows how to publish content, as well as customize headers, footers and overall styling of your pages.
+- Already familiar with GitHub, Markdown, HTML and CSS? You may want to proceed directly to the [first example](http://github.com/adobe/helix-pages-first "First example"): This repository shows how to publish content, as well as customize headers, footers and overall styling of your pages.
 - If you also feel comfortable with Node.js programming, please continue with the [advanced example](http://github.com/adobe/helix-example-advanced "Advanced example"): This repository explains how to add custom code to take control over the rendering pipeline.
 - If you are a bit out of shape or need help understanding some of these tools and concepts, we recommend that you start with the beginner's tutorial below.
 - In any case, our [reference documentation](https://www.project-helix.io/ "Reference documentation") provides all the basic concepts and details that you may need.
