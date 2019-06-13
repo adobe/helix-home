@@ -28,7 +28,7 @@ The easiest way to publish content is to have [_Helix Pages_](https://www.projec
 ![](./dummy.png "TODO: Helix Pages rendering your content")
 1. **Congratulations!** 🎉 You have just published your first page using _Helix Pages_!
 
-> **Note:** If your GitHub username contains one or more dashes, add an extra dash between the repository and username in the _Helix Pages_ URL. For example, if your user is called `meet-me`, and your repository is `test`, the corresponding _Helix Pages_ URL would be `https://test--meet-me.project-helix.page/`.
+> **Note:** If your GitHub username contains one or more dashes, add an extra dash between the repository and username in the _Helix Pages_ URL. For example, if your user is called `hlx-rocks`, and your repository is `test`, the corresponding _Helix Pages_ URL would be `https://test--hlx-rocks.project-helix.page/`.
 
 > **Hint:** You can add as many Markdown files as you like, and reference them using relative links in your Markdown.
 
