@@ -28,9 +28,11 @@ The easiest way to publish content is to have [_Helix Pages_](https://www.projec
 ![](./dummy.png "TODO: Helix Pages rendering your content")
 1. **Congratulations!** 🎉 You have just published your first page using _Helix Pages_!
 
-> **Hint:** You can add as many Markdown files as you like, and link them in Markdown.
-
 > **Note:** If your GitHub username contains one or more dashes, add an extra dash between the repository and username in the _Helix Pages_ URL. For example, if your user is called `meet-me`, and your repository is `test`, the corresponding _Helix Pages_ URL would be `https://test--meet-me.project-helix.page/`.
+
+> **Hint:** You can add as many Markdown files as you like, and reference them using relative links in your Markdown.
+
+> **Hint:** By default, _Helix Pages_ renders the master branch of your GitHub repository, but it could also render any other [branches](https://help.github.com/en/articles/github-glossary#branch "branches explained"). Simply add the branch name at the beginning of the _Helix Pages_ URL and use two dashes between branch, repository and username in the _Helix Pages_ URL: `https://<my-branch>--<my-repo>--<my-name>.project-helix.page/`
 
 ## Step 2: Customize header and footer
 
@@ -46,7 +48,7 @@ _Helix Pages_ can render a header and footer based on Markdown content in your G
 1. Add some content you would like to be shown in the footer. Here's a [proposal](https://raw.githubusercontent.com/adobe/helix-example-first/master/footer.md "example footer.md").
 1. Click the _Commit changes_ button.
 1. Reload `https://<my-repo>-<my-name>.project-helix.page/` to see header and footer in action.  
-![TODO: Helix Pages rendering your header and footer](./dummy.png)
+![](./dummy.png "TODO: Helix Pages rendering your header and footer")
 
 ## Step 3: Add your own HTML files
 
