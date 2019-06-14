@@ -22,5 +22,5 @@ Create a new repository with the name `helix-…`
 - [ ] Set up [LGTM](https://github.com/organizations/adobe/settings/installations/870657)
 - [ ] Set up [Commitlint](https://github.com/organizations/adobe/settings/installations/728398)
 - [ ] Follow the project in Slack channel [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/)
-> Open the [`#helix-chat`](https://cq-dev.slack.com/archives/C9HH8J553/) Slack channel, then type `/github subscribe adobe/helix-…`
+> Open the [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/) Slack channel, then type `/github subscribe adobe/helix-…`
 - [ ] Set up [Snyk](https://app.snyk.io/org/adobe-org/sources/9a3e5d90-b782-468a-a042-9a2073736f0b/add)
