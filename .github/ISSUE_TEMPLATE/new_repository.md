@@ -12,7 +12,7 @@ Create a new repository with the name `helix-…`
 - [ ] Add tags to the repository, at least `helix`
 - [ ] Add the group "[Project Helix Admins](https://github.com/orgs/adobe/teams/project-helix-admins)" with *Admin* permissions to the list of collaborators
 - [ ] Add the group "[Project Helix Developers](https://github.com/orgs/adobe/teams/project-helix-developers)" with *Write* permissions to the list of collaborators (Project Helix Guests will be taken care of automatically) 
-- [ ] Upload a social media image
+- [ ] Upload a social media image (use [this Spark template](https://spark.adobe.com/post/7srrIXaQVTw67/))
 - [ ] Set the repository description
 - [ ] Update the repository `README.md` (search for `adobe/helix-service` or `adobe/helix-library`)
 - [ ] Set up Project Bot
