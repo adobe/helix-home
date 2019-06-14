@@ -15,7 +15,7 @@ Create a new repository with the name `helix-…`
 - [ ] Upload a social media image (use [this Spark template](https://spark.adobe.com/post/7srrIXaQVTw67/))
 - [ ] Set the repository description
 - [ ] Update the repository `README.md` (search for `adobe/helix-service` or `adobe/helix-library`)
-- [ ] Set up Project Bot
+- [ ] Set up [Project Bot](https://github.com/organizations/adobe/settings/installations/690408)
 - [ ] Set up [CircleCI](https://circleci.com/add-projects/gh/adobe)
 - [ ] Set up Greenkeeper 
 > *Note:* Greenkeeper will find your new repository automatically, but it might file an issue that it cannot get the build status if you haven't set up CircleCI yet. In this case, go to [Greenkeeper](https://account.greenkeeper.io/account/adobe) and click the "fix repo" button
