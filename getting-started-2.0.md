@@ -7,7 +7,7 @@ _**DISCLAIMER:** This guide is work in progress and documents a desired future s
 
 # Getting Started with Helix
 
-- Already familiar with GitHub, Markdown, HTML and CSS? You may want to proceed directly to the [first example](http://github.com/adobe/helix-pages-first "First example"): This repository shows how to publish content, as well as customize headers, footers and overall styling of your pages.
+- Already familiar with GitHub, Markdown, HTML and CSS? You may want to proceed directly to the [first example](http://github.com/adobe/helix-example-basic "First example"): This repository shows how to publish content, as well as customize headers, footers and overall styling of your pages.
 - If you also feel comfortable with Node.js programming, please continue with the [advanced example](http://github.com/adobe/helix-example-advanced "Advanced example"): This repository explains how to add custom code to take control over the rendering pipeline.
 - If you are a bit out of shape or need help understanding some of these tools and concepts, we recommend that you start with the beginner's tutorial below.
 - In any case, our [reference documentation](https://www.project-helix.io/ "Reference documentation") provides all the basic concepts and details that you may need.
@@ -29,7 +29,7 @@ The easiest way to publish content is to have [_Helix Pages_](https://www.projec
 ![](./dummy.png "TODO: Create a repository")
 1. Click the _Create new file_ button in your GitHub repository to add a new file called `index.md`. This will be your homepage.  
 ![](./dummy.png "TODO: Create an index.md")
-1. Add some great Markdown content. Feel free to use [this example](https://raw.githubusercontent.com/adobe/helix-example-first/master/index.md "example index.md") for starters.
+1. Add some great Markdown content. Feel free to use [this example](https://raw.githubusercontent.com/adobe/helix-example-basic/master/index.md "example index.md") for starters.
 1. Click the _Commit changes_ button.
 1. Go to `https://<my-repo>-<my-name>.project-helix.page/` to admire your work. Replace `<my-repo>` and `<my-name>` with your actual repository and username:  
 ![](./dummy.png "TODO: Helix Pages rendering your content")
@@ -47,12 +47,12 @@ _Helix Pages_ can render a header and footer based on Markdown content in your G
 
 1. Add a file called `header.md` to your GitHub repository.  
 ![](./dummy.png "TODO: Create a header.md")
-1. Add a logo, and maybe a list of other links you would like to show in the header navigation. Here's some [inspiration](https://raw.githubusercontent.com/adobe/helix-example-first/master/header.md "example header.md").
+1. Add a logo, and maybe a list of other links you would like to show in the header navigation. Here's some [inspiration](https://raw.githubusercontent.com/adobe/helix-example-basic/master/header.md "example header.md").
 1. Click the _Commit changes_ button.
 1. If you added a logo in step 2, upload that now.  
 ![](./dummy.png "TODO: Upload logo")
 1. Add a file called `footer.md` to your GitHub repository.
-1. Add some content you would like to be shown in the footer. Here's a [proposal](https://raw.githubusercontent.com/adobe/helix-example-first/master/footer.md "example footer.md").
+1. Add some content you would like to be shown in the footer. Here's a [proposal](https://raw.githubusercontent.com/adobe/helix-example-basic/master/footer.md "example footer.md").
 1. Click the _Commit changes_ button.
 1. Reload `https://<my-repo>-<my-name>.project-helix.page/` to see header and footer in action.  
 ![](./dummy.png "TODO: Helix Pages rendering your header and footer")
@@ -65,7 +65,7 @@ _Helix Pages_ can render a header and footer based on Markdown content in your G
 If you have existing HTML files or snippets that you wish to reuse, you can simply add them to your GitHub repository and have _Helix Pages_ merge and deliver them for you:
 
 1. Add a `about.html` file to your GitHub repository. The file name can be anything, just make sure it has a `.html` extension.
-1. Add your HTML. Maybe [like so](https://raw.githubusercontent.com/adobe/helix-example-first/master/htdocs/about.html "example HTML file")?
+1. Add your HTML. Maybe [like so](https://raw.githubusercontent.com/adobe/helix-example-basic/master/htdocs/about.html "example HTML file")?
 1. Click _Commit changes_.
 1. Refresh `https://<my-repo>-<my-name>.project-helix.page/about.html` to see the rendered result.
 
@@ -83,7 +83,7 @@ _Helix Pages_ allows you to override the default CSS. You can either do this dir
 ### GitHub
 
 1. Add a `style.css` file to your GitHub repository.
-1. Insert your CSS rules. See the [default CSS](https://raw.githubusercontent.com/adobe/helix-example-first/master/style.css "default CSS") for pointers where you can add overrides.
+1. Insert your CSS rules. See the [default CSS](https://raw.githubusercontent.com/adobe/helix-example-basic/master/style.css "default CSS") for pointers where you can add overrides.
 1. Click _Commit changes_.
 1. Reload `https://<my-repo>-<my-name>.project-helix.page/` to view your style changes in action.
 1. Repeat steps 2 - 4 until you are happy with how your page looks.
@@ -107,7 +107,7 @@ Type `git clone https://github.com/<my-name>/<my-repo>.git`
 1. Type `hlx up`  
 This will build a _Helix Pages_ project locally, start a local web server and open a new browser window at [`http://localhost:3000/`](http://localhost:3000/ "your local Helix server") when done.
 1. View your page rendered locally by _Helix Pages_ using the default page styling.
-1. Create a `style.css` file using your favorite text editor or IDE and insert your CSS rules. See the [default CSS](https://raw.githubusercontent.com/adobe/helix-example-first/master/style.css "Default CSS") for pointers where you can add overrides.
+1. Create a `style.css` file using your favorite text editor or IDE and insert your CSS rules. See the [default CSS](https://raw.githubusercontent.com/adobe/helix-example-basic/master/style.css "Default CSS") for pointers where you can add overrides.
 1. Save your changes.
 1. Reload [`http://localhost:3000/`](http://localhost:3000/ "your local Helix server") to preview your style changes locally.
 1. Repeat steps 8 - 10 until you are happy with how your page looks.
