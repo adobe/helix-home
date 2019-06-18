@@ -65,7 +65,7 @@ _Helix Pages_ can render a header and footer based on Markdown content in your G
 If you have existing HTML files or snippets that you wish to reuse, you can simply add them to your GitHub repository and have _Helix Pages_ merge and deliver them for you:
 
 1. Add a `about.html` file to your GitHub repository. The file name can be anything, just make sure it has a `.html` extension.
-1. Add your HTML. Maybe [like so](https://raw.githubusercontent.com/adobe/helix-example-basic/master/htdocs/about.html "example HTML file")?
+1. Add your HTML. Maybe an [about.html](https://raw.githubusercontent.com/adobe/helix-example-basic/master/about.html "example HTML file")?
 1. Click _Commit changes_.
 1. Refresh `https://<my-repo>-<my-name>.project-helix.page/about.html` to see the rendered result.
 
@@ -130,13 +130,13 @@ _Helix Pages_ allows you to control the rendering of your content by adding a cu
 1. Open your terminal and change to the directory where you checked out your GitHub repository, e.g. type `cd ~/code/<my-repo>`.
 2. Type `mkdir src && cd src`  
 This will create a `src` directory and change to it.
-3. Add an `html.pre.js` file in there using your favorite text editor or IDE. We suggest you start with the [default one](https://raw.githubusercontent.com/adobe/helix-pages/master/src/html.pre.js "default html.pre.js").
+3. Add an `html.pre.js` file in there using your favorite text editor or IDE. We suggest you start with [this example](https://raw.githubusercontent.com/adobe/helix-example-advanced/master/src/html.pre.js "default html.pre.js").
 4. Inside the `pre` function, add something new to the `context.content` object, e.g.
 ```js
 context.content.time = `${new Date()}`;
 ```
 5. Save your changes.
-6. Add an `html.htl` in the same folder. Again, you can inspire from [the default](https://raw.githubusercontent.com/adobe/helix-pages/master/src/html.htl "default html.htl").
+6. Add an `html.htl` in the same folder. Again, you can inspire from [this example](https://raw.githubusercontent.com/adobe/helix-example-advanced/master/src/html.htl "default html.htl").
 7. Display your custom addition., e.g. right after the `<body>` tag, add:
 ```html
 <div>
