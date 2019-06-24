@@ -64,7 +64,7 @@ Recommended hotels:
 7. @weilmic
 8. @MarquiseRosier
 9. @bdelacretaz (Tuesday-Thursday)
-
+10. @kamendola?
 99. <del>@tripodsan</del> (partially remote)
 
 
