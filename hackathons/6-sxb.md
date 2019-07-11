@@ -60,7 +60,7 @@ Recommended hotels:
 3. @trieloff
 4. @rofe (from Tuesday 10 AM)
 5. @koraa
-6. @kgera (From Tuesday)
+6. <del>@kgera</del> (Remote)
 7. @weilmic
 8. @MarquiseRosier
 9. @bdelacretaz (Tuesday-Thursday)
