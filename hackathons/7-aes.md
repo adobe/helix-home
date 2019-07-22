@@ -59,7 +59,7 @@ Airport transfer from and to Ålesund (AES) airport will be provided.
 3. @rofe (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
 4. @tripodsan
 5. @stefan-guggisberg (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
-6. @dominique-pfister
+6. @dominique-pfister (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
 7. @koraa
 8. @alexkli (arriving AES Sunday 11:40AM KLM 1325; departing AES Saturday 6:30AM, KL1322)
 9. @anfibiacreativa
