@@ -42,7 +42,12 @@ We are booking the [Juvet Landscape Hotel in Norddal, Norway](http://www.juvet.c
 
 Because we are planning to book the entire hotel (13 rooms), we need firm commitment and a contribution of USD 2,000 from your T&E cost center for accommodation and meals.
 
-Airport transfer from and to Ålesund (AES) airport will be provided.
+#### Cars
+
+Airport transfer from and to Ålesund (AES) airport ~~will be provided.~~ is with shared rental cars. Please add if you rent a car and add passengers:
+
+* @alexkli: VW Passat, 4-5 people, Sunday 12pm to Saturday 5am
+  * @tripod
 
 ### Goal
 
