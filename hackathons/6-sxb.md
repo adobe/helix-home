@@ -49,7 +49,7 @@ Recommended hotels:
 
 > What are you planning to show at the end of the week?
 
-* put down the topic – and the people that would like to discuss it like @mygithubid
+* on-call poc: debrief the 3-months trial, gather on-callees' feedback and define next steps (improve / change / do differently...)
 
 ### Attendees
 
