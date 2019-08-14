@@ -65,7 +65,7 @@ Recommended hotels:
 1. @weilmic
 1. @bdelacretaz (Tuesday-Thursday)
 1. @stefan-guggisberg (Tuesday-Thursday)
-1. @kamendola?
+1. @kamendola
 1. <del>@kgera</del> (Remote)
 1. <del>@tripodsan</del> (partially remote)
 
