@@ -36,7 +36,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
 |   Morning | -              | Helix Introduction & Demo Format | Documentathon | Programming | Demos     |
 | Afternoon | Airport Transfer & Arrival       | Coding                           | Coding      | Documentathon     | Departure & Airport Transfer |
-|   Evening | Set-up, drinks | Hacking                          | Team dinner - 7pm30 [L'Eveil des Sens](https://www.tripadvisor.com/Restaurant_Review-g187075-d792726-Reviews-L_Eveil_des_Sens-Strasbourg_Bas_Rhin_Grand_Est.html) | Hacking     | -         |
+|   Evening | Set-up, drinks | Hacking                          | Team dinner - 7pm30 [L'Eveil des Sens](https://www.tripadvisor.com/Restaurant_Review-g187075-d792726-Reviews-L_Eveil_des_Sens-Strasbourg_Bas_Rhin_Grand_Est.html) - [map](https://goo.gl/maps/RwGFAifHDnmvBFr89) | Hacking     | -         |
 
 ### Lodging
 
