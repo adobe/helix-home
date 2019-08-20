@@ -52,6 +52,7 @@ Recommended hotels:
 * on-call poc: debrief the 3-months trial, gather on-callees' feedback and define next steps (improve / change / do differently...)
 * performathon? https://github.com/adobe/helix-cli/issues/935
 * helix-content API? https://github.com/adobe/helix-pipeline/issues/292
+* Write "rotative" integration tests for helix-pages: https://github.com/adobe/helix-pages/issues/8
 
 ### Attendees
 
