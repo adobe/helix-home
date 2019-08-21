@@ -53,6 +53,7 @@ Recommended hotels:
 * performathon? https://github.com/adobe/helix-cli/issues/935
 * helix-content API? https://github.com/adobe/helix-pipeline/issues/292
 * Write integration tests for helix-pages (mainly tests on production): https://github.com/adobe/helix-pages/issues/8
+* look at parcel 2.0 and try to unify all scripts in one bundle (action) and eventually replace webpack.
 
 ### Attendees
 
