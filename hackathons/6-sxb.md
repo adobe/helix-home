@@ -69,6 +69,7 @@ Recommended hotels:
 1. @kamendola
 1. <del>@kgera</del> (Remote)
 1. <del>@tripodsan</del> (partially remote)
+1. @dominique-pfister (Tuesday-Thursday)
 
 
 We have room for 16 people. First come, first served :)
