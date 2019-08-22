@@ -2,7 +2,6 @@
 
 ## Upcoming Hackathons
 
-5. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
 6. [August 2019, Strasbourg, France](6-sxb.md)
 7. [October 21th-25th, Norddal, Norway](7-aes.md)
 
@@ -12,6 +11,7 @@
 2. [Late Summer 2018, Basel, Switzerland](2-bsl.md)
 3. [Fall 2018, San Francisco, CA](3-sfo.md)
 4. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
+5. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
 
 ## Ideas for future Hackathons
 
