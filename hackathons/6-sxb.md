@@ -86,3 +86,62 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 2. Join `#helix-chat` on Slack
 3. Install the `hlx` Command Line app and create your first project
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
+
+---
+
+## Changes
+
+For occasional contributors to Helix it can get hard to keep track of what has changed in Helix since the last hackathon. Below, you can find a curated (i.e. incomplete) list of some of the most interesting changes to Helix since [the fifth Hackathon, i.e. May 20th, 2019](5-bsl.md).
+
+### Helix CLI
+
+The most impactful change has been the move to a model of stronger service decomposition. Project Helix delivery now uses not just your pipeline actions (generated from your HTL and JSX templates), but also the static action, the Git Resolve Reference action, and a dispatch action to tie everything together. All actions except for your pipeline actions are provided as services by Project Helix and bound to your OpenWhisk namespace, so that you can always use the most recent version. You also have the ability to pin specific versions, which is useful during development to try out new features.
+
+- Helix Pipeline has been updated to version 2.0.0 and no longer supports the merging of return values, which is a **breaking change**. The `context` now needs to be manipulated directly. [v3.0.0](https://github.com/adobe/helix-cli/releases/v3.0.0)
+- the `--custom-vcl` parameter can be used to load custom VCL files when publishing. [v3.1.0](https://github.com/adobe/helix-cli/releases/v3.1.0)
+- the static action is no longer built by default, but bound from a shared namespace, which makes upgrades easier and deploys a bit faster. [v3.2.0](https://github.com/adobe/helix-cli/releases/v3.2.0)
+- The HTL processor has been hardened against XSS issues, but this means that adding DOM elements to the output now requires `@ context='unsafe'`, otherwise all `src` and `href` attributes will be removed from the injected DOM nodes. This is a **breaking change** [v4.0.0](https://github.com/adobe/helix-cli/releases/v4.0.0)
+- `hlx up` now works without any custom templates or scripts at all, it will simply render the Helix Pages output. [v4.1.0](https://github.com/adobe/helix-cli/releases/v4.1.0)
+- Helix Pipeline and HTL Engine have been upgraded to be fully DOM-based, which speeds up HTL processing by quite a bit. [v4.2.0](https://github.com/adobe/helix-cli/releases/v4.2.0)
+- The `--minify` and `--cache` options have been removed from `hlx up` [v4.3.0](https://github.com/adobe/helix-cli/releases/v4.3.0)
+- `--minify` can now be used for `hlx deploy` [v4.4.0](https://github.com/adobe/helix-cli/releases/v4.4.0)
+- Introduces support for the new `helix-resolve-git-ref` service. By default, when deploying, the most recent version of the service will be used, but you can override it using the `--svc-resolve-git-ref` (this is mostly useful during development of said service) [v4.5.0](https://github.com/adobe/helix-cli/releases/v4.5.0)
+- The Helix Publish service will now rely on a versioned service URL, making breakages due to updates more unlikely. [v4.6.0](https://github.com/adobe/helix-cli/releases/v4.6.0)
+- Introduces support for the new `helix-dispatch` service. By default, the most recent version of the service will be used, but you can override it using the `--dispatch-version` parameter [v4.7.0](https://github.com/adobe/helix-cli/releases/v4.7.0)
+- You don't have to run `hlx build` before running `hlx deploy` anymore. `hlx deploy` will do that for you. [v4.9.0](https://github.com/adobe/helix-cli/releases/v4.9.0)
+- Adds support for Helix Pipeline 5.0.0, which also allows you to replace entire pipeline steps in your `pre.js`
+
+### Helix Pipeline
+
+There have been a number of breaking changes to the pipeline, affecting both the DOM output and the pipeline API itself.
+
+- The pipeline now reports timing for each processing step using the `Server-Timing` header. This is useful for troubleshooting and finding slow steps in the pipeline. [v2.1.0](https://github.com/adobe/helix-pipeline/releases/v2.1.0)
+- The pipeline now adds anchors to all headlines, enabling deep linking into the page. It also adds support for custom HTML elements in the HTML output. [v2.2.0](https://github.com/adobe/helix-pipeline/releases/v2.2.0)
+- Pipeline processing is now based on DOM instead of string manipluation, making the overall pipeline faster [v2.5.0](https://github.com/adobe/helix-pipeline/releases/v2.5.0)
+- Context dumps are no longer written to disk, only retained in memory [v3.3.0](https://github.com/adobe/helix-pipeline/releases/v3.3.0)
+- The `response.errorStack` property now has additional information about errors that occurred during processing [v3.4.0](https://github.com/adobe/helix-pipeline/releases/v3.4.0)
+- Hero images are no longer being wrapped in a `p` tag. [v3.5.0](https://github.com/adobe/helix-pipeline/releases/v3.5.0)
+- Images are no longer forced to be responsive [v3.6.0](https://github.com/adobe/helix-pipeline/releases/v3.6.0)
+- The calculation of cache keys has been unified with other Helix services and you can now store arbitrary data in the `context.content.data` object. [v3.7.0](https://github.com/adobe/helix-pipeline/releases/v3.7.0)
+- The handling of sections has been simplified: sections are now part of the standard DOM output, but the `context.content.sections` array has been removed. This is a **breaking change** [v4.0.0](https://github.com/adobe/helix-pipeline/releases/v4.0.0)
+- The pipeline API has been simplified: `before()`, `once()`, and `after()` functions have been replaced with `use()`. That is another **breaking change**. [v5.0.0](https://github.com/adobe/helix-pipeline/releases/v5.0.0)
+
+### Helix Publish
+
+The most notable change is the introduction of the Helix Dispatch service, which moved a lot of VCL logic into a serverless action. The change is mostly invisible to developers and entirely invisible to visitors.
+
+### Helix Pages
+
+Helix Pages is now available under `https://<user>-<repo>.hlx.page`
+
+### Helix Log
+
+[Helix Log](https://github.com/adobe/helix-log) is a new lightweight logging library used in Project Helix.
+
+### Helix Resolve Git Ref
+
+[Helix Resolve Git Ref](https://github.com/adobe/helix-resolve-git-ref) is a new service that resolves a Git SHA for a branch or tag name.
+
+### Helix Dispatch
+
+[Helix Dispatch](https://github.com/adobe/helix-dispatch) is a new service that coordinates a number of Helix Services during delivery.
