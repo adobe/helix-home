@@ -34,8 +34,8 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 | Time      | Monday         | Tuesday                          | Wednesday   | Thursday    | Friday    |
 | --------: | -------------- | -------------------------------- | ----------- | ----------- | --------- |
-|   Morning | -              | Helix Introduction & Demo Format | Coding / 9am30: Backlog grooming | Coding / 9am30: on-call debrief | Demos     |
-| Afternoon | Airport Transfer & Arrival       | Coding / 2pm: Adobe Runtime Events call                          | Coding / 2pm: quarter retro and objectives     | Coding     | Departure & Airport Transfer |
+|   Morning | -              | Helix Introduction & Demo Format | Coding / 9am30: Backlog grooming | Coding / 9am30: on-call debrief | Coding     |
+| Afternoon | Airport Transfer & Arrival       | Coding / 2pm: Adobe Runtime Events call                          | Coding / 2pm: quarter retro and objectives     | Coding / 5pm: demos     | Departure & Airport Transfer |
 |   Evening | Set-up, drinks | Hacking                          | Team dinner - 7pm30 [L'Eveil des Sens](https://www.tripadvisor.com/Restaurant_Review-g187075-d792726-Reviews-L_Eveil_des_Sens-Strasbourg_Bas_Rhin_Grand_Est.html) - [map](https://goo.gl/maps/RwGFAifHDnmvBFr89) | Hacking     | -         |
 
 ### Lodging
