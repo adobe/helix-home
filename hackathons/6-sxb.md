@@ -63,6 +63,7 @@ Sessions:
 * On-call poc: debrief the 3-months trial, gather on-callees' feedback and define next steps (improve / change / do differently...)
 * Backlog grooming: https://github.com/orgs/adobe/projects/2 has a LOT of issues, some of which are gathering dust...
 * Retrospective of the last quater and objectives for the next quater
+* Call with @francoisledroff (Adobe Runtime Events)
 
 
 ### Attendees
