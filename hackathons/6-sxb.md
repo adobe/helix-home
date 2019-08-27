@@ -49,12 +49,21 @@ Recommended hotels:
 
 > What are you planning to show at the end of the week?
 
-* on-call poc: debrief the 3-months trial, gather on-callees' feedback and define next steps (improve / change / do differently...)
-* performathon? https://github.com/adobe/helix-cli/issues/935
-* helix-content API? https://github.com/adobe/helix-pipeline/issues/292
-* backlog grooming? https://github.com/orgs/adobe/projects/2 has a LOT of issues, some of which are gathering dust...
+* Performathon: https://github.com/adobe/helix-cli/issues/935
+* ~~helix-content API? https://github.com/adobe/helix-pipeline/issues/292~~
 * Write integration tests for helix-pages (mainly tests on production): https://github.com/adobe/helix-pages/issues/8
-* look at parcel 2.0 and try to unify all scripts in one bundle (action) and eventually replace webpack.
+* Look at parcel 2.0 and try to unify all scripts in one bundle (action) and eventually replace webpack.
+* Adobe Runtime Events
+* Conditonal language
+* Authenticate GH access
+* User journey of a customer onboarding on Helix Pages
+* User journey of a customer onboarding with the editor
+
+Sessions:
+* On-call poc: debrief the 3-months trial, gather on-callees' feedback and define next steps (improve / change / do differently...)
+* Backlog grooming: https://github.com/orgs/adobe/projects/2 has a LOT of issues, some of which are gathering dust...
+* Retrospective of the last quater and objectives for the next quater
+
 
 ### Attendees
 
