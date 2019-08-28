@@ -82,7 +82,7 @@ Sessions:
 1. <del>@kgera</del> (Remote)
 1. <del>@tripodsan</del> (partially remote)
 1. @dominique-pfister (Tuesday-Thursday)
-
+1. @francoisledroff (Wednesday-Thursday)
 
 We have room for 16 people. First come, first served :)
 
