@@ -97,6 +97,13 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 3. Install the `hlx` Command Line app and create your first project
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
 
+### Demos
+
+1. Helix & Adobe Runtime Events - recording is coming (@trieloff)
+2. Helix Pages: Landing Pages user stories - recording is coming (@trieloff)
+3. Loggly security analyzis: no recording. Check with @koraa for details
+4. Helix Pages: Integration Test - https://bluejeans.com/s/L10CB
+
 ---
 
 ## Changes
