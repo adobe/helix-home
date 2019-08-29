@@ -75,14 +75,14 @@ Sessions:
 1. @trieloff
 1. @rofe (from Tuesday 10 AM)
 1. @koraa
-1. @weilmic
 1. @bdelacretaz (Tuesday-Thursday)
 1. @stefan-guggisberg (Tuesday-Thursday)
 1. @kamendola
-1. <del>@kgera</del> (Remote)
-1. <del>@tripodsan</del> (partially remote)
 1. @dominique-pfister (Tuesday-Thursday)
 1. @francoisledroff (Wednesday-Thursday)
+1. <del>@weilmic</del>
+1. <del>@kgera</del> (Remote)
+1. <del>@tripodsan</del> (partially remote)
 
 We have room for 16 people. First come, first served :)
 
