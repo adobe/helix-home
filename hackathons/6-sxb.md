@@ -103,6 +103,7 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 2. Helix Pages: Landing Pages user stories - same above, start at 13mins.
 3. Loggly security analyzis: no recording. Check with @koraa for details
 4. Helix Pages: Integration Test - https://bluejeans.com/s/L10CB
+5. Custom domain registration - https://www.dropbox.com/s/g9n4jtdgshhjl6i/helix-custom-domain-reg-demo.mp4?dl=0
 
 ---
 
