@@ -100,7 +100,7 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 ### Demos
 
 1. Helix & Adobe Runtime Events - https://bluejeans.com/s/iCkmi/
-2. Helix Pages: Landing Pages user stories - see above
+2. Helix Pages: Landing Pages user stories - same above, start at 13mins.
 3. Loggly security analyzis: no recording. Check with @koraa for details
 4. Helix Pages: Integration Test - https://bluejeans.com/s/L10CB
 
