@@ -10,7 +10,7 @@ This page demonstrates how to develop a website from scratch with Helix and depl
 
 
 ### Install the Helix Command Line Interface
-Install `hlx` as a global command (Node 8.9 or higher required)
+Install or update `hlx` as a global command (Node 8.9 or higher required)
 ```bash
 $ npm install -g @adobe/helix-cli
 ```
@@ -35,12 +35,13 @@ Helix also created a content file locally: `index.md`. You can change its markdo
 ### Commit your code
 
 While Helix supports a pure local developement code base, you will eventually need a code repository in GutHub in order to be able to deploy and publish your project:
-1. Go to [http://github.com/](http://github.com/) and create a new public `mytestprojectcode` repository in your favorite org
+1. Go to [http://github.com/](http://github.com/) and create a new `mytestprojectcode` repository in your favorite org
 2. Add the remote locally:
 ```bash
 git remote add origin <mytestprojectcode_repo_url>.git
 ```
 (Make sure your GitHub URL ends with `.git`)
+
 3. Commit and push your code:
 ```bash
 git push -u origin master
@@ -159,6 +160,9 @@ hlx publish --fastly-namespace <your_fastly_namespace> --fastly-auth <your_fastl
 
 Open https://<your_domain>/ in the browser: your site is now live!
 
+Note:
+* if you are using private GitHub repositories, you need to specify a valid GitHub token in the `--github-token` argument. You can use `hlx auth` to create one for you.
+
 #### Debug
 
 Run:
@@ -169,7 +173,7 @@ curl -v -H "X-Debug: true" https://<your_domain>/
 
 ### (Optional) Use environment variables
 
-Every command line argument of `hlx` can also be provided via an _environment variable_, by prefixing its name with `HLX_`. For example the `--wsk-namespace` via `HLX_WSK_NAMESPACE`, the `--log-level` can be set via the `HLX_LOG_LEVEL` variable  etc. You can store those variables in an `.env` file which will be picked up automatically by `hlx`. 
+Every command line argument of `hlx` can also be provided via an _environment variable_. For example the `--wsk-namespace` corresponds to `HLX_WSK_NAMESPACE`, `--log-level` to `HLX_LOG_LEVEL` and so forth. You can store these variables in an `.env` file which will be picked up automatically by `hlx`. 
 
 The relevant environment variables are
 - `HLX_WSK_NAMESPACE`
@@ -178,8 +182,7 @@ The relevant environment variables are
 - `HLX_CIRCLECI_AUTH` 
 - `HLX_FASTLY_NAMESPACE`
 - `HLX_FASTLY_AUTH`
-- `HLX_LOGGLY_AUTH`
-- `HLX_LOGGLY_HOST`
+- `HLX_GITHUB_TOKEN`
 - `HLX_LOG_LEVEL`
 - `HLX_HOST`
 - `HLX_LOCAL_REPO`
