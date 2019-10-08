@@ -59,6 +59,7 @@ Airport transfer from and to Ålesund (AES) airport ~~will be provided.~~ is wit
 
 * `helix-config.yaml` and `fstab.json` @trieloff @tripodsan
 * put down the topic – and the people that would like to discuss it like @tripodsan
+* clone https://theblog.adobe.com (suggested by @davidnuescheler)
 
 ### Attendees
 
