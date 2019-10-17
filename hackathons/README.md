@@ -25,8 +25,7 @@ Just put your idea on the list:
 - [Basel](https://www.basel.com/en) :)
 - [De Watertoren](https://www.watertorenvlissingen.com/), Vlissingen, Netherlands
 - New York City ([https://www.wework.com/l/new-york-city--NY](https://www.wework.com/l/new-york-city--NY), [https://privateevents.neuehouse.com/the-boardroom](https://privateevents.neuehouse.com/the-boardroom)...)
-- SoCa (L.A. / San Diego)
-- Palm Springs
+- SoCal (L.A. / San Diego / Palm Springs), ideal for a winter location !
 
 ## Let's do it!
 
