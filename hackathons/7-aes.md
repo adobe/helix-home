@@ -69,7 +69,7 @@ Put down the topic and the people that would like to discuss it:
 > Who is going to be there? Can I come?
 
 1. @trieloff (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
-1. @rofe (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326, rides with @stefan-guggisberg) 
+1. @rofe (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
 1. @tripodsan (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
 1. @stefan-guggisberg (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
 1. @dominique-pfister (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
