@@ -66,6 +66,7 @@ Put down the topic and the people that would like to discuss it:
 * present @ramboz researches: (would need a 30mins - 1h presentation time on a US friendly timeslot - Wed or Thu 5pm)
   * Site / page templates for a "Helix Pages" like service
   * AEM Screens on Helix: from AEM to Helix
+* discuss https://github.com/dunglas/vulcain as a GraphQL alternative
 
 ### Attendees
 
