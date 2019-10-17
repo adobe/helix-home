@@ -63,6 +63,9 @@ Put down the topic and the people that would like to discuss it:
 * `helix-config.yaml` and `fstab.json` @trieloff @tripodsan
 * clone https://theblog.adobe.com (suggested by @davidnuescheler)
 * build independent indexer for **THEBLOG** @tripodsan
+* present @ramboz researches: (would need a 30mins - 1h presentation time on a US friendly timeslot - Wed or Thu 5pm)
+  * Site / page templates for a "Helix Pages" like service
+  * AEM Screens on Helix: from AEM to Helix
 
 ### Attendees
 
