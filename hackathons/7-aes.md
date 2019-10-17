@@ -69,17 +69,17 @@ Put down the topic and the people that would like to discuss it:
 > Who is going to be there? Can I come?
 
 1. @trieloff (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
-3. @rofe (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326, rides with @stefan-guggisberg) 
-4. @tripodsan (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
-5. @stefan-guggisberg (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
-6. @dominique-pfister (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
-7. @koraa r (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
-8. @alexkli (arriving AES Sunday 11:40AM KLM 1325; departing AES Saturday 6:30AM, KL1322)
-9. @anfibiacreativa (arriving AES Sunday 3:05PM SK1320; departing AES Friday 4:35PM DY413)
-10. @cwoeltge (arriving Wednesday, TBC)
-12. @MarquiseRosier
-13. @ejthurgo (fastly)
-14. @drwilco (fastly) TBC
+1. @rofe (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326, rides with @stefan-guggisberg) 
+1. @tripodsan (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
+1. @stefan-guggisberg (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326) 
+1. @dominique-pfister (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
+1. @koraa r (arriving AES Sunday 11:40AM, KL1325; departing AES Friday 4:50PM, KL1326)
+1. @alexkli (arriving AES Sunday 11:40AM KLM 1325; departing AES Saturday 6:30AM, KL1322)
+1. @anfibiacreativa (arriving AES Sunday 3:05PM SK1320; departing AES Friday 4:35PM DY413)
+1. @cwoeltge (arriving Wednesday, TBC)
+1. @ejthurgo (fastly)
+1. ~~@MarquiseRosier~~
+1. ~~@drwilco (fastly) TBC~~
 
 We have 13 rooms – if we get past 13 attendees, please find someone to share a room.
 
