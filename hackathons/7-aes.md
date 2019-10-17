@@ -25,7 +25,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 The outdoor team event will be either hiking or kayaking. You can vote below:
 
-* 🥾 |||
+* 🥾 ||||
 * 🛶 |
 
 ### Location
@@ -57,9 +57,11 @@ Airport transfer from and to Ålesund (AES) airport ~~will be provided.~~ is wit
 
 > What are you planning to show at the end of the week?
 
+Put down the topic and the people that would like to discuss it:
+
 * `helix-config.yaml` and `fstab.json` @trieloff @tripodsan
-* put down the topic – and the people that would like to discuss it like @tripodsan
 * clone https://theblog.adobe.com (suggested by @davidnuescheler)
+* build independent indexer for **THEBLOG** @tripodsan
 
 ### Attendees
 
