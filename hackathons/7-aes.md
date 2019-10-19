@@ -51,7 +51,7 @@ Airport transfer from and to Ålesund (AES) airport ~~will be provided.~~ is wit
   * @dominique-pfister
   * @koraa
   * @trieloff
-* @alexkli: VW Passat Station Wagon, 4-5 people, Sunday 12pm to Saturday 5am
+* @alexkli: VW Passat Station Wagon, 4-5 people, Sunday 12pm to Friday
   * @tripodsan
 
 ### Goal
