@@ -22,7 +22,7 @@ Read all of this.
 ## Developing Helix
 
 * *New:* [All Helix Repositories](https://github.com/search?q=topic%3Ahelix+org%3Aadobe&type=Repositories)
-* *New:* [Helix Project Board](https://github.com/orgs/adobe/projects/2)
+* *New:* [Helix Project Board](https://github.com/adobe/helix-home/projects/1)
 * Javacript code style should follow the [Airbnb JavaScript Style Guide()](https://github.com/airbnb/javascript)
 
 ## Video Walkthoughs
