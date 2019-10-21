@@ -1,7 +1,7 @@
 ![](https://images.adsttc.com/media/images/5010/155c/28ba/0d42/2200/0983/slideshow/stringio.jpg?1414020836)
 
 # Project Helix Hackathon VII
-Save the Date, Oct 20-25 2019, Norddal, Norway
+Oct 20-25 2019, Valldal, Norway
 
 ---
 
