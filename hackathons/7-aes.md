@@ -20,8 +20,11 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 | Time      | Sunday                     | Monday                           | Tuesday     | Wednesday   | Thursday              | Friday                       |
 | --------: | -------------------------- | -------------------------------- | ----------- | ----------- | --------------------- | ---------------------------- |
 |   Morning | -                          | Helix Introduction & Demo Format | Discussions | Programming | Programming           | Demos                        |
-| Afternoon | Airport Transfer & Arrival | Software Engineering             | Coding      | Coding      | Outdoor Team Event 🥾🛶 | Departure & Airport Transfer |
+| Afternoon | Airport Transfer & Arrival | Software Engineering             | Coding      | Coding<p>5PM CET: Templates for Helix Pages / AEM Screens on Helix by @ramboz</p>      | Outdoor Team Event 🥾🛶 | Departure & Airport Transfer |
 |   Evening | Set-up, drinks             | Fiddling with Code               | Hacking     | Team dinner | Hacking               | -                            |
+
+#### Remote Attendance
+https://bluejeans.com/743383165 (only used for select sessions, see above)
 
 The outdoor team event will be either hiking or kayaking. You can vote below:
 
