@@ -100,3 +100,7 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 2. Join `#helix-chat` on Slack
 3. Install the `hlx` Command Line app and create your first project
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
+
+### Demos
+
+Recordings: https://bluejeans.com/s/u2gsQ
