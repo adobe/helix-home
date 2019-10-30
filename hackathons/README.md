@@ -2,17 +2,18 @@
 
 ## Upcoming Hackathons
 
-8. TBD
+8. [February 2020, Los Angeles, CA](8-lax.md)
+9. [April 2020, Barcelona, Spain](9-bcn.md)
 
 ## Past Hackathons
 
 1. [Early Summer 2018, Salt Lake City, UT](1-slc.md)
-2. [Late Summer 2018, Basel, Switzerland](2-bsl.md)
-3. [Fall 2018, San Francisco, CA](3-sfo.md)
-4. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
-5. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
-6. [August 2019, Strasbourg, France](6-sxb.md)
-7. [October 21th-25th, Norddal, Norway](7-aes.md)
+1. [Late Summer 2018, Basel, Switzerland](2-bsl.md)
+1. [Fall 2018, San Francisco, CA](3-sfo.md)
+1. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
+1. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
+1. [August 2019, Strasbourg, France](6-sxb.md)
+1. [October 2019, Norddal, Norway](7-aes.md)
 
 ## Ideas for future Hackathons
 
@@ -21,12 +22,12 @@
 Just put your idea on the list:
 
 - Japan (somewhere in the mountains or in a cool city (not Tokyo or Kyoto :-)
-- Barcelona
+- ~~Barcelona~~
 - Bordeaux ( [Cité du Vin](https://www.bedouk.fr/la-cite-du-vin,L89668), [Opéra National](https://www.bedouk.fr/opera-national-de-bordeaux,L90884) )
 - [Basel](https://www.basel.com/en) :)
 - [De Watertoren](https://www.watertorenvlissingen.com/), Vlissingen, Netherlands
 - New York City ([https://www.wework.com/l/new-york-city--NY](https://www.wework.com/l/new-york-city--NY), [https://privateevents.neuehouse.com/the-boardroom](https://privateevents.neuehouse.com/the-boardroom)...)
-- SoCal (L.A. / San Diego / Palm Springs), ideal for a winter location !
+- ~~SoCal (L.A. / San Diego / Palm Springs), ideal for a winter location !~~
 
 ## Let's do it!
 
