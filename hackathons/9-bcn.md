@@ -1,7 +1,7 @@
 ![]() <!-- TODO: add image URL -->
 
 # Project Helix Hackathon IX
-Feb 10-15 2020, Los Angeles, CA
+Feb 10-15 2020, Barcelona, Spain
 
 ---
 
