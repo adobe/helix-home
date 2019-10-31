@@ -1,4 +1,4 @@
-![](https://images.adsttc.com/media/images/5010/155c/28ba/0d42/2200/0983/slideshow/stringio.jpg?1414020836)
+![](./7-aes/1.jpg)
 
 # Project Helix Hackathon VII
 Oct 20-25 2019, Valldal, Norway
@@ -37,7 +37,8 @@ The outdoor team event will be either hiking or kayaking. You can vote below:
 
 ---
 
-![](http://www.juvet.com/upload_images/DFFF77243C0C4B9EB11EA572B4D8C2B1.jpg.ashx?width=1920&quality=90&crop=(0,0,0,0))
+![](./7-aes/2.jpg)
+![](./7-aes/3.jpg)
 
 ---
 
