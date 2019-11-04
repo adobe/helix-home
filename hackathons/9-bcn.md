@@ -31,11 +31,13 @@ https://bluejeans.com/743383165 (only used for select sessions, see above)
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-The hackathon will take place in the beautiful, ever sunny city of Barcelona, at our [![Netcentric, Excellence Center](https://lh3.googleusercontent.com/Mnrj49VS22STnXdnqTajqpqCv7GTPaqPABSOVkQCLQDkbJqrMSHAQCJbM50Gc0X-pWsOCGX-iYnqwWMzIe9OQ3rku9FXcxIPmr351k0wjCZ3SLmIKHvTH-zVWxug83gu68aP6GPv3Q=w2400)] 
+The hackathon will take place in the beautiful, ever sunny city of Barcelona, at our Netcentric Excellence Center. 
+![Netcentric, Excellence Center](https://lh3.googleusercontent.com/Mnrj49VS22STnXdnqTajqpqCv7GTPaqPABSOVkQCLQDkbJqrMSHAQCJbM50Gc0X-pWsOCGX-iYnqwWMzIe9OQ3rku9FXcxIPmr351k0wjCZ3SLmIKHvTH-zVWxug83gu68aP6GPv3Q=w2400)
 
 ---
 
-[![Netcentric, A Cognizant Digital Bussiness](https://lh3.googleusercontent.com/LgBN77tlA_Ao83v2Msinw8jgnHqa5BIXSNrAf_tVfbPxdLqcRAeD-bxMCY27Ph61St4rHxKbwuxAdnskMvlywt-KFubk-Rul-oFd7_RGVa6iAdxA23ZmsgGlEPldlGD6hoP0EyD7PA=w2400)](https://www.google.com/maps/place/Netcentric+Ib%C3%A9rica+SLU/@41.4049181,2.2012728,15z/data=!4m5!3m4!1s0x0:0x377f413845604ce5!8m2!3d41.4049181!4d2.2012728)
+[![Netcentric, A Cognizant Digital Bussiness](https://lh3.googleusercontent.com/LgBN77tlA_Ao83v2Msinw8jgnHqa5BIXSNrAf_tVfbPxdLqcRAeD-bxMCY27Ph61St4rHxKbwuxAdnskMvlywt-KFubk-Rul-oFd7_RGVa6iAdxA23ZmsgGlEPldlGD6hoP0EyD7PA=w2400)]
+[Cami Antic de Valencia, 54, 08005 Barcelona](https://goo.gl/maps/pfsbPyJh5rE2Qm2r9)
 
 <!-- TODO: add image URL (in the first pair of round brackets) and maps URL (in the second pair of round brackets) above -->
 
@@ -47,7 +49,7 @@ We have room for up to 15 people at our Excellence Center.
 
 #### Transportation
 
-Nearest airport is [Barcelona, El Prat] (http://www.aena.es/es/aeropuerto-barcelona/index.html).
+Nearest airport is [Barcelona, El Prat] (http://www.aena.es/es/aeropuerto-barcelona/index.html). Airport code `BCN`.
 
 ### Goal
 
