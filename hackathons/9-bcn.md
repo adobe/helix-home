@@ -35,7 +35,7 @@ The hackathon will take place in the beautiful, ever sunny city of Barcelona, at
 
 ---
 
-[![Netcentric, A Cognizant Digital Bussiness](https://lh3.googleusercontent.com/LgBN77tlA_Ao83v2Msinw8jgnHqa5BIXSNrAf_tVfbPxdLqcRAeD-bxMCY27Ph61St4rHxKbwuxAdnskMvlywt-KFubk-Rul-oFd7_RGVa6iAdxA23ZmsgGlEPldlGD6hoP0EyD7PA=w2400)(https://www.google.com/maps/place/Netcentric+Ib%C3%A9rica+SLU/@41.4049181,2.2012728,15z/data=!4m5!3m4!1s0x0:0x377f413845604ce5!8m2!3d41.4049181!4d2.2012728)
+[![Netcentric, A Cognizant Digital Bussiness](https://lh3.googleusercontent.com/LgBN77tlA_Ao83v2Msinw8jgnHqa5BIXSNrAf_tVfbPxdLqcRAeD-bxMCY27Ph61St4rHxKbwuxAdnskMvlywt-KFubk-Rul-oFd7_RGVa6iAdxA23ZmsgGlEPldlGD6hoP0EyD7PA=w2400)](https://www.google.com/maps/place/Netcentric+Ib%C3%A9rica+SLU/@41.4049181,2.2012728,15z/data=!4m5!3m4!1s0x0:0x377f413845604ce5!8m2!3d41.4049181!4d2.2012728)
 
 <!-- TODO: add image URL (in the first pair of round brackets) and maps URL (in the second pair of round brackets) above -->
 
