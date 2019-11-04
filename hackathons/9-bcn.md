@@ -31,11 +31,11 @@ https://bluejeans.com/743383165 (only used for select sessions, see above)
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-The hackathon will take place in the beautiful, ever sunny city of Barcelona, at our [![Netcentric, Excellence Center](https://photos.google.com/share/AF1QipO7xqL76dDjNZ2L-L3WGn1Fm9o4AXVYtWbHb_YBKZ4zFGR9i20oSyku_nh6KtkaQw/photo/AF1QipOvfCF_PQZV-PK0oQn6kZviW1neRq6DXG8l-5rB?key=eldhZEtjWGI2QUZMMzU3NjBWNTh4eVpTbUVBd2JB)] 
+The hackathon will take place in the beautiful, ever sunny city of Barcelona, at our [![Netcentric, Excellence Center](https://photos.google.com/share/AF1QipMjMZt9CFOodSLAbT-AIoCUWGYWMDUEDd3aed9gLZOtMyZC5TRl1PFvsTDAC8wksQ?key=MDE4ZTJLNXBTUUJLZG0teFNlUHNPeHRLREZZNXl3)] 
 
 ---
 
-[![Netcentric, A Cognizant Digital Bussiness](https://photos.google.com/share/AF1QipO7xqL76dDjNZ2L-L3WGn1Fm9o4AXVYtWbHb_YBKZ4zFGR9i20oSyku_nh6KtkaQw/photo/AF1QipPdhilXwlXGGu_Jo8TK04q6NERSu5O9vrqqs62E?key=eldhZEtjWGI2QUZMMzU3NjBWNTh4eVpTbUVBd2JB)](https://www.google.com/maps/place/Netcentric+Ib%C3%A9rica+SLU/@41.4049181,2.2012728,15z/data=!4m2!3m1!1s0x0:0x377f413845604ce5?sa=X&ved=2ahUKEwir5JCbqdDlAhXEaVAKHaF4ABwQ_BIwCnoECA8QCA)
+[![Netcentric, A Cognizant Digital Bussiness](https://photos.google.com/share/AF1QipMHX9RlpLMzoi6U9ZE6Q7KnC9PuleWcjVjG3-Ajz8sU4A0gLqyDfqLMGGzOTz2S6Q?key=QndFR0F0MlhydUhSSEpZUW9UYkoxb1hzVTZzM0Rn)](https://www.google.com/maps/place/Netcentric+Ib%C3%A9rica+SLU/@41.4049181,2.2012728,15z/data=!4m2!3m1!1s0x0:0x377f413845604ce5?sa=X&ved=2ahUKEwir5JCbqdDlAhXEaVAKHaF4ABwQ_BIwCnoECA8QCA)
 
 <!-- TODO: add image URL (in the first pair of round brackets) and maps URL (in the second pair of round brackets) above -->
 
