@@ -1,7 +1,7 @@
 ![](https://img.peerspace.com/image/upload/c_crop,g_custom/g_auto,c_fill,q_auto,f_auto,fl_progressive:steep,dpr_2,w_1024,h_450/oz7xjghfjbq365i14fpe)
 
 # Project Helix Hackathon VIII
-Feb 10-15 2020, Los Angeles, CA
+Feb 10-14 2020, Los Angeles, CA
 
 ---
 
