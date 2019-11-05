@@ -7,13 +7,13 @@ Feb 10-15 2020, Los Angeles, CA
 
 (See the [Hackathon Archive](./README.md) for past Hackathons)
 
-The eith Project Helix Hackathon will happen in the week of February 10th. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
+The eighth Project Helix Hackathon will happen in the week of February 10th. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
 
 ### Agenda
 
 > I hear this is a hackathon, are you going to hack all day?
 
-We do have the hotel from **Sunday** to Friday, so if you can accommodate, I recommend to fly in on Sunday.
+We do have the venue from **Monday** to **Friday**, so if you can accommodate, I recommend to fly in on Sunday.
 
 Although this is a hackathon, we won't be hacking all the time, there will also be plenty of programming and coding.
 
