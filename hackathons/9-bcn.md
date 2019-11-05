@@ -1,7 +1,7 @@
 ![]() <!-- TODO: add image URL -->
 
 # Project Helix Hackathon IX
-Apr 2020, Barcelona, Spain (exact date TBD)
+Apr 20th-24th 2020, Barcelona, Spain.
 
 ---
 
@@ -31,7 +31,7 @@ https://bluejeans.com/743383165 (only used for select sessions, see above)
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-The hackathon will take place in the beautiful, ever sunny city of Barcelona, at our Netcentric Excellence Center. 
+The hackathon will take place in the beautiful, ever sunny city of Barcelona, at the Netcentric Excellence Center. 
 ![Netcentric, Excellence Center](https://lh3.googleusercontent.com/Mnrj49VS22STnXdnqTajqpqCv7GTPaqPABSOVkQCLQDkbJqrMSHAQCJbM50Gc0X-pWsOCGX-iYnqwWMzIe9OQ3rku9FXcxIPmr351k0wjCZ3SLmIKHvTH-zVWxug83gu68aP6GPv3Q=w2400)
 
 ---
