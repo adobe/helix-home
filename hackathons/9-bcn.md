@@ -44,8 +44,7 @@ The hackathon will take place in the beautiful, ever sunny city of Barcelona, at
 ---
 
 
-We have room for up to 15 people at our Excellence Center.
-
+We have room for up to 15 people at our Excellence Center. As part of our hospitality, Netcentric will invite all participants to a catered lunch during the whole week. 
 
 #### Transportation
 
