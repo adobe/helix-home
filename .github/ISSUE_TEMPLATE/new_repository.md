@@ -14,7 +14,8 @@ Create a new repository with the name `helix-…`
 - [ ] Add the group "[Project Helix Developers](https://github.com/orgs/adobe/teams/project-helix-developers)" with *Write* permissions to the list of collaborators (Project Helix Guests will be taken care of automatically) 
 - [ ] Upload a social media image (use [this Spark template](https://spark.adobe.com/post/7srrIXaQVTw67/))
 - [ ] Set the repository description
-- [ ] Update the repository `README.md` (search for `adobe/helix-service` or `adobe/helix-library`)
+- [ ] Update the repository `README.md` (search for "service" and replace with something more meaningful where appropriate)
+- [ ] Update the `package.json` (search for "service" and replace with something more meaningful where appropriate)
 - [ ] Uncomment and adjust the `helix-post-deploy/monitoring` command in `.circleci/config.yaml`: decide if your service falls under Development, Publishing or Delivery. (note: failures in the latter two categories will ping on-call engineers on weekends!) See https://status.project-helix.io for reference.
 - [ ] Set up [Project Bot]
   - [ ] Add a [`.github/org-project-bot.yaml`](https://github.com/adobe/helix-cli/blob/master/.github/org-project-bot.yaml)
