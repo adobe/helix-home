@@ -1,13 +1,13 @@
 ![]() <!-- TODO: add image URL -->
 
 # Project Helix Hackathon XI
-Apr 20th-24th 2020, Barcelona, Spain.
+September 2020, Barcelona, Spain.
 
 ---
 
 (See the [Hackathon Archive](./README.md) for past Hackathons)
 
-The ninth Project Helix Hackathon will happen sometime during the last two weeks of April. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
+The ninth Project Helix Hackathon will happen sometime in September. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
 
 ### Agenda
 
