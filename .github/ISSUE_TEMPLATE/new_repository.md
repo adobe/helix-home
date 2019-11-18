@@ -21,7 +21,7 @@ Create a new repository with the name `helix-…`
   - [ ] Add a [`.github/org-project-bot.yaml`](https://github.com/adobe/helix-cli/blob/master/.github/org-project-bot.yaml)
   - [ ] Enable _OrgProjectBot_ under _Settings > Integrations & services_ or https://github.com/organizations/adobe/settings/installations/690408 (Adobe org admins only)
 - [ ] Set up [CircleCI](https://circleci.com/add-projects/gh/adobe)
-  - [ ] Enable _Renovatebot_ under _Settings > Integrations & services_ or https://github.com/organizations/adobe/settings/installations/1325372 (Adobe org admins only)
+- [ ] Enable _Renovatebot_ under _Settings > Integrations & services_ or https://github.com/organizations/adobe/settings/installations/1325372 (Adobe org admins only)
 - [ ] Set up [LGTM](https://github.com/organizations/adobe/settings/installations/870657)
 - [ ] Set up [Commitlint](https://github.com/organizations/adobe/settings/installations/728398)
 - [ ] Follow the project in Slack channel [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/)
