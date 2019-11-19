@@ -1,13 +1,13 @@
 ![]() <!-- TODO: add image URL -->
 
-# Project Helix Hackathon XI
-September 2020, Barcelona, Spain.
+# Project Helix Hackathon N
+April or September 2020, Barcelona, Spain.
 
 ---
 
 (See the [Hackathon Archive](./README.md) for past Hackathons)
 
-The ninth Project Helix Hackathon will happen sometime in September. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
+This Project Helix Hackathon will happen sometime in April or September. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
 
 ### Agenda
 
@@ -62,7 +62,7 @@ Put down the topic and the people that would like to discuss it:
 
 > Who is going to be there? Can I come?
 
-1. @anfibiacreativa
+1...
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
