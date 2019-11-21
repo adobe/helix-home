@@ -1,7 +1,7 @@
-![](https://img.peerspace.com/image/upload/c_crop,g_custom/g_auto,c_fill,q_auto,f_auto,fl_progressive:steep,dpr_2,w_1024,h_450/oz7xjghfjbq365i14fpe)
+![](./Helix%20Save%20the%20Date%208.jpg)
 
-# Project Helix Hackathon VIII
-Feb 10-14 2020, Los Angeles, CA
+# Helix Hackathon Part VIII
+Feb 10-14 2020, Palm Springs, CA
 
 ---
 
@@ -19,9 +19,9 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 
 | Time      | Monday                     | Tuesday                          | Wednesday   | Thursday    | Friday                   |
 | --------: | -------------------------- | -------------------------------- | ----------- | ----------- | ------------------------ |
-|   Morning | -                          | Helix Introduction & Demo Format | Programming | Programming | Demos                    |
-| Afternoon | Airport Transfer & Arrival | Software Engineering             | Coding      | Coding      | Team lunch and departure |
-|   Evening | Set-up, drinks             | Fiddling with Code               | Hacking     | Team dinner | -                        |
+|   Morning | Set-up, Airport Transfer & Arrival                          | Helix Introduction & Demo Format | Programming | Programming | Demos                    |
+| Afternoon | Set-up, Coding, Airport Transfer & Arrival | Software Engineering             | Coding      | Coding      | Team lunch and departure |
+|   Evening | Drinks by the pool             | Fiddling with Code               | Hacking     | Team dinner | -                        |
 
 #### Remote Attendance
 
@@ -33,17 +33,19 @@ https://bluejeans.com/743383165 (only used for select sessions, see above)
 
 ---
 
-[![](https://img.peerspace.com/image/upload/c_crop,g_custom/w_1200,c_limit/g_auto,c_fill,f_auto,q_auto,dpr_2.0/l_pswm_gqnx1g,g_north_west,x_5,y_5,w_60,o_50/wmoswbcusyuab3z9toan)](https://www.peerspace.com/pages/listings/5c97ad94433110000fa919f7)
+![Ace Hotel Palm Springs](https://pix10.agoda.net/hotelImages/2402734/-1/b5d74d246877c37d36189a12343f3409.jpg?s=1024x768)
+
+The hackathon will take place at the [Ace Hotel & Swim Club](https://www.acehotel.com/palmsprings/spa-and-swim-club/swim-club/) at [701 E Palm Canyon Dr, Palm Springs, CA](https://goo.gl/maps/mYjj9XhUn8n1RB677).
 
 ---
 
 
-We have room for 25 people in Downtown Los Angeles.
+The [Clubhouse 1st Floor](https://www.acehotel.com/palmsprings/events-and-spaces/event-spaces/spaces/) has room for 20+ people. While we do have reserved a number of hotel rooms with a special group rate attendees will be responsible for booking (and paying for) their rooms. Booking instructions will follow on the `#helix-chat` Slack channel.
 
 
 #### Transportation
 
-Nearest airport is LAX.
+Nearest airport is LAX. We recommend pooling an Uber/Lyft or a rental car to Palm Springs (~2hr).
 
 ### Goal
 
