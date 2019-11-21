@@ -40,7 +40,7 @@ The hackathon will take place at the [Ace Hotel & Swim Club](https://www.acehote
 ---
 
 
-The [Clubhouse 1st Floor](https://www.acehotel.com/palmsprings/events-and-spaces/event-spaces/spaces/) has room for 20+ people. While we do have reserved a number of hotel rooms with a special group rate attendees will be responsible for booking (and paying for) their rooms. Booking instructions will follow on the `#helix-chat` Slack channel.
+The [Clubhouse 1st Floor](https://www.acehotel.com/palmsprings/events-and-spaces/event-spaces/spaces/) has room for 20+ people. While we do have reserved 10 hotel rooms with a special group rate (169$/night + tax & fees) attendees will be responsible for booking (and paying for) their rooms. Booking instructions will follow on the `#helix-chat` Slack channel.
 
 
 #### Transportation
