@@ -1,6 +1,7 @@
-![](./Helix%20Save%20the%20Date%208.jpg)
+![](https://pix10.agoda.net/hotelImages/2402734/-1/b5d74d246877c37d36189a12343f3409.jpg?s=1024x768)
 
 # Helix Hackathon Part VIII
+
 Feb 10-14 2020, Palm Springs, CA
 
 ---
@@ -33,7 +34,7 @@ https://bluejeans.com/743383165 (only used for select sessions, see above)
 
 ---
 
-![Ace Hotel Palm Springs](https://pix10.agoda.net/hotelImages/2402734/-1/b5d74d246877c37d36189a12343f3409.jpg?s=1024x768)
+![Ace Hotel Palm Springs](https://media2.trover.com/T/4fd88b659738f037dc000045/fixedw_large_4x.jpg)
 
 The hackathon will take place at the [Ace Hotel & Swim Club](https://www.acehotel.com/palmsprings/spa-and-swim-club/swim-club/) at [701 E Palm Canyon Dr, Palm Springs, CA](https://goo.gl/maps/mYjj9XhUn8n1RB677).
 
