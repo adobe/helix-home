@@ -41,8 +41,13 @@ The hackathon will take place at the [Ace Hotel & Swim Club](https://www.acehote
 ---
 
 
-The [Clubhouse 1st Floor](https://www.acehotel.com/palmsprings/events-and-spaces/event-spaces/spaces/) has room for 20+ people. While we do have reserved 10 hotel rooms with a special group rate (169$/night + tax & fees) attendees will be responsible for booking (and paying for) their rooms. Booking instructions will follow on the `#helix-chat` Slack channel.
+The [Clubhouse 1st Floor](https://www.acehotel.com/palmsprings/events-and-spaces/event-spaces/spaces/) has room for 20+ people. 
 
+#### Accomodation
+
+> While we do have reserved 10 hotel rooms with a special group rate (169$/night + tax & fees) attendees will be responsible for booking (and paying for) their rooms. Booking instructions will follow on the `#helix-chat` Slack channel.
+>
+>The special group rate is available until **January 10** only, so please book your room before that date.
 
 #### Transportation
 
@@ -60,9 +65,9 @@ Put down the topic and the people that would like to discuss it:
 
 > Who is going to be there? Can I come?
 
-1. @trieloff
-2. @marquiserosier
-3. @stefan-guggisberg
+If you plan to attend the Hackathon, please add yourself the list below and provide information regarding your room booking:
+
+1. @stefan-guggisberg (room booked: check-in sunday, check-out friday)
 
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
