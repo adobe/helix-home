@@ -47,7 +47,7 @@ The [Clubhouse 1st Floor](https://www.acehotel.com/palmsprings/events-and-spaces
 
 While we do have reserved 10 hotel rooms with a special group rate (169$/night + tax & fees) attendees will be responsible for booking (and paying for) their rooms. Booking instructions will follow on the `#helix-chat` Slack channel.
 
-The special group rate is available until **January 10** only, so please book your room before that date.
+**Important:** The contigent of 10 rooms with the special group rate is held until **January 10th** only, so please book your room before that date.
 
 #### Transportation
 
