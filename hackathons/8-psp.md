@@ -70,6 +70,7 @@ If you plan to attend the Hackathon, please add yourself the list below and prov
 1. @stefan-guggisberg (room booked: check-in sunday, check-out friday)
 1. @tripodsan (room booked: check-in sunday, check-out friday)
 1. @rofe (room booked: check-in sunday, check-out friday)
+1. @trieloff (room booked: check-in sunday, check-out friday)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
