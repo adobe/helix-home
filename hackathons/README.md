@@ -2,6 +2,7 @@
 
 ## Upcoming Hackathons
 
+7. 5 [January 2020, Basel, Switzerland](7-5-bsl.md) (Mini-Hackathon)
 8. [February 2020, Palm Springs, CA](8-psp.md)
 9. [April 2020, Barcelona, Spain](9-bcn.md) *or* [April 2020, Japan](9-hnd.md)
 
