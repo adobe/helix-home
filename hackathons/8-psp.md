@@ -73,6 +73,7 @@ If you plan to attend the Hackathon, please add yourself the list below and prov
 1. @trieloff (arrival LAX Monday 2pm, room booked: check-in monday, check-out friday)
 1. @davidnuescheler (no room required)
 1. @fielding (will book for Monday-Friday and drive 3 back to LAX if needed)
+1. @marquiserosier (arrival LAX Sunday 9:34am, room in progress)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
