@@ -51,7 +51,8 @@ While we do have reserved 10 hotel rooms with a special group rate (169$/night +
 
 #### Transportation
 
-Nearest airport is LAX. We recommend pooling an Uber/Lyft or a rental car to Palm Springs (~2hr).
+Nearest large, international airport is LAX. We recommend pooling an Uber/Lyft or a rental car to Palm Springs (~2hr).
+If you are flying from within the US PSP is the closest Airport and ONT is still a lot more convenient than LAX.
 
 ### Goal
 
