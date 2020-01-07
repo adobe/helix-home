@@ -67,7 +67,7 @@ Put down the topic and the people that would like to discuss it:
 
 If you plan to attend the Hackathon, please add yourself the list below and provide information regarding your room booking:
 
-1. @stefan-guggisberg (room booked: check-in sunday, check-out friday)
+1. @stefan-guggisberg (arrival LAX Saturday 4:20pm, room booked: check-in sunday, check-out friday)
 1. @tripodsan (arrive LAX Sunday 9:25am, room booked: check-in sunday, check-out friday)
 1. @rofe (arrival LAX Sunday 4:20pm, room booked Sunday - Friday, departure LAX Friday 7:20pm)
 1. @trieloff (arrival LAX Monday 2pm, room booked: check-in monday, check-out friday)
