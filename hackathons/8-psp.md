@@ -51,8 +51,9 @@ While we do have reserved 10 hotel rooms with a special group rate (169$/night +
 
 #### Transportation
 
-Nearest large, international airport is LAX. We recommend pooling an Uber/Lyft or a rental car to Palm Springs (~2hr).
-If you are flying from within the US PSP is the closest Airport and ONT is still a lot more convenient than LAX.
+Nearest international hub airport is LAX. We recommend sharing a rental car to Palm Springs (~2hr in morning/weekend, ~3hr during afternoon/evening traffic). Pooling an Uber/Lyft from LAX is also possible but difficult due to restrictions on where they can pick up (an off-airport lot called LAX-it).
+
+If you are flying from within the US, Palm Springs (PSP) is the closest airport, followed by Ontario (ONT, ~1hr away) which is a lot more convenient than LAX, Orange County (SNA, ~1.5-2hrs depending on traffic), or Long Beach (LGB, ~2+hrs). Note that traffic times are much worse going westbound in the morning and eastbound in the evening due to cheaper housing in the desert.
 
 ### Goal
 
@@ -73,7 +74,7 @@ If you plan to attend the Hackathon, please add yourself the list below and prov
 1. @rofe (arrival LAX Sunday 4:20pm, room booked Sunday - Friday, departure LAX Friday 7:20pm)
 1. @trieloff (arrival LAX Monday 2pm, room booked: check-in monday, check-out friday)
 1. @davidnuescheler (no room required)
-1. @fielding (will book for Monday-Friday and drive 3 back to LAX if needed)
+1. @fielding (~90 miles from home, room booked: Monday-Friday, can drive 3 back to LAX if needed)
 1. @marquiserosier (arrival LAX Sunday 9:34am, room in progress)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
