@@ -85,6 +85,7 @@ If you plan to attend the Hackathon, please add yourself the list below and prov
 1. @marquiserosier (arrival PSP Sunday 10:13am, room booked: check-in Sunday, check-out Friday)
 1. @ejthurgo (arrival LAX Sunday 18:50pm, room booked: check-in sunday, check-out saturday)
 1. @drwilco (arrival PSP Sunday 18:02pm, room in progress)
+1. @ramboz (room booked: check-in sunday, check-out friday)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
