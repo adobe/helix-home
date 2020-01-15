@@ -74,7 +74,7 @@ Put down the topic and the people that would like to discuss it:
 
 > Who is going to be there? Can I come?
 
-If you plan to attend the Hackathon, please add yourself the list below and provide information regarding your room booking:
+If you plan to attend the Hackathon, please add yourself to the list below and provide information regarding your room booking:
 
 1. @stefan-guggisberg (arrival LAX Saturday 4:20pm, room booked: check-in sunday, check-out friday)
 1. @tripodsan (arrive LAX Sunday 9:25am, room booked: check-in sunday, check-out friday)
