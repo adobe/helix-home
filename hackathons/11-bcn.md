@@ -1,7 +1,7 @@
 ![]() <!-- TODO: add image URL -->
 
-# Project Helix Hackathon N
-April or September 2020, Barcelona, Spain.
+# Project Helix Hackathon IX
+April 20th to 24th 2020, Barcelona, Spain.
 
 ---
 
@@ -62,7 +62,7 @@ Put down the topic and the people that would like to discuss it:
 
 > Who is going to be there? Can I come?
 
-1...
+1.@anfibiacreativa
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
