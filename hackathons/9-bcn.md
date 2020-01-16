@@ -60,8 +60,9 @@ Put down the topic and the people that would like to discuss it:
 
 > Who is going to be there? Can I come?
 
-1.@anfibiacreativa
+1. @anfibiacreativa
 1. @trieloff
+1. @koraa
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
