@@ -46,7 +46,7 @@ We have room for up to 15 people at our Excellence Center. As part of our hospit
 
 #### Transportation
 
-Nearest airport is [Barcelona, El Prat] (http://www.aena.es/es/aeropuerto-barcelona/index.html). Airport code `BCN`.
+Nearest airport is [Barcelona, El Prat](http://www.aena.es/es/aeropuerto-barcelona/index.html). Airport code `BCN`.
 Basel-> Barcelona takes about a day via [train and ferry]( https://www.google.com/maps/dir/Basel,+Switzerland/Barcelona,+Spain/@43.0498556,3.4198199,7z/data=!4m14!4m13!1m5!1m1!1s0x479049c72769304f:0x361ceb70f36d8a90!2m2!1d7.5885761!2d47.5595986!1m5!1m1!1s0x12a49816718e30e5:0x44b0fb3d4f47660a!2m2!1d2.1734035!2d41.3850639!3e3).
 
 ### Goal
