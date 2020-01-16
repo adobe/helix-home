@@ -7,13 +7,11 @@ April 20th to 24th 2020, Barcelona, Spain.
 
 (See the [Hackathon Archive](./README.md) for past Hackathons)
 
-This Project Helix Hackathon will happen sometime in April or September. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
+This Project Helix Hackathon will happen sometime in April. It is still a few days out, but as space is limited, we ask you to register as soon as possible.
 
 ### Agenda
 
 > I hear this is a hackathon, are you going to hack all day?
-
-We do have the hotel from **Sunday** to Friday, so if you can accommodate, I recommend to fly in on Sunday.
 
 Although this is a hackathon, we won't be hacking all the time, there will also be plenty of programming and coding.
 
