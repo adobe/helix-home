@@ -19,7 +19,7 @@ Although this is a hackathon, there will also be plenty of talking.
 | Time     | Thursday                   |
 | -------- | -------------------------- |
 | 9a-10a   | Arrival, Set-up            |
-| 10a-11a  | Meet & greet / Helix Intro |
+| 10a-11a  | Meet & greet / Helix Intro*|
 | 11a-12p  | Coding & 1:1s              |
 | 12p-1p   | Team lunch                 |
 | 1p-3:30p | Coding & 1:1s              |
@@ -29,7 +29,7 @@ Note that there will be a hard stop at 4pm.
 
 #### Remote Attendance
 
-https://bluejeans.com/743383165 (only used for select sessions* if unavoidable)
+https://bluejeans.com/949876498 (only used for select sessions* if unavoidable)
 
 ### Location
 
