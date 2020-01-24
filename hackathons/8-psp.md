@@ -61,6 +61,7 @@ If you are flying from within the US, Palm Springs (PSP) is the closest airport,
 
 Put down the topic and the people that would like to discuss it:
 
+- Blog POC https://github.com/davidnuescheler/theblog/issues?q=is%3Aissue+is%3Aopen+label%3APOC
 - We are looking to bring Algolia into the stack as a search service and would like to route search requests to Algolia through Fastly https://github.com/adobe/helix-index-files/issues/3
 - We are eager to try out Fastly Fiddle in our CI builds for Helix Publish https://www.fastly.com/blog/testing-fastly-ci https://github.com/adobe/helix-publish
 - We’ve signed up for the Compute@Edge beta and would be glad to take first steps with you – one candidate for porting is https://github.com/adobe/helix-dispatch
