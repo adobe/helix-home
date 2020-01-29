@@ -70,6 +70,7 @@ Put down the topic and the people that would like to discuss it:
 - we are moving Helix Pages more and more to a multi-repo architecture and will need to serve things from multiple sources: https://github.com/adobe/helix-pages/issues/93
 - I could need some advice and help on anonymizing IP address data for Helix Logging (best practices for truncating and hashing IP addresses)
 - I’d like to figure out a way to secure the Helix Embed service, so that it can be called from our customer’s Fastly configs without any restrictions, but is rate limited otherwise.
+- Discuss how to customize helix-pages index confiuration https://github.com/adobe/helix-cli/pull/1279#issuecomment-578598950
 
 ### Attendees
 
