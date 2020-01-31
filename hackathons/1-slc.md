@@ -2,6 +2,10 @@
 
 ## First Project Helix Hackathon
 
+### Date
+
+June 4-8 2018
+
 ### Agenda
 
 > I hear this is a hackathon, are you going to hack all day?
