@@ -2,6 +2,10 @@
 
 ## Second Project Helix Hackathon
 
+### Date
+
+September 10-14 2018
+
 ### Agenda
 
 > I hear this is a hackathon, are you going to hack all day?
