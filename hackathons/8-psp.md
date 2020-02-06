@@ -66,7 +66,8 @@ Put down the topic and the people that would like to discuss it:
 - We are eager to try out Fastly Fiddle in our CI builds for Helix Publish https://www.fastly.com/blog/testing-fastly-ci https://github.com/adobe/helix-publish
 - We’ve signed up for the Compute@Edge beta and would be glad to take first steps with you – one candidate for porting is https://github.com/adobe/helix-dispatch
 - I’d like to make some progress with soft purges and serving stale content: https://github.com/adobe/helix-home/issues/51 
-- ESI support: we are thinking about moving ESI support from the egde into the Dispatch function (on origin) so that we can get support for alt fallbacks (but we would need to implement this ourselves, of course
+- ESI support: we are thinking about moving ESI support from the egde into the Dispatch function (on origin) so that we can get support for alt fallbacks (but we would need to implement this ourselves, of course)
+- I understand that `raw.github.com` is served through Fastly. I'd like to discuss with our Fastly friends why `raw.github.com` doesn't support Http/2 and if there are possible solutions or workarounds.
 - we are moving Helix Pages more and more to a multi-repo architecture and will need to serve things from multiple sources: https://github.com/adobe/helix-pages/issues/93
 - I could need some advice and help on anonymizing IP address data for Helix Logging (best practices for truncating and hashing IP addresses)
 - I’d like to figure out a way to secure the Helix Embed service, so that it can be called from our customer’s Fastly configs without any restrictions, but is rate limited otherwise.
