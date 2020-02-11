@@ -175,3 +175,8 @@ To provide responsive experiences via Fastly metadata such as crop coordinates, 
 - We are conveying a lot of specific details how Fastly serves assets to our implementations. Is there a better way to make this generic, or translate/transcode content that fastly doesn't serve?
 - What about video delivery?
 - _<add questions here>_
+
+
+# More Info
+
+Check out the [Architecture Deep Dive](docs/architecture.md)

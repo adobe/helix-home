@@ -16,6 +16,7 @@ Read all of this.
 
 * [How we work, who we are, what we use, what we build](manifesto.md)
 * [Technology Architecture Vision](architecture.md)
+* [Architecture Deep Dive](docs/architecture.md)
 * [How to contribute](CONTRIBUTING.md)
 * [Getting Started Guide](getting-started.md)
 
