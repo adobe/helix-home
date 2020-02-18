@@ -86,7 +86,7 @@ If you plan to attend the Hackathon, please add yourself to the list below and p
 1. @davidnuescheler (no room required)
 1. @fielding (~90 miles from home, room booked: Monday-Friday, can drive 3 back to LAX if needed)
 1. @marquiserosier (arrival PSP Sunday 10:13am, room booked: check-in Sunday, check-out Saturday)
-1. @ejthurgo (arrival LAX Sunday 18:50pm, room booked: check-in sunday, check-out saturday)
+1. ~~@ejthurgo (arrival LAX Sunday 18:50pm, room booked: check-in sunday, check-out saturday)~~
 1. @drwilco (arrival PSP Sunday 18:02pm, room in progress)
 1. @ramboz (room booked: check-in sunday, check-out friday)
 1. @olyver (room booked: checkin Monday, checkout Thursday)
