@@ -1,8 +1,8 @@
 ![](https://raw.githubusercontent.com/adobe/helix-home/master/hackathons/9-bcn-alfons-taekema-lvXeO04CxwQ-unsplash.jpg)
 
 # Project Helix Hackathon IX
+[POSTPONED INDEFINITELY]
 ~~April 20th to 24th 2020~~, Barcelona, Spain
-POSTPONED INDEFINITELY
 
 ---
 
