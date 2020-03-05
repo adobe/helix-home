@@ -2,19 +2,18 @@
 
 ## Upcoming Hackathons
 
-7. 5 [January 2020, Basel, Switzerland](7-5-bsl.md) (Mini-Hackathon)
-8. [February 2020, Palm Springs, CA](8-psp.md)
-9. [April 2020, Barcelona, Spain](9-bcn.md)
+9. [DATE UNKNOWN, Barcelona, Spain](9-bcn.md)
 
 ## Past Hackathons
 
 1. [Early Summer 2018, Salt Lake City, UT](1-slc.md)
-1. [Late Summer 2018, Basel, Switzerland](2-bsl.md)
-1. [Fall 2018, San Francisco, CA](3-sfo.md)
-1. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
-1. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
-1. [August 2019, Strasbourg, France](6-sxb.md)
-1. [October 2019, Norddal, Norway](7-aes.md)
+2. [Late Summer 2018, Basel, Switzerland](2-bsl.md)
+3. [Fall 2018, San Francisco, CA](3-sfo.md)
+4. [January 28th-Feb 1st 2019, Berkeley, CA](4-sfo.md)
+5. [May 20th-24th 2019, Basel, Switzerland](5-bsl.md)
+6. [August 2019, Strasbourg, France](6-sxb.md)
+7. [October 2019, Norddal, Norway](7-aes.md)
+8. [February 2020, Palm Springs, CA](8-psp.md)
 
 ## Ideas for future Hackathons
 
