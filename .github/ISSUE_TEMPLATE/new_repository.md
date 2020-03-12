@@ -19,7 +19,8 @@ Create a new repository with the name `helix-…`
 - [ ] Update the repository `README.md` (search for "service" and replace with something more meaningful where appropriate) (*skip for libraries*)
 - [ ] Update the `package.json` (search for "service" and replace with something more meaningful where appropriate) (*skip for libraries*)
 - [ ] Uncomment and adjust the `helix-post-deploy/monitoring` command in `.circleci/config.yaml`: decide if your service falls under Development, Publishing or Delivery. (note: failures in the latter two categories will ping on-call engineers on weekends!) See https://status.project-helix.io for reference. (*skip for libraries*)
-- [ ] Set up **Project Bot**
+- [ ] Prepare setup of OrgProjectBot
+  - [ ] Add a [`.github/org-project-bot.yaml`](https://github.com/adobe/helix-cli/blob/master/.github/org-project-bot.yaml)
 - [ ] Set up [CircleCI](https://circleci.com/add-projects/gh/adobe)
 - [ ] Follow the project in Slack channel [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/)
 > Open the [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/) Slack channel, then type `/github subscribe adobe/helix-…`
