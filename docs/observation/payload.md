@@ -1,6 +1,6 @@
 # Format of observation payload
 
-Notifications received by a source repository, such as GitHub, OneDrive, Google Drive, etc. have a provider specific format, e.g. OneDrive uses the format described on Microsoft's [docs](https://docs.microsoft.com/en-us/graph/api/driveitem-delta?view=graph-rest-1.0&tabs=http) site. When those notifications are received in the `onedrive-change-listener`, they get converted to a portable format before sent to the next stage, e.g.:
+Notifications received by a source repository, such as GitHub, OneDrive, Google Drive, etc. have a provider specific format, e.g. OneDrive uses the format described on Microsoft's [docs](https://docs.microsoft.com/en-us/graph/api/driveitem-delta?view=graph-rest-1.0&tabs=http) site. When those notifications are received in the respective listener (e.g. `onedrive-change-listener` for OneDrive), they get converted to a portable format before sent to the next stage, e.g.:
 
 ```
 {
@@ -17,7 +17,7 @@ Notifications received by a source repository, such as GitHub, OneDrive, Google 
   }
 }
 ```
-The `changes` array contains all an entry per change seen since the last batch of changes was sent, e.g. for OneDrive:
+The `changes` array contains an entry per change seen since the last batch of changes was sent, e.g. for OneDrive this might look as follows:
 
 ```
 {
