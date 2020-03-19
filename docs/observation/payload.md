@@ -10,6 +10,7 @@ Notifications received by a source repository, such as GitHub, OneDrive, Google 
 | `ref` | _string_ | GitHub reference or branch name |
 | `changes` | _array_ | [changes](#changes) observed, see below |
 | `mountpoint` | _object_ | [mountpoint](#mountpoint) affected, see below |
+| `provider` | _object_ | provider specific information |
 
 An example payload for OneDrive might look as follows:
 
@@ -24,6 +25,9 @@ An example payload for OneDrive might look as follows:
   ],
   "mountpoint": {
     ...
+  },
+  "provider": {
+    "driveId": "b!-RIj2DuyvEyV1T4NlOaMHk8XkS_I8MdFlUCq1BlcjgmhRfAj3-Z8RY2VpuvV_tpd"
   }
 }
 ```
@@ -36,10 +40,10 @@ The `changes` array contains an entry per change seen since the last batch of ch
 |------|------|-------------|
 | `path` | _string_ | item path, **required** for _added_ items, **optional** for _modified_ or _deleted_ items |
 | `time` | _string_ | time of change |
-| `type` | _string_ | change type. one of `modified`, 'added', 'deleted'<sup>1</sup> |
+| `type` | _string_ | change type. one of `modified`, `added`, `deleted`<sup>1</sup> |
+| `uid`  | _string_ | unique identifier, required |
 
 <sup>1</sup> If the provider is not able to distinguish between `added` and `modified`, `modified` should be used.
-| `uid`  | _string_ | unique identifier, required |
 
 An example follows:
 ```
