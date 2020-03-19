@@ -10,7 +10,7 @@ Create a new repository with the name `helix-…`
 
 ## Stuff you can do yourself
 
-- [ ] Use [`helix-service`](https://github.com/adobe/helix-service) template or run `npm init @adobe/helix-library`
+- [ ] run `npm init @adobe/helix-library` or `npm init @adobe/helix-service`
 - [ ] Add topics to the repository, at least `helix`
 - [ ] Add the group "[Project Helix Admins](https://github.com/orgs/adobe/teams/project-helix-admins)" with *Admin* permissions to the list of collaborators
 - [ ] Add the group "[Project Helix Developers](https://github.com/orgs/adobe/teams/project-helix-developers)" with *Write* permissions to the list of collaborators (Project Helix Guests will be taken care of automatically) 
