@@ -6,7 +6,7 @@ Notifications received by a source repository, such as GitHub, OneDrive, Google 
 |------|------|-------------|
 | `type` | _string_ | provider type, possible values are `onedrive`, `github` or `google`. |
 | `owner` | _string_ | GitHub owner |
-| `repo` | _string_ | GitHub repository |
+| `repo` | _string_ | GitHub repository name |
 | `ref` | _string_ | GitHub reference |
 | `changes` | _array_ | [changes](#changes) observed, see below |
 | `mountpoint` | _object_ | [mountpoint](#mountpoint) affected, see below |
