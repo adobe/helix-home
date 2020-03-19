@@ -36,7 +36,9 @@ The `changes` array contains an entry per change seen since the last batch of ch
 |------|------|-------------|
 | `path` | _string_ | item path, **required** for _added_ items, **optional** for _modified_ or _deleted_ items |
 | `time` | _string_ | time of change |
-| `type` | _string_ | `modified` for added or modified items, or `deleted` |
+| `type` | _string_ | change type. one of `modified`, 'added', 'deleted'<sup>1</sup> |
+
+<sup>1</sup> If the provider is not able to distinguish between `added` and `modified`, `modified` should be used.
 | `uid`  | _string_ | unique identifier, required |
 
 An example follows:
