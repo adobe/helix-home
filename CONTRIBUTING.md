@@ -168,6 +168,22 @@ For example: https://github.com/adobe/helix-cli/releases/tag/v0.3.1
 In the future, the release notes can be generated automatically from the information from git issues
 and commits.
 
+# Other Questions
+
+## What do all the bots do in my code?
+
+Most of the bots are benign and won't harm you as long as you don't make any sudden moves. The bots you will find in Project Helix repositories are:
+
+- Semantic Release bot: triggered when a release is being made and leaves a comment on all issues and pull requests affected by the release
+- Semantic Release Comment bot: triggered by commits on pull requests. Leaves a comment telling you what kind of release merging the pull request will cause.
+- Commitlint: triggered by commits on pull requests. Tells you when commit messages don't conform to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format
+- Renovatebot: triggered by NPM releases of modules we depend on. Creates pull requests that update dependencies. Renovatebot is allowed to merge some pull requests it's creating automatically.
+- Renovate auto-approver: triggered by pull requests made by Renovatebot. Automatically approves these pull requests in repositories that require approvals for pull requests
+- CircleCI: triggered by commits, runs the continuous integration and deployment pipelines
+- Codecov: triggered by successful test runs, tells you if code coverage went down
+- LGTM: triggered by all commits, performs a deep analysis of your code and finds issues that eslint can't see
+- Dependabot: triggered by security vulnerabilities in our dependencies, creates pull requests that updates these dependencies to a version that has a fix. There is some overlap with Renovatebot, but Dependabot works for some transitive dependencies that Renovate can't do anything about
+- Org Project bot: triggered by all issue updates, adds issues to a large org-wide GitHub board. 
 
 
 
