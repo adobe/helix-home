@@ -107,4 +107,14 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 
 ### Demos
 
-TBD
+1. The Blog & Authoring Experience (David)
+1. The Blog & Google Lighthouse Score (Rofe)
+1. The Blog & Adobe Goodness (ChrisM)
+1. Helix Queries (Lars)
+1. Local Dev Improvements & helix-fetch (Stefan)
+1. The Blog & Bulk Editor & Tagger (Toby)
+1. Helix Admin Experience (Andreas)
+1. The Blog & SEO / helix-dispatch & helix-fetch (Julien)
+1. The Blog & New Design (Marquise)
+
+Recording: https://bluejeans.com/s/53L4v/
