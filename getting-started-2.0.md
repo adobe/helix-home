@@ -1,11 +1,11 @@
 
 ---
 
-_**DISCLAIMER:** This guide is work in progress and documents a desired future scenario. Parts of it may not work as described (or at all) yet, and links to resources may not exist yet. If you wish to get up to speed on Helix, please refer to the [current getting started guide](./getting-started.md) for the time being._
+_The purpose of this guide is to help you get familiar with Helix Pages. If you wish to dive deeper into an own code scenario (aka_ Helix proper _), please refer to the [getting started guide](./getting-started.md)._
 
 ---
 
-# Getting Started with Helix
+# Getting Started with Helix Pages
 
 - Already familiar with GitHub, Markdown, HTML and CSS? You may want to proceed directly to the [first example](http://github.com/adobe/helix-example-basic "First example"): This repository shows how to publish content, as well as customize headers, footers and overall styling of your pages.
 - If you also feel comfortable with Node.js programming, please continue with the [advanced example](http://github.com/adobe/helix-example-advanced "Advanced example"): This repository explains how to add custom code to take control over the rendering pipeline.
@@ -14,7 +14,7 @@ _**DISCLAIMER:** This guide is work in progress and documents a desired future s
 
 
 # Beginner's Tutorial
-This guide helps you get started with Helix with very little effort, then progressively discover more features as you need them.
+This guide helps you get started with Helix Pages with very little effort, then progressively discover more features as you need them.
 
 
 ## Step 1: Publish your content (look ma, no hands!)
@@ -118,50 +118,3 @@ Type `git add style.css && git commit -m"custom styling" && git push`
 > **Hint:** You can stop the server using the `ctrl + c` key combination.
 
 > **Hint:** If you use `hlx up` with the `--no-open` argument, it won't open a browser window.
-
-## Step 5: Add your own code
-
-> You'll need:
-> - basic JavaScript knowledge
-> - basic HTML knowledge
-
-_Helix Pages_ allows you to control the rendering of your content by adding a custom HTL template and JavaScript code. You could do the same directly on GitHub, but since we already set up our local development environment, we'll stick with that:
-
-1. Open your terminal and change to the directory where you checked out your GitHub repository, e.g. type `cd ~/code/<my-repo>`.
-2. Type `mkdir src && cd src`  
-This will create a `src` directory and change to it.
-3. Add an `html.pre.js` file in there using your favorite text editor or IDE. We suggest you start with [this example](https://raw.githubusercontent.com/adobe/helix-example-advanced/master/src/html.pre.js "default html.pre.js").
-4. Inside the `pre` function, add something new to the `context.content` object, e.g.
-```js
-context.content.time = `${new Date()}`;
-```
-5. Save your changes.
-6. Add an `html.htl` in the same folder. Again, you can inspire from [this example](https://raw.githubusercontent.com/adobe/helix-example-advanced/master/src/html.htl "default html.htl").
-7. Display your custom addition., e.g. right after the `<body>` tag, add:
-```html
-<div>
-  <em>Helix Pages generated this page on ${content.time}</em>
-</div>
-```
-8. Save the changes.
-9. Reload [`http://localhost:3000/`](http://localhost:3000/ "your local Helix server") to see the page rendered locally using your custom code.
-10. Persist your local style changes to your GitHub repository. For example,  
-Type `git add src/* && git commit -m"custom code" && git push`
-11. Go to `https://<my-repo>-<my-name>.project-helix.page/` and observe the published page being rendered with your custom code:  
-![](./dummy.png "TODO: Helix Pages rendering your content with custom code")
-
-## Step 6: Add your own domain
-
-Coming soon...
-
-## Step 7: Separate code and content
-
-> You'll need:
-> - An [Adobe I/O Runtime](https://github.com/adobe/project-helix/blob/master/SERVICES.md#adobe-io-runtime) account
-> - A [Fastly](https://github.com/adobe/project-helix/blob/master/SERVICES.md#fastly) account
-
-Coming soon ... (for now, see [here](https://github.com/adobe/helix-home/blob/master/getting-started.md#set-up-github-repositories))
-
-## Step 8: Proxy your legacy web site
-
-Coming soon ... (for now, see [here](https://github.com/adobe/helix-shared/blob/master/docs/proxystrain.schema.md))
