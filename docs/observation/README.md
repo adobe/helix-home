@@ -101,3 +101,7 @@ when the helix-bot receives a repository change event, it will
    `https://adobeioruntime.net/api/v1/web/helix-pages/observation/feed/myowner/myrepo/master`
 
 
+## Example
+
+![Observation](Observation.png)
+
