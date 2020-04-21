@@ -4,22 +4,27 @@ Notifications received by a source repository, such as GitHub, OneDrive, Google 
 
 | Name | Type | Description |
 |------|------|-------------|
-| `type` | _string_ | provider type, possible values are `onedrive`, `github` or `google`. |
 | `owner` | _string_ | GitHub owner |
 | `repo` | _string_ | GitHub repository name |
 | `ref` | _string_ | GitHub reference or branch name |
+| `observation` | _object_ | [observation](#observation) data, see next section |
+
+## Observation
+
+The `observation` contains the changes observed, the mountpoint affected and provider specific data:
+
+| Name | Type | Description |
+|------|------|-------------|
+| `type` | _string_ | provider type, possible values are `onedrive`, `github` or `google`. |
 | `changes` | _array_ | [changes](#changes) observed, see below |
 | `mountpoint` | _object_ | [mountpoint](#mountpoint) affected, see below |
 | `provider` | _object_ | provider specific information |
 
-An example payload for OneDrive might look as follows:
+An example observation for OneDrive might look as follows:
 
 ```
 {
   "type": "onedrive",
-  "owner": "me",
-  "repo": "myrepo",
-  "ref": "master",
   "changes": [
     ...
   ],
