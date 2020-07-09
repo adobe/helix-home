@@ -12,7 +12,7 @@
    ```
    copy the `driveId`
 
-5. get the `client-state` secret from the helix-onedrive-listener/secrets/secrets.env :-)   
+5. get the `client-state` secret from the `helix-onedrive-listener/secrets/secrets.env` :-)   
 4. create subscription: 
    ```
    $ 1d sub create \
@@ -24,20 +24,20 @@
 ## set up service bus
 
 1. go to [service bus in azure portal](https://portal.azure.com/#@adobe.onmicrosoft.com/resource/subscriptions/07d1d753-4bfc-4012-9958-35592a40a3fa/resourceGroups/helix-prod/providers/Microsoft.ServiceBus/namespaces/hlxobs/topics) 
-2. create new topic: `tripodsan/helix-pages-test/master`
+2. create a new topic: `tripodsan/helix-pages-test/master`
 3. go to the topic
 4. create a new subscription: `cache-flush`
 
 ## set up task-controller
 
-So goal is to create a trigger for the repository that is observed, which will invoke all the task-controllers that are
+The goal is to create a trigger for the repository that is observed, which will invoke all the task-controllers that are
 subscribed to it. currently this is only possible by creating a bunch of openwhisk objects
 
 ![observation-trigger](./observation-trigger.png)
 
-- The `trigger` is triggered and sets the `TOPIC_NAME` param to the payload.
+- The `trigger` is triggered and sets the `AZURE_SERVICE_BUS_TOPIC_NAME` param to the payload.
 - Via the `rule` it invokes the `sequence` that has 2 components:
-  - the `bound/proxy` action, that lives in the bound package and adds the `SUBSCRIPTION` param to the payload
+  - the `bound/proxy` action, that lives in the bound package and adds the `AZURE_SERVICE_BUS_SUBSCRIPTION_NAME` param to the payload
   - the `controller@latest` action, which is a sequence that contains the real `controller@v1.2.3` action.
   
 
