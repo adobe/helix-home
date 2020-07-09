@@ -47,6 +47,7 @@ The `changes` array contains an entry per change seen since the last batch of ch
 | `time` | _string_ | time of change |
 | `type` | _string_ | change type. one of `modified`, `added`, `deleted`<sup>1</sup> |
 | `uid`  | _string_ | unique identifier, required |
+| `provider` | _object_ | provider specific information |
 
 <sup>1</sup> If the provider is not able to distinguish between `added` and `modified`, `modified` should be used.
 
