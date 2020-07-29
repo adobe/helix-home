@@ -186,3 +186,7 @@ All Markdown documents should read well and logically when viewed through Github
 ### Nobody designs a list view before 2022
 
 Let's design interfaces that are bold now, we can go back to safe and boring later on.
+
+### IE11 is not supported
+
+We will put no effort into making our code compatible with IE.
