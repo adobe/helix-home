@@ -189,4 +189,4 @@ Let's design interfaces that are bold now, we can go back to safe and boring lat
 
 ### IE11 is not supported
 
-It is dead to us. And soon to everybody else, too.
+We will put no effort into making our code compatible with IE.
