@@ -16,7 +16,7 @@ Project Helix Show & Tells are on ongoing series of web meetings where Helix Pag
 
 > How will this work?
 
-We will three to four presenters for each show & tell. Presenters don't need slides, just a screen share of their site and a link to their GitHub repository.
+There will be three to four presenters for each show & tell. Presenters don't need slides, just a screen share of their site and a link to their GitHub repository.
 
 Each presentation will take between 7 and 10 minutes, followed by 7 to 10 minutes of discussion.
 
