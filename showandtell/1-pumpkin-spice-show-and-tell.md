@@ -4,7 +4,7 @@
 
 ## The Pumpkin Spice Show & Tell
 
-Oct 2020, Online
+Oct 2020 9AM, Online
 
 ---
 
@@ -30,12 +30,12 @@ The session will be recorded and shared here.
 
 #### Date and Time
 
-Still TBD
+Oct 27 2020 9AM PT
 
 ### Location
 
 > Just give me the URL!
 
-[https://bluejeans.com/743383165](https://bluejeans.com/743383165)
+<https://bluejeans.com/477665012>
 
 Remote Attendance Only
