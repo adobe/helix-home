@@ -37,7 +37,7 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 
 ## Hackathons
 		
- There's always a next [hackathon](hackathons/). Check the list and sign up!
+ There's always a next [hackathon](hackathons/README.md). Check the list and sign up!
 
 ## Communication
 
