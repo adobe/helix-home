@@ -8,6 +8,8 @@
 - [Home](/README.md)
 - [Getting Started](/getting-started.md)
 - [Hackathons](/hackathons/README.md)
+- [Show & Tell](/showandtell/README.md)
+- [Stay Aparts](/togetherapart/README.md)
 - [Manifesto](/manifesto.md)
 - [Architecture](/architecture.md)
 
