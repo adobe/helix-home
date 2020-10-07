@@ -10,7 +10,7 @@ Oct 27th 2020, 9 AM PT, Online
 
 (See the [Archive](./README.md) for past Show & Tells – there aren't any, this will be the first one)
 
-Project Helix Show & Tells are on ongoing series of web meetings where Helix Pages users share the sites they have built with Helix, share feedback and inspiration with other users, and get tips & tricks from Project Helix developers.
+Project Helix Show & Tells are a quarterly series of web meetings where Helix users present the sites they have built with Helix, share feedback and inspiration with the group, and get tips & tricks from Project Helix developers.
 
 ### How it Works
 
