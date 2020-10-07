@@ -66,6 +66,7 @@ Put down the topic and the people that would like to discuss it:
 > Who is going to be there? Can I come?
 
 1. @trieloff 
+1. @rofe
 
 Everyone is invited.
 
