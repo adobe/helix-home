@@ -4,7 +4,7 @@
 
 ## The Pumpkin Spice Show & Tell
 
-Oct 2020 9AM, Online
+Oct 27th 2020, 9 AM PT, Online
 
 ---
 
