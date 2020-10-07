@@ -1,5 +1,7 @@
 # Project Helix Hackathons
 
+We don't have hackathons at the moment, but monthly [Show & Tells](../showandtell/README.md) and bi-monthly [Stay Aparts](../togetherapart/README.md)
+
 ## Upcoming Hackathons
 
 9. [DATE UNKNOWN, Barcelona, Spain](9-bcn.md)
