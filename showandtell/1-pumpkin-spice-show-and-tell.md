@@ -24,7 +24,7 @@ The session will be recorded and shared here.
 
 1. Adobe Blog (@TBD)
 2. Adobe Landing Pages (@TBD)
-3. TBD (@TBD)
+3. Firefly Codelabs (@[icaraps](https://github.com/icaraps))
 
 #### Date and Time
 
