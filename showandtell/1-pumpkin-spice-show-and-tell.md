@@ -30,7 +30,10 @@ The session will be recorded and shared here.
 
 #### Date and Time
 
-Oct 27 2020 9AM PT
+Oct 27 2020
+- San Jose: 9 am
+- Basel: 5 pm
+- Tokyo: 1 am (Oct 28th)
 
 ### Location
 
