@@ -4,13 +4,17 @@
 
 ## Spooky Season Edition
 
-Oct 2020, Online
+> What's spookier than a black cat during a moonlit night? Being on call during a major Adobe event!
+
+Oct 20, 2020, Online
 
 ---
 
 (See the [Archive](./README.md) for past Get Togethers and Stay Aparts – there aren't any, this will be the first one)
 
 We can't have any [Hackathons](../hackathons/README.md) this year, so we get together by staying apart in a six-hour virtual hangout session to chat, code, and snack.
+
+For the first Stay Apart, we selected the date and time of the Adobe MAX conference so that we can give emotional and actual support to the on-call team members on that day.
 
 ### Organization
 
@@ -20,7 +24,11 @@ No. The main goal is to chat and socialize, any coding that will be done is a pl
 
 #### Date and Time
 
-Still TBD
+October 20th, 2020, Online
+
+- San Jose: 4 am to 10 am
+- Basel: 1 pm to 7 pm
+- Tokyo: 8 pm to 2 am
 
 #### How it Works
 
@@ -51,6 +59,8 @@ Remote Attendance Only
 
 Put down the topic and the people that would like to discuss it:
 
+* keeping the blog up and running during MAX announcements
+* keeping Adobe Landing Pages up and running during MAX announcement-induced beta sign-up rushes
 * operationalizing breaking changes @trieloff @tripodsan
 
 ### Attendees
