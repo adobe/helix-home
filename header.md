@@ -1,3 +1,4 @@
+<script src="/default-wrap.js"></script>
 ![Helix](/helix_logo_dark.png "") Home
 
 [&#9776;](#menu)
