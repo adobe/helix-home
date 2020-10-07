@@ -2,13 +2,11 @@
 
 # Project Helix Get Together/Stay Apart I
 
-## Spooky Season Edition
-
-> What's spookier than a black cat during a moonlit night? Being on call during a major Adobe event!
-
-Oct 20, 2020, Online
+Spooky Season Edition — October 20, 2020, Online
 
 ---
+
+> What's spookier than a black cat during a moonlit night? Being on call during a major Adobe event!
 
 (See the [Archive](./README.md) for past Get Togethers and Stay Aparts – there aren't any, this will be the first one)
 

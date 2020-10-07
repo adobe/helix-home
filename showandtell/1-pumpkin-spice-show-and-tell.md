@@ -2,9 +2,7 @@
 
 # Project Helix Show & Tell I
 
-## The Pumpkin Spice Show & Tell
-
-Oct 27th 2020, 9 AM PT, Online
+The Pumpkin Spice Show & Tell — October 27th 2020, 9 AM PT, Online
 
 ---
 
