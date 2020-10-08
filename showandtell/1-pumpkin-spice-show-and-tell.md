@@ -22,7 +22,7 @@ The session will be recorded and shared here.
 
 ### Agenda
 
-1. Adobe Blog (@TBD)
+1. Adobe Blog (Jennie – Adobe Comms Team)
 2. Adobe Landing Pages (@[christinemix](https://github.com/christinemix))
 3. Firefly Codelabs (@[icaraps](https://github.com/icaraps))
 
