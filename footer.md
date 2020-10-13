@@ -1,1 +1,1 @@
-Copyright © 2012 Adobe, Inc.
+Copyright © 2020 Adobe, Inc.
