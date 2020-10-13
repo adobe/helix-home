@@ -6,8 +6,6 @@
 
 ## TL;DR?
 
-![logo](helix_logo.png)
-
 * [Start Developing Your First Helix Project in 60 Seconds](https://www.project-helix.io/)
 
 ## Background
