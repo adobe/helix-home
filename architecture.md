@@ -150,13 +150,13 @@ Direct storage of assets in git is **NOT RECOMMENDED**. When assets are directly
 Git LFS allows git to store assets externally, but requires some setup on all machines.  
 It is higly recommended to leverage LFS for all the binaries. This will keep the authoring workflows, consisting of git cloning and pushing, efficient and the entire git repo smaller. Assuming assets are stored in a subdirectory `/assets`, a `.gitattributes` file in there could enable LFS for all the binaries in it, not affecting markdown files.
 
-Git LFS will still place the requirement on content authors to download the version of the binaries for the branch they are working on. For this reason, it is recommended not to store master assets in github, only renditions with adequate quality to serve to Fastly.
+Git LFS will still place the requirement on content authors to download the version of the binaries for the branch they are working on. For this reason, it is recommended not to store full-size assets in github, only renditions with adequate quality to serve to Fastly.
 
 [Git LFS setup howto](https://help.github.com/articles/configuring-git-large-file-storage/)
 
 ### DAM Storage
 
-DAM storage, through services such as AEM Assets is **RECOMMENDED** over git storage models, because the master digital asset can be ingested, stored, versioned, etc. without the limitations of git described in [Github Storage](#github-storage). 
+DAM storage, through services such as AEM Assets is **RECOMMENDED** over git storage models, because the full-size digital asset can be ingested, stored, versioned, etc. without the limitations of git described in [Github Storage](#github-storage). 
 
 Most DAM services provide the ability to access a rendition of the content in one of the [Fastly formats](#requirements-for-delivery-via-fastly).
 

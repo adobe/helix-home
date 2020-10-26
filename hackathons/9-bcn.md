@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/adobe/helix-home/master/hackathons/9-bcn-alfons-taekema-lvXeO04CxwQ-unsplash.jpg)
+![](https://raw.githubusercontent.com/adobe/helix-home/main/hackathons/9-bcn-alfons-taekema-lvXeO04CxwQ-unsplash.jpg)
 
 # Project Helix Hackathon IX
 [POSTPONED INDEFINITELY]
