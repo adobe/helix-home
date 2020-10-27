@@ -79,8 +79,8 @@ git add helix-config.yaml && git ci -m"added content repo" && git push
 
 ### Pre-Requisites
 
-1. Get [access](https://github.com/adobe/project-helix/blob/master/SERVICES.md#adobe-io-runtime) to Adobe I/O Runtine.
-2. Get [access](https://github.com/adobe/project-helix/blob/master/SERVICES.md#fastly) to Fastly.
+1. Get [access](https://github.com/adobe/project-helix/blob/main/SERVICES.md#adobe-io-runtime) to Adobe I/O Runtine.
+2. Get [access](https://github.com/adobe/project-helix/blob/main/SERVICES.md#fastly) to Fastly.
 3. Install `wsk`
     1. `brew install wsk` (or [download](https://github.com/apache/incubator-openwhisk-cli/releases) and install OpenWhisk-client manually)
     2. `wsk property set --apihost runtime.adobe.io --auth <wsk_auth> --namespace <wsk_namespace>`
