@@ -26,6 +26,14 @@ The session will be recorded and shared here.
 2. Adobe Landing Pages (@[christinemix](https://github.com/christinemix))
 3. Firefly Codelabs (@[icaraps](https://github.com/icaraps))
 
+---
+
+### Recording
+
+https://vimeo.com/473045300
+
+---
+
 #### Date and Time
 
 Oct 27 2020
