@@ -24,7 +24,7 @@ No. The main goal is to chat and socialize, any coding that will be done is a pl
 
 #### Date and Time
 
-October 20th, 2020, Online
+November 24th, 2020, Online
 
 - San Jose: 4 am to 10 am
 - Basel: 1 pm to 7 pm
