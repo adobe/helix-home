@@ -72,6 +72,7 @@ Our goal is to get some parts of Helix (such as the Pipeline or resolve-git-ref)
 1. @trieloff 
 1. @rofe
 1. @tripodsan
+1. @kptdobe
 
 Everyone is invited, attendance is not mandatory.
 
