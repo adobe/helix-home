@@ -4,7 +4,7 @@ These Stay Aparts are virtual Get Togethers, like a single-day, remote [Hackatho
 
 ## Upcoming Stay Aparts
 
-2. 24. November 2020, [Multi Cloudy Edition Stay Apart](2-cloudy.md)
+2. November 24, 2020, [Multi Cloudy Edition Stay Apart](2-cloudy.md)
 3. December 2020, 'Tis is the Season Stay Apart
 4. February 2021, Do You Want to Build a Snowman Stay Apart
 
