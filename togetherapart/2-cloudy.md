@@ -28,7 +28,7 @@ November 24th, 2020, Online
 
 - San Jose: 4 am to 10 am
 - Basel: 1 pm to 7 pm
-- Tokyo: 8 pm to 2 am
+- Tokyo: 9 pm to 2 am
 
 #### How it Works
 
