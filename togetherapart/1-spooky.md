@@ -43,7 +43,7 @@ October 20th, 2020, Online
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-[https://bluejeans.com/743383165](https://bluejeans.com/743383165)
+[https://bluejeans.com/652115826](https://bluejeans.com/652115826)
 
 Remote Attendance Only
 
