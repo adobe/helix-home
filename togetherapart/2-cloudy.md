@@ -57,13 +57,19 @@ Remote Attendance Only
 
 > What are you planning to discuss during the day?
 
-Our goal is to get some parts of Helix (such as the Pipeline or resolve-git-ref) to run in as many serverless or edge compute platforms as possible. Interesting Platforms are:
+1. Our goal is to get some parts of Helix (such as the Pipeline or resolve-git-ref) to run in as many serverless or edge compute platforms as possible. Interesting Platforms are:
 
 - Azure Functions
 - AWS Lambda
 - Fastly Compute@Edge
 - Cloudflare Workers
 - Google Cloud Functions
+
+2. Improve automation
+
+_By @tripodsan_
+> everytime renote creates a PR for a service, it fails to run some of the CI checks, due to the fact, that the renovate user is not authorized to access our CI credentials. To mitigate this problem, we created a github action to pushes an empty commit in order to trigger CI again with another user. So now the checks pass, but since the PR was modified, renovate will no longer auto-merge the PR. the result is, that we manually need to merge in dozens of PRs every day.  
+let's quickly discuss the options and maybe hack a POC.
 
 ### Attendees
 
