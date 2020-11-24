@@ -71,6 +71,11 @@ _By @tripodsan_
 > everytime renote creates a PR for a service, it fails to run some of the CI checks, due to the fact, that the renovate user is not authorized to access our CI credentials. To mitigate this problem, we created a github action to pushes an empty commit in order to trigger CI again with another user. So now the checks pass, but since the PR was modified, renovate will no longer auto-merge the PR. the result is, that we manually need to merge in dozens of PRs every day.  
 let's quickly discuss the options and maybe hack a POC.
 
+3. How to get execution time stable
+
+_By @kptdobe_
+> some stats I recently made reveals that the same request takes between 1.5s to more 12s (sometimes even times out). This is compeletely unpredictable and have many causes (hit sharepoint or not, some cache somewhere...). While it is fine to have 2 cases (cache vs non-cached) and some fluctuations (cold start...), I think this should be in a decent range (1 or 2s max, not 10+s) in order in a second step to be able to work on making it faster. Let's discuss our options to understand why and build a plan to solve this critical problem.
+
 ### Attendees
 
 > Who is going to be there? Can I come?
