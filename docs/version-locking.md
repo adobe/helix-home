@@ -70,6 +70,11 @@ If the `versions.yaml` also contains an entry for the `pipeline`, it updates the
 - [ ] The `ow-x-version-lock` header must be strain dependent
 - [ ] The `dispatch` version must be strain dependent
 
+- [ ] all other services that are called directly from the VCL must have strain dependent versions:
+  - [ ] `purge` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L626
+  - [ ] `query-index` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L711
+  - [ ] `content-proxy` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L1130
+ 
 ## Selecting the (default) version set
 
 As long as the project is _surfed_ on the specific version branch (eg `https://breaking-december--pages--adobe.com/`), the branch name automatically selects the version set (via the strain). But once the feature branch is merged back to `main`, this information is lost. 
