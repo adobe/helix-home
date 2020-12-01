@@ -26,5 +26,5 @@ Create a new repository with the name `helix-…`
 ## Stuff you need an Adobe Org Admin for
 - [ ] Enable [OrgProjectBot](https://github.com/organizations/adobe/settings/installations/690408)
 - [ ] Enable [Renovatebot](https://github.com/organizations/adobe/settings/installations/1325372)
-
+- [ ] Share the [`ADOBE_BOT_NPM_TOKEN` org secret](https://github.com/organizations/adobe/settings/secrets/actions/ADOBE_BOT_NPM_TOKEN)
 
