@@ -68,7 +68,7 @@ If the `versions.yaml` also contains an entry for the `pipeline`, it updates the
 ### Missing features
 
 - [ ] The `ow-x-version-lock` header must be strain dependent
-- [ ] The `dispatch` version must be strain dependant
+- [ ] The `dispatch` version must be strain dependent
 
 ## Selecting the (default) version set
 
