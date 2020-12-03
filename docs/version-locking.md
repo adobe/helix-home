@@ -116,8 +116,8 @@ And so on... As long a 1 project still contains a reference to an old _version_,
 Ideally the developer just uses git and the helix command line to:
 
 1. checkout his project
-2. running `hlx` tells him that there are new upcomming breaking changes
-3. he can choose to automatically _start testing_ the new changes. the cli would create the respective branch, create the `helix-versions.txt`, update helix pages
+2. running `hlx` tells him that there are new upcoming breaking changes
+3. They can choose to automatically _start testing_ the new changes. the cli would create the respective branch, create the `helix-versions.txt`, update helix pages
 4. the simulator works correctly on the test branch and the developer can update his code so that his website works again
 5. the developer can push the branch to github and test the changes remotely.
 6. once satisfied, the developer creates a PR can eventually merges the changes back to `main`.
