@@ -67,13 +67,13 @@ If the `versions.yaml` also contains an entry for the `pipeline`, it updates the
 
 ### Missing features
 
-- [ ] The `ow-x-version-lock` header must be strain dependent
-- [ ] The `dispatch` version must be strain dependent
+- [x] The `ow-x-version-lock` header must be strain dependent
+- [x] The `dispatch` version must be strain dependent
 
-- [ ] all other services that are called directly from the VCL must have strain dependent versions:
-  - [ ] `purge` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L626
-  - [ ] `query-index` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L711
-  - [ ] `content-proxy` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L1130
+- [x] all other services that are called directly from the VCL must have strain dependent versions:
+  - [x] `purge` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L626
+  - [x] `query-index` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L711
+  - [x] `content-proxy` https://github.com/adobe/helix-publish/blob/c8eeba104aed31ba8107d5d689d8c63d8546933b/layouts/fastly/helix.vcl#L1130
  
 ## Selecting the (default) version set
 
@@ -81,9 +81,9 @@ As long as the project is _surfed_ on the specific version branch (eg `https://b
 
 Using preflight requests and helix pages version picker service allow to define additional information that can be used in strain conditions:
 
-The default branch of a helix pages project might have a `helix-version.txt` file which contains the name of a version set (eg. `breaking-december`). The version picker service will respond with a `x-helix-version` header, containing the name of the version set. eg: `x-helix-version: breaking-december`.
+The default branch of a helix pages project might have a `helix-version.txt` file which contains the name of a version set (eg. `breaking-december`). The version picker service will respond with a `x-pages-version` header, containing the name of the version set. eg: `x-pages-version: breaking-december`.
 
-The preflight request login in the VCL will set the `preflight.x-helix-version` condition which will select the correct strain.
+The preflight request login in the VCL will set the `preflight.x-pages-version` condition which will select the correct strain.
 
 ## Implications
 
@@ -107,8 +107,7 @@ And so on... As long a 1 project still contains a reference to an old _version_,
 
 ### Missing features
 
-- [ ] The `helix-version-picker` https://github.com/adobe/helix-home/issues/167
-- 
+- [x] The `helix-version-picker` https://github.com/adobe/helix-home/issues/167
 
 
 ## Developer Experience (customer)
