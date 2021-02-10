@@ -2,7 +2,7 @@
 
 This document explains how to setup indexing in your project. You'll need the following:
 - A shared documents folder in OneDrive
-- A Github repository (defined by Github *owner*, *repository name* and *branch*, *tag* or *reference*)
+- A Github repository (defined by Github *owner*, *repository name* and *reference* (i.e. *branch*, *tag* or *commit sha*)
 - An Azure subscription
 - An Adobe I/O Runtime namespace
 
