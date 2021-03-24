@@ -1,6 +1,6 @@
 # Project Helix Architecture
 
-![](Helix%20Architecture.png)
+![](./Helix%20Architecture/Helix%20Stack.png)
 
 ## Preface
 
