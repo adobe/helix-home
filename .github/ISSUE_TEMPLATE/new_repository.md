@@ -18,8 +18,6 @@ Create a new repository with the name `helix-…`
 - [ ] Set the repository description
 - [ ] Uncomment and adjust the `helix-post-deploy/monitoring` command in `.circleci/config.yaml`: decide if your service falls under Development, Publishing or Delivery. (note: failures in the latter two categories will ping on-call engineers on weekends!) See https://status.project-helix.io for reference. (*skip for libraries*)
 - [ ] Set up [CircleCI](https://circleci.com/add-projects/gh/adobe)
-- [ ] Follow the project in Slack channel [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/)
-> Open the [`#helix-noisy`](https://cq-dev.slack.com/archives/C9HH8J553/) Slack channel, then type `/github subscribe adobe/helix-…`
 
 ## Stuff you need an Adobe Org Admin for
 - [ ] Enable [Renovatebot](https://github.com/organizations/adobe/settings/installations/1325372)
