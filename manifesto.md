@@ -39,17 +39,17 @@ In that order.
 
 Always.
 
+### Ops reliability wins `#a`
+
+Simple, Fast and Up beats elegant.
+
 ### Global By Design `#p`
 
 As global as the web with regards to languages, delivery, and performance
 
 ### Latency is not an option. `#p`
 
-Things are fast. <300ms fast. always.
-
-### Resources and Events `#a`
-
-Everything is a resource, every change an event. 
+Uncached things are fast. <300ms fast. always.
 
 ### APIs first `#a`
 
@@ -89,7 +89,7 @@ The goal of the service is not to deliver features, but to get jobs done for our
 
 ### Extensible Delivery `#p`
 
-URI, CSS, Client Code ... Edge ... Server Code?
+URI, CSS, Client Code ... Edge ... (Server Code?)
 
 ### Embrace Authoring where it happens `#p`
 
@@ -118,7 +118,7 @@ Make maximum use of available services.
 
 ### Lighthouse Score `#a`
 
-Fast and accessible. With tools to help improve enduser performance.
+The goal is 100. Don't give it up.
 
 ### Lean and Mean `#a`
 
@@ -135,10 +135,6 @@ Support for simple local development is imperative. Low entry barrier.
 ### AI/ML `#t`
 
 Power content, workflows, designs, and operations.
-
-### Powerpointless `#t`
-
-We communicate ideas through writing and status through issue trackers and automated dashboards 
 
 ### Don't let your doc/sheet get weird `#a`
 
