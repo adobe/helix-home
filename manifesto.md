@@ -21,7 +21,7 @@ We are a diverse team in every respect.
 
 ### No Meetings `#t`
 
-Virtual Get-togethers, Show-&-Tells and [hackathons](./hackathons/README.md) only.
+(Virtual) Get-togethers, Show-&-Tells and [hackathons](./hackathons/README.md) only.
 
 ### More code, less blah, blah `#c`
 
