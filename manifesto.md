@@ -21,7 +21,7 @@ We are a diverse team in every respect.
 
 ### No Meetings `#t`
 
-Get-togethers and [hackathons](./hackathons/README.md) only.
+(Virtual) Get-togethers, Show-&-Tells and [hackathons](./hackathons/README.md) only.
 
 ### More code, less blah, blah `#c`
 
@@ -39,17 +39,17 @@ In that order.
 
 Always.
 
+### Ops reliability wins `#a`
+
+Simple, Fast and Up beats elegant.
+
 ### Global By Design `#p`
 
 As global as the web with regards to languages, delivery, and performance
 
 ### Latency is not an option. `#p`
 
-Things are fast. <300ms fast. always.
-
-### Resources and Events `#a`
-
-Everything is a resource, every change an event. 
+Uncached things are fast. <300ms fast. always.
 
 ### APIs first `#a`
 
@@ -59,9 +59,9 @@ Everything has an API, REST of course.
 
 period.
 
-### Service, not Software `#a`
+### DevOps: Service, not Software `#a`
 
-The software is secondary, what we build is a service
+The software is secondary, what we build is a service. Pager Duty for everyone.
 
 ### Slack, GitHub issues, email archive `#t`
 
@@ -70,11 +70,9 @@ Discussions and decisions are open, asynchronous and archived.
 ### CI/CD `#t`
 
 Results of commits can be seen in a production environment in 60 seconds or less.
+### MVP Done Right
 
-### No False Minimum Viability `#c`
-
-Consumer-grade quality can't allow false (non-viable) MVPs
-
+It's "minimum" when the team has doubts that it could work. It's viable when users don't care and use it anyway.
 ### Closed Loop `#c`
 
 Listen closely to customer and user feedback. Measure qualitatively and quantitatively.
@@ -91,33 +89,14 @@ If we don’t make a wrong decision once in six months, we are not ambitious eno
 
 The goal of the service is not to deliver features, but to get jobs done for our users and customers. 
 
-### Enable the Marketplace `#p`
-
-Use behance and other marketplaces to source content, design, and apps.
-
 ### Extensible Delivery `#p`
 
-URI, CSS, Client Code, Server Code.
+URI, CSS, Client Code ... Edge ... (Server Code?)
 
-### Extensible Authoring `#p`
+### Embrace Authoring where it happens `#p`
 
-JavaScript → Native Client Code, Server Code.
+Github, Google Drive and One Drive.
 
-### Spark `#`
-
-Start with spark authoring experience.
-
-### Google Docs style collaboration `#p`
-
-See what others do right now in authoring.
-
-### 0-60 in 1.9s `#p`
-
-Enter your domain name, import, done.
-
-### Parametric Design Built-In `#p`
-
-Run your site with content variants, code variants, or configuration variants at any time  
 
 ### JavaScript and Python `#a`
 
@@ -127,13 +106,9 @@ On the server-side JavaScript and Python are used for the respectively intuitive
 
 Native.
 
-### GitHub & Markdown `#a`
+### Copy/Paste not drag and drop `#a`
 
-Anything that smells like a structured document by default stored in markdown in github
-
-### Markdown++ `#a`
-
-Simple formatting, powerful expressions.
+Remember a good drag and drop experience on mobile?
 
 ### Frying Architecture `#a`
 
@@ -143,13 +118,9 @@ Output is assembled on request.
 
 Make maximum use of available services.
 
-### Components & Composition `#a`
+### Lighthouse Score `#a`
 
-Create content, compose content, transform content, deliver content
-
-### REST & SEO `#a`
-
-Are King.
+The goal is 100. Don't give it up.
 
 ### Lean and Mean `#a`
 
@@ -159,10 +130,6 @@ Less code is better. Actively manage the dependency graph to an absolute minimum
 
 a.k.a. polished, but tweakable.
 
-### Content and View are Separate  `#a`
-
-Content must not contain display logic. Display logic must not contain content. Binary content should be re-renderable.
-
 ### Local Development `#t`
 
 Support for simple local development is imperative. Low entry barrier.
@@ -171,17 +138,9 @@ Support for simple local development is imperative. Low entry barrier.
 
 Power content, workflows, designs, and operations.
 
-### `DECISIONS.md` `#t`
+### Don't let your doc/sheet get weird `#a`
 
-Is where we document big decisions and trade-offs.
-
-### Powerpointless `#t`
-
-We communicate ideas through writing and status through issue trackers and automated dashboards 
-
-### Don't let Markdown get weird `#a`
-
-All Markdown documents should read well and logically when viewed through Github's view interface.
+All documents (md, docx, gdoc, xlsx, sheets) should read well and intuitive when viewed/edited through their native interface.
 
 ### Nobody designs a list view before 2022
 
