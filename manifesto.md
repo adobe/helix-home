@@ -70,7 +70,9 @@ Discussions and decisions are open, asynchronous and archived.
 ### CI/CD `#t`
 
 Results of commits can be seen in a production environment in 60 seconds or less.
+### MVP Done Right
 
+It's "minimum" when the team has doubts that it could work. It's viable when users don't care and use it anyway.
 ### Closed Loop `#c`
 
 Listen closely to customer and user feedback. Measure qualitatively and quantitatively.
