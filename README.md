@@ -6,7 +6,7 @@
 
 ## TL;DR?
 
-* [Start Developing Your First Helix Project in 60 Seconds](https://www.project-helix.io/)
+* [Start Developing Your First Helix Project](https://main--acom-kit--auniverseaway.hlx.page/tutorial)
 
 ## Background
 
@@ -16,7 +16,6 @@ Read all of this.
 * [Technology Architecture Vision](architecture.md)
 * [Architecture Deep Dive](docs/architecture.md)
 * [How to contribute](CONTRIBUTING.md)
-* [Getting Started Guide](getting-started.md)
 
 ## Developing Helix
 
@@ -39,4 +38,6 @@ To catch a glimpse of Helix, check out these video walkthoughs:
 
 ## Communication
 
-We hang out in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid) and notifications go to [`#helix-noisy`](https://adobe.slack.com/messages/C9HH8J553/)
+We hang out in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid).
+
+There is also the distribution list `grp-project-helix-friends` (Enterprise Grid) where we send around invites for our bi-weekly Helix Show & Tells.
