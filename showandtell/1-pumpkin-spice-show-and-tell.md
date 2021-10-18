@@ -24,7 +24,7 @@ The session will be recorded and shared here.
 
 1. Adobe Blog (Jennie – Adobe Comms Team)
 2. Adobe Landing Pages (@[christinemix](https://github.com/christinemix))
-3. Firefly Codelabs (@[icaraps](https://github.com/icaraps))
+3. Firefly (aka Adobe Developer App Builder) Codelabs (@[icaraps](https://github.com/icaraps))
 
 
 ---
