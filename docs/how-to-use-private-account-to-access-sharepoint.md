@@ -73,7 +73,6 @@ x-error: Handler onedrive could not lookup hlx:/tripodsan/helix-test/main/privat
 ```
 8. but using the gh-token should work:
 ```console
-curl -si https://admin.hlx3.page/preview/tripodsan/helix-test/main/private/ -H "x-github-token: $GH_TOKEN"
 $ curl -si https://admin.hlx3.page/preview/tripodsan/helix-test/main/private/ -H "x-github-token: $GH_TOKEN"
 HTTP/2 200
 content-type: application/json
@@ -93,9 +92,11 @@ content-length: 1062
 ....
 ```
 9. add the github token to the `github_token` edge dict in the admin fastly service.
+
 | key | value |
 |-----|-------|
 | `helix-test--tripodsan` | `ghp_....` |
+
 10. wait 20-30 seconds, and test again:
 ```console
 $ curl -si https://admin.hlx3.page/preview/tripodsan/helix-test/main/private/
