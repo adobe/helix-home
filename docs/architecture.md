@@ -24,7 +24,7 @@ Project Helix is based on serverless micro services architecture, where each ser
 
 The goal of this document is to provide this explanation and give a lay of the land of the Helix architecture.
 
-The three main areas in Project Helix are:
+The four main areas in Project Helix are:
 
 - **EDGE** delivery through the Fastly Edge computing platform
 - **PIPE** markdown-based content transformation into hypermedia
