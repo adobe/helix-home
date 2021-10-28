@@ -113,7 +113,7 @@ content-length: 1062
 
 Key format: `${repo}--${name}`
 
-11. Wait 20-30 seconds, and test again:
+11. Wait (not clear yet how long but could take up to one hour?), and test again:
 ```console
 $ curl -si https://admin.hlx3.page/preview/tripodsan/helix-test/main/private/
 HTTP/2 200
