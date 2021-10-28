@@ -119,3 +119,6 @@ $ curl -si https://admin.hlx3.page/preview/tripodsan/helix-test/main/private/
 HTTP/2 200
 ....
 ```
+
+12. Indexer
+For the indexer, you need another credential: encrypt the refresh token using the admin with a token Indexer token provided by the helix team.
