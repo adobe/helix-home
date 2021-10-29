@@ -6,7 +6,7 @@
 
 ## TL;DR?
 
-* [Start Developing Your First Helix Project](https://main--acom-kit--auniverseaway.hlx.page/tutorial)
+* [Start Developing Your First Helix Project](https://main--helix-website--adobe.hlx.live/tutorial)
 
 ## Background
 
