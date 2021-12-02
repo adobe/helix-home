@@ -6,7 +6,7 @@
 
 ## Welcome to Project Helix!
 
-* *NEW* Visit our [official website](https://www.hlx.live/)
+* Visit our [official website](https://www.hlx.live/)
 
 ## Background
 
