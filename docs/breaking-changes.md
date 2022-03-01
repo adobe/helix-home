@@ -41,7 +41,11 @@ would:
 
 ## Version locking the admin API
 
-_there is no version locking for the admin API in place yet. but in needed, can be achieved using either path segments or accept headers._
+The admin API has the same version locking capabilities as the pipeline service:
+
+```
+https://admin.hlx.page/status/adobe/helix-website/main?hlx-admin-version=ci2233
+```
 
 ## Version locking publishing
 
