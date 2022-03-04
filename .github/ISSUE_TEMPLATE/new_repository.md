@@ -27,5 +27,5 @@ Create a new service|library repository with the name `helix-…`
 - [ ] Enable [Renovatebot](https://github.com/organizations/adobe/settings/installations/1325372)
 
 ### for libraries
-[ ] Share the [`ADOBE_BOT_NPM_TOKEN` org secret](https://github.com/organizations/adobe/settings/secrets/actions/ADOBE_BOT_NPM_TOKEN)
+- [ ] Share the [`ADOBE_BOT_NPM_TOKEN` org secret](https://github.com/organizations/adobe/settings/secrets/actions/ADOBE_BOT_NPM_TOKEN)
 
