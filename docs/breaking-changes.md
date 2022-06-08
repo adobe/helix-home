@@ -36,8 +36,11 @@ would:
 - select `v3` for the `blog` (e.g. a project that wasn't able to upgrade yet)
 - select `v4` by default.
 
-> Note: currently, there is no automatic breaking change management planned. Customers who need special pipeline versions need to get in contact with helix devops.
+#### Automatic Provisioning
 
+In order to select a different version, the `helix-version.txt`, located in github, can contain the version name.
+as soon as it is updated in github, the helix admin will update the edge dicts accordingly. for changes on the `main` branch
+a `*--repo--owner` entry is added; for changes on other branches a `ref--repo--owner` entry is added.
 
 ## Version locking the admin API
 
