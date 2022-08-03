@@ -2,7 +2,7 @@
 
 # Project Helix Hackathon X
 
-time TBD, place TDB
+[time TBD](https://nuudel.digitalcourage.de/hVTjlqos3vREhoMO) (October or November 2022), place TDB
 
 ---
 
