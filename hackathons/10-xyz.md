@@ -58,6 +58,7 @@ Put down the topic and the people that would like to discuss it:
 1. @trieloff
 2. @tripodsan
 3. @stefan-guggisberg
+4. @kptdobe
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
