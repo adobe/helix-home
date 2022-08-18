@@ -68,6 +68,8 @@ Put down the topic and the people that would like to discuss it:
 5. @rofe
 6. @satyam
 
+The venue can hold 15 people, if we get beyond that, we start a wait list.
+
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
 ### Preparation
