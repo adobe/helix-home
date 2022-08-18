@@ -4,7 +4,7 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 
 ## Upcoming Hackathons
 
-9. [DATE UNKNOWN, Barcelona, Spain](9-bcn.md)
+9. [November 28th-Dec 2nd, Barcelona, Spain](10-bcn.md)
 
 ## Past Hackathons
 
@@ -16,6 +16,7 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 6. [August 2019, Strasbourg, France](6-sxb.md)
 7. [October 2019, Norddal, Norway](7-aes.md)
 8. [February 2020, Palm Springs, CA](8-psp.md)
+9. [Canceled due to Covid-19, Barcelona, Spain](9-bcn.md)
 
 ## Ideas for future Hackathons
 
