@@ -2,7 +2,7 @@
 
 # Project Helix Hackathon X
 
-November 28th to December 2nd 2022, Southern Europe (exact location TBD).
+November 28th to December 2nd 2022, Bacelona, Spain.
 
 ---
 
@@ -37,11 +37,17 @@ We will accomodate remote attendance for select sessions only, the main event is
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-We don't know yet, but will find a great place to meet in a location that is reasonably reachable for the majority of participants. Details to follow.
+![](https://images.squarespace-cdn.com/content/v1/56ec27951d07c09fbfe13fe6/1468275433624-WBMGNDGYPDJ5DSUSM193/Coco-Coffice-Photo-15.jpg?format=2500w)
+
+We have booked the entire [Coco COFFICE in Barcelona, Spain](https://cofficebarcelona.com) – it will be a similar setup to [the Strasbourg Hackathon](6-sxb.md).
+
+**ADDRESS**
+[Calle Manso 17, 08015 Barcelona](https://g.page/cococoffice?share)
+Sant Antoni
 
 #### Transportation
 
-TBD
+Barcelona El-Prat Airport (BCN) is about 20-30 minutes away, can be reached by taxi and public transport and offers many international connections.
 
 ### Goal
 
