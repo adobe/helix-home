@@ -49,6 +49,10 @@ Sant Antoni
 
 Barcelona El-Prat Airport (BCN) is about 20-30 minutes away, can be reached by taxi and public transport and offers many international connections.
 
+#### Accomodation
+
+* Hotel [Barceló Raval](https://g.page/Barcelo-Raval?share) is 15 minutes on foot away and can be booked via TripActions
+
 ### Goal
 
 > What are you planning to show at the end of the week?
