@@ -1,4 +1,4 @@
-![](./10-xyz-dall-e.png)
+![](./10-bcn.png)
 
 # Project Helix Hackathon X
 
