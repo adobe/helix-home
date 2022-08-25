@@ -4,7 +4,7 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 
 ## Upcoming Hackathons
 
-9. [November 28th-Dec 2nd, Barcelona, Spain](10-bcn.md)
+10. [November 28th-Dec 2nd, Barcelona, Spain](10-bcn.md)
 
 ## Past Hackathons
 
