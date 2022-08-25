@@ -73,6 +73,7 @@ Put down the topic and the people that would like to discuss it:
 6. @satyam
 7. @maxed
 8. @dyland
+9. @dominique-pfister
 
 The venue can hold 15 people, if we get beyond that, we start a wait list.
 
