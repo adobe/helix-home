@@ -59,7 +59,9 @@ Barcelona El-Prat Airport (BCN) is about 20-30 minutes away, can be reached by t
 
 Put down the topic and the people that would like to discuss it:
 
-* TDB
+* Headless
+* Experimentation/Personalization and RUM
+* Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
 
 ### Attendees
 
