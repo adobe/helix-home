@@ -2,7 +2,7 @@
 
 # Project Helix Hackathon X
 
-November 28th to December 2nd 2022, Bacelona, Spain.
+November 28th to December 2nd 2022, Barcelona, Spain.
 
 ---
 
