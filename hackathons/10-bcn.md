@@ -42,11 +42,14 @@ We will accomodate remote attendance for select sessions only, the main event is
 We have booked an event space at [Betahaus Barcelona, Spain](https://www.betahaus.es/event-venue) – with enough room for everyone.
 
 **ADDRESS**
+
 [Carrer de Vilafranca 7, 08024 Barcelona, Spain](https://g.page/betahausBCN?share)
 
 #### Transportation
 
 Barcelona El-Prat Airport (BCN) is about 20-30 minutes away, can be reached by taxi and public transport and offers many international connections.
+
+If you booked a hotel near the previous location and aren't looking forward to two 1 hour hikes each day, then the [Hola BCN Card](https://www.travelguide.barcelona/publictransport-tmb/tickets_travelcards/#2) will offer unlimited public transport, including airport transfer.
 
 #### Accomodation
 
