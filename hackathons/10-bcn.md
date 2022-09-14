@@ -1,6 +1,6 @@
 ![](./10-bcn.png)
 
-# Project Helix Hackathon X
+# Project Franklin Hackathon X
 
 November 28th to December 2nd 2022, Barcelona, Spain.
 
@@ -25,7 +25,7 @@ fit neatly into a 45-minute teams meeting.
 
 | Time      | Monday                     | Tuesday                          | Wednesday   | Thursday    | Friday                   |
 | --------: | -------------------------- | -------------------------------- | ----------- | ----------- | ------------------------ |
-|   Morning | -                          | Helix Introduction & Demo Format | Programming | Programming | Demos                    |
+|   Morning | -                          | Franklin Introduction & Demo Format | Programming | Programming | Demos                    |
 | Afternoon | Airport Transfer & Arrival | Software Engineering             | Coding      | Coding      | Team lunch and departure |
 |   Evening | Set-up, drinks             | Fiddling with Code               | Hacking     | Team dinner | -                        |
 
@@ -37,13 +37,12 @@ We will accomodate remote attendance for select sessions only, the main event is
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-![](https://images.squarespace-cdn.com/content/v1/56ec27951d07c09fbfe13fe6/1468275433624-WBMGNDGYPDJ5DSUSM193/Coco-Coffice-Photo-15.jpg?format=2500w)
+![](3c218a_cf8f965027244b8fb948d209e76713bc~mv2.webp)
 
-We have booked the entire [Coco COFFICE in Barcelona, Spain](https://cofficebarcelona.com) – it will be a similar setup to [the Strasbourg Hackathon](6-sxb.md).
+We have booked an event space at [Betahaus Barcelona, Spain](https://www.betahaus.es/event-venue) – with enough room for everyone.
 
 **ADDRESS**
-[Calle Manso 17, 08015 Barcelona](https://g.page/cococoffice?share)
-Sant Antoni
+[Carrer de Vilafranca 7, 08024 Barcelona, Spain](https://g.page/betahausBCN?share)
 
 #### Transportation
 
@@ -51,7 +50,7 @@ Barcelona El-Prat Airport (BCN) is about 20-30 minutes away, can be reached by t
 
 #### Accomodation
 
-* Hotel [Barceló Raval](https://g.page/Barcelo-Raval?share) is 15 minutes on foot away and can be booked via TripActions
+Put hotel recommendations here.
 
 ### Goal
 
@@ -76,7 +75,7 @@ Put down the topic and the people that would like to discuss it:
 9. @dominique-pfister
 10. @mhaack
 
-The venue can hold 15 people, if we get beyond that, we start a wait list.
+The venue can hold 50 people, if we get beyond that, we start a wait list.
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 
