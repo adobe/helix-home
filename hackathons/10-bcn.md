@@ -92,7 +92,7 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 > What can I do to prepare for the Hackathon?
 
 1. Read the `README.md` and linked vision documents in this repo
-2. Join `#helix-chat` on Slack
+2. Join `#franklin-chat` on Slack
 3. Install the `hlx` Command Line app and [create your first project](https://www.hlx.live/tutorial)
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
 
