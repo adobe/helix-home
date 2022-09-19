@@ -30,6 +30,6 @@ There's always a next [hackathon](hackathons/README.md). Check the list and sign
 
 Anything relevant should be persisted in a GitHub issue (and a pull request) in the respective repository, or a [GitHub discussion](https://github.com/adobe/helix-home/discussions).
 
-We hang out in the [`#helix-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid).
+We hang out in the [`#franklin-chat`](https://adobe.slack.com/messages/C9KD0TT6G/) Slack channel (Enterprise Grid).
 
 There is also the distribution list `grp-project-helix-friends` (Enterprise Grid) where we send around invites for our bi-weekly Helix Show & Tells.
