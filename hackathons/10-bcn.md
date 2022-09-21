@@ -82,7 +82,10 @@ Put down the topic and the people that would like to discuss it:
 11. @bdelacretaz
 12. @mreutegg
 13. @karlpauls
-14. @jelmini
+14. @cziegeler
+15. @lucianfelix
+16. @akalfas
+17. @jelmini
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
@@ -93,7 +96,7 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 > What can I do to prepare for the Hackathon?
 
 1. Read the `README.md` and linked vision documents in this repo
-2. Join `#helix-chat` on Slack
+2. Join `#franklin-chat` on Slack
 3. Install the `hlx` Command Line app and [create your first project](https://www.hlx.live/tutorial)
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
 
