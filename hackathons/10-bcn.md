@@ -85,6 +85,7 @@ Put down the topic and the people that would like to discuss it:
 14. @cziegeler
 15. @lucianfelix
 16. @akalfas
+17. @jelmini
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
