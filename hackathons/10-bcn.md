@@ -64,6 +64,7 @@ Put down the topic and the people that would like to discuss it:
 * Headless
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
+* Search & Indexing in Franklin (@fabriziofortino)
 * Asset Delivery in Franklin and Polaris (@satyam)
 
 ### Attendees
@@ -88,6 +89,7 @@ Put down the topic and the people that would like to discuss it:
 16. @akalfas
 17. @jelmini
 18. @mpetria
+19. @fabriziofortino
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
