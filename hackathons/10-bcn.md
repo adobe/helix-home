@@ -90,6 +90,7 @@ Put down the topic and the people that would like to discuss it:
 17. @jelmini
 18. @mpetria
 19. @fabriziofortino
+20. @rhudea
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
