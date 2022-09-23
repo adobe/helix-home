@@ -66,7 +66,7 @@ Put down the topic and the people that would like to discuss it:
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
 * Search & Indexing in Franklin (@fabriziofortino)
 * Asset Delivery in Franklin and Polaris (@satyam)
-* Developer experience - _"lib-helix"_ (static, dynamic, npm, auto PR, 🤷‍♂️)
+* Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
 
 ### Attendees
 
