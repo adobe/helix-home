@@ -67,6 +67,8 @@ Put down the topic and the people that would like to discuss it:
 * Search & Indexing in Franklin (@fabriziofortino)
 * Asset Delivery in Franklin and Polaris (@satyam)
 * Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
+* Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project gudielines (@mhaack)
+* eCommerce Boilerplate (@mhaack)
 
 ### Attendees
 
