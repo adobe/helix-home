@@ -61,6 +61,7 @@ Put hotel recommendations here.
 
 Put down the topic and the people that would like to discuss it:
 
+* Implement a customer project
 * Headless
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
@@ -68,6 +69,8 @@ Put down the topic and the people that would like to discuss it:
 * Asset Delivery in Franklin and Polaris (@satyam)
 * Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
 * Franklin for E-Mail - explore how we can render something for clients that cannot have javascript enabled 
+* Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack)
+* eCommerce Boilerplate (@mhaack)
 
 ### Attendees
 
