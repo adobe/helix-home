@@ -67,6 +67,7 @@ Put down the topic and the people that would like to discuss it:
 * Search & Indexing in Franklin (@fabriziofortino)
 * Asset Delivery in Franklin and Polaris (@satyam)
 * Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
+* Franklin for E-Mail - explore how we can render something for clients that cannot have javascript enabled 
 
 ### Attendees
 
@@ -93,6 +94,7 @@ Put down the topic and the people that would like to discuss it:
 19. @fabriziofortino
 20. @rhudea
 21. @fkakatie
+22. @buuhuu
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
