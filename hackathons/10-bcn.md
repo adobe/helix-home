@@ -61,6 +61,7 @@ Put hotel recommendations here.
 
 Put down the topic and the people that would like to discuss it:
 
+* Implement a customer project
 * Headless
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
