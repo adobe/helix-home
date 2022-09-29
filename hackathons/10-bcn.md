@@ -98,6 +98,7 @@ Put down the topic and the people that would like to discuss it:
 20. @rhudea
 21. @fkakatie
 22. @buuhuu
+23. [@herzog31](//github.com/herzog31)
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
