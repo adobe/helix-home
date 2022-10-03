@@ -55,6 +55,11 @@ If you booked a hotel near the previous location and aren't looking forward to t
 
 Put hotel recommendations here.
 
+#### Dinner ideas
+
+* [Tapas 2254](https://2254restaurant.com/en/)
+* [Asador de Aranda](https://asadordearanda.net/restaurante/asador-aranda-barcelona-avinda-tibidabo/)
+
 ### Goal
 
 > What are you planning to show at the end of the week?
