@@ -69,8 +69,9 @@ Put down the topic and the people that would like to discuss it:
 * Asset Delivery in Franklin and Polaris (@satyam)
 * Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
 * Franklin for E-Mail - explore how we can render something for clients that cannot have javascript enabled 
-* Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack)
+* Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack, @herzog31)
 * eCommerce Boilerplate (@mhaack)
+* Optimize loading times with [Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) (@herzog31)
 
 ### Attendees
 
