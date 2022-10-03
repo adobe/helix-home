@@ -102,6 +102,10 @@ Put down the topic and the people that would like to discuss it:
 23. [@herzog31](//github.com/herzog31)
 24. [@fe-lix-](//github.com/fe-lix-)
 25. @davidnuescheler
+26. @meryllblanchet
+27. @ramboz
+28. @solaris007
+29. @chicharr
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
