@@ -113,7 +113,8 @@ Put down the topic and the people that would like to discuss it:
 29. @chicharr
 30. [@raducotescu](//github.com/raducotescu)
 31. @duynguyen
-32. [@tyge68](//github.com/tyge68)
+32. [@kozmaadrian](//github.com/kozmaadrian)
+33. [@tyge68](//github.com/tyge68)
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
