@@ -53,7 +53,7 @@ If you booked a hotel near the previous location and aren't looking forward to t
 
 #### Accomodation
 
-Put hotel recommendations here.
+* [Occidental Diagonal 414](https://www.barcelo.com/en-es/occidental-diagonal-414/?id_hotel_sem=9030)
 
 #### Dinner ideas
 
