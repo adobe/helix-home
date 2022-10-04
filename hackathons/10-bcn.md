@@ -53,7 +53,7 @@ If you booked a hotel near the previous location and aren't looking forward to t
 
 #### Accomodation
 
-Put hotel recommendations here.
+* [Occidental Diagonal 414](https://www.barcelo.com/en-es/occidental-diagonal-414/?id_hotel_sem=9030)
 
 #### Dinner ideas
 
@@ -67,7 +67,7 @@ Put hotel recommendations here.
 Put down the topic and the people that would like to discuss it:
 
 * Implement a customer project
-* Headless
+* Headless (@raducotescu)
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
 * Search & Indexing in Franklin (@fabriziofortino)
@@ -111,7 +111,8 @@ Put down the topic and the people that would like to discuss it:
 27. @ramboz
 28. @solaris007
 29. @chicharr
-30. @duynguyen
+30. [@raducotescu](//github.com/raducotescu)
+31. @duynguyen
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
