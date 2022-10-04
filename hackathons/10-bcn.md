@@ -77,6 +77,7 @@ Put down the topic and the people that would like to discuss it:
 * Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack, @herzog31)
 * eCommerce Boilerplate (@mhaack)
 * Optimize loading times with [Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) (@herzog31)
+* Discuss franklin configuration options (github vs content vs ?? )
 
 ### Attendees
 
