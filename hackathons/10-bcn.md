@@ -119,6 +119,7 @@ Put down the topic and the people that would like to discuss it:
 33. [@tyge68](//github.com/tyge68)
 34. @tmaret
 35. @mirceas
+36. [@skolodyazhnyy](//github.com/skolodyazhnyy)
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
