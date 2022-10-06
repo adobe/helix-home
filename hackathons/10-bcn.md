@@ -54,6 +54,7 @@ If you booked a hotel near the previous location and aren't looking forward to t
 #### Accomodation
 
 * [Occidental Diagonal 414](https://www.barcelo.com/en-es/occidental-diagonal-414/?id_hotel_sem=9030)
+* [Pol & Grace](https://www.polgracehotel.es/en/el-hotel/)
 
 #### Dinner ideas
 
