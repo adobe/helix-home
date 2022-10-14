@@ -68,6 +68,8 @@ If you booked a hotel near the previous location and aren't looking forward to t
 Put down the topic and the people that would like to discuss it:
 
 * Implement a customer project
+* Upgrade express-website to v7/breaking202205 (uncled)
+* Upgrade express-website to latest boilerplate (uncled)
 * Headless (@raducotescu)
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
@@ -79,6 +81,9 @@ Put down the topic and the people that would like to discuss it:
 * eCommerce Boilerplate (@mhaack)
 * Optimize loading times with [Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) (@herzog31)
 * Discuss franklin configuration options (github vs content vs ?? )
+* SVGs in ContentBus for express-website (uncled)
+* PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
+
 
 ### Attendees
 
