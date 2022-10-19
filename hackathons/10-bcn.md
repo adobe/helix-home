@@ -83,6 +83,7 @@ Put down the topic and the people that would like to discuss it:
 * Discuss franklin configuration options (github vs content vs ?? )
 * SVGs in ContentBus for express-website (uncled)
 * PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
+* Restore 100 LH on the express-website - see https://github.com/adobe/express-website/pull/613 for tracking
 
 
 ### Attendees
