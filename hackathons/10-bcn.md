@@ -68,8 +68,10 @@ If you booked a hotel near the previous location and aren't looking forward to t
 Put down the topic and the people that would like to discuss it:
 
 * Implement a customer project
-* Upgrade express-website to v7/breaking202205 (uncled)
-* Upgrade express-website to latest boilerplate (uncled)
+* Upgrade express-website to (uncled):
+  * v7/breaking202205
+  * latest boilerplate (uncled)
+  * 100 LH score - see https://github.com/adobe/express-website/pull/613 for tracking
 * Headless (@raducotescu)
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
@@ -83,7 +85,6 @@ Put down the topic and the people that would like to discuss it:
 * Discuss franklin configuration options (github vs content vs ?? )
 * SVGs in ContentBus for express-website (uncled)
 * PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
-* Restore 100 LH on the express-website - see https://github.com/adobe/express-website/pull/613 for tracking
 
 
 ### Attendees
