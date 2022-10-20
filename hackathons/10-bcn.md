@@ -129,6 +129,7 @@ Put down the topic and the people that would like to discuss it:
 36. [@skolodyazhnyy](//github.com/skolodyazhnyy)
 37. [@jckautzmann](//github.com/jckautzmann)
 38. @vtsaplin
+39. @michaelmarth
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
