@@ -31,6 +31,8 @@ Just put your idea on the list:
 - [De Watertoren](https://www.watertorenvlissingen.com/), Vlissingen, Netherlands
 - New York City ([https://www.wework.com/l/new-york-city--NY](https://www.wework.com/l/new-york-city--NY), [https://privateevents.neuehouse.com/the-boardroom](https://privateevents.neuehouse.com/the-boardroom)...)
 - ~~SoCal (L.A. / San Diego / Palm Springs), ideal for a winter location !~~
+- Sydney / Melbourne
+- Singapore
 
 ## Let's do it!
 
