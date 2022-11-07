@@ -133,6 +133,7 @@ Put down the topic and the people that would like to discuss it:
 40. [@hannessolo](//github.com/hannessolo)
 41. @royfielding
 42. @ompandeyd
+43. @insuafer
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
 
