@@ -85,6 +85,7 @@ Put down the topic and the people that would like to discuss it:
 * Discuss franklin configuration options (github vs content vs ?? )
 * SVGs in ContentBus for express-website (uncled)
 * PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
+* AEM Screens: Digital Signage content authoring through Franklin - "Offline First" (@shroti)
 
 
 ### Attendees
