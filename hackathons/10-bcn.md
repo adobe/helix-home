@@ -1,18 +1,17 @@
-![](./10-bcn.png)
-
 # Project Franklin Hackathon X
 
-November 28th to December 2nd 2022, Barcelona, Spain.
+November 28th to December 2nd 2022, Virtual + Adobe offices
 
 ---
 
 (See the [Hackathon Archive](./README.md) for past Hackathons)
 
 With more than 2 years in solitude, [one canceled hackathon](https://github.com/adobe/helix-home/blob/main/hackathons/9-bcn.md), and the memory of the 
-[Palm Springs Hackathon](https://github.com/adobe/helix-home/blob/main/hackathons/8-psp.md) rapidly fading, we want to try something new: **meeting in person**.
+[Palm Springs Hackathon](https://github.com/adobe/helix-home/blob/main/hackathons/8-psp.md) rapidly fading, we wanted to try something new: **meeting in person**. 
 
-As we have been out of practice for quite some time we will need some more lead time to secure time, location, and travel budget from an organization
-and team that has grown used to staying mostly in place. 
+Update: Unfortunately, once again, it didn't work out, so we'll **gather in Adobe offices instead and connect virtually** instead.
+
+Attendees are encouraged to keep their calendars free for the week and join the others in one of the Adobe locations or via Teams for as much as they can.
 
 ### Agenda
 
@@ -23,43 +22,24 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on stuff that won't
 fit neatly into a 45-minute teams meeting.
 
-| Time      | Monday                     | Tuesday                          | Wednesday   | Thursday    | Friday                   |
-| --------: | -------------------------- | -------------------------------- | ----------- | ----------- | ------------------------ |
-|   Morning | -                          | Franklin Introduction & Demo Format | Programming | Programming | Demos                    |
-| Afternoon | Airport Transfer & Arrival | Software Engineering             | Coding      | Coding      | Team lunch and departure |
-|   Evening | Set-up, drinks             | Fiddling with Code               | Hacking     | Team dinner | -                        |
+**A Microsoft Teams event will be active throughout the entire week.**
 
-#### Remote Attendance
-
-We will accomodate remote attendance for select sessions only, the main event is in person.
+| Time(CET) | Monday                              | Tuesday           | Wednesday         | Thursday          | Friday            |
+| --------: | ----------------------------------- | ----------------- | ----------------- | ----------------- | ----------------- |
+|   Morning | Hacking EMEA/APAC                   | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC |
+| Afternoon | Franklin Introduction & Demo Format | Hacking All       | Hacking All       | Hacking All       | Demos             |
+|   Evening | Hacking NA                          | Hacking NA        | Hacking NA        | Hacking NA        | Team dinner       |
 
 ### Location
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-![](3c218a_cf8f965027244b8fb948d209e76713bc~mv2.webp)
+We will book rooms in some Adobe offices. Remote employees are encouraged connect from home via Teams.
 
-We have booked an event space at [Betahaus Barcelona, Spain](https://www.betahaus.es/event-venue) – with enough room for everyone.
-
-**ADDRESS**
-
-[Carrer de Vilafranca 7, 08024 Barcelona, Spain](https://g.page/betahausBCN?share)
-
-#### Transportation
-
-Barcelona El-Prat Airport (BCN) is about 20-30 minutes away, can be reached by taxi and public transport and offers many international connections.
-
-If you booked a hotel near the previous location and aren't looking forward to two 1 hour hikes each day, then the [Hola BCN Card](https://www.travelguide.barcelona/publictransport-tmb/tickets_travelcards/#2) will offer unlimited public transport, including airport transfer.
-
-#### Accomodation
-
-* [Occidental Diagonal 414](https://www.barcelo.com/en-es/occidental-diagonal-414/?id_hotel_sem=9030)
-* [Pol & Grace](https://www.polgracehotel.es/en/el-hotel/)
-
-#### Dinner ideas
-
-* [Tapas 2254](https://2254restaurant.com/en/)
-* [Asador de Aranda](https://asadordearanda.net/restaurante/asador-aranda-barcelona-avinda-tibidabo/)
+- Basel: RHEIN (5th floor)
+- Lehi: TBD
+- San Francisco: TBD
+- Noida: TBD
 
 ### Goal
 
@@ -92,14 +72,14 @@ Put down the topic and the people that would like to discuss it:
 > Who is going to be there? Can I come?
 
 1. @trieloff
-2. @tripodsan
-3. @stefan-guggisberg
-4. @kptdobe
-5. @rofe
+2. @tripodsan (Basel)
+3. @stefan-guggisberg (Basel) 
+4. @kptdobe (Basel)
+5. @rofe (Basel)
 6. @satyam
 7. @maxed
 8. @dyland
-9. @dominique-pfister
+9. @dominique-pfister (Basel)
 10. @mhaack
 11. @bdelacretaz
 12. @mreutegg
@@ -139,10 +119,8 @@ Put down the topic and the people that would like to discuss it:
 46. @grubyak
 47. @shroti
 
-
-The venue can hold 50 people, if we get beyond that, we start a wait list.
-
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
+**Don't forget to add the Adobe office you are planning to be at so we can plan accordingly.**
 
 ### Preparation
 
