@@ -138,6 +138,7 @@ Put down the topic and the people that would like to discuss it:
 45. @maximilianvoss
 46. @grubyak
 47. @shroti
+48. [@anfbiacreativa](//github.com/anfibiacreativa)
 
 
 The venue can hold 50 people, if we get beyond that, we start a wait list.
