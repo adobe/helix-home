@@ -41,29 +41,40 @@ We will book rooms in some Adobe offices. Remote employees are encouraged connec
 - San Francisco: TBD
 - Noida: TBD
 
-### Goal
+### Goals
 
 > What are you planning to show at the end of the week?
 
 Put down the topic and the people that would like to discuss it:
 
-* Implement a customer project
+#### Track 1: Dev experience on real-world customer projects
 * Upgrade all remaining v6 projects to v7/breaking202205 (uncled):
 * Upgrade some projects to latest boilerplate (uncled)
+* Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
+* Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack, @herzog31)
+
+#### Track 2: Web performance on real-world customer projects
+* Implement a customer project
 * Upgrade express and other adobe projects to 100 LH score - see https://github.com/adobe/express-website/pull/613 for tracking
+* Optimize loading times with [Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) (@herzog31)
+
+#### Track 3: Headless in Franklin, customer zero (odin)
 * Headless (@raducotescu)
+
+#### Track 4: Assets in Franklin, SVGs, PDFs, long-form video and media
+* Asset Delivery in Franklin and Polaris (@satyam)
+* PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
+* SVGs in ContentBus for express-website (uncled)
+
+#### Track 5: Commerce and Franklin, wesco
+* eCommerce Boilerplate (@mhaack)
+
+#### Other topics
 * Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
 * Search & Indexing in Franklin (@fabriziofortino)
-* Asset Delivery in Franklin and Polaris (@satyam)
-* Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
 * Franklin for E-Mail - explore how we can render something for clients that cannot have javascript enabled 
-* Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack, @herzog31)
-* eCommerce Boilerplate (@mhaack)
-* Optimize loading times with [Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) (@herzog31)
 * Discuss franklin configuration options (github vs content vs ?? )
-* SVGs in ContentBus for express-website (uncled)
-* PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
 * AEM Screens: Digital Signage content authoring through Franklin - "Offline First" (@shroti)
 
 
