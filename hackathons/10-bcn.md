@@ -85,7 +85,7 @@ Put down the topic and the people that would like to discuss it:
 * SVGs in ContentBus for express-website (uncled)
 * PDF/SVGs preview/publish from directory in gdrive/sharepoint (uncled)
 * AEM Screens: Digital Signage content authoring through Franklin - "Offline First" (@shroti)
-
+* Franklin Event with github actions (see https://github.com/adobe/helix-admin/issues/162)  (@tripodsan)
 
 ### Attendees
 
