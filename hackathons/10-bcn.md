@@ -55,7 +55,7 @@ Put down the topic and the people that would like to discuss it:
 
 #### Track 2: Web performance on real-world customer projects
 * Implement a customer project
-* Upgrade express and other adobe projects to 100 LH score - see https://github.com/adobe/express-website/pull/613 for tracking
+* Upgrade express and other adobe projects to 100 LH score - see https://github.com/adobe/express-website/pull/613 for tracking (@ramboz)
 * Optimize loading times with [Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) (@herzog31)
 
 #### Track 3: Headless in Franklin, customer zero (odin)
@@ -70,9 +70,9 @@ Put down the topic and the people that would like to discuss it:
 * eCommerce Boilerplate (@mhaack)
 
 #### Track 6: Experimentation in Franklin
-* Implement customer full-page experiments (mblanche)
-* Optimize performance for AEP UED-based framework
-* Implement customer-specific workflows for their business practitioners (mblanche)
+* Implement customer full-page experiments (@mblanche)
+* Optimize performance for AEP UED-based framework (@ramboz)
+* Implement customer-specific workflows for their business practitioners (@mblanche, @ramboz)
 
 #### Other topics
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
