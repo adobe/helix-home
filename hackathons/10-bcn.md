@@ -69,8 +69,12 @@ Put down the topic and the people that would like to discuss it:
 #### Track 5: Commerce and Franklin, wesco
 * eCommerce Boilerplate (@mhaack)
 
+#### Track 6: Experimentation in Franklin
+* Implement customer full-page experiments (mblanche)
+* Optimize performance for AEP UED-based framework
+* Implement customer-specific workflows for their business practitioners (mblanche)
+
 #### Other topics
-* Experimentation/Personalization and RUM
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
 * Search & Indexing in Franklin (@fabriziofortino)
 * Franklin for E-Mail - explore how we can render something for clients that cannot have javascript enabled 
