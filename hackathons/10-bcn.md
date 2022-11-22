@@ -28,7 +28,7 @@ fit neatly into a 45-minute teams meeting.
 | --------: | ----------------------------------- | ----------------- | ----------------- | ----------------- | ----------------- |
 |   Morning | Hacking EMEA/APAC                   | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC |
 | Afternoon | Franklin Introduction & Demo Format | Hacking All       | Hacking All       | Hacking All       | Demos             |
-|   Evening | Hacking NA                          | Hacking NA        | Hacking NA        | Hacking NA        | Team dinner       |
+|   Evening | Hacking NA                          | Hacking NA        | Hacking NA        | Hacking NA        | -       |
 
 ### Location
 
