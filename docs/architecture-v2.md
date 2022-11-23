@@ -8,9 +8,9 @@ Helix has undergone some architectural evolution since the start of the project.
 
 1. Helix 1 – a bring-your-own (Adobe I/O) runtime framework-driven approach that would allow server-side customization
 2. [Helix 2](#helix-2) – a software as a service that relies on client-side customization
-3. [Helix 3](#helix-3) – a software as a service with superior availability and performance with the same feature set as Helix 2
+3. [Helix 3](architecture-v3.md) – a software as a service with superior availability and performance with the same feature set as Helix 2
 
-The current version of the architecture is Helix 3, prior versions stay documented as long as they are in active use.
+This document describes an outdated architecture, but it can be helpful to trace the evolution of the architecture.
 
 ## Helix 2
 
@@ -18,7 +18,7 @@ Helix 2 was introduced as "Helix Pages", a simple, opinionated configuration of 
 
 [Helix 3](#helix-3) is an evolution that simplifies the architecture to increase the overall performance and availability of the service. Helix 2 will be phased out over the coming months.
 
-![](./Helix%20Architecture/Helix%202%20Stack.png)
+![](./Franklin%20Architecture/Helix%202%20Stack.png)
 
 The Helix 2 architecture is annotated when significant changes have been made in Helix 3. The annotations explain why the changes have been necessary.
 
