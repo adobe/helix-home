@@ -1,4 +1,4 @@
-# Project Franklin Architecture
+# Project Helix/Franklin Architecture
 
 **Note** _Project Franklin_ was previously named _Project Helix_. Some documentation might still use the old name, 
 
@@ -8,9 +8,10 @@ Franklin has undergone some architectural evolution since the start of the proje
 
 1. Helix 1 – a bring-your-own (Adobe I/O) runtime framework-driven approach that would allow server-side customization
 2. [Helix 2](architecture-v2.md) – a software as a service that relies on client-side customization
-3. [Franklin 3](#Overview) – a software as a service with superior availability and performance with the same feature set as Franklin 2
+3. [Helix/Franklin 3](#Overview) – a software as a service with superior availability and performance with the same feature set as Franklin 2
+4. [Franklin 4](architecture.md) – a dual-stack architecture that refines Franklin 3 for greater performance and availability
 
-The current version of the architecture is Franklin 3, prior versions stay documented as long as they are in active use.
+This document describes an outdated architecture, but it can be helpful to trace the evolution of the architecture.
 
 ## Overview
 
