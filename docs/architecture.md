@@ -16,7 +16,7 @@ The current version of the architecture is Franklin 3, prior versions stay docum
 
 Franklin 3 delivers the core feature set of Franklin (high-performance websites with low code and zero-friction authoring) in a simplified architecture that optimizes stability and availability.
 
-![](./Helix%20Architecture/Helix%203%20Stack.png)
+![](./Franklin%20Architecture/Helix%203%20Stack.png)
 
 ### Preface
 
