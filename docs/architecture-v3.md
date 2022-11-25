@@ -51,7 +51,7 @@ Based on the URL, the Fastly Service performs an edge dictionary lookup to deter
 
 - Media Requests (images, videos, etc.) are served directly from the Media Bus using content-addressable storage, where the content hash forms the significant part of the URL
 - Content Requests (HTML and JSON) are served using the Franklin Pipeline Service, see the [PIPE](#pipe) section for details
-- Static Content is served from the Content Bus directly
+- Static Content is served from the Content Bus or Code Bus directly
 
 At the Inner CDN level, no caching is applied, so that all requests accurately represent the latest state of published content.
 
