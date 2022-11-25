@@ -78,6 +78,8 @@ The pipeline service runs as an AWS Lambda function and has four main components
 - and `.plain.html` HTML pages
 - rendering filtered JSON from spreadsheets
 - handling form submissions and stashing them in the form processing queue
+- handling `OPTIONS` requests
+- serve redirects
 
 The pipeline service on AWS shares key parts of the implementation with the [pipeline worker on Cloudflare](#pipe-on-cloudflare). This common functionality is provided by the [`helix-html-pipeline`](https://github.com/adobe/helix-html-pipeline) library.
 
