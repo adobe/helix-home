@@ -91,7 +91,7 @@ The Cloudflare Delivery Stack is the secondary delivery stack for Franklin 4. It
 The biggest architectural difference is that in Cloudflare, the inner CDN and and the pipeline are combined in a single service that is using a Cloudflare Worker.
 #### EDGE on Cloudflare
 
-Like on AWS, the customer can use their own CDN, and opt-in selectively by using `*.hlx-secondary.live` as the origin.
+Like on Fastly, the customer can use their own CDN, and opt-in selectively by using `*.hlx-secondary.live` as the origin.
 
 The inner CDN on Cloudflare uses Worker KV instead of edge dictionaries.
 
