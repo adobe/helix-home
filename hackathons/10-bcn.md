@@ -22,12 +22,12 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on stuff that won't
 fit neatly into a 45-minute teams meeting.
 
-**A Microsoft Teams event will be active throughout the entire week.**
+**A general session will be active in [teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MTFkMDcyZmQtMTQ1NS00Y2Y0LTg0NTctNzE5NTMzNmFlZDZj%40thread.v2/0?context=%7b%22Tid%22%3a%22fa7b1b5a-7b34-4387-94ae-d2c178decee1%22%2c%22Oid%22%3a%228e1c387c-908e-4926-b575-01fedf2f9b5e%22%7d) throughout the entire week.**
 
 | Time(CET) | Monday                              | Tuesday           | Wednesday         | Thursday          | Friday            |
 | --------: | ----------------------------------- | ----------------- | ----------------- | ----------------- | ----------------- |
-|   Morning | Hacking EMEA/APAC                   | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC |
-| Afternoon | Franklin Introduction & Demo Format | Hacking All       | Hacking All       | Hacking All       | Demos             |
+|   Morning | 10:00 Architecture walkthrough [[teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZmExMjdkZTItNWVkMS00YzRiLWI2NTEtN2FjZWI3MjUxODRj%40thread.v2/0?context=%7b%22Tid%22%3a%22fa7b1b5a-7b34-4387-94ae-d2c178decee1%22%2c%22Oid%22%3a%228e1c387c-908e-4926-b575-01fedf2f9b5e%22%7d)]<br>11:00 Kick-off [[teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_Yzk5MDg3OTAtZTAzYi00N2YyLTgyMjUtNThhMTc4MmRhNzJi%40thread.v2/0?context=%7b%22Tid%22%3a%22fa7b1b5a-7b34-4387-94ae-d2c178decee1%22%2c%22Oid%22%3a%228e1c387c-908e-4926-b575-01fedf2f9b5e%22%7d)] | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC | Hacking EMEA/APAC |
+| Afternoon | Hacking all<br>16:00 Q&A - stories from the trenches [[teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZjI3NDM1YTktODQxNy00OTM1LTgyZWUtM2Y2ODg5NjZjOTZj%40thread.v2/0?context=%7b%22Tid%22%3a%22fa7b1b5a-7b34-4387-94ae-d2c178decee1%22%2c%22Oid%22%3a%228e1c387c-908e-4926-b575-01fedf2f9b5e%22%7d)] | Hacking All       | Hacking All       | Hacking All       | Hacking all<br>16:00 Demos [[teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGFiZDkyZDUtZmM5Ni00YjM4LWIwODAtZGNjYTQzODgzNTQ3%40thread.v2/0?context=%7b%22Tid%22%3a%22fa7b1b5a-7b34-4387-94ae-d2c178decee1%22%2c%22Oid%22%3a%228e1c387c-908e-4926-b575-01fedf2f9b5e%22%7d)]            |
 |   Evening | Hacking NA                          | Hacking NA        | Hacking NA        | Hacking NA        | -       |
 
 ### Location
