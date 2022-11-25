@@ -65,7 +65,7 @@ URL pattern analysis is used to route requests to the correct request type, in p
 
 - Media Requests (images, videos, etc.) are served directly from the Media Bus using content-addressable storage, where the content hash forms the significant part of the URL
 - Content Requests (HTML and JSON) are served using the Franklin Pipeline Service, see the [PIPE](#pipe) section for details
-- Static Content is served from the Content Bus directly
+- Static Content is served from the Content Bus or Code Bus directly
 
 #### PIPE on AWS
 
