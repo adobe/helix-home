@@ -134,6 +134,7 @@ Put down the topic and the people that would like to discuss it:
 46. @grubyak
 47. @shroti
 48. [@conrad](//github.com/cwoeltge)
+49. [@dulvac](//github.com/dulvac)
 
 Please share this page with people inside Adobe that you'd like to invite. Add yourself to the list if you want to attend.
 **Don't forget to add the Adobe office you are planning to be at so we can plan accordingly.**
