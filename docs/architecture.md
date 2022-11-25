@@ -118,6 +118,7 @@ The Content Hub is a content store optimized for delivery that uses Amazon S3 an
     - within each `contentBusID` folder, there are two content bus partitions: `preview` and `live`. These content bus partitions separate content that can be served only on `*.hlx.page` from content that is published on `*.hlx.live`. The actual process of publishing involves copying content from `preview` to `live` and purging the attached caches.
       - each content bus partition has folders that reflect the folder structure of the source repository (Sharepoint or Google Drive)
         - within each folder, there is a Markdown document for each published document and a JSON file for each published spreadsheet
+        - documents can be marked with redirect metadata, in which case the pipeline will serve a redirect instead of the requested document
 - Code Bus (`owner`, `repo`, `ref`, and path addressable storage for code and configuration that needs to be served as part of the site)
   - one folder for each `owner`, i.e. GitHub username or organization that has a Franklin Github bot installed
     - one folder for each `repo` (repository)
