@@ -80,6 +80,7 @@ Put down the topic and the people that would like to discuss it:
 * Franklin for E-Mail - explore how we can render something for clients that cannot have javascript enabled 
 * Discuss franklin configuration options (github vs content vs ?? )
 * AEM Screens: Digital Signage content authoring through Franklin - "Offline First" (@shroti)
+* Discuss Adobe Managed CDN for custom domains and certificates (@mpetria)
 
 
 ### Attendees
