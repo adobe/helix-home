@@ -22,7 +22,7 @@ Although this is a hackathon, we won't be hacking all the time, there will also 
 The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on stuff that won't
 fit neatly into a 45-minute teams meeting.
 
-**A Microsoft Teams event will be active throughout the entire week.**
+**A general session will be active in [teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MTFkMDcyZmQtMTQ1NS00Y2Y0LTg0NTctNzE5NTMzNmFlZDZj%40thread.v2/0?context=%7b%22Tid%22%3a%22fa7b1b5a-7b34-4387-94ae-d2c178decee1%22%2c%22Oid%22%3a%228e1c387c-908e-4926-b575-01fedf2f9b5e%22%7d) throughout the entire week.**
 
 | Time(CET) | Monday                              | Tuesday           | Wednesday         | Thursday          | Friday            |
 | --------: | ----------------------------------- | ----------------- | ----------------- | ----------------- | ----------------- |
