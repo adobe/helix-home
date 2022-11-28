@@ -52,6 +52,7 @@ Put down the topic and the people that would like to discuss it:
 * Upgrade some projects to latest boilerplate (uncled)
 * Developer experience - [_"lib-helix"_](https://github.com/adobe/helix-project-boilerplate/pull/125#pullrequestreview-1118234266) (static, dynamic, npm, auto PR, 🤷‍, ?)
 * Continue the [Franklin and Client Side Javascript Frameworks](https://cq-dev.slack.com/archives/C9KD0TT6G/p1663359237847519) research to have some project guidelines (@mhaack, @herzog31)
+* [Use Client Side JS frameworks in Franklin](https://cq-dev.slack.com/archives/C9KD0TT6G/p1664471396946939) without compromising page performance (@lucianfelix, @duynguyen)
 
 #### Track 2: Web performance on real-world customer projects
 * Implement a customer project
