@@ -75,6 +75,10 @@ Put down the topic and the people that would like to discuss it:
 * Optimize performance for AEP UED-based framework (@ramboz)
 * Implement customer-specific workflows for their business practitioners (@mblanche, @ramboz)
 
+#### Track 7: Authoring Experience & publishing semantic HTML from AEM into Franklin
+* Implement preview & publish for semantic HTML rendered in AEM (or in extend any other 3rd party)
+* Strech goal: e2e authoring of semantic HTML in AEM, publish and deliver
+
 #### Other topics
 * Sharing value with the customer(https://www.hlx.live/docs/slack) - "We only build what customers ask, we only make it a feature when it is used." (https://www.hlx.live/docs/slack)
 * Search & Indexing in Franklin (@fabriziofortino)
