@@ -156,4 +156,22 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 
 ### Demos
 
-TBD
+[Recording](https://adobe-my.sharepoint.com/:v:/p/rofe/EZaHgbjuLCFOk7e_q6T3aY0BbhK-ntaKyv5tHlgK38s5QA?e=dQmG2D)
+
+| Track | Demo | Presenter | Time |
+| ----- | ---- | --------- | ---- |
+|   | setup/joining/welcome | @rofe/@davidnuescheler | 5 |
+| 1 | v7 and boilerplate upgrades | @kptdobe | 15 |
+|   | html2json + react | @duynguyen |  |
+| 2 | improve LHS across the board | @davidnuescheler | 15 |
+| 3 | dynamic json ingest to GraphQL | @cwoeltge | 15 |
+|   | franklin headless demo adapter | @tripodsan |  |
+|   | franklin delivery for fully-hydrated json | @kozma |  |
+|   | deliver json from content bus through edge gateway | @adulvac |  |
+| 4 | bulk-preview and -publish in gdrive/sharepoint | @rofe | 15 |
+|   | using assets/video | @satyam |  |
+| 5 | customer project demo | @maxed | 15 |
+|   | franklin commerce POC | @herzog31 |  |
+| 6 | experimentation | @meryllblanchet | 15 |
+| 7 | publish AEM content to franklin delivery | @buuhuu | 15 |
+|   | more cool stuff | TBD | 10 |
