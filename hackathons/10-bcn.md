@@ -156,4 +156,21 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 
 ### Demos
 
-TBD
+[Recording]()
+
+| Track | Demo | Presenter | Time | Buffer |
+| ----- | ---- | --------- | ---- | ----- |
+|   | setup/joining/welcome | @rofe/@davidnuescheler | 4 |   |
+| 1 | v7 and boilerplate upgrades | @kptdobe | 5 | 2 |
+|   | html2json + react | @duynguyen | 5 | 2 |
+| 2 | improve LHS across the board | @davidnuescheler | 10 | 2 |
+| 3 | dynamic json ingest to GraphQL | @cwoeltge | 5 | 2 |
+|   | franklin headless demo adapter | @tripodsan | 5 | 2  |
+|   | franklin delivery for fully-hydrated json | @kozma | 5 | 2 |
+|   | deliver json from content bus through edge gateway | @adulvac | 5 | 2 |
+| 4 | bulk-preview and -publish in gdrive/sharepoint | @rofe | 5 | 2 |
+|   | using assets/video | @satyam | 10 | 2 |
+| 5 | customer project demo | @maxed | 10 | 2 |
+|   | franklin commerce POC | @herzog31 | 5 | 2 |
+| 6 | experimentation | @meryllblanchet | 10 | 2 |
+| 7 | publish AEM content to franklin delivery | @buuhuu | 10 | 2 |
