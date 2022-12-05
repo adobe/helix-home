@@ -156,7 +156,7 @@ Please share this page with people inside Adobe that you'd like to invite. Add y
 
 ### Demos
 
-[Recording](https://adobe-my.sharepoint.com/:v:/p/rofe/EZaHgbjuLCFOk7e_q6T3aY0BbhK-ntaKyv5tHlgK38s5QA?e=dQmG2D)
+[Recording](https://adobe-my.sharepoint.com/:v:/p/rofe/EZaHgbjuLCFOk7e_q6T3aY0BbhK-ntaKyv5tHlgK38s5QA?e=3zJXU5)
 
 | Track | Demo | Presenter | Time |
 | ----- | ---- | --------- | ---- |
