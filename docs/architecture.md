@@ -8,6 +8,7 @@ Franklin has undergone some architectural evolution since the start of the proje
 2. [Helix 2](architecture-v2.md) – a software as a service that relies on client-side customization
 3. [Helix/Franklin 3](architecture-v3.md) – a software as a service with superior availability and performance with the same feature set as Helix 2
 4. [Franklin 4](#overview) - a dual-stack architecture that refines Franklin 3 for greater performance and availability
+5. [Helix 5](architecture-v5.md) – work in progress, a refactoring of the CDN/delivery stack for greater robustness and maintainability
 
 You can follow the links above to learn more about the evolution of the architecture.
 
