@@ -16,7 +16,7 @@ You can follow the links above to learn more about the evolution of the architec
 
 ## Overview
 
-Helix 5 delivers the core feature set of Franklin 5 (dual-stack architecture with great performance and availability) with a refactored (Fastly) CDN Stack to enable easier maintainability and reduce overall complexity.
+Helix 5 delivers the core feature set of Franklin 4 (dual-stack architecture with great performance and availability) with a refactored (Fastly) CDN Stack to enable easier maintainability and reduce overall complexity.
 
 The key differences to Franklin 4 are:
 1. DNS is tracked as an explicit architectural component, and managed redundantly
