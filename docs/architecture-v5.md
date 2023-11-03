@@ -74,13 +74,14 @@ The outer CDN uses internally a multi-layer caching technique called shielding, 
 
 The innermost CDN layer are a number of task-specific CDN services, each with a separate domain and scope.
 
-| Name     | Domain                     | Description |
-| RUM      | `rum.aem-fastly.page`      | The Helix RUM collector forwards RUM data to our logging services |
-| Media    | `media.aem-fastly.page`    | The Helix Media CDN serves images and video files from the Media Bus. It applies resizing and re-encoding using Fastly Image Optimizer |
-| Config    | `config.aem-fastly.page`    | The Helix Config CDN serves effective configurations from the Config Bus. Properties that are relevant for routing are served as HTTP headers |
-| Pipeline | `pipeline.aem-fastly.page` | The Helix Pipeline CDN serves HTML and JSON content from the Pipeline Service |
-| Static   | `static.aem-fastly.page`   | The Helix Static CDN serves static content from the Code Bus and Content Bus |
-| Forms    | `forms.aem-fastly.page`    | The Helix Forms CDN receives form submissions and forwards them to the Forms Collector Service |
+| Name     | Domain                     | Description                                                                                                                                   |
+| -------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| RUM      | `rum.aem-fastly.page`      | The Helix RUM collector forwards RUM data to our logging services                                                                             |
+| Media    | `media.aem-fastly.page`    | The Helix Media CDN serves images and video files from the Media Bus. It applies resizing and re-encoding using Fastly Image Optimizer        |
+| Config   | `config.aem-fastly.page`   | The Helix Config CDN serves effective configurations from the Config Bus. Properties that are relevant for routing are served as HTTP headers |
+| Pipeline | `pipeline.aem-fastly.page` | The Helix Pipeline CDN serves HTML and JSON content from the Pipeline Service                                                                 |
+| Static   | `static.aem-fastly.page`   | The Helix Static CDN serves static content from the Code Bus and Content Bus                                                                  |
+| Forms    | `forms.aem-fastly.page`    | The Helix Forms CDN receives form submissions and forwards them to the Forms Collector Service                                                |
 
 URL pattern analysis is used to route requests to the correct request type, in particular:
 
