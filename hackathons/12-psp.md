@@ -48,6 +48,8 @@ If you have been invited and will come, please put your name down in the list.
 
 1. @trieloff
 1. @rofe
+1. @royfielding
+
 
 ### Preparation
 
