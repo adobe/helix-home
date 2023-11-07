@@ -56,6 +56,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @royfielding
 1. @stefan-guggisberg
 1. @tripodsan
+1. @dkuntze 
 1. @dylandepass
 
 
