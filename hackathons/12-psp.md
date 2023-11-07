@@ -50,6 +50,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @rofe
 1. @royfielding
 1. @stefan-guggisberg
+1. @tripodsan
 
 
 ### Preparation
