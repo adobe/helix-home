@@ -30,6 +30,11 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 We've booked a meeting room at the ACE Hotel in Palm Springs, CA.
 
+#### Travel
+
+> traveling to PSP by plane...
+> you can either fly directly into LAX and grab an uber/lyft which is between 2-4 hours depending on traffic, or if you have a stop over in a US city that connects to PSP, you can fly directly to PSP or alternatively fly to ONT and then ONT is more reliably 1h15 to Palm Spring Spring.
+
 ### Goals
 
 > What are you planning to show at the end of the week?
