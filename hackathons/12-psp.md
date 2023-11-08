@@ -43,6 +43,16 @@ Put down the topic and the people that would like to discuss it:
 
 #### Track 1: Dev experience on real-world customer projects
 
+#### Track 2: end-to-end repoless
+- Helix 5 repoless = no need to create a github repo to create a full site
+- Demos target:
+  - as a non-dev user, I import a simple site without writting a single line of code (use Sidekick default import feature - content copy /paste, default blocks ?, enhanced default block foundation, repoless...)
+  - Brainstorming outcomes: how to import a complex site with the mininum of technical skills (import with blocks from block foundation, eye-dropper? (logo, fonts, styles...), templating, repoless...)
+- Working / brainstorming tracks:
+  - create a solid block foundation
+  - default templates and customisation for repoless
+  - default import with block from block foundation
+
 
 ### Attendees
 
