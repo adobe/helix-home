@@ -68,6 +68,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @tripodsan
 1. @dkuntze 
 1. @dylandepass
+1. @bstopp
 
 
 ### Preparation
