@@ -70,6 +70,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @dylandepass
 1. @bstopp
 1. @mhaack
+1. @shsteimer
 
 
 ### Preparation
