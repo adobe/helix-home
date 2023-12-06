@@ -77,7 +77,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @ddragosd
 1. @gilliankrause
 1. @3vil3mpir3
-1. @wingeier
+1. @synox (Aravindo Wingeier)
 
 ### Preparation
 
