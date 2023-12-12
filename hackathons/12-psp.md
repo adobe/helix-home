@@ -42,6 +42,7 @@ We've booked a meeting room at the ACE Hotel in Palm Springs, CA.
 Put down the topic and the people that would like to discuss it:
 
 #### Track 1: Dev experience on real-world customer projects
+- Multi Mountpoints - especially with more and more projects using multipe content sources (docs & AEM Author)
 
 #### Track 2: end-to-end repoless
 - Helix 5 repoless = no need to create a github repo to create a full site
