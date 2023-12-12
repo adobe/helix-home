@@ -81,6 +81,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @nc-andreashaller
 1. @karlpauls
 1. @andreituicu
+1. @catalan-adobe
 
 ### Preparation
 
