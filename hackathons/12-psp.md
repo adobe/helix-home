@@ -85,6 +85,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @catalan-adobe
 1. @maxakuru
 1. @thi64146 (Ryan Parrish)
+1. @cazzaranjosh
 
 ### Preparation
 
