@@ -41,10 +41,37 @@ We've booked a meeting room at the ACE Hotel in Palm Springs, CA.
 
 Put down the topic and the people that would like to discuss it:
 
-#### Track 1: Dev experience on real-world customer projects
-- Multi Mountpoints - especially with more and more projects using multipe content sources (docs & AEM Author)
+The theme of this offsite is to make considerable progress on the remaining Helix5 tasks as defined in the
+architecture vision. We will align the work with the main topics
 
-#### Track 2: end-to-end repoless
+#### Track 1: Simplify CDN tier and new service architcture
+- CDN Services break up
+- Config Bus Service
+- Config Bus Admin endpoint (versioning)
+- Forms, RUM, etc.
+- Auth
+
+#### Track 2: Repoless experience
+- Templates / Block Collection completion
+- Creating new sites via config service (testing new config, mountpoints) 
+- Import of existing site content
+- Markup mountpoint as fallback for gdrive / sharepoint
+- Simple Markup based OOTB mountpoint
+
+#### Track 3: Backwards compatibility within reason, Migration is a reality
+- Migration / rollout plans
+- Customer communications
+- Long-term backwards compatibility by component
+
+#### Track 4: Remove all externally visible mentions of helix
+- aem.live, main--website-helix--adobe.aem.page
+- sidekick implications
+- get outside-in, ideal project to work
+
+
+
+#### Ideas / Suggestions / Topics Collection
+- Multi Mountpoints - especially with more and more projects using multipe content sources (docs & AEM Author)
 - Helix 5 repoless = no need to create a github repo to create a full site
 - Demos target:
   - as a non-dev user, I import a simple site without writting a single line of code (use Sidekick default import feature - content copy /paste, default blocks ?, enhanced default block foundation, repoless...)
@@ -84,7 +111,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @andreituicu
 1. @catalan-adobe
 1. @maxakuru
-1. @thi64146 (Ryan Parrish)
+1. @ryanmparrish
 1. @cazzaranjosh
 
 ### Preparation
