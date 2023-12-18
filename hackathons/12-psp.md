@@ -63,10 +63,12 @@ architecture vision. We will align the work with the main topics
 - Customer communications
 - Long-term backwards compatibility by component
 
-#### Track 4: Remove all externally visible mentions of helix
-- aem.live, main--website-helix--adobe.aem.page
+#### Track 4: www.aem.live on Helix 5
+- Remove all externally visible mentions of helix
+- aem.live, main--helix-website--adobe.aem.page
 - sidekick implications
 - get outside-in, ideal project to work
+- other test sites
 
 
 
