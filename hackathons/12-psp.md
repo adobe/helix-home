@@ -33,7 +33,7 @@ We've booked a meeting room at the ACE Hotel in Palm Springs, CA.
 #### Travel
 
 > traveling to PSP by plane...
-> you can either fly directly into LAX and grab an uber/lyft which is between 2-4 hours depending on traffic, or if you have a stop over in a US city that connects to PSP, you can fly directly to PSP or alternatively fly to ONT and then ONT is more reliably 1h15 to Palm Spring Spring.
+> you can either fly directly into LAX and grab an uber/lyft which is between 2-4 hours depending on traffic, or if you have a stopover in a US city that connects to PSP, you can fly directly to PSP or alternatively fly to ONT and then ONT is more reliably 1h15 to Palm Springs.
 
 ### Goals
 
@@ -44,7 +44,7 @@ Put down the topic and the people that would like to discuss it:
 The theme of this offsite is to make considerable progress on the remaining Helix5 tasks as defined in the
 architecture vision. We will align the work with the main topics
 
-#### Track 1: Simplify CDN tier and new service architcture
+#### Track 1: Simplify CDN tier and new service architecture
 - CDN Services break up
 - Config Bus Service
 - Config Bus Admin endpoint (versioning)
@@ -73,11 +73,11 @@ architecture vision. We will align the work with the main topics
 
 
 #### Ideas / Suggestions / Topics Collection
-- Multi Mountpoints - especially with more and more projects using multipe content sources (docs & AEM Author)
+- Multi Mountpoints - especially with more and more projects using multiple content sources (docs & AEM Author)
 - Helix 5 repoless = no need to create a github repo to create a full site
 - Demos target:
-  - as a non-dev user, I import a simple site without writting a single line of code (use Sidekick default import feature - content copy /paste, default blocks ?, enhanced default block foundation, repoless...)
-  - Brainstorming outcomes: how to import a complex site with the mininum of technical skills (import with blocks from block foundation, eye-dropper? (logo, fonts, styles...), templating, repoless...)
+  - as a non-dev user, I import a simple site without writing a single line of code (use Sidekick default import feature - content copy /paste, default blocks ?, enhanced default block foundation, repoless...)
+  - Brainstorming outcomes: how to import a complex site with the minimum of technical skills (import with blocks from block foundation, eye-dropper? (logo, fonts, styles...), templating, repoless...)
 - Working / brainstorming tracks:
   - create a solid block foundation
   - default templates and customisation for repoless
@@ -115,6 +115,7 @@ If you have been invited and will come, please put your name down in the list.
 1. @maxakuru
 1. @ryanmparrish
 1. @cazzaranjosh
+1. @fkakatie
 
 ### Preparation
 
