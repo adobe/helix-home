@@ -82,6 +82,9 @@ architecture vision. We will align the work with the main topics
   - create a solid block foundation
   - default templates and customisation for repoless
   - default import with block from block foundation
+  - i18n urls (allow percentage encoding for a reversible mapping of non ASCII urls)
+  - content branching (previewing content on branches)
+  - flexible CORS headers for hlx.page (https://jira.corp.adobe.com/browse/SITES-18121)
 
 
 ### Attendees
