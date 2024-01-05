@@ -1,6 +1,6 @@
 # Helix Operations Workshop XII
 
-January 8th to 12th 2023, ACE Hotel Palm Springs, CA
+January 8th to 12th 2024, ACE Hotel Palm Springs, CA
 
 ---
 
