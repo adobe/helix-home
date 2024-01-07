@@ -20,7 +20,7 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 | Time      | Monday                              | Tuesday           | Wednesday         | Thursday          | Friday            |
 | --------: | ----------------------------------- | ----------------- | ----------------- | ----------------- | ----------------- |
-|   Morning | 10:00 Architecture walkthrough | Hacking | Hacking | Hacking | Hacking  |
+|   Morning | 9:00 Kick-off, Goals<br>10:00 Architecture walkthrough | Hacking | Hacking | Hacking | Hacking  |
 | Afternoon | Hacking | Hacking | Hacking | Hacking | Demos |
 |   Evening | Social                          | Social        | Social        | Social        | -       |
 
