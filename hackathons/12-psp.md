@@ -75,6 +75,7 @@ architecture vision. We will align the work with the main topics
 #### Ideas / Suggestions / Topics Collection
 - Multi Mountpoints - especially with more and more projects using multiple content sources (docs & AEM Author)
 - Helix 5 repoless = no need to create a github repo to create a full site
+- DNS Cleanup/Alignment – prepare multi-DNS by aligning domains, see [DNS/TLS/CDN overview](../docs/Franklin%20Architecture/Helix%20DNS.png)
 - Demos target:
   - as a non-dev user, I import a simple site without writing a single line of code (use Sidekick default import feature - content copy /paste, default blocks ?, enhanced default block foundation, repoless...)
   - Brainstorming outcomes: how to import a complex site with the minimum of technical skills (import with blocks from block foundation, eye-dropper? (logo, fonts, styles...), templating, repoless...)
