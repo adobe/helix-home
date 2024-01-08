@@ -22,4 +22,5 @@
 - Who gets v5, who doesn't? What timeline? 
     - Customers whos see no tangible benefit (aside from Adobe, supporting old arch)
     - Customers who are awaiting future features of v5 (e.g. Pfizer)
-    - In between? 
+    - In between?
+    - Everyone?? Pre-populate config bus with v4 configs... 
