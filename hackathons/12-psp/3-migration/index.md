@@ -3,14 +3,14 @@
 
 ## Migration plan
 - Ideal state: magic. Fewest manual steps as possible 
-    - If v5 config is empty, get v4 config, write to v5
+    - If v5 config is empty, get v4 config, write to v5 config bus
     - Debate: Admin panel to migrate v4 config to v5? Seems like this shouldn't be a thing.
 
 ## Long-term backwards compatibility perspective
 - Assumption:
     - type in aem.live and the site loads correctly 
-    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations), how much would need to be backwards compat?
-    - need visual editor for configs non-migrated or manual configurations
+    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations), how much would need to be backwards compatible?
+    - need visual editor for non-migrated or manual configurations
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
 
  
