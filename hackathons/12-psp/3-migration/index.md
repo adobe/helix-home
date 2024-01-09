@@ -39,3 +39,7 @@
     - what can't be migrated, what manual steps will be needed regardless 
     - do we run it on every current customer initially? Do we need to tell them?
 - Keeping track on customers who have been (and not been) migrated: some reporting will be needed
+
+Draft Migration flow
+![Draft Flow](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/draftMigrationFlow.png)
+
