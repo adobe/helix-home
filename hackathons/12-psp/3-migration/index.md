@@ -10,7 +10,7 @@
 - Assumption: Not much (if any) is necessary
     - type in aem.live and the site loads correctly 
     - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations), how much would need to be backwards compatible?
-    - need visual editor for non-migrated or manual configurations
+    - Visual editor for non-migrated or manual configurations??
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
 
  
