@@ -25,6 +25,7 @@
 
 
 ## Customer communication
+- ORG: Need to identify qualified person / email for org, need some comms for this 
 - Language is important! Referring to this as a new "version" will prompt customers to think in terms of upgrade considerations and planning (and past headaches).  Instead, suggest we talk about this just in terms of continuous improvements that are based on proven customer needs and usage. "Because of the specifics of our latest feature additions, configuration changes will be required for all on the customer side". Full stop. 
 - Need to determine brief "value propositions" (e.g. RSO, admin area, config bus) that can/should be communicated to explain the improvements
 - Need a pre-golive checklist (likely similar to current go-live checklist) to provide for validation before switch is committed
@@ -34,7 +35,7 @@
 
 ## Discussion points
 - config migration tool (the magic) needs to be built
-    - ORG? What is it, where is it, how do we know what it is?
+    - ORG? Identifying the person / email of the owner. What is it, where is it, how do we know what it is?
     - what gets migrated, specifically
     - what can't be migrated, what manual steps will be needed regardless 
     - do we run it on every current customer initially? Do we need to tell them?
