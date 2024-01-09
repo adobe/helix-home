@@ -29,6 +29,7 @@
 
 ## Discussion points
 - config migration tool (the magic) needs to be built
+    - ORG? What is it, where is it, how do we know what it is?
     - what gets migrated, specifically
     - what can't be migrated, what manual steps will be needed regardless 
     - do we run it on every current customer initially? Do we need to tell them?
