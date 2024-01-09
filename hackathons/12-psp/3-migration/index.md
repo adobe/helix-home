@@ -15,15 +15,17 @@
 
 ## Migration / rollout plans
 - Customer communication
-    - Need to determine "value propositions" (e.g. RSO, admin area, config bus) that can/should be communicated
-    - Need a pre-golive checklist (likely similar to current go-live checklist) for v5.
+    - Language is important! Referring to this as a new "version" will prompt customers to think in terms of upgrade considerations and planning (and past headaches).  Instead, suggest we talk about this just in terms of continuous improvements that are based on proven customer needs and usage. "Because of the specifics of our latest feature additions, configuration changes will be required for all on the customer side". Full stop. 
+    - Need to determine brief "value propositions" (e.g. RSO, admin area, config bus) that can/should be communicated to explain the improvements
+    - Need a pre-golive checklist (likely similar to current go-live checklist) to provide for validation before switch is committed
  
-## Open Migration questions
-- Who gets v5, who doesn't? What timeline? 
-    - Customers whos see no tangible benefit (aside from Adobe, supporting old arch)
-    - Customers who are awaiting future features of v5 (e.g. Pfizer)
-    - In between?
-    - Everyone?? Pre-populate config bus with v4 configs... 
+## Customer prioritization
+- Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
+- Customer groups:
+      1. Customers who have requested and are awaiting these future features (e.g. Pfizer)
+      2. Customers who are actively expanding their usage and may take advantage of new functionality in their plans once aware 
+      3. Customers who are not actively expanding their sites/functionality and will see no tangible benefit (e.g. BASF, potatoes, etc)
+- Proposal:  from an ease of maintenance perspective, let's run this for everyone. i.e Pre-populate config bus with v4 configs so all are ready to make the switch once we communicate that they need to and help them to do it, regardless of their customer group.  Avoid maintaining/supporting both for any longer than necessary.  
 
 ---
 
