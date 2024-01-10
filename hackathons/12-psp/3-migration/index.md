@@ -9,8 +9,8 @@
 ## Long-term backwards compatibility perspective
 - Assumption: Not much (if any) is necessary
     - type in aem.live and the site loads correctly 
-    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations), how much would need to be backwards compatible?
-    - Visual editor for non-migrated or manual configurations??
+    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). Ideally nothing would be needed.
+    - Visual editor for non-migrated or manual configurations via admin utility
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
 
  
@@ -36,11 +36,11 @@
 ## Discussion points
 - config migration tool (the magic) needs to be built
     - ORG? Identifying the person / email of the owner. What is it, where is it, how do we know what it is?
-    - what gets migrated, specifically
+    - what gets migrated, specifically.  List should likely be inclusive of all config items listed in [v5 arch](https://www.aem.live/drafts/uncled/helix5#config-service-aspects)
     - what can't be migrated, what manual steps will be needed regardless 
-    - do we run it on every current customer initially? Do we need to tell them?
-- Keeping track on customers who have been (and not been) migrated: some reporting will be needed
-- Configbus documentation -> step-by-step of what is different and how to effect changes
+    - do we run it on every current customer initially?  What would it take to automate as much of this as possible, including ORG considerations
+- Keeping track of customers who have been (and not been) migrated: some reporting will be needed
+- Configbus documentation -> step-by-step of what is different and how to effect changes for newly migrated customers
 
 Draft Migration flow
 ![Draft Flow](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/draftMigrationFlow.png)
