@@ -9,7 +9,7 @@
 ## Long-term backwards compatibility perspective
 - Assumption: Not much (if any) is necessary
     - type in aem.live and the site loads correctly 
-    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). Ideally nothing would be needed.
+    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). 
     - Visual editor for non-migrated or manual configurations via admin utility
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
 
@@ -21,7 +21,7 @@
     2. Customers who are actively expanding their usage and may take advantage of new functionality in their plans once aware
     3. Customers who are not actively expanding their sites/functionality and will see no tangible benefit (e.g. BASF, potatoes, etc)
     4. Customers who we manage DNS (77)
-- **Proposal:**  from an ease of maintenance perspective, let's run this for everyone. i.e Pre-populate config bus with v4 configs so all are ready to make the switch once we communicate that they need to and help them to do it, regardless of their customer group.  Avoid maintaining/supporting both for any longer than necessary.  
+- **Proposal:**  Run both architectures for the least amount of time. While there isn't significant technical cost for running both architectures concurrently, from an ease of maintenance perspective it should be our goal to push customers quickly to v5. If it is possible to run the congfig migration for all (or most) currently live customers and automate ORG creation. Specifically, pre-populate config bus with v4 configs so all customers are ready to make the switch (once we communicate that they need to, and help them to do it) regardless of their customer group.  Doing so will avoid maintaining/supporting both architectures for the least amount of time.  
 
 
 ## Customer communication
