@@ -36,7 +36,9 @@ Backwards compatible (inform, get information and permission, do it, ask for val
     - Customer is informed of v5 changes, how configs will work goign forward, delivered a golive checklist of testing and manual steps (e.g. change DNS/CDN)
     - Customer is provided (or creates) PR to remove v4 configs
     - Assumes:
-      - Some level of indicator is provided (admin panel) of what configs are being used prior to switch-over and v4 config deletion 
+      - Some level of indicator is provided (admin panel) of what configs are being used prior to switch-over and v4 config deletion
+    - Considerations:
+      - What happens if a customer is resistant (slow to respond, uninterested, etc)
 
 
 
