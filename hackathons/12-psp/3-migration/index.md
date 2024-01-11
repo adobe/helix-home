@@ -2,6 +2,13 @@
 
 *Draft*
 
+TOC
+
+[Customer prioritization](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-prioritization) | 
+[Customer communication considerations](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-communication) | 
+[Migration Scenario A](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-a) | 
+[Migration Scenario B](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-b) | 
+[Discussion Points](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#discussion-points)
  
 ## Customer prioritization
 - Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
