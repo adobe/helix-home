@@ -38,7 +38,7 @@
     - ORG? Identifying the person / email of the owner. What is it, where is it, how do we know what it is?
     - what gets migrated, specifically.  List should likely be inclusive of all config items listed in [v5 arch](https://www.aem.live/drafts/uncled/helix5#config-service-aspects)
     - what can't be migrated, what manual steps will be needed regardless 
-    - do we run it on every current customer initially?  What would it take to automate as much of this as possible, including ORG considerations
+    - do we run it on every current customer initially? (yes, but prioritizing order based on customer groups as defined?)  What would it take to automate as much of this as possible, including ORG considerations
 - Keeping track of customers who have been (and not been) migrated: some reporting will be needed
 - Configbus documentation -> step-by-step of what is different and how to effect changes for newly migrated customers
 
