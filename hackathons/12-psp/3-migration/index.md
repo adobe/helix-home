@@ -54,9 +54,8 @@ Magic (Do it, inform, ask for validation) -> Auto creation of org (if possible),
       - No need to copy content or code for migration purposes
 
 #### Long-term backwards compatibility perspective
-- Assumption: Not much (if any) is necessary
+- Assumption: Not much (if any) is necessary if configuration migration and org creation can be Magic 
     - type in aem.live and the site loads correctly 
-    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). 
     - Visual editor for non-migrated or manual configurations via admin utility
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
 
