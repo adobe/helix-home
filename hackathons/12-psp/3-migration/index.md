@@ -1,10 +1,50 @@
 # Backwards compatibility within reason, Migration is a reality
 
+*Draft*
 
-## Migration plan
-- Ideal state: magic. Fewest manual steps as possible 
+
+## Scenario A: 
+Magic (Do it, inform, ask for validation) -> Auto migration of v4 Configurations to v5 Configbus, auto creation of org (if possible)
+### Migration plan
+ 
+ - Ideal state: Fewest manual steps as possible. 
+    - script run per customer, org created
     - If v5 config is empty, get v4 config, write to v5 config bus
-    - Debate: Admin panel to migrate v4 config to v5? Seems like this shouldn't be a thing.
+    - Customer is informed of v5 changes, how configs will work goign forward, delivered a golive checklist of testing and manual steps (e.g. change DNS/CDN)
+    - Site reviewed and tested by customer/Adobe, any configs missed in migration are added to config bus
+    - Customer/Adobe makes necessary changes and is now on v5.  Pull request to remove v4 migrated items (created originally via migration tool)
+    - Assumes:
+       - org (name, owner, email etc.) can be created via magic, owner identified.
+          - Can this be intuited via the bot? Who installed it, what org it belongs to?
+          - Org name collisions? Solved via github org name, otherwise this needs to be solved for
+      - There is no issue with just "doing it"
+      - Some level of white-glove will likely be necessary
+
+---
+
+
+## Scenario B: 
+Backwards compatible (inform, get information and permission, do it, ask for validation) -> v4 Configurations via fallback, manual (or semi-automated via button) migration to v5 config
+
+### Migration plan
+ 
+- Ideal state: 
+    - Customer info (org, owner, email etc) is retrieved, likely via customer interaction
+    - Org is created and populated with above detail
+    - Customer is provided .aem.live url, can see site works. 
+    - Customer is provided admin panel to migrate (maybe via button) v4 to v5 configs
+    - Customer is informed of v5 changes, how configs will work goign forward, delivered a golive checklist of testing and manual steps (e.g. change DNS/CDN)
+    - Customer is provided (or creates) PR to remove v4 configs
+    - Assumes:
+      - Some level of indicator is provided (admin panel) of what configs are being used prior to switch-over and v4 config deletion 
+
+
+
+
+## Note
+
+- For free-tier customers, some level of alerting will be necessary, likely via sidekick notiication
+---
 
 ## Long-term backwards compatibility perspective
 - Assumption: Not much (if any) is necessary
