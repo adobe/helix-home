@@ -42,7 +42,7 @@ Magic (Do it, inform, ask for validation) -> Auto creation of org (if possible),
  - Ideal state: Fewest manual steps as possible. 
     - script run per customer, org created
     - If v5 config is empty, get v4 config, write to v5 config bus
-    - Customer is informed of v5 changes, how configs will work goign forward, delivered a golive checklist of testing and manual steps (e.g. change DNS/CDN)
+    - Customer is informed of v5 changes, how configs will work going forward, delivered a golive checklist of testing and manual steps (e.g. change DNS/CDN)
     - Site reviewed and tested by customer/Adobe, any configs missed in migration are added to config bus
     - Customer/Adobe makes necessary changes and is now on v5.  Pull request to remove v4 migrated items (created originally via migration tool)
     - Assumes:
