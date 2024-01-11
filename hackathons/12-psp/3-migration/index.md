@@ -89,7 +89,7 @@ Backwards compatible (inform, get information and permission, do it, ask for val
 ---
 
 ## Discussion points
-- For free-tier customers, some level of alerting will be necessary, likely via sidekick notiication
+- For free-tier customers, some level of alerting will be necessary, likely via sidekick notification
 - config migration tool (the magic) needs to be built
     - ORG? Identifying the person / email of the owner. What is it, where is it, how do we know what it is?
     - what gets migrated, specifically.  List should likely be inclusive of all config items listed in [v5 arch](https://www.aem.live/drafts/uncled/helix5#config-service-aspects)
