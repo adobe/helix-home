@@ -24,7 +24,7 @@
 
 
 ## Scenario A: 
-Magic (Do it, inform, ask for validation) -> Auto migration of v4 Configurations to v5 Configbus, auto creation of org (if possible)
+Magic (Do it, inform, ask for validation) -> Auto creation of org (if possible), auto migration of v4 Configurations to v5 Configbus
 ### Migration plan
  
  - Ideal state: Fewest manual steps as possible. 
