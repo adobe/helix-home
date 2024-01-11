@@ -2,6 +2,26 @@
 
 *Draft*
 
+ 
+## Customer prioritization
+- Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
+- Customer groups:
+    1. Customers who have requested and are awaiting these future features (e.g. Pfizer)
+    2. Customers who are actively expanding their usage and may take advantage of new functionality in their plans once aware
+    3. Customers who are not actively expanding their sites/functionality and will see no tangible benefit (e.g. BASF, potatoes, etc)
+    4. Customers who we manage DNS (77)
+- **Proposal:**  Run both architectures for the least amount of time. While there isn't significant technical cost for running both architectures concurrently, from an ease of maintenance perspective it should be our goal to push customers quickly to v5. If it is possible to run the congfig migration for all (or most) currently live customers and automate ORG creation. Specifically, pre-populate config bus with v4 configs so all customers are ready to make the switch (once we communicate that they need to, and help them to do it) regardless of their customer group.  Doing so will avoid maintaining/supporting both architectures for the least amount of time.  
+
+
+## Customer communication
+- ORG: Need to identify qualified person / email for org, need some comms for this 
+- Language is important! Referring to this as a new "version" will prompt customers to think in terms of upgrade considerations and planning (and past headaches).  Instead, suggest we talk about this just in terms of continuous improvements that are based on proven customer needs and usage. "Because of the specifics of our latest feature additions, configuration changes will be required for all on the customer side". Full stop. 
+- Need to determine brief "value propositions" (e.g. RSO, admin area, config bus) that can/should be communicated to explain the improvements
+- Need a pre-golive checklist (likely similar to current go-live checklist) to provide for validation before switch is committed
+- "a centralized and easy-to-use Franklin configuration management utility is being introduced.  to leverage this fantastic tool, a change to your DNS from hlx.live to aem.liv will be required.  On xx/xx/xxxx, the older decentralized configuation schema will be sunset."
+
+---
+
 
 ## Scenario A: 
 Magic (Do it, inform, ask for validation) -> Auto migration of v4 Configurations to v5 Configbus, auto creation of org (if possible)
@@ -57,23 +77,7 @@ Backwards compatible (inform, get information and permission, do it, ask for val
 
 
 
- 
-## Customer prioritization
-- Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
-- Customer groups:
-    1. Customers who have requested and are awaiting these future features (e.g. Pfizer)
-    2. Customers who are actively expanding their usage and may take advantage of new functionality in their plans once aware
-    3. Customers who are not actively expanding their sites/functionality and will see no tangible benefit (e.g. BASF, potatoes, etc)
-    4. Customers who we manage DNS (77)
-- **Proposal:**  Run both architectures for the least amount of time. While there isn't significant technical cost for running both architectures concurrently, from an ease of maintenance perspective it should be our goal to push customers quickly to v5. If it is possible to run the congfig migration for all (or most) currently live customers and automate ORG creation. Specifically, pre-populate config bus with v4 configs so all customers are ready to make the switch (once we communicate that they need to, and help them to do it) regardless of their customer group.  Doing so will avoid maintaining/supporting both architectures for the least amount of time.  
 
-
-## Customer communication
-- ORG: Need to identify qualified person / email for org, need some comms for this 
-- Language is important! Referring to this as a new "version" will prompt customers to think in terms of upgrade considerations and planning (and past headaches).  Instead, suggest we talk about this just in terms of continuous improvements that are based on proven customer needs and usage. "Because of the specifics of our latest feature additions, configuration changes will be required for all on the customer side". Full stop. 
-- Need to determine brief "value propositions" (e.g. RSO, admin area, config bus) that can/should be communicated to explain the improvements
-- Need a pre-golive checklist (likely similar to current go-live checklist) to provide for validation before switch is committed
-- "a centralized and easy-to-use Franklin configuration management utility is being introduced.  to leverage this fantastic tool, a change to your DNS from hlx.live to aem.liv will be required.  On xx/xx/xxxx, the older decentralized configuation schema will be sunset."
 
 ---
 
