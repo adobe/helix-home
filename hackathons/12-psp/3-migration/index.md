@@ -20,6 +20,13 @@ Magic (Do it, inform, ask for validation) -> Auto migration of v4 Configurations
       - There is no issue with just "doing it"
       - Some level of white-glove will likely be necessary
 
+#### Long-term backwards compatibility perspective
+- Assumption: Not much (if any) is necessary
+    - type in aem.live and the site loads correctly 
+    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). 
+    - Visual editor for non-migrated or manual configurations via admin utility
+    - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
+      
 ---
 
 
@@ -48,12 +55,7 @@ Backwards compatible (inform, get information and permission, do it, ask for val
 - For free-tier customers, some level of alerting will be necessary, likely via sidekick notiication
 ---
 
-## Long-term backwards compatibility perspective
-- Assumption: Not much (if any) is necessary
-    - type in aem.live and the site loads correctly 
-    - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). 
-    - Visual editor for non-migrated or manual configurations via admin utility
-    - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
+
 
  
 ## Customer prioritization
