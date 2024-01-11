@@ -5,7 +5,7 @@
  
 ## Customer prioritization
 - Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
-- Customer groups:
+- Possible Customer groupings:
     1. Customers who have requested and are awaiting these future features (e.g. Pfizer)
     2. Customers who are actively expanding their usage and may take advantage of new functionality in their plans once aware
     3. Customers who are not actively expanding their sites/functionality and will see no tangible benefit (e.g. BASF, potatoes, etc)
