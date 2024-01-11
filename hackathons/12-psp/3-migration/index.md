@@ -47,7 +47,7 @@ Magic (Do it, inform, ask for validation) -> Auto migration of v4 Configurations
     - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). 
     - Visual editor for non-migrated or manual configurations via admin utility
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
-      
+    - No need to copy content or code for migration purposes
 ---
 
 
