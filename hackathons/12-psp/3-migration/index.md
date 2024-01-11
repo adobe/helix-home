@@ -19,6 +19,9 @@ TOC
     4. Customers who we manage DNS (77)
 - **Proposal:**  Run both architectures for the least amount of time. While there isn't significant technical cost for running both architectures concurrently, from an ease of maintenance perspective it should be our goal to push customers quickly to v5. If it is possible to run the congfig migration for all (or most) currently live customers and automate ORG creation. Specifically, pre-populate config bus with v4 configs so all customers are ready to make the switch (once we communicate that they need to, and help them to do it) regardless of their customer group.  Doing so will avoid maintaining/supporting both architectures for the least amount of time.  
 
+  
+^[Back to top](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#backwards-compatibility-within-reason-migration-is-a-reality)
+
 
 ## Customer communication
 - ORG: Need to identify qualified person / email for org, need some comms for this 
@@ -26,6 +29,8 @@ TOC
 - Need to determine brief "value propositions" (e.g. RSO, admin area, config bus) that can/should be communicated to explain the improvements
 - Need a pre-golive checklist (likely similar to current go-live checklist) to provide for validation before switch is committed
 - "a centralized and easy-to-use Franklin configuration management utility is being introduced.  to leverage this fantastic tool, a change to your DNS from hlx.live to aem.liv will be required.  On xx/xx/xxxx, the older decentralized configuation schema will be sunset."
+  
+^[Back to top](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#backwards-compatibility-within-reason-migration-is-a-reality)
 
 ---
 
@@ -54,6 +59,10 @@ Magic (Do it, inform, ask for validation) -> Auto creation of org (if possible),
     - If config migration is "Magic" (e.g. empty v5 config is populated from known v4 locations). 
     - Visual editor for non-migrated or manual configurations via admin utility
     - Some level of manual work is expected (e.g. CDN/DNS switch, any secrets that might get put into Custom config).
+
+   
+^[Back to top](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#backwards-compatibility-within-reason-migration-is-a-reality)
+
 ---
 
 
@@ -75,21 +84,13 @@ Backwards compatible (inform, get information and permission, do it, ask for val
     - Considerations:
       - What happens if a customer is resistant (slow to respond, uninterested, etc)
 
-
-
-
-## Note
-
-- For free-tier customers, some level of alerting will be necessary, likely via sidekick notiication
----
-
-
-
-
+  
+^[Back to top](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#backwards-compatibility-within-reason-migration-is-a-reality)
 
 ---
 
 ## Discussion points
+- For free-tier customers, some level of alerting will be necessary, likely via sidekick notiication
 - config migration tool (the magic) needs to be built
     - ORG? Identifying the person / email of the owner. What is it, where is it, how do we know what it is?
     - what gets migrated, specifically.  List should likely be inclusive of all config items listed in [v5 arch](https://www.aem.live/drafts/uncled/helix5#config-service-aspects)
@@ -97,6 +98,9 @@ Backwards compatible (inform, get information and permission, do it, ask for val
     - do we run it on every current customer initially? (yes, but prioritizing order based on customer groups as defined?)  What would it take to automate as much of this as possible, including ORG considerations
 - Keeping track of customers who have been (and not been) migrated: some reporting will be needed
 - Configbus documentation -> step-by-step of what is different and how to effect changes for newly migrated customers
+  
+^[Back to top](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#backwards-compatibility-within-reason-migration-is-a-reality)
+
 
 Draft Migration flow
 ![Draft Flow](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/draftMigrationFlow.png)
