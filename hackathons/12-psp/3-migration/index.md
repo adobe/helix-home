@@ -39,6 +39,7 @@ Magic (Do it, inform, ask for validation) -> Auto migration of v4 Configurations
           - Org name collisions? Solved via github org name, otherwise this needs to be solved for
       - There is no issue with just "doing it"
       - Some level of white-glove will likely be necessary
+      - No need to copy content or code for migration purposes
 
 #### Long-term backwards compatibility perspective
 - Assumption: Not much (if any) is necessary
