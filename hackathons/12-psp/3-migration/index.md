@@ -1,6 +1,5 @@
 # Backwards compatibility within reason, Migration is a reality
 
-*Draft*
 
 TOC
 
@@ -9,7 +8,42 @@ TOC
 [Migration Scenario A](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-a) | 
 [Migration Scenario B](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-b) | 
 [Discussion Points](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#discussion-points)
- 
+
+## Demo
+Track focus
+- Migration plan
+- Long-term backwards compatibility
+
+### Overall goals
+- Support v4 arch for the least time possible, get everyone on v5 as quickly as is reasonable 
+- Lowest friction possible, as much “magic” as possible
+- Nothing breaks, everything just works, configurations fallback to v4 
+
+#### Backwards compatibility
+- Our initial thought was that there wouldn’t be a need for [any](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-a), just migrate as much as possible
+- As it turns, it just works
+
+#### Customer bucket(s)
+1. Lower touch / “Informed”: Customers in we have control over their DNS/CDN entry, lower page views in RUM
+2. Higher touch / “Guided” / White Glove: Customers who will be early adopters or who are complex (e.g. Pfizer, a.com)
+3. Customers who need to be “Convinced” 
+
+#### Migration plan
+- WIP: put customers in buckets
+    - Get customer contact for DNS/CDN
+        - This will be a a little different based on customer bucket 
+    - Switch customer to aem.live 
+        - Net new projects start on aem.live
+    - Once customers are all using aem.live, likely can remove hlx.live
+  
+#### Awaiting
+- Migration of configurations from v4 architecture to v5 config bus
+- Admin UI
+- Documentation
+- Redirect mechanism from hlx.page to aem.live, so user browsing experience is seamless (browser history is how you get to your content
+
+---
+
 ## Customer prioritization
 - Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
 - Possible Customer groupings:
