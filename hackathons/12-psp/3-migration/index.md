@@ -1,8 +1,5 @@
 # Backwards compatibility within reason, Migration is a reality
 
-
-TOC
-
 [Demo](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#demo) | 
 [Customer prioritization](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-prioritization) | 
 [Customer communication considerations](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-communication) | 
