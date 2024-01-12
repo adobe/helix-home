@@ -1,7 +1,7 @@
 # Backwards compatibility within reason, Migration is a reality
 
 [Demo](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#demo) | 
-[Customer prioritization](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-prioritization) | 
+[Customer buckets & prioritization](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-prioritization) | 
 [Customer communication considerations](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-communication) | 
 [Migration Scenario A](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-a) | 
 [Migration Scenario B](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-b) | 
@@ -45,7 +45,7 @@ Track focus
 
 ---
 
-## Customer prioritization
+## Customer bucket(s) and prioritization
 - Who do we prioritize to make the switch? Do we approach all or leave some alone? What timeline?
 - Possible Customer groupings:
     1. Customers who have requested and are awaiting these future features (e.g. Pfizer)
