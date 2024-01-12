@@ -40,6 +40,9 @@ Track focus
 - Documentation
 - Redirect mechanism from hlx.page to aem.live, so user browsing experience is seamless (browser history is how you get to your content
 
+  
+^[Back to top](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#backwards-compatibility-within-reason-migration-is-a-reality)
+
 ---
 
 ## Customer prioritization
