@@ -70,7 +70,7 @@ Track focus
 ---
 
 
-## Scenario A: 
+## Scenario A: (WON'T DO)
 Magic (Do it, inform, ask for validation) -> Auto creation of org (if possible), auto migration of v4 Configurations to v5 Configbus
 ### Migration plan
  
