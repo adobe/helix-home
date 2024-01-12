@@ -21,7 +21,7 @@ Track focus
 - Our initial thought was that there wouldn’t be a need for [any](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#scenario-a), just migrate as much as possible
 - As it turns, it just works
 
-#### Customer bucket(s)
+#### [Customer bucket(s)](https://github.com/adobe/helix-home/blob/main/hackathons/12-psp/3-migration/index.md#customer-prioritization)
 1. Lower touch / “Informed”: Customers in we have control over their DNS/CDN entry, lower page views in RUM
 2. Higher touch / “Guided” / White Glove: Customers who will be early adopters or who are complex (e.g. Pfizer, a.com)
 3. Customers who need to be “Convinced” 
