@@ -4,7 +4,7 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 
 ## Upcoming Hackathons
 
-10. [November 28th-Dec 2nd, Barcelona, Spain](10-bcn.md)
+12. [April 15th to 19th, Berlin, Germany](13-ber.md)
 
 ## Past Hackathons
 
@@ -17,6 +17,9 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 7. [October 2019, Norddal, Norway](7-aes.md)
 8. [February 2020, Palm Springs, CA](8-psp.md)
 9. [Canceled due to Covid-19, Barcelona, Spain](9-bcn.md)
+10. [November 2022, Remote, due to travel restrictions](10-bcn.md)
+11. August 2023, New York City, NY
+12. [January 2024, Palm Springs, CA](12-psp.md)
 
 ## Ideas for future Hackathons
 
@@ -29,7 +32,7 @@ Just put your idea on the list:
 - Bordeaux ( [Cité du Vin](https://www.bedouk.fr/la-cite-du-vin,L89668), [Opéra National](https://www.bedouk.fr/opera-national-de-bordeaux,L90884) )
 - [Basel](https://www.basel.com/en) :)
 - [De Watertoren](https://www.watertorenvlissingen.com/), Vlissingen, Netherlands
-- New York City ([https://www.wework.com/l/new-york-city--NY](https://www.wework.com/l/new-york-city--NY), [https://privateevents.neuehouse.com/the-boardroom](https://privateevents.neuehouse.com/the-boardroom)...)
+- ~~New York City ([https://www.wework.com/l/new-york-city--NY](https://www.wework.com/l/new-york-city--NY), [https://privateevents.neuehouse.com/the-boardroom](https://privateevents.neuehouse.com/the-boardroom)...)~~
 - ~~SoCal (L.A. / San Diego / Palm Springs), ideal for a winter location !~~
 - Sydney / Melbourne
 - Singapore
