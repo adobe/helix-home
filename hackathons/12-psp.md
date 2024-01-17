@@ -131,3 +131,4 @@ If you have been invited and will come, please put your name down in the list.
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
 
 ### Demos
+- [Recording](https://adobe.sharepoint.com/:v:/s/cg-helix/ERHHeMpGYNhNiR_kYYJJyWIB8O2ssNmuI4qrGH8UPleCow?e=uGZT7X) (Adobe only)
