@@ -19,7 +19,6 @@ Create a new service|library repository with the name `aem-…`
 - [ ] List your repository in [AWS IAM](https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/roles/details/helix-gh-deploy-config-service?section=trust_relationships)
 
 ### for services
-- [ ] Uncomment and adjust the `helix-post-deploy/monitoring` command in `.github/workflows/main.yaml`: decide if your service falls under Development, Publishing or Delivery. (note: failures in the latter two categories will ping on-call engineers on weekends!) See https://www.aemstatus.net for reference.
 
 
 ## Stuff you need an Adobe Org Admin for
