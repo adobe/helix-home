@@ -71,6 +71,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@rofe](https://github.com/rofe)
 1. [@dominique-pfister](https://github.com/dominique-pfister)
 1. [@langswei](https://github.com/langswei)
+2. [@3vil3mpir3](https://github.com/3vil3mpir3) (Brian Warner)
 
 ### Preparation
 
