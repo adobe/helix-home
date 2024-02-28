@@ -54,7 +54,7 @@ The theme of this offsite is to make considerable progress on getting customers 
 #### Ideas / Suggestions / Topics Collection
 - put them here
 - domain management in Helix 5: Admin API, Cert Onboarding, Domain Keys, Spacecat
-
+- move helix (code) repsitories to adobe's github enterprise (discuss implications, move some repos and test feasability)
 
 ### Attendees
 
