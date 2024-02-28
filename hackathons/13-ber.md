@@ -74,6 +74,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@3vil3mpir3](https://github.com/3vil3mpir3) (Brian Warner)
 1. [@amol-anand](https://github.com/amol-anand)
 1. [@dkuntze](https://github.com/dkuntze)
+1. [@maxakuru](https://github.com/maxakuru)
 
 ### Preparation
 
