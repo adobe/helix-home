@@ -77,6 +77,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@maxakuru](https://github.com/maxakuru)
 1. [@shsteimer](https://github.com/shsteimer)
 1. [@gilliankrause](https://github.com/gilliankrause)
+1. [Stopp](https://github.com/bstopp)
 
 ### Preparation
 
