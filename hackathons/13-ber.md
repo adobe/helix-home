@@ -80,6 +80,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@gilliankrause](https://github.com/gilliankrause)
 1. [@gmhaack](https://github.com/mhaack)
 1. [@fkakatie](https://github.com/fkakatie)
+1. [Stopp](https://github.com/bstopp)
 
 ### Preparation
 
