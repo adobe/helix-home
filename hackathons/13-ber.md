@@ -82,6 +82,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@fkakatie](https://github.com/fkakatie)
 1. [Stopp](https://github.com/bstopp)
 1. [@royfielding](https://github.com/royfielding)
+1. [@karlpauls](https://github.com/karlpauls)
 
 ### Preparation
 
