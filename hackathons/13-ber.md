@@ -87,6 +87,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@davidnuescheler](https://github.com/davidnuescheler)
 2. [@sdmcraft](https://github.com/sdmcraft) (Satya Deep Maheshwari)
 3. [@dylandepass](https://github.com/dylandepass)
+4. [@phornig](https://github.com/phornig)
 
 ### Preparation
 
