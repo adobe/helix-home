@@ -85,10 +85,11 @@ If you have been invited and will come, please put your name down in the list.
 1. [@karlpauls](https://github.com/karlpauls)
 1. [@ekremney](https://github.com/ekremney)
 1. [@davidnuescheler](https://github.com/davidnuescheler)
-2. [@sdmcraft](https://github.com/sdmcraft) (Satya Deep Maheshwari)
-3. [@dylandepass](https://github.com/dylandepass)
-4. [@mokimo](https://github.com/mokimo) (adobe.com)
-5. [@overmyheadandbody](https://github.com/overmyheadandbody) (adobe.com)
+1. [@sdmcraft](https://github.com/sdmcraft) (Satya Deep Maheshwari)
+1. [@dylandepass](https://github.com/dylandepass)
+1. [@mokimo](https://github.com/mokimo) (adobe.com)
+1. [@overmyheadandbody](https://github.com/overmyheadandbody) (adobe.com)
+1. [@phornig](https://github.com/phornig)
 
 ### Preparation
 
