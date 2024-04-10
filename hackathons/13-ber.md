@@ -47,14 +47,25 @@ Put down the topic and the people that would like to discuss it:
 The theme of this offsite is to make considerable progress on getting customers onboarded to Helix 5.
 
 #### Track 1: adobe.com on Helix 5
+- switch over all the projects you are involved in to helix5
+- repoless projects (pga tour)?
 - sidekick implications
 - get outside-in, ideal project to work
 - other test sites
 
 #### Ideas / Suggestions / Topics Collection
-- put them here
+- RUM data collection clean-up
+- RUM based site clean-up CWV and 404, JS errors
+- RUM domain key management
+- RUM historical data processing
+- Annual RUM dashboard
+- RUM Consent checkpoint
+- Consent integration blueprint in boilerplate
 - domain management in Helix 5: Admin API, Cert Onboarding, Domain Keys, Spacecat
 - move helix (code) repositories to adobe's github enterprise (discuss implications, move some repos and test feasibility)
+- Sharepoint hosting
+- Teams onboarding (vs. slack)
+- Teams app for support?
 
 ### Attendees
 
