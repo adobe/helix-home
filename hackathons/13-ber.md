@@ -44,9 +44,14 @@ The 25hours Hotel Bikini Berlin is a 5 minute walk from Berlin Zoo S-Bahn statio
 
 Put down the topic and the people that would like to discuss it:
 
-The theme of this offsite is to make considerable progress on getting customers onboarded to Helix 5.
+The theme of this offsite is to make considerable progress on getting customers onboarded to Helix 5. For this, we group the work into two tracks, both with the goal of iproving live sites. For each of the tracks, think of the five sites that you have most control over, these are the sites that you will work on for the track.
 
-#### Track 1: Migrate your sites on Helix 5
+#### Track 1: Migrate your sites to Helix 5
+
+> - Take 5 sites and migrate them to Helix 5. 
+> - Keep notes in [this Slack Canvas](https://adobe-dx-support.slack.com/docs/T0385CHDU9E/F06TSUKFJER). 
+> - Get help from: @stefan-guggisberg, @tripodsan, @dominique-pfister, @rofe
+
 - switch over all the projects you are involved in to helix 5
 - repoless projects (pga tour)?
 - change tutorial to aem.page and aem.live
@@ -56,6 +61,11 @@ The theme of this offsite is to make considerable progress on getting customers 
 - other test sites
 
 ### Track 2: Improve your sites based on RUM
+
+> - Take 5 sites and look at the RUM data. Fix issues around CWV, missing pages, JS errors
+> - Keep notes in [that other Slack Canvas](https://adobe-dx-support.slack.com/docs/T0385CHDU9E/F06TP81GR5L)
+> - Get help from: @trieloff, @uncled, @langswei, @maxakuru
+
 - RUM data collection clean-up
 - RUM based site clean-up CWV and 404, JS errors
 
