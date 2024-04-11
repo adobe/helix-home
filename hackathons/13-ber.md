@@ -63,7 +63,7 @@ The theme of this offsite is to make considerable progress on getting customers 
 ### Track 2: Improve your sites based on RUM
 
 > - Take 5 sites and look at the RUM data. Fix issues around CWV, missing pages, JS errors
-> - Keep notes in this Slack Canvas
+> - Keep notes in [that other Slack Canvas](https://adobe-dx-support.slack.com/docs/T0385CHDU9E/F06TP81GR5L)
 > - Get help from: @trieloff, @uncled, @langswei, @maxakuru
 
 - RUM data collection clean-up
