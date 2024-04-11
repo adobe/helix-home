@@ -1,6 +1,6 @@
 # Helix Operations Workshop XIII
 
-April 15th to 19th 2024, Village Berlin Workshop Space, Berlin, Germany
+April 15th to 19th 2024, [Village Berlin Workshop Space](https://maps.apple.com/?address=Kurf%C3%BCrstenstra%C3%9Fe%2031,%20Unit%2032,%20Tiergarten,%2010785%20Berlin,%20Germany&ll=52.500127,13.361889&q=Kurf%C3%BCrstenstra%C3%9Fe%2031,%20Unit%2032), Berlin, Germany
 
 ---
 
