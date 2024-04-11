@@ -49,6 +49,8 @@ The theme of this offsite is to make considerable progress on getting customers 
 #### Track 1: adobe.com on Helix 5
 - switch over all the projects you are involved in to helix5
 - repoless projects (pga tour)?
+- change tutorial to aem.page and aem.live
+- change default new projects to helix5
 - sidekick implications
 - get outside-in, ideal project to work
 - other test sites
