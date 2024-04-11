@@ -46,8 +46,8 @@ Put down the topic and the people that would like to discuss it:
 
 The theme of this offsite is to make considerable progress on getting customers onboarded to Helix 5.
 
-#### Track 1: adobe.com on Helix 5
-- switch over all the projects you are involved in to helix5
+#### Track 1: Migrate your sites on Helix 5
+- switch over all the projects you are involved in to helix 5
 - repoless projects (pga tour)?
 - change tutorial to aem.page and aem.live
 - change default new projects to helix5
@@ -55,9 +55,11 @@ The theme of this offsite is to make considerable progress on getting customers 
 - get outside-in, ideal project to work
 - other test sites
 
-#### Ideas / Suggestions / Topics Collection
+### Track 2: Improve your sites based on RUM
 - RUM data collection clean-up
 - RUM based site clean-up CWV and 404, JS errors
+
+#### Ideas / Suggestions / Topics Collection
 - RUM domain key management
 - RUM historical data processing
 - Annual RUM dashboard
@@ -68,6 +70,7 @@ The theme of this offsite is to make considerable progress on getting customers 
 - Sharepoint hosting
 - Teams onboarding (vs. slack)
 - Teams app for support?
+- code sync stats/reporting (implementation start/end dates, number and size of commits, ...)
 
 ### Attendees
 
