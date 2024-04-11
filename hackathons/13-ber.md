@@ -46,7 +46,7 @@ Put down the topic and the people that would like to discuss it:
 
 The theme of this offsite is to make considerable progress on getting customers onboarded to Helix 5. For this, we group the work into two tracks, both with the goal of iproving live sites. For each of the tracks, think of the five sites that you have most control over, these are the sites that you will work on for the track.
 
-#### Track 1: Migrate your sites on Helix 5
+#### Track 1: Migrate your sites to Helix 5
 
 > - Take 5 sites and migrate them to Helix 5. 
 > - Keep notes in [this Slack Canvas](https://adobe-dx-support.slack.com/docs/T0385CHDU9E/F06TSUKFJER). 
