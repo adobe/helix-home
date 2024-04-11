@@ -49,7 +49,7 @@ The theme of this offsite is to make considerable progress on getting customers 
 #### Track 1: Migrate your sites on Helix 5
 
 > - Take 5 sites and migrate them to Helix 5. 
-> - Keep notes in this Slack Canvas. 
+> - Keep notes in [this Slack Canvas](https://adobe-dx-support.slack.com/docs/T0385CHDU9E/F06TSUKFJER). 
 > - Get help from: @stefan-guggisberg, @tripodsan, @dominique-pfister, @rofe
 
 - switch over all the projects you are involved in to helix 5
