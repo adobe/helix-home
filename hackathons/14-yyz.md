@@ -61,6 +61,7 @@ If you have been invited and will come, please put your name down in the list.
 
 1. [@stefan-guggisberg](https://github.com/stefan-guggisberg)
 2. @trieloff
+3. @fkakatie
 
 ### Preparation
 
