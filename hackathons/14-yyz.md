@@ -59,7 +59,7 @@ The theme of this offsite is ....
 This workshop is for the Helix on-call team as well as invited black belt VIP leads and invited frequent collaborators.
 If you have been invited and will come, please put your name down in the list.
 
-1.
+1. [@stefan-guggisberg](https://github.com/stefan-guggisberg)
 
 ### Preparation
 
