@@ -64,6 +64,7 @@ If you have been invited and will come, please put your name down in the list.
 3. @fkakatie
 4. @amol-anand
 5. @dylandepass
+6. @gilliankrause
 
 ### Preparation
 
