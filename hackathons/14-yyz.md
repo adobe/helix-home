@@ -1,4 +1,4 @@
-# Helix Operations Workshop XIIII
+# Helix Operations Workshop XIV
 
 August 19th to 23rd 2024, office location TBD, Toronto, Canada
 
