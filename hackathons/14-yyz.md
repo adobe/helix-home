@@ -66,6 +66,7 @@ If you have been invited and will come, please put your name down in the list.
 5. @dylandepass
 6. @gilliankrause
 7. [@tripodsan](https://github.com/tripodsan)
+8. [@dominique-pfister](https://github.com/dominique-pfister)
 
 ### Preparation
 
