@@ -70,6 +70,7 @@ If you have been invited and will come, please put your name down in the list.
 9. [@rofe](https://github.com/rofe)
 10. @maxakuru
 11. [@bosschaert](https://github.com/bosschaert)
+12. [@kptdobe](https://github.com/kptdobe)
 
 ### Preparation
 
