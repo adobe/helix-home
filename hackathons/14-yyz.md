@@ -71,6 +71,7 @@ If you have been invited and will come, please put your name down in the list.
 10. @maxakuru
 11. [@bosschaert](https://github.com/bosschaert)
 12. [@kptdobe](https://github.com/kptdobe)
+13. [@dkuntze](https://github.com/dkuntze)
 
 ### Preparation
 
