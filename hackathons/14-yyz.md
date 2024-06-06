@@ -12,17 +12,17 @@ August 19th to 23rd 2024, office location TBD, Toronto, Canada
 
 In this operations workshop, we will discuss how we are operating our services, what changes can, should and need to be done to
 improve quality of service for our customers and quality of life of our operators. We will try to keep it hands-on, so instead
-of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty 
+of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty
 of programming and coding.
 
-The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on 
+The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on
 stuff that won't fit neatly into a 45-minute Teams meeting.
 
-| Time      | Monday                              | Tuesday           | Wednesday         | Thursday          | Friday            |
-| --------: | ----------------------------------- | ----------------- | ----------------- | ----------------- | ----------------- |
-|   Morning | 9:00 Kick-off, Goals<br>10:00 Architecture walkthrough | Hacking | Hacking | Hacking | Hacking  |
-| Afternoon | Hacking | Hacking | Hacking | Hacking | Demos |
-|   Evening | Social                          | Social        | Social        | Social        | -       |
+|      Time | Monday                                                 | Tuesday | Wednesday | Thursday | Friday  |
+| --------: | ------------------------------------------------------ | ------- | --------- | -------- | ------- |
+|   Morning | 9:00 Kick-off, Goals<br>10:00 Architecture walkthrough | Hacking | Hacking   | Hacking  | Hacking |
+| Afternoon | Hacking                                                | Hacking | Hacking   | Hacking  | Demos   |
+|   Evening | Social                                                 | Social  | Social    | Social   | -       |
 
 ### Location
 
@@ -32,11 +32,11 @@ We are booking an open loft workshop space in downtown Toronto - locations speci
 
 #### Travel
 
-Toronto (YYZ) is an international airport, with direct flights from many US and EMEA locations. 
+Toronto (YYZ) is an international airport, with direct flights from many US and EMEA locations.
 
 Toronto has good public transport, don't rent a car. You can take the UP Express from the airport to Union Station in the city center, and then walk or take a taxi to the hotel.
 
-Hotel recommendations to be shared once workshop space confirmed.   
+Hotel recommendations to be shared once workshop space confirmed.
 
 ### Goals
 
@@ -46,11 +46,7 @@ Put down the topic and the people that would like to discuss it:
 
 The theme of this offsite is ....
 
-
 #### Ideas / Suggestions / Topics Collection
-
-
-
 
 ### Attendees
 
@@ -74,6 +70,7 @@ If you have been invited and will come, please put your name down in the list.
 13. [@dkuntze](https://github.com/dkuntze)
 14. [@shsteimer](https://github.com/shsteimer)
 15. @langswei
+16. [@kmurugulla](https://github.com/kmurugulla)
 
 ### Preparation
 
