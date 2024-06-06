@@ -73,6 +73,7 @@ If you have been invited and will come, please put your name down in the list.
 12. [@kptdobe](https://github.com/kptdobe)
 13. [@dkuntze](https://github.com/dkuntze)
 14. [@shsteimer](https://github.com/shsteimer)
+15. @langswei
 
 ### Preparation
 
