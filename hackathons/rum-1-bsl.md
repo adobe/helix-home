@@ -63,6 +63,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 
 2. @trieloff
 3. @langswei (through Wed)
+4. @akalfas
 
 
 ### Preparation
