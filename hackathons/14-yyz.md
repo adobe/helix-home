@@ -71,6 +71,7 @@ If you have been invited and will come, please put your name down in the list.
 14. [@shsteimer](https://github.com/shsteimer)
 15. @langswei
 16. [@kmurugulla](https://github.com/kmurugulla)
+17. [@bstopp](https://github.com/bstopp)
 
 ### Preparation
 
