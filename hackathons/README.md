@@ -4,7 +4,8 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 
 ## Upcoming Hackathons
 
-12. [April 15th to 19th, Berlin, Germany](13-ber.md)
+1. [June 17th to 20th, Basel, Switzerland](rum-1-bsl.md)
+1. [August 19th to 23rd 2024, Toronto, Canada](14-yyz.md)
 
 ## Past Hackathons
 
@@ -20,6 +21,7 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 10. [November 2022, Remote, due to travel restrictions](10-bcn.md)
 11. August 2023, New York City, NY
 12. [January 2024, Palm Springs, CA](12-psp.md)
+13. [April 15th to 19th, Berlin, Germany](13-ber.md)
 
 ## Ideas for future Hackathons
 
