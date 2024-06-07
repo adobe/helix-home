@@ -51,6 +51,10 @@ The theme of this offsite is ....
 
 #### Ideas / Suggestions / Topics Collection
 
+- Code Quality/Safe Deployments
+- RUM Explorer
+- Documentation
+
 ### Attendees
 
 > Who is going to be there? Can I come?
