@@ -62,6 +62,7 @@ The theme of this offsite is ....
 If you had your hands on RUM code in the past year, you are welcome to join us. Put your name on the list, so that planning is a bit easier
 
 2. @trieloff
+3. @langswei (through Wed)
 
 
 ### Preparation
