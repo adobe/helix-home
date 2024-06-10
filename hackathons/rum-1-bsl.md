@@ -54,6 +54,8 @@ The theme of this offsite is ....
 - Code Quality/Safe Deployments
 - RUM Explorer
 - Documentation
+- Tier 1 infrastructure: review all components and make sure they have a proper "Tier 1" support (rum js delivery, rum collector...)
+- rum-js and rum-enhancer: merge into one repo ? They work together anyway, easier integration testing, create and centralize various outputs (like 1 file with both or just sampleRUM for helix projects....), centrale documentation...
 
 ### Attendees
 
