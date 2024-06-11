@@ -71,6 +71,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 2. @langswei (through Wed)
 3. @kptdobe
 4. @akalfas
+5. @chicharr (part-time)
 
 ### Preparation
 
