@@ -59,6 +59,7 @@ The theme of this offsite is ....
 - minirum without instrumentation
 - minirum config vs. feature flags
 - `cwv2` rollout
+- rum for product analytics
 
 ### Attendees
 
