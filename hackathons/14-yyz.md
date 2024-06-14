@@ -1,7 +1,6 @@
 # Helix Operations Workshop XIV
 
-August 19th to 23rd 2024, office location TBD, Toronto, Canada
-
+August 19th to 23rd 2024, Toronto, Canada
 ---
 
 (See the [Hackathon Archive](./README.md) for past Operations Workshops and Hackathons)
@@ -28,7 +27,7 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-We are booking an open loft workshop space in downtown Toronto - locations specifics to follow shortly.
+We have booked a hackathon space in downtown Toronto.  Address: 366 Adelaide St. West, suite 601
 
 #### Travel
 
@@ -36,7 +35,7 @@ Toronto (YYZ) is an international airport, with direct flights from many US and 
 
 Toronto has good public transport, don't rent a car. You can take the UP Express from the airport to Union Station in the city center, and then walk or take a taxi to the hotel.
 
-Hotel recommendations to be shared once workshop space confirmed.
+Hotel recommendation:  Ace Hotel Toronto is a few minutes walk from the office location, and available to book via Navan 
 
 ### Goals
 
