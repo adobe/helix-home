@@ -16,7 +16,7 @@ keep the number of sidetracks reasonable.
 
 ### Agenda
 
-> I hear this is an rumathon workshop, are you going to taste RUM all day?
+> I hear this is an rumathon workshop, are you going to sample RUM all day?
 
 Trying to get as much of the virtual team together, the goal is to have high-bandwidth exchanges on the current state and next steps of RUM. We will try to keep it hands-on, so instead
 of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty
