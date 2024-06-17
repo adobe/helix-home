@@ -60,6 +60,9 @@ The theme of this offsite is ....
 - minirum config vs. feature flags
 - `cwv2` rollout
 - rum for product analytics
+- who queries bigly?
+- what's the data model
+- cut down number of tracked checkpoints by 50%
 
 ### Attendees
 
