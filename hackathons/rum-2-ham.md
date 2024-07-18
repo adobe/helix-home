@@ -62,6 +62,9 @@ The theme of this offsite is ....
   1. analysis of existing query params to refine the categorization we have today and improve if necessary
   2. bounce rate and time-on-page by source
   3. cost per acquisition (CPA) investigation
+- RUM data consumers
+  1. serving Adobe's massive appetite for data research, and how that intersects with the [principles](https://github.com/adobe/helix-rum-js/blob/main/vision.md)
+  2. we should have some input from GTM team about RUM by the time of the workshop, let's discuss what it means
 
 ### Attendees
 
