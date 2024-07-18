@@ -74,6 +74,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 3. @cziegeler
 4. @chicharr
 5. @ekremney
+6. @maxakuru
 
 ### Preparation
 
