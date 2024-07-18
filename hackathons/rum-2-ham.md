@@ -48,7 +48,13 @@ The theme of this offsite is ....
 
 #### Ideas / Suggestions / Topics Collection
 
-- add your topics here
+- user engagement related
+  1. `scroll` checkpoint to measure the scroll depth for the sites/pages where CTR/CVR is not relevant (ie blog/news pages)
+  2. engagement-aware active `time-on-page` calculation where only the time during which the user is actively viewing or interacting with the page is counted
+- traffic acquisition related
+  1. analysis of existing query params to refine the categorization we have today and improve if necessary
+  2. bounce rate and time-on-page by source
+  3. cost per acquisition (CPA) investigation
 
 ### Attendees
 
@@ -59,6 +65,8 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 1. @trieloff
 2. @langswei
 3. @cziegeler
+4. @chicharr
+5. @ekremney
 
 ### Preparation
 
