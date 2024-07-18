@@ -22,7 +22,7 @@ of programming and coding.
 The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on
 stuff that won't fit neatly into a 45-minute Teams meeting.
 
-|      Time | Monday                                                 | Tuesday | Wednesday | Thursday | Friday  |
+|      Time | Monday (Alster)                                        | Tuesday (Weser) | Wednesday (Spree) | Thursday (Spree) | Friday (Spree) |
 | --------: | ------------------------------------------------------ | ------- | --------- | -------- | ------- |
 |   Morning | Noon: Kickoff, Introductions, Architecture             | Hacking | Hacking   | Hacking  | Demos   |
 | Afternoon | Hacking                                                | Hacking | Hacking   | Hacking  | -       |
