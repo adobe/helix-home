@@ -38,6 +38,13 @@ In the Hamburg office. We don't have a room yet, but it will likely have windows
 
 Fly into Germany, then take a train to Hamburg or fly directly to HAM.
 
+##### Accomodiation
+
+Navan has the wrong pin for the Hamburg office, so distances may be off
+
+- the closest Hotel (with availabilty in Navan) is [IntercityHotel Hamburg-Altona](https://hrewards.com/de/intercityhotel-hamburg-altona) – it's a 25 minute walk. If you like Deutsche Bahn, you'll feel right home at IntercityHotel
+- a nice hotel that I've been staying at (and will stay) is [25hours Altes Hafenamt](https://www.25hours-hotels.com/hotels/hamburg/altes-hafenamt) (also on Navan). It's a 50 minute walk, or 25 minute walk plus ferry ride
+
 ### Goals
 
 > What are you planning to show at the end of the week?
