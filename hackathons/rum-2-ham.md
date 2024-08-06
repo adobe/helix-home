@@ -80,6 +80,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 6. @maxakuru
 7. @phornig
 8. @kptdobe (Mon - Thu)
+9. @bosschaert
 
 ### Preparation
 
