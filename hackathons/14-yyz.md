@@ -39,11 +39,29 @@ Hotel recommendation:  Ace Hotel Toronto is a few minutes walk from the office l
 
 ### Goals
 
+#### Track 1: Helix 5 Migration
+- migrate as many sites as possible to Helix 5 delivery (high traffic ones first)
+- move more traffic to CloudFlare stack
+- how/when to switch tutorial to use `aem.page`/`aem.live`
+
+#### Track 2: Helix 5 Documentation
+- update documentation to Helix 5
+- document differences between Helix 4 and 5?
+
+#### Track 3: Teams Migration
+- identify customers unable to use Slack
+- start migrating channels to Teams
+
+#### Track 4: Admin Labs/Tools
+List/rank/hack missing admin tools, e.g.
+- CDN configuration
+
+
 > What are you planning to show at the end of the week?
 
+The main theme of this offsite is **Helix 5**
 Put down the topic and the people that would like to discuss it:
 
-The theme of this offsite is ....
 
 #### Ideas / Suggestions / Topics Collection
 
