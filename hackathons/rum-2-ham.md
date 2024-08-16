@@ -65,6 +65,9 @@ The theme of this offsite is ....
 - RUM data consumers
   1. serving Adobe's massive appetite for data research, and how that intersects with the [principles](https://github.com/adobe/helix-rum-js/blob/main/vision.md)
   2. we should have some input from GTM team about RUM by the time of the workshop, let's discuss what it means
+- Domain to Customer / IMS Org ID mapping
+As of today we are unable to map customer-managed CDN domains to Edge delivery services licenses. As a result, we can’t identify customers using EDS with their own CDN, which prevents us from linking them to business contracts, or collecting billing information, eg tracking content requests.
+Let's discuss how we could address this mapping short-term and also let's think about a long-term solution, ideally building an automated process in future
 
 ### Attendees
 
@@ -82,6 +85,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 8. @kptdobe (Mon - Thu)
 9. @bosschaert
 10. @karlpauls
+11. @puric
 
 ### Preparation
 
