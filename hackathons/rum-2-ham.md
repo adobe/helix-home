@@ -68,6 +68,7 @@ The theme of this offsite is ....
 - Domain to Customer / IMS Org ID mapping
 As of today we are unable to map customer-managed CDN domains to Edge delivery services licenses. As a result, we can’t identify customers using EDS with their own CDN, which prevents us from linking them to business contracts, or collecting billing information, eg tracking content requests.
 Let's discuss how we could address this mapping short-term and also let's think about a long-term solution, ideally building an automated process in future
+- How to handle customers with Content Security Policy (CSP) and how can we enable Sub-resource integrity (SRI) - mostly for Cloud Service
 
 ### Attendees
 
