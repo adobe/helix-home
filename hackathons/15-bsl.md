@@ -36,12 +36,12 @@ Basel (BSL/EAP) is an international airport, with direct flights from many EMEA 
 Zurich (ZRH) is an international airport, with direct flights from many overseas and EMEA locations.
 
 Switzerland has good public transport, no need to rent a car:
-- From Basel airport, bus #50 will tkae you to Basel SBB train station in 18 minutes
+- From Basel airport, bus #50 will take you to Basel SBB train station in 18 minutes
 - From Zurich airport, there are many trains to Basel SBB, including hourly direct ones
-- Within Basel, you can either walk, take a street car (called "Tram"), bus or taxi to the hotel/office
+- Within the city, you can either walk, take a street car (called "Tram"), bus or taxi to the hotel/office
 - Basel hotels hand out [BaselCard](https://www.basel.com/en/baselcard)s for free public transport within the city
 
-Hotel recommendation:  Ace Hotel Toronto is a few minutes walk from the office location, and available to book via Navan 
+Hotel recommendation: tbd
 
 ### Tracks
 
