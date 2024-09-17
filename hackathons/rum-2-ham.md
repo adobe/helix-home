@@ -70,6 +70,66 @@ As of today we are unable to map customer-managed CDN domains to Edge delivery s
 Let's discuss how we could address this mapping short-term and also let's think about a long-term solution, ideally building an automated process in future
 - How to handle customers with Content Security Policy (CSP) and how can we enable Sub-resource integrity (SRI) - mostly for Cloud Service
 
+##### @langswei
+- Rollout extension
+- Lars: Domains/Standalone
+
+##### @ekremney
+- Time on page tracking (active time on page)
+- Scroll checkpoint
+- Lars: domain list
+- Lars: Success Studio Library
+
+##### @trieloff
+- Do some docs and screenshots
+- New Sourceselector implementation 
+- Smart Redirects
+- RUM Assistant?
+- On-Call for RUM?
+- Proxy for enrichment 
+
+##### @puric
+- Domain/Customer/SKU mapping
+- DNS Challenge? 
+- David: map domain to RUM org, then map rum org to customer/sku – mix auto + manual
+
+##### @phornig
+- Cloud Service Integration
+- David: can we do magenta cloud?
+
+##### @davidnuescheler
+- RUM for Commerce
+- How to deal with Web Components and shadow DOM? Paco, Alex?
+
+##### @bosschaert
+- End to end test
+- Integrity Checksums
+
+##### @cziegeler
+- Subresource Integrity
+- CSP Weirdness
+
+##### @karlpauls
+- Cruncher Performance
+- Lars: Negation Syntax for filters
+- Alex: back port cruncher pref
+
+##### @kptdobe
+- Change delivery entirely
+- AEMCS Integration: how to break a site
+- Generate list of programs that don’t send data
+- Daterange
+
+
+##### @maxakuru
+- Change cloud flare bundling
+- Lars: ramp up cloudflare share
+- Domainkey provider
+- Lower admin scopes
+
+##### @chicharr
+- Catch up with implementation
+
 ### Attendees
 
 > Who is going to be there? Can I come?
