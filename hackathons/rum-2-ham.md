@@ -102,7 +102,7 @@ Let's discuss how we could address this mapping short-term and also let's think 
 - How to deal with Web Components and shadow DOM? Paco, Alex?
 
 ##### @bosschaert
-- End to end test
+- [End to end test](https://github.com/adobe/rum-integrations)
 - Integrity Checksums
 
 ##### @cziegeler
