@@ -78,7 +78,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 
 1. @trieloff
 2. @langswei
-3. @cziegeler
+3. @cziegeler (Mon - Thu)
 4. @chicharr
 5. @ekremney
 6. @maxakuru
