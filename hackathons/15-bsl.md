@@ -66,6 +66,7 @@ If you have been invited and will come, please put your name down in the list.
 4. [@maxakuru](https://github.com/maxakuru)
 5. @trieloff
 6. [@amol-anand](https://github.com/amol-anand)
+7. [@dominique](https://github.com/dominique-pfister)
 
 ### Preparation
 
