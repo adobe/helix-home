@@ -35,7 +35,7 @@ Fly into SFO and BART will take you to the city.
 
 ##### Accommodation
 
-Probably somewhere around Union Square... ask Lars.
+The closest hotel in walking distance is the Intercontinental San Francisco. The hotel is good, the walk to the office, while not terrible, involves seenig some of the rougher parts of the city. 
 
 
 ### Goals
