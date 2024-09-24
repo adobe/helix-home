@@ -120,7 +120,7 @@ All content that is delivered through the pipeline and some content that is serv
 
 The Forms Collector Service is a new service in Helix 5. It is responsible for receiving form submissions from the Forms CDN and forwarding them to the Forms Processing Queue.
 
-#### OVERSIGHT on AWS
+#### OVERSIGHT on Fastly
 
 A small subset of requests made to the site are sampled using Real User Monitoring (RUM). RUM captures non PII-sensitive request data and stores these for later analysis.
 For 1% of requests, the browser client sends RUM data using the rum-enhancer client to the rum-collector. The collector runs in an Edge worker and forwards, after some
