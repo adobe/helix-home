@@ -123,8 +123,10 @@ The Forms Collector Service is a new service in Helix 5. It is responsible for r
 #### OVERSIGHT on Fastly
 
 A small subset of requests made to the site are sampled using Real User Monitoring (RUM). RUM captures non PII-sensitive request data and stores these for later analysis.
+
 For 1% of requests, the browser client sends RUM data using the rum-enhancer client to the rum-collector. The collector runs in an Edge worker and forwards, after some
-processing the data to Google BigData, Coralogix and to S3 buckets. Each back-end has a different use-case for the data.
+processing, the data to Google BigData, Coralogix and to S3 buckets. Each back-end has a different use-case for the data.
+
 Raw Data from S3 is processed using the Rum Bundler and stored in bundles in S3 again, this prepares the data for the Rum Explorer which cruches this data and presents it in
 a Web UI.
 
