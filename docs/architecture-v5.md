@@ -68,7 +68,7 @@ The AWS Delivery Stack is the primary delivery stack for Helix 5. It is responsi
 
 A typical Franklin site uses three levels of CDN. The first level is the customer's own CDN (we refer to it as BYOCDN). This CDN caches contents delivered by the next level. We rely on long-lived shared caches with precise invalidation, which is triggered by `helix-admin` based on customer-provided configuration.
 
-The second level is Fastly, we refer to it as the Outer CDN (even if it is in the middle of three layers of CDN). Here all pages on `*.hlx.live` are served and cached with long-lived shared caches. In addition `*.hlx.page` is served by the outer CDN, albeit with shorter cache TTLs. Whenever content gets published, the `helix-admin` service will surgically invalidate the cache for the affected pages and resources.
+The second level is Fastly, we refer to it as the Outer CDN (even if it is in the middle of three layers of CDN). Here all pages on `*.aem.live` are served and cached with long-lived shared caches. In addition `*.aem.page` is served by the outer CDN, albeit with shorter cache TTLs. Whenever content gets published, the `helix-admin` service will surgically invalidate the cache for the affected pages and resources.
 
 The outer CDN uses internally a multi-layer caching technique called shielding, which reduces load on the next layer.
 
@@ -105,8 +105,8 @@ The main delivery functionality is provided by the [`helix-pipeline-service`](ht
 
 The Pipeline Service pulls configuration from the Config Bus and the published Content from the Content Bus.
 
-The pipeline service runs as an AWS Lambda function and has four main components:
-- rendering full page 
+The pipeline service runs as an AWS Lambda function and has these main components:
+- rendering full page
 - and `.plain.html` HTML pages
 - rendering filtered JSON from spreadsheets
 - handling `OPTIONS` requests
@@ -119,6 +119,14 @@ All content that is delivered through the pipeline and some content that is serv
 ##### Forms Collector Service
 
 The Forms Collector Service is a new service in Helix 5. It is responsible for receiving form submissions from the Forms CDN and forwarding them to the Forms Processing Queue.
+
+#### OVERSIGHT on AWS
+
+A small subset of requests made to the site are sampled using Real User Monitoring (RUM). RUM captures non PII-sensitive request data and stores these for later analysis.
+For 1% of requests, the browser client sends RUM data using the rum-enhancer client to the rum-collector. The collector runs in an Edge worker and forwards, after some
+processing the data to Google BigData, Coralogix and to S3 buckets. Each back-end has a different use-case for the data.
+Raw Data from S3 is processed using the Rum Bundler and stored in bundles in S3 again, this prepares the data for the Rum Explorer which cruches this data and presents it in
+a Web UI.
 
 ### Cloudflare Delivery Stack
 
