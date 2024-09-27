@@ -58,6 +58,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 1. @maxakuru
 2. @trieloff
 3. @rpapani
+4. @ramboz
 
 ### Preparation
 
