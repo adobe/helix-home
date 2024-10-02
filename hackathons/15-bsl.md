@@ -69,6 +69,7 @@ If you have been invited and will come, please put your name down in the list.
 7. [@dominique](https://github.com/dominique-pfister)
 8. [@shsteimer](https://github.com/shsteimer)
 9. [@mhaack](https://github.com/mhaack)
+10. [@kptdobe](https://github.com/kptdobe)
 
 ### Preparation
 
