@@ -3,9 +3,8 @@
 We don't have hackathons at the moment, but monthly [Show & Tells](../showandtell/README.md) and bi-monthly [Stay Aparts](../togetherapart/README.md)
 
 ## Upcoming Hackathons
+2. [December 9th to 13th 2024, Basel, Switzerland](15-bsl.md)
 
-1. [August 19th to 23rd 2024, Toronto, Canada](14-yyz.md)
-2. [September 16th to 20th 2024, Hamburg, Germany](rum-2-ham.md)
 
 ## Past Hackathons
 
@@ -23,6 +22,8 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 12. [January 2024, Palm Springs, CA](12-psp.md)
 13. [April 15th to 19th, Berlin, Germany](13-ber.md)
 14. [June 17th to 20th 2024, Basel, Switzerland](rum-1-bsl.md)
+15. [August 19th to 23rd 2024, Toronto, Canada](14-yyz.md)
+16. [September 16th to 20th 2024, Hamburg, Germany](rum-2-ham.md)
 
 ## Ideas for future Hackathons
 
