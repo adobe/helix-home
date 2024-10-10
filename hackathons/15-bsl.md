@@ -53,6 +53,8 @@ tbd
 
 Put down the topic and the people that would like to discuss it:
 
+- admin/config refactor (@tripodsan, @dominique-pfister)
+
 ### Attendees
 
 > Who is going to be there? Can I come?
