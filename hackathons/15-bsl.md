@@ -54,6 +54,7 @@ tbd
 Put down the topic and the people that would like to discuss it:
 
 - admin/config refactor (@tripodsan, @dominique-pfister)
+- upgrade as many sites as possible to RUM v2 with `/.rum/` collection
 
 ### Attendees
 
