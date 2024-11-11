@@ -74,6 +74,7 @@ If you have been invited and will come, please put your name down in the list.
 9. [@mhaack](https://github.com/mhaack)
 10. [@kptdobe](https://github.com/kptdobe)
 11. [@auniverseaway](https://github.com/auniverseaway)
+12. [@dylandepass](https://github.com/dylandepass)
 
 ### Preparation
 
