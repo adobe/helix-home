@@ -21,7 +21,7 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 | --------: | ------------------------------------------------------ | ------- | --------- | -------- | ------- |
 |   Morning | 9:00 Kick-off, Goals                                   | Hacking | Hacking   | Hacking  | Hacking |
 | Afternoon | Hacking                                                | Hacking | Hacking   | Hacking  | Demos   |
-|   Evening | Social                                                 | Social  | Social    | After-Work Drinks @avventura   | -       |
+|   Evening | Social                                                 | Team Dinner @bodega  | Social    | After-Work Drinks @avventura   | -       |
 
 ### Location
 
