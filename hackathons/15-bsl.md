@@ -53,8 +53,11 @@ tbd
 
 Put down the topic and the people that would like to discuss it:
 
+- v5 migrations
 - admin/config refactor (@tripodsan, @dominique-pfister)
+- catalog all errors and add error-codes to x-error (@davidnuescheler, @rofe)
 - upgrade as many sites as possible to RUM v2 with `/.rum/` collection
+- commerce (@davidnuescheler, @dylandepass)
 
 ### Attendees
 
@@ -76,6 +79,7 @@ If you have been invited and will come, please put your name down in the list.
 11. [@auniverseaway](https://github.com/auniverseaway)
 12. [@dylandepass](https://github.com/dylandepass)
 13. [@dkuntze](https://github.com/dkuntze)
+14. [@davidnuescheler](https://github.com/davidnuescheler)
 
 ### Preparation
 
