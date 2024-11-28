@@ -80,6 +80,8 @@ If you have been invited and will come, please put your name down in the list.
 12. [@dylandepass](https://github.com/dylandepass)
 13. [@dkuntze](https://github.com/dkuntze)
 14. [@davidnuescheler](https://github.com/davidnuescheler)
+15. [@StancuFlorin](https://github.com/StancuFlorin)
+16. [@dragosscalin](https://github.com/dragosscalin)
 
 ### Preparation
 
