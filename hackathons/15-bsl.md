@@ -82,6 +82,8 @@ If you have been invited and will come, please put your name down in the list.
 14. [@davidnuescheler](https://github.com/davidnuescheler)
 15. [@StancuFlorin](https://github.com/StancuFlorin)
 16. [@dragosscalin](https://github.com/dragosscalin)
+17. [@herzog31](https://github.com/herzog31)
+18. [@dicagno](https://github.com/dicagno)
 
 ### Preparation
 
