@@ -53,11 +53,12 @@ tbd
 
 Put down the topic and the people that would like to discuss it:
 
-- v5 migrations
+- v5 migrations (@rofe)
 - admin/config refactor (@tripodsan, @dominique-pfister)
 - catalog all errors and add error-codes to x-error (@davidnuescheler, @rofe)
 - upgrade as many sites as possible to RUM v2 with `/.rum/` collection
 - commerce (@davidnuescheler, @dylandepass)
+- bring your own git (@tripodsan)
 
 ### Attendees
 
