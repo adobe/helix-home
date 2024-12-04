@@ -28,6 +28,7 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
 We will meet up at the Adobe Basel office. Address: Peter Merian-Strasse 80, 4052 Basel (a 5 minute walk from the Basel SBB train station).
+Our main meeting room for the week is "Morgestraich", with "Von Rappard" for break outs (both adjacent on the 4th floor)
 
 #### Travel
 
