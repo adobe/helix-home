@@ -60,6 +60,8 @@ Put down the topic and the people that would like to discuss it:
 - upgrade as many sites as possible to RUM v2 with `/.rum/` collection
 - commerce (@davidnuescheler, @dylandepass)
 - bring your own git (@tripodsan)
+- XSS protection/CSP on customer websites. (@andreituicu, @tripodsan, @davidnuescheler, @lkrapf)
+- Sidekick auth enhancement. (@andreituicu, @tripodsan, @rofe, @dylandepass)
 
 ### Attendees
 
@@ -88,6 +90,7 @@ If you have been invited and will come, please put your name down in the list.
 18. [@dicagno](https://github.com/dicagno)
 19. [@overmyheadandbody](https://github.com/overmyheadandbody)
 20. [@mokimo](https://github.com/mokimo)
+21. [@andreituicu](https://github.com/andreituicu)
 
 ### Preparation
 
