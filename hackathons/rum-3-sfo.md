@@ -1,6 +1,6 @@
 # Rumathon III
 
-January 20th to 24th 2025, San Francisco, CA (Adobe Office)
+January 13th to 17th 2025, San Francisco, CA (Adobe Office)
 
 ---
 
