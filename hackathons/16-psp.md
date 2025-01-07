@@ -57,6 +57,7 @@ If you have been invited and will come, please put your name down in the list.
 
 1. @trieloff
 1. @stefan-guggisberg
+1. @amol-anand
 
 ### Preparation
 
