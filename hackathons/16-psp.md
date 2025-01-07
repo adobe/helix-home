@@ -47,7 +47,8 @@ The theme of this offsite is to make considerable progress upgrading the remaini
 #### Ideas / Suggestions / Topics Collection
 
 - @trieloff: Is this what a track idea should look like? Yes, yes, it is.
-
+- @amol-anand: "Smart Redirects"
+  
 ### Attendees
 
 > Who is going to be there? Can I come?
