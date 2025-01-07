@@ -61,6 +61,7 @@ If you have been invited and will come, please put your name down in the list.
 3. @amol-anand
 4. @maxakuru
 5. @fkakatie
+6. @fielding
 
 ### Preparation
 
