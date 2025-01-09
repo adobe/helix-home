@@ -58,12 +58,12 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 1. @maxakuru
 2. @trieloff
 3. @rpapani
-4. @ramboz
+4. @ramboz (part time)
 5. @langswei
 6. @shsteimer
-7. @amalhotr
-
-
+7. @vdua
+8. @alexkli (part time)
+9. @amalhotr
 ### Preparation
 
 > What can I do to prepare for the Hackathon?

@@ -47,7 +47,8 @@ The theme of this offsite is to make considerable progress upgrading the remaini
 #### Ideas / Suggestions / Topics Collection
 
 - @trieloff: Is this what a track idea should look like? Yes, yes, it is.
-
+- @amol-anand: "Smart Redirects"
+  
 ### Attendees
 
 > Who is going to be there? Can I come?
@@ -56,7 +57,13 @@ This workshop is for the Helix on-call team as well as invited black belt VIP le
 If you have been invited and will come, please put your name down in the list.
 
 1. @trieloff
-1. @stefan-guggisberg
+2. @stefan-guggisberg
+3. @amol-anand
+4. @maxakuru
+5. @fkakatie
+6. @fielding
+7. @shsteimer
+8. @dylandepass
 
 ### Preparation
 
