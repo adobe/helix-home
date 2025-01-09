@@ -60,7 +60,6 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 3. @rpapani
 4. @ramboz (part time)
 5. @langswei
-6. @shsteimer
 7. @vdua
 8. @alexkli (part time)
 9. @amalhotr
