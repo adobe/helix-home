@@ -65,6 +65,7 @@ If you have been invited and will come, please put your name down in the list.
 7. @shsteimer
 8. @dylandepass
 9. @dkuntze
+10. @davidnuescheler
 
 ### Preparation
 
