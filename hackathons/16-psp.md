@@ -69,6 +69,7 @@ If you have been invited and will come, please put your name down in the list.
 10. @davidnuescheler
 11. @gilliankrause
 12. @kmurugulla
+13. @bstopp
 
 ### Preparation
 
