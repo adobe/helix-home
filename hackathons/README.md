@@ -4,8 +4,8 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 
 ## Upcoming Hackathons
 
-1. RUM: [January 13th to 17th 2025, San Francisco, CA](rum-3-sfo.md)
 1. Operations: [February 10th to 14th 2025, ACE Hotel Palm Springs, CA](16-psp.md)
+1. RUM: [May 5th to 9th 2025, Copenhagen, Denmark](rum-4-cph.md)
 
 
 ## Past Hackathons
@@ -27,6 +27,7 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 15. [August 19th to 23rd 2024, Toronto, Canada](14-yyz.md)
 16. [September 16th to 20th 2024, Hamburg, Germany](rum-2-ham.md)
 17. [December 9th to 13th 2024, Basel, Switzerland](15-bsl.md)
+18. [January 13th to 17th 2025, San Francisco, CA](rum-3-sfo.md)
 
 ## Ideas for future Hackathons
 
