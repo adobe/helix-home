@@ -49,7 +49,7 @@ The theme of this offsite is to make considerable progress upgrading the remaini
 - @trieloff: Is this what a track idea should look like? Yes, yes, it is.
 - @amol-anand: "Smart Redirects"
 - @gilliankrause: tracking/prioritization of product needs and co-innovation opptys across engaged customers
-- UE on ~DA~ Author Bus
+- @auniverseaway: UE on ~DA~ Author Bus
   
 ### Attendees
 
