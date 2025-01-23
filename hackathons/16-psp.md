@@ -81,6 +81,7 @@ If you have been invited and will come, please put your name down in the list.
 14. @cazzaranjosh
 15. @cazzarankarol
 16. @auniverseaway (Thursday & Friday)
+17. @schmidt
 
 ### Preparation
 
