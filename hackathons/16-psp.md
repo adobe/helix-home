@@ -46,10 +46,17 @@ The theme of this offsite is to make considerable progress upgrading the remaini
 
 #### Ideas / Suggestions / Topics Collection
 
+Let's make the list of topics more of operational tasks, than garage week style explorations.
+
 - @trieloff: Is this what a track idea should look like? Yes, yes, it is.
 - @amol-anand: "Smart Redirects"
 - @gilliankrause: tracking/prioritization of product needs and co-innovation opptys across engaged customers
 - @auniverseaway: UE on ~DA~ Author Bus
+- @davidnuescheler: helix5 migration
+- @davidnuescheler, @auniverseaway: move to DA to tier3 accounts
+- @davidnuescheler, @fkakatie: block-collection clean-up
+- @davidnuescheler, @maxakuru, @dylandepass: move customer 0 to "product-bus" prototype
+
   
 ### Attendees
 
