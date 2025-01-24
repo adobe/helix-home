@@ -82,6 +82,7 @@ If you have been invited and will come, please put your name down in the list.
 15. @cazzarankarol
 16. @auniverseaway (Thursday & Friday)
 17. @schmidt
+18. @3vil3mpir3 (Brian Warner)
 
 ### Preparation
 
