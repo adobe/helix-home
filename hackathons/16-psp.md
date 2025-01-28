@@ -55,6 +55,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - @davidnuescheler: helix5 migration
 - @davidnuescheler, @auniverseaway: move to DA to tier3 accounts
 - @davidnuescheler, @fkakatie: block-collection clean-up
+- @davidnuescheler, @fkakatie: tools and labs consolidation
 - @davidnuescheler, @maxakuru, @dylandepass: move customer 0 to "product-bus" prototype
 
   
