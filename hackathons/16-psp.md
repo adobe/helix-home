@@ -50,6 +50,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 
 - @trieloff: Is this what a track idea should look like? Yes, yes, it is.
 - @amol-anand: "Smart Redirects"
+- @amol-anand: Get the top 10-25 common questions from LM/Slack/SCs/Discord (GenAI FTW!) and have good answers prepared in blog posts / FAQ available on the official aem.live site
 - @gilliankrause: tracking/prioritization of product needs and co-innovation opptys across engaged customers
 - @auniverseaway: UE on ~DA~ Author Bus
 - @davidnuescheler: helix5 migration
