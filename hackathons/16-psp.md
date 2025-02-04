@@ -57,8 +57,12 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - @davidnuescheler, @fkakatie: block-collection clean-up
 - @davidnuescheler, @fkakatie: tools and labs consolidation
 - @davidnuescheler, @maxakuru, @dylandepass: move customer 0 to "product-bus" prototype
+- @andreituicu: Tryout CSP with nonce + strict-dynamic.
+  - aem.live, tools.aem.live, labs.aem.live
+  - if the above go well, maybe try it would with a few customers (ups @shsteimer, pfizer @davidnuescheler)
+  - Dependency: having the PR merged in the HTML pipeline: https://github.com/adobe/helix-html-pipeline/pull/773
+    
 
-  
 ### Attendees
 
 > Who is going to be there? Can I come?
@@ -84,6 +88,7 @@ If you have been invited and will come, please put your name down in the list.
 16. @auniverseaway (Thursday & Friday)
 17. @schmidt
 18. @3vil3mpir3 (Brian Warner)
+19. @andreituicu
 
 ### Preparation
 
