@@ -63,6 +63,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
   - if the above go well, maybe try it would with a few customers (ups @shsteimer, pfizer @davidnuescheler)
   - Dependency: having the PR merged in the HTML pipeline: https://github.com/adobe/helix-html-pipeline/pull/773
 - @davidnuescheler, @dylandepass: sidekick and reviews / snapshots
+- @andreituicu, @auniverseaway: Helix Admin - DA Authentication/Authorization when pulling content
     
 
 ### Attendees
