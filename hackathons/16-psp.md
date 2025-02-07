@@ -50,7 +50,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 
 - @trieloff: Is this what a track idea should look like? Yes, yes, it is.
 - @amol-anand: "Smart Redirects"
-- @amol-anand: Get the top 10-25 common questions from LM/Slack/SCs/Discord (GenAI FTW!) and have good answers prepared in blog posts / FAQ available on the official aem.live site
+- @amol-anand: Get the top 10-25 common questions from LM/Slack/SCs/Discord (GenAI FTW!) and have good answers prepared in blog posts / FAQ available on the official aem.live site 
 - @gilliankrause: tracking/prioritization of product needs and co-innovation opptys across engaged customers
 - @auniverseaway: UE on ~DA~ Author Bus
 - @davidnuescheler: helix5 migration
@@ -65,7 +65,35 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - @davidnuescheler, @dylandepass: sidekick and reviews / snapshots
 - @andreituicu, @auniverseaway: Helix Admin - DA Authentication/Authorization when pulling content
 - @stefan-guggisberg: 3rd delivery stack based on Google Cloud Platform (cdn, compute, storage)
-    
+
+##### Track 0 Helix 5
+helix5 migration
+
+##### Track 1 Documentation
+Get the top 10-25 common questions from LM/Slack/SCs/Discord (GenAI FTW!) and have good answers prepared in blog posts / FAQ available on the official aem.live site
+search block on homepage
+FAQs into search
+
+##### Track 2 Website, Tools, Labs, Block Collection
+block-collection clean-up
+tools and labs consolidation
+Tryout CSP with nonce + strict-dynamic.
+  - aem.live, tools.aem.live, labs.aem.live
+  - if the above go well, maybe try it would with a few customers (ups @shsteimer, pfizer @davidnuescheler)
+  - Dependency: having the PR merged in the HTML pipeline: https://github.com/adobe/helix-html-pipeline/pull/773
+sidekick and reviews / snapshots
+
+##### Track 3 Commerce
+move customer 0 to production ready - PDP code, mesh, product bus
+
+##### Track 4 DA
+move to DA to tier3 accounts
+UE on ~DA~ Author Bus
+Helix Admin - DA Authentication/Authorization when pulling content
+ 
+##### Track 5 Lifecycle
+tracking/prioritization of product needs and co-innovation opptys across engaged customers
+
 
 ### Attendees
 
