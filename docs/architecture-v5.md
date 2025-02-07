@@ -8,11 +8,9 @@ Helix[^1] has undergone some architectural evolution since the start of the proj
 2. [Helix 2](architecture-v2.md) – a software as a service that relies on client-side customization
 3. [Helix/Franklin 3](architecture-v3.md) – a software as a service with superior availability and performance with the same feature set as Helix 2
 4. [Franklin 4](architecture.md#overview) - a dual-stack architecture that refines Franklin 3 for greater performance and availability
-5. [Helix 5](#overview) – work in progress, a refactoring of the CDN/delivery stack for greater robustness and maintainability
+5. [Helix 5](#overview) – a refactoring of the CDN/delivery stack for greater robustness and maintainability
 
 You can follow the links above to learn more about the evolution of the architecture.
-
-**This document describes a future architecture which is currently in development, but not yet deployed.**
 
 ## Overview
 
@@ -32,7 +30,7 @@ The key differences to Franklin 4 are:
 11. (GitHub) `owner` and `repo` as the overarching identifiers for a site are replaced by (AEM) `org` and `site`
 12. New sites will be able to start without a GitHub repository (repoless) by pointing their configuration to an existing repository
 
-Until all customer projects are fully migrated, Franklin 4 and Helix 5 will be operated in parallel. New sites will default to Helix 5.
+Until all customer projects are fully migrated, Franklin 4 and Helix 5 will be operated in parallel. New sites will default to Helix 5. Franklin 4's end of service is set to December 18, 2025.
 
 The details of these two delivery Stacks are described in these sections:
 
