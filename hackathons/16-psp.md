@@ -64,6 +64,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
   - Dependency: having the PR merged in the HTML pipeline: https://github.com/adobe/helix-html-pipeline/pull/773
 - @davidnuescheler, @dylandepass: sidekick and reviews / snapshots
 - @andreituicu, @auniverseaway: Helix Admin - DA Authentication/Authorization when pulling content
+- @stefan-guggisberg: 3rd delivery stack based on Google Cloud Platform (cdn, compute, storage)
     
 
 ### Attendees
