@@ -65,6 +65,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - @davidnuescheler, @dylandepass: sidekick and reviews / snapshots
 - @andreituicu, @auniverseaway: Helix Admin - DA Authentication/Authorization when pulling content
 - @stefan-guggisberg: 3rd delivery stack based on Google Cloud Platform (cdn, compute, storage)
+- @schmidt: Helix in a box (SSA/FedRamp)
 
 ##### Track 0 Helix 5
 helix5 migration
