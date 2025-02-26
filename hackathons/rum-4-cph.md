@@ -92,6 +92,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 1. @cziegeler
 2. @maxakuru
 3. @langswei
+4. @kptdobe
 
 ### Preparation
 
