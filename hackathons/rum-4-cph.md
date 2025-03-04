@@ -1,6 +1,6 @@
 # Rumathon IV
 
-May 5th to 9th 2025, Copenhagen, Denmark (Adobe Office)
+May 19th to 23rd 2025, Copenhagen, Denmark (Adobe Office)
 
 ---
 
