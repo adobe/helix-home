@@ -82,6 +82,7 @@ The theme of this offsite will be determined based on team input and current pri
 #### Ideas / Suggestions / Topics Collection
 
 (Add your topics here)
+1. Review and troubleshoot hosttype attribution (aemcs vs helix) - Damian and Max
 
 ### Attendees
 
