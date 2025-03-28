@@ -64,6 +64,7 @@ This workshop is for the Helix on-call team as well as invited black belt VIP le
 If you have been invited and will come, please put your name down in the list.
 
 1. [@rofe](https://github.com/rofe)
+2. [@tripod](https://github.com/tripodsan)
 
 
 ### Preparation
