@@ -66,6 +66,7 @@ If you have been invited and will come, please put your name down in the list.
 1. [@rofe](https://github.com/rofe)
 2. [@tripod](https://github.com/tripodsan)
 3. [@stefan-guggisberg](https://github.com/stefan-guggisberg)
+4. [Alex C.](https://github.com/kptdobe)
 
 
 ### Preparation
