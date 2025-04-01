@@ -83,6 +83,8 @@ The theme of this offsite will be determined based on team input and current pri
 
 (Add your topics here)
 1. Review and troubleshoot hosttype attribution (aemcs vs helix) - Damian and Max
+2. Automate subresoure integrity support for Cloud Service - Carsten and Lars
+3. Implement CSP and nonce support for Cloud Service - Carsten
 
 ### Attendees
 
