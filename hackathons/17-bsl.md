@@ -54,6 +54,7 @@ tbd
 
 Put down the topic and the people that would like to discuss it:
 
+- getting started / onboarding / self-service (@tripod)
 
 
 ### Attendees
