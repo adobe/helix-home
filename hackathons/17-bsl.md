@@ -69,6 +69,7 @@ If you have been invited and will come, please put your name down in the list.
 3. [@stefan-guggisberg](https://github.com/stefan-guggisberg)
 4. [Alex C.](https://github.com/kptdobe)
 5. [@dominique-pfister](https://github.com/dominique-pfister)
+6. @trieloff
 
 
 ### Preparation
