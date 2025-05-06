@@ -96,12 +96,13 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 1. @cziegeler
 2. @maxakuru
 3. @langswei
+4. @trieloff
 
 ### Preparation
 
 > What can I do to prepare for the Hackathon?
 
-1. Join `#rum-explorers` on Slack
+1. Join `#optel-explorers` on Slack
 2. Book your travel and accommodation once details are provided
 3. Add your topics and ideas to the collection above
 
