@@ -54,7 +54,11 @@ tbd
 
 Put down the topic and the people that would like to discuss it:
 
+- helix5 migration stragglers
 - getting started / onboarding / self-service (@tripod)
+- simplify tutorial and remove fstab with default content source
+- review and simplify dependency graphs
+- infrastructure move for DA
 
 
 ### Attendees
@@ -71,6 +75,7 @@ If you have been invited and will come, please put your name down in the list.
 5. [@dominique-pfister](https://github.com/dominique-pfister)
 6. @trieloff
 7. [@mhaack](https://github.com/mhaack)
+8. @davidnuescheler
 
 
 ### Preparation
