@@ -4,8 +4,9 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 
 ## Upcoming Hackathons
 
-1. Operations: [February 10th to 14th 2025, ACE Hotel Palm Springs, CA](16-psp.md)
-1. RUM: [May 5th to 9th 2025, Copenhagen, Denmark](rum-4-cph.md)
+
+1. RUM: [May 19th to 23th 2025, Copenhagen, Denmark](rum-4-cph.md)
+2. Operations: [July 7th to 11th 2025, Basel, Switzerland ](17-bsl.md)
 
 
 ## Past Hackathons
@@ -28,7 +29,8 @@ We don't have hackathons at the moment, but monthly [Show & Tells](../showandtel
 16. [September 16th to 20th 2024, Hamburg, Germany](rum-2-ham.md)
 17. [December 9th to 13th 2024, Basel, Switzerland](15-bsl.md)
 18. [January 13th to 17th 2025, San Francisco, CA](rum-3-sfo.md)
-
+19. [February 10th to 14th 2025, ACE Hotel Palm Springs, CA](16-psp.md)
+2. 
 ## Ideas for future Hackathons
 
 > Why don't we have a hackathon in…
