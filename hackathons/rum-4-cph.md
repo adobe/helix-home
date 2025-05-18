@@ -86,6 +86,7 @@ The theme of this offsite will be determined based on team input and current pri
 2. Automate subresoure integrity support for Cloud Service - Carsten and Lars
 3. Implement CSP and nonce support for Cloud Service - Carsten
 4. Speculation rules / prefetch / billing - Damian and Lars
+5. Participate in Data Mesh? DaaS NEXT initiative - Damian and Lars
 
 ### Attendees
 
