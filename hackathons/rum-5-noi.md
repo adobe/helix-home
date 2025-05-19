@@ -33,14 +33,28 @@ India
 
 #### Travel
 
-The nearest airport is Indira Gandhi International Airport (DEL). To travel to the office/hotel, take a cab from the airport. The journey typically takes 45-90 minutes depending on traffic.
+The nearest airport is Indira Gandhi International Airport (DEL). To travel to the office/hotel, the recommendation is to take a cab from the airport. The journey typically takes 60-90 minutes depending on traffic.
 
-Alternatively, you can use public transportation:
+Alternatively, you can use public transportation (but be aware that it can be crowded)
 
 - Take the Delhi Metro Airport Express Line from IGI Airport Metro Station to New Delhi Metro Station.
 - Change to the Yellow Line towards HUDA City Centre and travel to Rajiv Chowk.
 - At Rajiv Chowk, change to the Blue Line towards Noida City Centre and get off at Noida Sector 18 Metro Station.
 - The Radisson Blu Hotel, Noida (Sector 18) is a short walk (about 5 minutes) from the Sector 18 Metro Station.
+
+##### Visa Information
+
+Depending upon your passport and citizenship you may require a visa to enter India. The easiest way is to apply for an e-Visa online:
+
+- Apply for an Indian e-Visa at the official government portal: https://indianvisaonline.gov.in/
+- The e-Visa is typically granted for tourism, business, or conference purposes and is valid for up to 60 days.
+- Processing time is usually 3-5 business days, but it is recommended to apply at least 2 weeks in advance.
+- You will need a passport valid for at least 6 months from the date of arrival in India, a recent passport-sized photo, and a scanned copy of your passport.
+- Print out the e-Visa approval and carry it with you when you travel.
+
+You may contact @shaifali@adobe.com to get invite letter required for visa application.
+
+For the latest requirements and eligible countries, please check the official website before applying.
 
 ##### Accommodation
 
