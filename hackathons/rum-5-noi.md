@@ -58,14 +58,22 @@ For the latest requirements and eligible countries, please check the official we
 
 ##### Accommodation
 
-The recommended hotel is:
+The recommended hotels are:
 
 1. **Radisson Blu Hotel, Noida (Sector 18)**
    - L-2, Sector 18, Noida, Uttar Pradesh 201301, India
    - Modern 5-star hotel with excellent amenities
    - 10-minute cab ride to the office. Hotel provides the shuttle service as well
 
-Please book your accommodation early as hotels in Noida can fill up quickly. The Radisson Blu is also well-connected to public transport and shopping areas.
+2. **Sandal Suites, operated by Lemon Tree Hotels**
+   - Assotech Business Cresterra, Plot No 22, Sector 135, Noida, Uttar Pradesh 201305, India
+   - About 10 minutes by cab to the office. Hotel provides the shuttle service as well
+
+3. **Holiday Inn New Delhi Mayur Vihar Noida**
+   - 13A Mayur Vihar, District Centre, New Delhi, Delhi 110091, India
+   - About 25 minutes by cab to the office.
+
+Please book your accommodation early as hotels in Noida can fill up quickly. All these hotels are well-connected to public transport and shopping areas.
 
 ### Goals
 
