@@ -1,16 +1,16 @@
-# Rumathon V
+# OpT-In V
 
 October 6th to 10th, Noida, India (Adobe Office)
 
 ---
 
-(See the [Hackathon Archive](./README.md) for past Operations Workshops and Hackathons)
+(See the [Hackathon Archive](./README.md) for past Operations Workshops, Hackathons, Rumathons, and OpT-Ins)
 
 ### Agenda
 
-> I hear this is an rumathon workshop, are you going to sample RUM all day?
+> I hear this is an OpT-In workshop, what exactly am I'm opting into?
 
-Trying to get as much of the virtual team together, the goal is to have high-bandwidth exchanges on the current state and next steps of RUM. We will try to keep it hands-on, so instead of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty of programming and coding.
+Trying to get as much of the virtual team together, the goal is to have high-bandwidth exchanges on the current state and next steps of strictly neccessary Operational Telemetry. We will try to keep it hands-on, so instead of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty of programming and coding.
 
 The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on stuff that won't fit neatly into a 45-minute Teams meeting.
 
@@ -89,7 +89,8 @@ The theme of this offsite will be determined based on team input and current pri
 
 ### Attendees
 
-@vdua
+- @vdua
+- @trieloff
 
 > Who is going to be there? Can I come?
 
@@ -99,7 +100,7 @@ If you had your hands on RUM code in the past year, you are welcome to join us. 
 
 > What can I do to prepare for the Hackathon?
 
-1. Join `#rum-explorers` on Slack
+1. Join `#optel-explorers` on Slack
 2. Book your travel and accommodation once details are provided
 3. Add your topics and ideas to the collection above
 
