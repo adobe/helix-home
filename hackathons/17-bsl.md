@@ -60,6 +60,7 @@ Put down the topic and the people that would like to discuss it:
 - review and simplify dependency graphs
 - infrastructure move for DA
 - tools and labs cleanup (auth, move to tools)
+- r2 fire drill
 
 
 ### Attendees
