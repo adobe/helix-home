@@ -78,6 +78,7 @@ If you have been invited and will come, please put your name down in the list.
 6. @trieloff
 7. [@mhaack](https://github.com/mhaack)
 8. @davidnuescheler
+9. [@dkuntze](https://github.com/dkuntze)
 
 
 ### Preparation
