@@ -81,6 +81,7 @@ If you have been invited and will come, please put your name down in the list.
 8. @davidnuescheler
 9. [@hhertach](https://github.com/hannessolo)
 10. [@dkuntze](https://github.com/dkuntze)
+11. @auniverseaway
 
 
 ### Preparation
@@ -90,5 +91,16 @@ If you have been invited and will come, please put your name down in the list.
 1. Read the `README.md` and linked vision documents in this repo
 3. Install the `aem` Command Line app and [create your first project](https://www.aem.live/tutorial)
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
+
+> This sounds DA-focused, how can I prepare for any DA work I might be interested in?
+
+1. https://github.com/adobe/da-live <- UI
+2. https://github.com/adobe/da-admin <- API
+3. https://github.com/adobe/da-collab <- Collaboration
+4. https://github.com/adobe/da-content <- Edge Delivery content provider
+
+#### DA prep notes:
+1. You only need the first repo if you're working on UI changes. Clone, `aem up`, and start hacking.
+2. If you want the full stack, reach out to the DA team (Chris M, Karl P, David B, Markus, Hannes H, Alex C) for a `.dev.vars` file.
 
 ### Demos
