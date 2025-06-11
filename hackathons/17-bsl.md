@@ -55,6 +55,7 @@ tbd
 Put down the topic and the people that would like to discuss it:
 
 - helix5 migration stragglers
+- config size reviews and reduction
 - getting started / onboarding / self-service (@tripod)
 - simplify tutorial and remove fstab with default content source
 - review and simplify dependency graphs
