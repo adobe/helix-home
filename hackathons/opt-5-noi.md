@@ -93,7 +93,7 @@ The theme of this offsite will be determined based on team input and current pri
 
 > Who is going to be there? Can I come?
 
-If you had your hands on RUM code in the past year, you are welcome to join us. Put your name on the list, so that planning is a bit easier:
+If you had your hands on Operational Telemetry code or documentation in the past year, you are welcome to join us. Put your name on the list, so that planning is a bit easier:
 
 ### Preparation
 

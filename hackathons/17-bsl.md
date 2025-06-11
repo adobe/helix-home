@@ -60,6 +60,7 @@ Put down the topic and the people that would like to discuss it:
 - review and simplify dependency graphs
 - infrastructure move for DA
 - tools and labs cleanup (auth, move to tools)
+- r2 fire drill
 
 
 ### Attendees
@@ -78,6 +79,7 @@ If you have been invited and will come, please put your name down in the list.
 7. [@mhaack](https://github.com/mhaack)
 8. @davidnuescheler
 9. [@hhertach](https://github.com/hannessolo)
+10. [@dkuntze](https://github.com/dkuntze)
 
 
 ### Preparation
