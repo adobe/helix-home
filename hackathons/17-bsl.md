@@ -84,6 +84,7 @@ If you have been invited and will come, please put your name down in the list.
 11. @auniverseaway
 12. @cazzaranjosh
 13. @cazzarankarol
+14. @maxakuru
 
 
 ### Preparation
