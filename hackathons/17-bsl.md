@@ -62,6 +62,8 @@ Put down the topic and the people that would like to discuss it:
 - infrastructure move for DA
 - tools and labs cleanup (auth, move to tools)
 - r2 fire drill
+- finalise CSRF enforcement in helix-admin
+- DA Auth
 
 
 ### Attendees
@@ -85,6 +87,7 @@ If you have been invited and will come, please put your name down in the list.
 12. @cazzaranjosh
 13. @cazzarankarol
 14. @maxakuru
+15. [@andreituicu](https://github.com/andreituicu)
 
 
 ### Preparation
