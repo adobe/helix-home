@@ -46,7 +46,27 @@ Hotel recommendation: tbd
 
 ### Tracks
 
-tbd
+(0) ops hygiene:
+- helix4 stragglers
+- config size reviews and reduction
+- review and simplify dependency graphs
+- finalise CSRF enforcement in helix-admin
+
+
+(1) on-boarding / tutorial
+- getting started / onboarding / self-service (@tripod)
+- simplify tutorial and remove fstab with default content source
+
+(2) DA infra +
+- infrastructure move for DA
+- DA Auth
+
+(3) misc
+- r2 fire drill
+- tools and labs cleanup (auth, move to tools)
+
+
+
 
 > What are you planning to show at the end of the week?
 
