@@ -12,7 +12,7 @@
 
 Read all of this.
 
-* [How we work, who we are, what we use, what we build](https://www.hlx.live/docs/manifesto)
+* [How we work, who we are, what we use, what we build](https://github.com/adobe/helix-home/blob/main/manifesto.md)
 * [Architecture Deep Dive](https://www.hlx.live/docs/architecture)
 * [How to contribute](CONTRIBUTING.md)
 
