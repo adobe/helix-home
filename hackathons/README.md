@@ -4,8 +4,8 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 
 ## Upcoming Hackathons
 
-
-1. OpT-In (Operational Telemetry): [October 6th to 10th, Noida, India](opt-5-noi.md)
+1. [November 10th to 14th 2025, San Francisco, CA](18-sfo.md)
+2. [February 2nd to 6th 2026, ACE Hotel Palm Springs, CA](19-psp.md)
 
 
 ## Past Hackathons
@@ -31,6 +31,7 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 19. [February 10th to 14th 2025, ACE Hotel Palm Springs, CA](16-psp.md)
 20. [May 19th to 23th 2025, Copenhagen, Denmark](rum-4-cph.md)
 21. [July 7th to 11th 2025, Basel, Switzerland](17-bsl.md)
+22. OpT-In (Operational Telemetry): [October 6th to 10th, Noida, India](opt-5-noi.md)
 
 ## Ideas for future Hackathons
 
