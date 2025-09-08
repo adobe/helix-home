@@ -28,15 +28,27 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-We will meet up at the Adobe San Francisco office. The office is located in downtown San Francisco, and yes, we'll have a room with windows.
+We will meet up at the Adobe San Francisco office at 601 Townsend Street, San Francisco, CA 94103. The office is located in the historic Baker & Hamilton Building (built in 1905) in the SOMA (South of Market) district. We'll have a room with windows.
 
 #### Travel
 
-Fly into SFO and BART will take you to the city. The office is accessible via public transportation.
+Fly into SFO:
+- From SFO, take BART to downtown San Francisco (any downtown station)
+- The office is about a 12-minute walk from the nearest BART stations
+- Alternatively, the 4th and King Caltrain station is very close to the office (5-minute walk)
+- The office is also accessible via Muni lines 19, 292, TC, and several others
 
 ##### Accommodation
 
-The closest hotel in walking distance is the Intercontinental San Francisco. The hotel is good, the walk to the office, while not terrible, involves seeing some of the rougher parts of the city. Alternative accommodations in the Financial District or Union Square areas are also convenient.
+Recommended hotels within walking distance in the SOMA district:
+- **Hyatt Regency San Francisco Downtown SOMA** - About 15-20 minute walk, good neighborhood with restaurants
+- **LUMA Hotel San Francisco** - 7-minute walk from Oracle Park area
+- **Hyatt Place San Francisco/Downtown** - Very close, 3-minute walk from Oracle Park
+- **Hotel Via** - Located in South Beach neighborhood, very close to the office
+- **Canopy by Hilton San Francisco SoMa** - Within walking distance, near Moscone Center
+- **W San Francisco** - Located in the heart of SOMA district
+
+The Intercontinental San Francisco in the Financial District is also an option, though it's a bit further. Most SOMA hotels are safer and more convenient for accessing the Adobe office.
 
 ### Goals
 
