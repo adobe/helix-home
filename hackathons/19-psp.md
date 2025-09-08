@@ -58,7 +58,8 @@ This workshop is for the Helix on-call team as well as invited black belt VIP le
 If you have been invited and will come, please put your name down in the list.
 
 1. @trieloff
-2. (to be added)
+2. [@stefan](https://github.com/stefan-guggisberg)
+3. (to be added)
 
 ### Preparation
 
