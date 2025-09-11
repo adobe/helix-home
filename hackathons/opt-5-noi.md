@@ -92,6 +92,7 @@ The theme of this offsite will be determined based on team input and current pri
 - @trieloff
 - @asthabh23
 - @langswei
+- @subodhj
 
 > Who is going to be there? Can I come?
 
