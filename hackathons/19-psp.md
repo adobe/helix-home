@@ -59,7 +59,7 @@ If you have been invited and will come, please put your name down in the list.
 
 1. @trieloff
 2. [@stefan](https://github.com/stefan-guggisberg)
-3. (to be added)
+3. [@rofe](https://github.com/rofe)
 
 ### Preparation
 
