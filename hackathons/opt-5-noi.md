@@ -85,6 +85,9 @@ The theme of this offsite will be determined based on team input and current pri
 #### Ideas / Suggestions / Topics Collection
 
 (Add your topics here)
+1. Mapping of Tenant or Org to Domain
+2. Any plans to sync the RUM data with DAAS, so that we can form Form Journey insights ( Usecase eg. to identify traits of Form having high/low transactions)
+3. Published list or dashboard for Opt Out Customers
 
 ### Attendees
 
