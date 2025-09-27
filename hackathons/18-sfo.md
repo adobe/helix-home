@@ -74,7 +74,8 @@ If you have been invited and will come, please put your name down in the list.
 1. @trieloff
 2. [@stefan](https://github.com/stefan-guggisberg)
 3. @maxakuru
-4. (to be added)
+4. @amol-anand
+5. (to be added)
 
 ### Preparation
 
