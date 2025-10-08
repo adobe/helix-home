@@ -120,13 +120,57 @@ The Forms Collector Service is a new service in Helix 5. It is responsible for r
 
 #### OVERSIGHT on Fastly
 
-A small subset of requests made to the site are sampled using Real User Monitoring (RUM). RUM captures non PII-sensitive request data and stores these for later analysis.
+A small subset of requests made to the site are sampled using Operational Telemetry. Operational Telemetry captures non PII-sensitive request data and stores these for later analysis.
 
-For 1% of requests, the browser client sends RUM data using the rum-enhancer client to the rum-collector. The collector runs in an Edge worker and forwards, after some
+For 1% of requests, the browser client sends data using the rum-enhancer client to the rum-collector. The collector runs in an Edge worker and forwards, after some
 processing, the data to Google BigData, Coralogix and to S3 buckets. Each back-end has a different use-case for the data.
 
 Raw Data from S3 is processed using the Rum Bundler and stored in bundles in S3 again, this prepares the data for the Rum Explorer which cruches this data and presents it in
 a Web UI.
+
+![](./Franklin%20Architecture/Operational%20Telemetry.png)
+
+Within Operational Telemetry, four big areas are:
+
+- `SCRIPT`: the collection scripts that are injected or loaded by the page
+- `COLLECT`: the data collection edge compute infrastructure
+- `SITE DOM`: the DOM of the HTML pages visited and observed
+- `ANALYZE`: tools and infrastructure for analyzing the data
+
+#### Operational Telemetry `SCRIPT`
+
+There are two relevant projects. [`helix-rum-js`](https://github.com/adobe/helix-rum-js) is the basic collection infrastructure.
+It is optimized for a minimum footprint, and performs three key tasks: first, it decides if the current page view is part of the sample, second it collects the `top` checkpoint to establish a baseline, and third it loads [`helix-rum-enhancer`](https://github.com/adobe/helix-rum-enhancer) for additional data collection. As this loading happens only for a small sample (1/100 page views), the effective size of the enhancer is a hundredth of the total size of the script.
+
+The `helix-rum-js` scripts are provided in different formats:
+
+- `micro.js`: is meant to be embedded into the `<head>` of the HTML page and is the smallest possible footprint
+- `standalone.js`: can be embedded into core libraries like `aem.js` or loaded as a standalone script. It is being loaded conditionally by `micro.js`
+- `standalone-404.js`: is a standalone script for 404 pages. It will automatically send the `404` checkpoint.
+
+The `helix-rum-enhancer` is a modular architecture that consists of a core `index.js` file for common functionality and a set of plugins that will be loaded dynamically based on the page's content. For instance, the form plugin will be omitted on most pages, as they do not contain forms. This is a second enhancement that helps to keep the effective size of the script small.
+
+#### Operational Telemetry `COLLECT`
+
+The core collection infrastructure is provided by [`helix-rum-collector`](https://github.com/adobe/helix-rum-collector). It is a dual-stack (Fastly/Cloudflare) edge collection infrastructure that sanitizes the data, and forwards it into three data storage systems:
+- Coralogix for operational logging
+- Google BigQuery for ad-hoc analytics
+- DataBus (S3) for day-to-day operational telemetry
+
+#### Operational Telemetry `SITE DOM`
+
+The DOM of the pages that are opened in the visitor's browser are an important part of the Operational Telemetry architecture.
+Depending on the environment, different techniques are used to bootstrap the inclusion of `helix-rum-js`:
+
+- Through `micro.js` injected into the `<head>` tag by a content delivery system like the AEM Sites publish tier
+- By being embedded into a core library like `aem.js` in case of sites running on aem.live
+- Or by being explicitly loaded through a `<script src>` tag
+
+#### Operational Telemetry `ANALYZE`
+
+Operational Telemetry data is analyzed by being pre-processed through [`helix-rum-bundler`](https://github.com/adobe/helix-rum-bundler), which aggregates raw sampled events into hourly, daily, and weekly bundles, using subsampling to normalize the amount of data served.
+
+The bundler service is also responsible for serving completed bundles with high cache efficiency and will be called by various consumers of the telemetry data that provide insights into the changes that need to be made to the site to keep it working as intended.
 
 ### Cloudflare Delivery Stack
 
