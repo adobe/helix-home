@@ -28,7 +28,16 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-We will meet up at the Adobe San Francisco office at 601 Townsend Street, San Francisco, CA 94103. The office is located in the historic Baker & Hamilton Building (built in 1905) in the SOMA (South of Market) district. We'll have a room with windows.
+We will meet up at the Adobe San Francisco office at 601 Townsend Street, San Francisco, CA 94103. The office is located in the historic Baker & Hamilton Building (built in 1905) in the SOMA (South of Market) district.
+
+* Monday (11/10) - SmartSketch
+* Tuesday (11/11) - Warhol
+* Wednesday (11/12) - Masterpiece
+* Thursday (11/13) - North Shore
+* Friday (11/14) - Masterpiece
+  
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3a03d69d-e6b9-4f11-84d8-2c75efd45fab" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/5004e0ab-8064-429f-bd57-809d1eeae339" />
 
 #### Travel
 
@@ -87,5 +96,6 @@ If you have been invited and will come, please put your name down in the list.
 2. Join Discord
 3. Install the `aem` Command Line app and [create your first project](https://www.aem.live/tutorial)
 4. Comment on the GitHub issues you think would be good candidates for the Hackathon
+
 
 ### Demos
