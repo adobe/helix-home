@@ -9,11 +9,11 @@ The Helix PACT is:
 
 ### Open Meritocracy `#c`
 
-We will work as meritocracy, input from others, and reviewing PRs and contributing to other projects is a top priority.
+We are a meritocracy, input from others, and reviewing PRs and contributing to other projects are a priority.
 
 ### Open Source `#c`
 
-If we don't have a good reason why something should be private, it should be public. All new repos, live on public github.
+If we don't have a good reason why something should be private, it should be public. 
 
 ### Diversity `#c`
 
@@ -23,13 +23,13 @@ We are a diverse team in every respect.
 
 (Virtual) Get-togethers, Show-&-Tells and [hackathons](./hackathons/README.md) only.
 
+### Async; but timely `#c`
+
+We respond quickly. Even if it is just an ack.
+
 ### More code, less blah, blah `#c`
 
 Code wins. Everybody codes. Commits.
-
-### Beautiful Creations `#p`
-
-Well designed, beautiful output.
 
 ### Intuitive, Simple & Consistent `#p`
 
@@ -59,9 +59,9 @@ Everything has an API, REST of course.
 
 period.
 
-### DevOps: Service, not Software `#a`
+### Service, not Software `#a`
 
-The software is secondary, what we build is a service. Pager Duty for everyone.
+We build and operate a service. Pager Duty for everyone.
 
 ### Slack, GitHub issues, email archive `#t`
 
@@ -70,12 +70,10 @@ Discussions and decisions are open, asynchronous and archived.
 ### CI/CD `#t`
 
 Results of commits can be seen in a production environment in 60 seconds or less.
-### MVP Done Right
 
-It's "minimum" when the team has doubts that it could work. It's viable when users don't care and use it anyway.
 ### Closed Loop `#c`
 
-Listen closely to customer and user feedback. Measure qualitatively and quantitatively.
+Listen closely to user feedback. Measure qualitatively and quantitatively.
 
 ### Reluctant Dictator `#c`
 
@@ -83,28 +81,19 @@ Whether he wants it or not, the dictator has the last word on product and archit
 
 ### Calibrated Risk-Taking `#c`
 
-If we don’t make a wrong decision once in six months, we are not ambitious enough. (Or self-critical)
-
-### Get Jobs Done `#p`
-
-The goal of the service is not to deliver features, but to get jobs done for our users and customers. 
+Wrong decisions lead to deprecation. Continously.
 
 ### Extensible Delivery `#p`
 
-URI, CSS, Client Code ... Edge ... (Server Code?)
+URI, CSS, Client Code, Feature Flags, Limits ... Edge ...
 
 ### Embrace Authoring where it happens `#p`
 
-Github, Google Drive and One Drive.
+Github, Google Drive, One Drive and more ...
 
+### JavaScript et al. `#a`
 
-### JavaScript and Python `#a`
-
-On the server-side JavaScript and Python are used for the respectively intuitive payloads.
-
-### Mobile first `#a`
-
-Native.
+Languages that are main streamed on our platforms.
 
 ### Copy/Paste not drag and drop `#a`
 
@@ -113,10 +102,6 @@ Remember a good drag and drop experience on mobile?
 ### Frying Architecture `#a`
 
 Output is assembled on request.
-
-### Serviceful `#a`
-
-Make maximum use of available services.
 
 ### Lighthouse Score `#a`
 
@@ -134,18 +119,6 @@ a.k.a. polished, but tweakable.
 
 Support for simple local development is imperative. Low entry barrier.
 
-### AI/ML `#t`
-
-Power content, workflows, designs, and operations.
-
 ### Don't let your doc/sheet get weird `#a`
 
-All documents (md, docx, gdoc, xlsx, sheets) should read well and intuitive when viewed/edited through their native interface.
-
-### Nobody designs a list view before 2022
-
-Let's design interfaces that are bold now, we can go back to safe and boring later on.
-
-### IE11 is not supported
-
-We will put no effort into making our code compatible with IE.
+Documents (md, docx, gdoc, xlsx, sheets) are intuitive and understood by humans.
