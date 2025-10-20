@@ -121,4 +121,4 @@ Support for simple local development is imperative. Low entry barrier.
 
 ### Don't let your doc/sheet get weird `#a`
 
-Documents (md, docx, gdoc, xlsx, sheets) are intuitive and understood by humans.
+Documents (html, md, docx, gdocs, xlsx, gsheets) are intuitive and understood by humans.
