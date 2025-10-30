@@ -87,6 +87,7 @@ If you have been invited and will come, please put your name down in the list.
 5. @shsteimer
 6. @tripodsan
 7. @dkuntze
+8. @gilliankrause
 
 ### Preparation
 
