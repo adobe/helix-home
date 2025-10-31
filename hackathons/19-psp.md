@@ -63,6 +63,7 @@ If you have been invited and will come, please put your name down in the list.
 4. @tripodsan
 5. [@mhaack](https://github.com/mhaack)
 6. @gilliankrause
+7. @amol-anand
 
 ### Preparation
 
