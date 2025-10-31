@@ -65,6 +65,7 @@ If you have been invited and will come, please put your name down in the list.
 6. @gilliankrause
 7. @amol-anand
 8. @maxakuru
+9. [@fkakatie](https://github.com/fkakatie)
 
 ### Preparation
 
