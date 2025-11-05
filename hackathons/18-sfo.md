@@ -89,6 +89,7 @@ If you have been invited and will come, please put your name down in the list.
 7. @dkuntze
 8. @gilliankrause
 9. @kmurugulla
+10. @catalan-adobe
 
 ### Preparation
 
