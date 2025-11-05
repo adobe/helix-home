@@ -64,6 +64,7 @@ The Intercontinental San Francisco in the Financial District is also an option, 
 > What are you planning to show at the end of the week?
 
 Put down the topic and the people that would like to discuss it:
+- migrate DA-collab to AWS (@tripdosan, @karlpauls) 
 
 The theme of this offsite is to be determined based on Q4 priorities and customer needs.
 
