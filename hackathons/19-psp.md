@@ -68,6 +68,7 @@ If you have been invited and will come, please put your name down in the list.
 9. [@fkakatie](https://github.com/fkakatie)
 10. [@dylandepass](https://github.com/dylandepass)
 11. @royfielding
+12. [@dkuntze](https://github.com/dkuntze)
 
 ### Preparation
 
