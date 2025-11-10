@@ -24,11 +24,17 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 | Afternoon | Hacking                                                | Hacking | Hacking   | Hacking  | Demos   |
 |   Evening | Social                                                 | Social  | Social    | Social   | -       |
 
-### Location
+### Location - NEW!
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-We will meet up at the ACE Hotel in Palm Springs, CA (Again).
+The ACE was not able to accomodate our dates this year, so we're going to give Avalon Hotel Palm Springs a try. 
+
+For room bookings, we'll need to book directly with the hotel rather than through Navan.  Here are the instructions:
+
+Guests can use the code ADOBE2026 in the "Group Code" field when browsing our site as well as the link below.
+[Adobe 2026 Corporate Retreat x Avalon Hotel & Bungalows Palm Springs](https://www.avalon-hotel.com/palm-springs/#/booking/step-1?data=('h7hd!'avalon-ps-new'~a8dt*fs.~r7at!2~cn!0~cg.~al4po*co*gp!'ADOBE2026'~rn5ry*rk*re.~rr*ss5ax!0~cy*ds!('p8ls*as*st*he1)~my4s8c8ne1)*1~.3%5D1!null3!%5B4!false~5.)%5D~7s3('8e*%01875431.*_)
+
 
 #### Travel
 
