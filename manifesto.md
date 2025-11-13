@@ -25,7 +25,7 @@ We are a diverse team in every respect.
 
 ### Async; but timely `#c`
 
-We respond quickly. Even if it is just an ack.
+We respond quickly and friendly. Even if it is just an ack.
 
 ### More code, less blah, blah `#c`
 
