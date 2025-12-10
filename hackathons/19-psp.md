@@ -75,6 +75,7 @@ If you have been invited and will come, please put your name down in the list.
 12. [@dkuntze](https://github.com/dkuntze)
 13. [@shsteimer](https://github.com/shsteimer)
 14. [@andreituicu](https://github.com/andreituicu)
+15. [@usman-khalid](https://github.com/usman-khalid)
 15. @langswei
 
 ### Preparation
