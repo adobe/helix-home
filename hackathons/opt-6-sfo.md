@@ -8,7 +8,7 @@ April 13th to 17th 2026, San Francisco, CA (Adobe Office)
 
 ### Agenda
 
-> I hear this is an OpT-In workshop, what exactly am I'm opting into?
+> I hear this is an OpT-In workshop, what exactly am I opting into?
 
 Trying to get as much of the virtual team together, the goal is to have high-bandwidth exchanges on the current state and next steps of strictly neccessary Operational Telemetry. We will try to keep it hands-on, so instead of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty of programming and coding.
 
