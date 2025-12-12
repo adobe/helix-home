@@ -10,7 +10,7 @@ April 13th to 17th 2026, San Francisco, CA (Adobe Office)
 
 > I hear this is an OpT-In workshop, what exactly am I opting into?
 
-Trying to get as much of the virtual team together, the goal is to have high-bandwidth exchanges on the current state and next steps of strictly neccessary Operational Telemetry. We will try to keep it hands-on, so instead of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty of programming and coding.
+Trying to get as much of the virtual team together, the goal is to have high-bandwidth exchanges on the current state and next steps of strictly necessary Operational Telemetry. We will try to keep it hands-on, so instead of presentations, we will rely on code settling arguments, this means we won't be hacking all the time, there will also be plenty of programming and coding.
 
 The main purpose of the hackathon is social: allow the team to reconnect, meet new team members for the first time, and work on stuff that won't fit neatly into a 45-minute Teams meeting.
 
