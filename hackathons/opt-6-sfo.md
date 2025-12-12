@@ -24,15 +24,39 @@ The main purpose of the hackathon is social: allow the team to reconnect, meet n
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-In the San Francisco office. We don't have a room yet, but it will likely have windows.
+We will meet up at the Adobe San Francisco office at 601 Townsend Street, San Francisco, CA 94103. The office is located in the historic Baker & Hamilton Building (built in 1905) in the SOMA (South of Market) district.
 
 #### Travel
 
-Fly into SFO and BART will take you to the city.
+Fly into SFO:
+- From SFO, take BART to downtown San Francisco (any downtown station)
+- The office is about a 12-minute walk from the nearest BART stations
+- Alternatively, the 4th and King Caltrain station is very close to the office (5-minute walk)
+- The office is also accessible via Muni lines 19, 292, TC, and several others
 
 ##### Accommodation
 
-The closest hotel in walking distance is the Intercontinental San Francisco. The hotel is good, the walk to the office, while not terrible, involves seeing some of the rougher parts of the city.
+Recommended hotels within walking distance in the SOMA district:
+
+1. **Hyatt Place San Francisco/Downtown** (0.3 km)
+   - Very close, 3-minute walk from Oracle Park
+
+2. **LUMA Hotel San Francisco** (0.6 km)
+   - 7-minute walk from Oracle Park area
+
+3. **Hotel Via** (0.5 km)
+   - Located in South Beach neighborhood, very close to the office
+
+4. **Canopy by Hilton San Francisco SoMa** (1.0 km)
+   - Within walking distance, near Moscone Center
+
+5. **Hyatt Regency San Francisco Downtown SOMA** (1.5 km)
+   - About 15-20 minute walk, good neighborhood with restaurants
+
+6. **W San Francisco** (1.2 km)
+   - Located in the heart of SOMA district
+
+Most SOMA hotels are safer and more convenient for accessing the Adobe office than hotels in other districts.
 
 ### Goals
 
@@ -52,7 +76,7 @@ The theme of this offsite will be determined based on team input and current pri
 
 If you had your hands on Operational Telemetry code or documentation in the past year, you are welcome to join us. Put your name on the list, so that planning is a bit easier:
 
-1. @trieloff
+1. [@trieloff](https://github.com/trieloff)
 
 ### Preparation
 
@@ -61,6 +85,11 @@ If you had your hands on Operational Telemetry code or documentation in the past
 1. Join `#optel-explorers` on Slack
 2. Book your travel and accommodation early
 3. Add your topics and ideas to the collection above
+4. Check out the following repositories:
+   - [adobe/rum-distiller](https://github.com/adobe/rum-distiller)
+   - [adobe/helix-website](https://github.com/adobe/helix-website)
+   - [adobe/helix-rum-js](https://github.com/adobe/helix-rum-js)
+   - [adobe/helix-rum-enhancer](https://github.com/adobe/helix-rum-enhancer)
 
 ### Demos
 
