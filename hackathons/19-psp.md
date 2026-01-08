@@ -79,6 +79,7 @@ If you have been invited and will come, please put your name down in the list.
 15. @langswei
 16. @cazzaranjosh
 17. @cazzarankarol
+18. @lkrapf
 
 ### Preparation
 
