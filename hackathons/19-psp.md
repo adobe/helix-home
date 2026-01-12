@@ -80,6 +80,7 @@ If you have been invited and will come, please put your name down in the list.
 16. @cazzaranjosh
 17. @cazzarankarol
 18. @lkrapf
+19. [@kmurugulla](https://github.com/kmurugulla)
 
 ### Preparation
 
