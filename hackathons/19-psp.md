@@ -83,6 +83,7 @@ If you have been invited and will come, please put your name down in the list.
 19. [@kmurugulla](https://github.com/kmurugulla)
 20. [@auniverseaway](https://github.com/auniverseaway)
 21. [@hannessolo](https://github.com/hannessolo)
+22. [@sagarsane](https://github.com/sagarsane)
 
 ### Preparation
 
