@@ -52,7 +52,13 @@ The theme of this offsite is to be determined based on Q1 2026 priorities and cu
 
 Let's make the list of topics more of operational tasks, than garage week style explorations.
 
-- Topics to be collected from the team
+- DA collab topics [@hannessolo](https://github.com/hannessolo)
+  - Release da-collab for DA sheets
+  - Extend da-collab to DA configs
+- Quick Edit topics [@hannessolo](https://github.com/hannessolo) [@mhaack](https://github.com/mhaack)
+  - Sidekick button states -> Change Quick Edit to Close button after opening, TBD with [@rofe](https://github.com/rofe)
+- DA Admin topics [@dkuntze](https://github.com/dkuntze)
+  - Discuss reviving https://github.com/adobe/da-admin/issues/150 to support more than 1000 files in DA
 
 ### Attendees
 
