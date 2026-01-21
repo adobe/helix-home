@@ -1,6 +1,6 @@
 # Helix Operations Workshop XIX
 
-February 2nd to 6th 2026, ACE Hotel Palm Springs, CA
+February 2nd to 6th 2026, Avalon Hotel Palm Springs, CA
 
 ---
 
@@ -95,6 +95,7 @@ If you have been invited and will come, please put your name down in the list.
 20. [@auniverseaway](https://github.com/auniverseaway)
 21. [@hannessolo](https://github.com/hannessolo)
 22. [@sagarsane](https://github.com/sagarsane)
+23. @davidnuescheler
 
 ### Preparation
 
