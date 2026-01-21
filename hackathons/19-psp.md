@@ -64,6 +64,9 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - boilerplate cleanup (@fkakatie?)
 - hlx.(page|live) sunset
 - helix 6 rollout?
+- CDN configuration, poor caching setup (@davidnuescheler)
+- image delivery, webp & avif only? (@davidnuescheler)
+- delivery markup evolution strategy (@davidnuescheler)
 
 ### Attendees
 
