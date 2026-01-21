@@ -60,6 +60,11 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - DA Admin topics [@dkuntze](https://github.com/dkuntze)
   - Discuss reviving https://github.com/adobe/da-admin/issues/150 to support more than 1000 files in DA
 
+- tools & labs cleanup (@hsteimer?)
+- boilerplate cleanup (@fkakatie?)
+- hlx.(page|live) sunset
+- helix 6 rollout?
+
 ### Attendees
 
 > Who is going to be there? Can I come?
