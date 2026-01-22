@@ -69,6 +69,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - image delivery, webp & avif only? (@davidnuescheler)
 - delivery markup evolution strategy (@davidnuescheler)
 - clickhouse (@langswei, @trieloff)
+- what about forms? (@dylandepass?)
 
 ### Attendees
 
