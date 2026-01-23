@@ -78,32 +78,36 @@ Let's make the list of topics more of operational tasks, than garage week style 
 #### Tracks
 
 **TRACK 1 - Sunset**
-a. hlx.(page|live) sunset (@davidnuescheler, @stefan-guggisberg)
-b. plan for file-based config sunset (@davidnuescheler, @tripodsan)
-c. plan for forms.aem.live sunset (@dylandepass)
+
+- hlx.(page|live) sunset (@davidnuescheler, @stefan-guggisberg)
+- plan for file-based config sunset (@davidnuescheler, @tripodsan)
+- plan for forms.aem.live sunset (@dylandepass)
 
 **TRACK 2 - Cleanup**
-a. CDN configuration, poor caching setup (@davidnuescheler, @stefan-guggisberg)
-b. tools & labs cleanup (@shsteimer)
+
+- CDN configuration, poor caching setup (@davidnuescheler, @stefan-guggisberg)
+- tools & labs cleanup (@shsteimer)
    - finish transition from labs to tools
    - unified auth & UX?
    - move RUM explorer to tools?
-c. boilerplate cleanup (@fkakatie)
+- boilerplate cleanup (@fkakatie)
    - review and merge PRs
    - button decoration (aem.js)
    - delayed vs consented
-d. image delivery: webp & avif only? (@davidnuescheler)
-e. delivery markup evolution strategy (@davidnuescheler)
+- image delivery: webp & avif only? (@davidnuescheler)
+- delivery markup evolution strategy (@davidnuescheler)
 
 ***TRACK 3 - Helix 6***
-a. helix 6 rollout plan
-b. helix 6 logging cleanup
-c. sync bulk jobs
-e. collab
+
+- helix 6 rollout plan
+- helix 6 logging cleanup
+- sync bulk jobs
+- collab
    - sheets, config?
-f. large lists in source
+- large lists in source
 
 ***TRACK 4 - misc future stuff***
+
 - DA & UE future (@mhaack)
 - boilerplate and AuthorKit (@auniverseaway?)
 - clickhouse (@langswei, @trieloff)
