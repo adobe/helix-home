@@ -76,7 +76,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - Docs-a-thon V2
   - update docs to remove (or de-emphasize) file based config approaches
   - DA docs on aem.live?
-- Media log - following items during the hackathon:
+- Media log - following items during the hackathon: (@amol-anand)
   - triggers in helix-admin to add an entry to media log when content gets published and adding deletion entries when something gets unpublished.
   - build a utility that can suck in all assets from the content of a site and add it to the media-log retroactively
   - update Kiran's media library tool to use the new log
