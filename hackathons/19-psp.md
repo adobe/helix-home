@@ -104,7 +104,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - sync bulk jobs
 - collab
    - sheets, config?
-- large lists in source
+- large source lists
 
 ***TRACK 4 - misc future stuff***
 
@@ -112,6 +112,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - boilerplate and AuthorKit (@auniverseaway?)
 - clickhouse (@langswei, @trieloff)
 - quick edit (@mhaack, @hannesolo, @rofe, @dylandepass)
+- BYO DNS sunset? (@davidnuescheler)
 
 
 ### Attendees
