@@ -66,6 +66,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - hlx.(page|live) sunset
 - helix 6 rollout?
 - BYO DNS sunset?
+- plan for file-based config sunset
 - CDN configuration, poor caching setup (@davidnuescheler)
 - image delivery, webp & avif only? (@davidnuescheler)
 - delivery markup evolution strategy (@davidnuescheler)
@@ -73,6 +74,41 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - what about forms? (@dylandepass?)
 - DA & UE future (@mhaack)
 - boilerplate and AuthorKit (@auniverseaway?)
+
+#### Tracks
+
+**TRACK 1 - Sunset**
+a. hlx.(page|live) sunset (@davidnuescheler, @stefan-guggisberg)
+b. plan for file-based config sunset (@davidnuescheler, @tripodsan)
+c. plan for forms.aem.live sunset (@dylandepass)
+
+**TRACK 2 - Cleanup**
+a. CDN configuration, poor caching setup (@davidnuescheler, @stefan-guggisberg)
+b. tools & labs cleanup (@shsteimer)
+   - finish transition from labs to tools
+   - unified auth & UX?
+   - move RUM explorer to tools?
+c. boilerplate cleanup (@fkakatie)
+   - review and merge PRs
+   - button decoration (aem.js)
+   - delayed vs consented
+d. image delivery: webp & avif only? (@davidnuescheler)
+e. delivery markup evolution strategy (@davidnuescheler)
+
+***TRACK 3 - Helix 6***
+a. helix 6 rollout plan
+b. helix 6 logging cleanup
+c. sync bulk jobs
+e. collab
+   - sheets, config?
+f. large lists in source
+
+***TRACK 4 - misc future stuff***
+- DA & UE future (@mhaack)
+- boilerplate and AuthorKit (@auniverseaway?)
+- clickhouse (@langswei, @trieloff)
+- quick edit (@mhaack, @hannesolo, @rofe, @dylandepass)
+
 
 ### Attendees
 
