@@ -60,7 +60,6 @@ Let's make the list of topics more of operational tasks, than garage week style 
   - HLX 6: "no preview" aka. aem.page shows /source content directly
 - DA Admin topics [@dkuntze](https://github.com/dkuntze)
   - Discuss reviving https://github.com/adobe/da-admin/issues/150 to support more than 1000 files in DA
-
 - tools & labs cleanup (@hsteimer?)
 - boilerplate cleanup (@fkakatie?)
 - hlx.(page|live) sunset
@@ -74,6 +73,9 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - what about forms? (@dylandepass?)
 - DA & UE future (@mhaack)
 - boilerplate and AuthorKit (@auniverseaway?)
+- Docs-a-thon V2
+  - update docs to remove (or de-emphasize) file based config approaches
+  - DA docs on aem.live? 
 
 #### Tracks
 
