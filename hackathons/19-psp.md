@@ -81,7 +81,9 @@ Let's make the list of topics more of operational tasks, than garage week style 
   - build a utility that can suck in all assets from the content of a site and add it to the media-log retroactively
   - update Kiran's media library tool to use the new log
   - any other changes needed in the format of the log entries
-    
+- Tools changes should be surfaced in Release History (couple of customers / partners asking for this - IBM most recently)
+- json2html logs surfaced in audit log
+      
 #### Tracks
 
 **TRACK 1 - Sunset**
