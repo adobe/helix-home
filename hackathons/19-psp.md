@@ -83,6 +83,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
   - any other changes needed in the format of the log entries
 - Tools changes should be surfaced in Release History (couple of customers / partners asking for this - IBM most recently)
 - json2html logs surfaced in audit log
+  - better logging via x-error
       
 #### Tracks
 
