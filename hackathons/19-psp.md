@@ -101,6 +101,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
    - review and merge PRs
    - button decoration (aem.js)
    - delayed vs consented
+- docs cleanup: remove (or de-emphasize) file based config approaches (@shsteimer)
 - image delivery: webp & avif only? (@davidnuescheler)
 - delivery markup evolution strategy (@davidnuescheler)
 
@@ -120,6 +121,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - clickhouse (@langswei, @trieloff)
 - quick edit (@mhaack, @hannesolo, @rofe, @dylandepass)
 - BYO DNS sunset? (@davidnuescheler)
+- media log (@amol-anand)
 
 
 ### Attendees
