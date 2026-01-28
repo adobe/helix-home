@@ -78,6 +78,7 @@ If you had your hands on Operational Telemetry code or documentation in the past
 
 1. [@trieloff](https://github.com/trieloff)
 2. [@ramboz](https://github.com/ramboz)
+3. [@maxakuru](https://github.com/maxakuru)
 
 ### Preparation
 
