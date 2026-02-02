@@ -90,6 +90,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 **TRACK 1 - Sunset**
 
 - hlx.(page|live) sunset (@davidnuescheler, @stefan-guggisberg)
+- sidekick v6 sunset (@dylandepass, @rofe)
 - plan for file-based config sunset (@davidnuescheler, @tripodsan)
 - plan for forms.aem.live sunset (@dylandepass)
 
