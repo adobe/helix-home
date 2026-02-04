@@ -94,8 +94,9 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - plan for file-based config sunset (@davidnuescheler, @tripodsan) ✔️
   - admin return 400 if site config exists
   - sidekick displays warning and provides link to simple config editor
+  - simple config editor shows option to migrate legacy config
 - plan for forms.aem.live sunset (@dylandepass) ✔️
-  - decision: item postponed to next hackathon, contact customers with significant usage
+  - decision: item postponed to next hackathon, contact customers with usage
 
 **TRACK 2 - Cleanup**
 
@@ -109,14 +110,16 @@ Let's make the list of topics more of operational tasks, than garage week style 
    - button decoration (aem.js)
    - delayed vs consented
 - docs cleanup: remove (or de-emphasize) file based config approaches (@shsteimer)
-- image delivery: webp & avif only? (@davidnuescheler)
-- delivery markup evolution strategy (@davidnuescheler)
+- image delivery: webp & avif only? (@davidnuescheler, @tripodsan)
+- delivery markup evolution strategy (@davidnuescheler, @tripodsan)
 
 ***TRACK 3 - Helix 6***
 
-- helix 6 rollout plan
-- helix 6 logging cleanup
-- sync bulk jobs
+- helix 6 rollout plan (@davidnuescheler, @rofe, @tripodsan, @auniverseaway) 
+- helix 6 logging cleanup (@davidnuescheler, @tripodsan)
+- plan for sync bulk jobs (@davidnuescheler, @tripodsan) ✔️
+  - all bulk previews are sync, path limits apply per content source
+  - all other bulk actions have limit of 10k
 - collab
    - sheets, config?
 - large source lists
