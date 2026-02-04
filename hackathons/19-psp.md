@@ -89,10 +89,13 @@ Let's make the list of topics more of operational tasks, than garage week style 
 
 **TRACK 1 - Sunset**
 
-- hlx.(page|live) sunset (@davidnuescheler, @stefan-guggisberg)
-- sidekick v6 sunset (@dylandepass, @rofe)
-- plan for file-based config sunset (@davidnuescheler, @tripodsan)
-- plan for forms.aem.live sunset (@dylandepass)
+- hlx.(page|live) sunset (@davidnuescheler, @stefan-guggisberg) ✔️
+- sidekick v6 sunset (@dylandepass, @rofe) ✔️
+- plan for file-based config sunset (@davidnuescheler, @tripodsan) ✔️
+  - admin return 400 if site config exists
+  - sidekick displays warning and provides link to simple config editor
+- plan for forms.aem.live sunset (@dylandepass) ✔️
+  - decision: item postponed to next hackathon, contact customers with significant usage
 
 **TRACK 2 - Cleanup**
 
