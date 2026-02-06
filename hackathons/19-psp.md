@@ -137,7 +137,8 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - quick edit (@mhaack, @hannesolo, @rofe, @dylandepass)
 - BYO DNS sunset? (@davidnuescheler)
 - media log (@amol-anand)
-
+- helix code review skill (@amol-anand)
+- security (@lkrapf, @andreituicu)
 
 ### Attendees
 
