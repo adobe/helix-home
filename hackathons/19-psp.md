@@ -117,13 +117,17 @@ Let's make the list of topics more of operational tasks, than garage week style 
 
 - helix 6 rollout plan (@davidnuescheler, @rofe, @tripodsan, @auniverseaway) 
 - helix 6 logging cleanup (@davidnuescheler, @tripodsan)
+  - decision: leave as is. the existing inconsistencies don't justify braking changes
 - plan for sync bulk jobs (@davidnuescheler, @tripodsan) ✔️
   - all bulk previews are sync, path limits apply per content source
   - all other bulk actions have limit of 10k
 - collab
-   - sheets, config?
-- large source lists
-- versions
+   - sheets (@hannessolo)
+   - config?
+- large source lists (@dkuntze)
+  - paging in da.live
+- versions (@tripodsan)
+  - versions are only auto-created when previewing, not during editing
 
 ***TRACK 4 - misc future stuff***
 
