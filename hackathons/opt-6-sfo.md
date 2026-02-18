@@ -80,6 +80,7 @@ If you had your hands on Operational Telemetry code or documentation in the past
 2. [@ramboz](https://github.com/ramboz)
 3. [@maxakuru](https://github.com/maxakuru)
 4. [@vdua](https://github.com/vdua)
+5. [@langswei](https://github.com/langswei)
 
 ### Preparation
 
