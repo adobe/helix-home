@@ -4,8 +4,8 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 
 ## Upcoming Hackathons
 
-1. [February 2nd to 6th 2026, somewhere in Palm Springs, CA](19-psp.md)
-2. [April 13th to 17th 2026, San Francisco, CA](opt-6-sfo.md)
+1. [April 13th to 17th 2026, San Francisco, CA](opt-6-sfo.md)
+2. [May 25th to 29th 2026, Copenhagen, Denmark](20-cph.md)
 
 
 ## Past Hackathons
@@ -33,6 +33,7 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 21. [July 7th to 11th 2025, Basel, Switzerland](17-bsl.md)
 22. [October 6th to 10th 2025, Noida, India](opt-5-noi.md)
 23. [November 10th to 14th 2025, San Francisco, CA](18-sfo.md)
+24. [February 2nd to 6th 2026, Palm Springs, CA](19-psp.md)
 
 ## Ideas for future Hackathons
 
