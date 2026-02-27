@@ -28,6 +28,8 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
+No windowless conference room here! The Adobe Copenhagen office sits on the waterfront at Islands Brygge, a vibrant harbour neighbourhood with views across the Copenhagen harbour. Think harbour baths, waterfront parks, and some of the best bakeries in the world.
+
 Adobe's Copenhagen office is located at:
 Islands Brygge 57, 2th
 2300 København
@@ -71,6 +73,10 @@ Several hotels are within walking distance of the Adobe office:
    - 9-minute walk to the office
 
 Please book your accommodation early as Copenhagen hotels can fill up quickly. All these hotels are also well-connected to public transport.
+
+##### Food & Coffee
+
+[Hart Bageri](https://hartbageri.com/) at Islands Brygge 23 is a 5-minute walk from the office and one of Copenhagen's most celebrated bakeries — founded by Richard Hart (formerly of San Francisco's Tartine) in partnership with Noma's René Redzepi. Open daily from 07:30. The cardamom buns and sourdough croissants are legendary. Perfect for breakfast before the sessions or an afternoon pastry break.
 
 ### Goals
 
