@@ -5,7 +5,7 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 ## Upcoming Hackathons
 
 1. [April 13th to 17th 2026, San Francisco, CA](opt-6-sfo.md)
-2. [May 25th to 29th 2026, Copenhagen, Denmark](20-cph.md)
+2. [June 22nd to 26th 2026, Copenhagen, Denmark](20-cph.md)
 
 
 ## Past Hackathons

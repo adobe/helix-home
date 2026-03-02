@@ -1,6 +1,6 @@
 # Helix Operations Workshop XX
 
-May 25th to 29th 2026, Copenhagen, Denmark (Adobe Office)
+June 22nd to 26th 2026, Copenhagen, Denmark (Adobe Office)
 
 ---
 
