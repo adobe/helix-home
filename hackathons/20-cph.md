@@ -101,6 +101,7 @@ If you have been invited and will come, please put your name down in the list.
 2. [@stefan](https://github.com/stefan-guggisberg)
 3. [@kptdobe](https://github.com/kptdobe)
 4. [@rofe](https://github.com/rofe)
+5. [@mhaack](https://github.com/mhaack)
 
 ### Preparation
 
