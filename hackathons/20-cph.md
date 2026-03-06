@@ -102,6 +102,7 @@ If you have been invited and will come, please put your name down in the list.
 3. [@kptdobe](https://github.com/kptdobe)
 4. [@rofe](https://github.com/rofe)
 5. [@mhaack](https://github.com/mhaack)
+6. @bosschaert
 
 ### Preparation
 
