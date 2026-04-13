@@ -104,7 +104,6 @@ If you have been invited and will come, please put your name down in the list.
 5. [@mhaack](https://github.com/mhaack)
 6. @bosschaert
 7. [@dkuntze](https://github.com/dkuntze)
-8. [@amol-anand](https://github.com/amol-anand)
 
 ### Preparation
 
