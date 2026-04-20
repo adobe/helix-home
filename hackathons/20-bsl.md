@@ -1,6 +1,6 @@
 # Helix Operations Workshop XX
 
-June 22nd to 26th 2026, Copenhagen, Denmark (Adobe Office)
+June 22nd to 26th 2026, Basel, Switzerland (Adobe Office)
 
 ---
 
@@ -28,55 +28,11 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-No windowless conference room here! The Adobe Copenhagen office sits on the waterfront at Islands Brygge, a vibrant harbour neighbourhood with views across the Copenhagen harbour. Think harbour baths, waterfront parks, and some of the best bakeries in the world.
-
-Adobe's Copenhagen office is located at:
-Islands Brygge 57, 2th
-2300 København
-Danmark
+Basel
 
 #### Travel
 
-Fly into Copenhagen Airport (CPH). The office is easily accessible by public transport:
-
-1. From the airport, take the Metro M2 (yellow line) towards Vanløse
-2. Get off at Islands Brygge station (about 15 minutes from the airport)
-3. The Adobe office is a 5-minute walk from the station:
-   - Exit the station towards Islands Brygge
-   - Walk south along Islands Brygge street
-   - The office building will be on your right
-
-Alternatively, a taxi from the airport takes about 20 minutes depending on traffic.
-
-##### Accommodation
-
-Several hotels are within walking distance of the Adobe office:
-
-1. **NH Collection Copenhagen** (0.5 km)
-   - Strandgade 7, 1401 København
-   - Modern 4-star hotel with harbor views
-   - 7-minute walk to the office
-
-2. **Copenhagen Island Hotel** (0.8 km)
-   - Kalvebod Brygge 53, 1560 København
-   - Contemporary waterfront hotel
-   - 10-minute walk to the office
-
-3. **Scandic Sydhavnen** (1.2 km)
-   - Sydhavns Pl. 15, 2450 København
-   - Business-friendly hotel
-   - 15-minute walk
-
-4. **Radisson Blu Scandinavia Hotel** (0.7 km)
-   - Amager Boulevard 70, 2300 København
-   - Upscale hotel with city views
-   - 9-minute walk to the office
-
-Please book your accommodation early as Copenhagen hotels can fill up quickly. All these hotels are also well-connected to public transport.
-
-##### Food & Coffee
-
-[Hart Bageri](https://hartbageri.com/) at Islands Brygge 23 is a 5-minute walk from the office and one of Copenhagen's most celebrated bakeries — founded by Richard Hart (formerly of San Francisco's Tartine) in partnership with Noma's René Redzepi. Open daily from 07:30. The cardamom buns and sourdough croissants are legendary. Perfect for breakfast before the sessions or an afternoon pastry break.
+You're there already.
 
 ### Goals
 
