@@ -28,8 +28,8 @@ stuff that won't fit neatly into a 45-minute Teams meeting.
 
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
-Adobe Basel Office
-Room: Morgestraich
+Adobe Basel Office\
+Room: Morgestraich\
 Floor: 4
 
 #### Travel
