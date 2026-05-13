@@ -329,7 +329,7 @@ async function cmdMonday(args) {
 }
 
 function showHelp() {
-  console.log('Adobe On-Call — incident management\n');
+  console.log('oncall — Adobe On-Call incident management\n');
   console.log('Commands:');
   console.log('  incidents [--state=STATE]     List active on-call incidents');
   console.log('  get <NUMBER>                  View incident details');
@@ -337,15 +337,16 @@ function showHelp() {
   console.log('  update <NUMBER> --state=STATE [--comment=TEXT]');
   console.log('                                Update incident state');
   console.log('  shifts                        View your upcoming shifts');
-  console.log('  whoisoncall [--group=ID]      Show who is on-call');
+  console.log('  who [--group=ID]              Show who is on-call');
   console.log('  monday [--limit N] [--date Nd]  Monday protocol output\n');
   console.log('States: open, wip, re-open, resolved, closed, all');
   console.log('');
   console.log('Examples:');
-  console.log('  adobe-oncall incidents');
-  console.log('  adobe-oncall get OCINC2145403');
-  console.log('  adobe-oncall ack OCINC2145403');
-  console.log('  adobe-oncall shifts');
+  console.log('  oncall incidents');
+  console.log('  oncall get OCINC2145403');
+  console.log('  oncall ack OCINC2145403');
+  console.log('  oncall who');
+  console.log('  oncall shifts');
 }
 
 // --- Main ---
@@ -364,6 +365,7 @@ switch (cmd) {
   case 'ack': await cmdAck(args[0]); break;
   case 'update': await cmdUpdate(args[0], args.slice(1)); break;
   case 'shifts': await cmdShifts(); break;
+  case 'who': await cmdWhoIsOnCall(args); break;
   case 'whoisoncall': await cmdWhoIsOnCall(args); break;
   case 'monday': await cmdMonday(args); break;
   default:

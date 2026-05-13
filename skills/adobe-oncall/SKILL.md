@@ -22,22 +22,22 @@ page context.
 
 ```bash
 # List active on-call incidents
-adobe-oncall incidents
+oncall incidents
 
 # View a specific incident
-adobe-oncall get OCINC2145403
+oncall get OCINC2145403
 
 # Acknowledge an incident
-adobe-oncall ack OCINC2145403
+oncall ack OCINC2145403
 
-# Check who is currently on-call for your groups
-adobe-oncall whoisoncall
+# Check who is currently on-call
+oncall who
 
 # View your upcoming shifts
-adobe-oncall shifts
+oncall shifts
 
 # Monday protocol output
-adobe-oncall monday --limit 20 --date 7d
+oncall monday --limit 20 --date 7d
 ```
 
 ## Authentication
@@ -51,35 +51,35 @@ If the session has expired: "Session expired — open adobe.service-now.com/x/ad
 
 ## Available commands
 
-### adobe-oncall incidents [--state=STATE] [--group=GROUP]
+### oncall incidents [--state=STATE] [--group=GROUP]
 
 List active on-call incidents assigned to your groups.
 
 States: `open` (1), `wip` (2), `re-open` (60), `resolved` (3), `closed` (4), `all`
 Default: open + wip + re-open
 
-### adobe-oncall get <OCINC_NUMBER|sys_id>
+### oncall get <OCINC_NUMBER|sys_id>
 
 Get full incident details including short description, priority, state,
 assignment group, assigned to, opened time, and related alerts.
 
-### adobe-oncall ack <OCINC_NUMBER|sys_id>
+### oncall ack <OCINC_NUMBER|sys_id>
 
 Acknowledge an incident (sets acknowledged flag and assigns to you).
 
-### adobe-oncall update <OCINC_NUMBER|sys_id> --state=STATE [--comment=TEXT]
+### oncall update <OCINC_NUMBER|sys_id> --state=STATE [--comment=TEXT]
 
 Update incident state. Optionally add a work note.
 
-### adobe-oncall whoisoncall [--group=GROUP]
+### oncall who [--group=GROUP]
 
 Show who is currently on-call for your groups (or a specific group).
 
-### adobe-oncall shifts
+### oncall shifts
 
 Show your upcoming on-call shifts.
 
-### adobe-oncall monday [--limit N] [--date Nd]
+### oncall monday [--limit N] [--date Nd]
 
 Output active incidents in monday aggregator protocol format.
 
