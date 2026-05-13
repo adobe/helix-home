@@ -292,6 +292,45 @@ async function cmdWhoIsOnCall(args) {
   console.log(JSON.stringify(info.whoIsOnCall || [], null, 2));
 }
 
+async function cmdHistory(args) {
+  var period = 'last_week';
+  var groupId = DEFAULT_GROUP_ID;
+  for (var i = 0; i < args.length; i++) {
+    if (args[i].startsWith('--period=')) period = args[i].split('=')[1];
+    if (args[i].startsWith('--group=')) groupId = args[i].split('=')[1];
+  }
+  var timeQuery;
+  switch (period) {
+    case 'today': timeQuery = 'opened_at>=javascript:gs.beginningOfToday()'; break;
+    case 'yesterday': timeQuery = 'opened_at>=javascript:gs.beginningOfYesterday()^opened_at<javascript:gs.beginningOfToday()'; break;
+    case 'this_week': timeQuery = 'opened_at>=javascript:gs.beginningOfThisWeek()'; break;
+    case 'last_week': timeQuery = 'opened_at>=javascript:gs.beginningOfLastWeek()^opened_at<javascript:gs.endOfLastWeek()'; break;
+    case 'this_month': timeQuery = 'opened_at>=javascript:gs.beginningOfThisMonth()'; break;
+    case 'last_month': timeQuery = 'opened_at>=javascript:gs.beginningOfLastMonth()^opened_at<javascript:gs.endOfLastMonth()'; break;
+    default: timeQuery = 'opened_at>=javascript:gs.beginningOfLastWeek()^opened_at<javascript:gs.endOfLastWeek()'; break;
+  }
+  var query = 'assignment_group=' + groupId + '^' + timeQuery + '^ORDERBYDESCopened_at';
+  var fields = 'number,short_description,state,priority,assigned_to,opened_at';
+  var path = '/api/now/table/' + INCIDENT_TABLE + '?sysparm_query=' + encodeURIComponent(query) + '&sysparm_fields=' + fields + '&sysparm_limit=50&sysparm_display_value=true';
+  var data = await apiGet(path);
+  var results = data.result || [];
+  if (results.length === 0) {
+    console.log('No incidents found for ' + period + '.');
+    return;
+  }
+  var incidents = results.map(function(r) {
+    return {
+      number: r.number,
+      opened: r.opened_at,
+      title: (r.short_description || '').trim(),
+      assignee: typeof r.assigned_to === 'object' ? r.assigned_to.display_value : (r.assigned_to || 'Unassigned'),
+      priority: typeof r.priority === 'object' ? r.priority.display_value : r.priority,
+      state: typeof r.state === 'object' ? r.state.display_value : (STATE_LABELS[r.state] || r.state)
+    };
+  });
+  console.log(JSON.stringify(incidents, null, 2));
+}
+
 async function cmdMonday(args) {
   var limit = 50;
   var date = '7d';
@@ -338,7 +377,9 @@ function showHelp() {
   console.log('                                Update incident state');
   console.log('  shifts                        View your upcoming shifts');
   console.log('  who [--group=ID]              Show who is on-call');
+  console.log('  history [--period=PERIOD]     Incidents for a time period');
   console.log('  monday [--limit N] [--date Nd]  Monday protocol output\n');
+  console.log('Periods: today, yesterday, this_week, last_week (default), this_month, last_month');
   console.log('States: open, wip, re-open, resolved, closed, all');
   console.log('');
   console.log('Examples:');
@@ -367,6 +408,7 @@ switch (cmd) {
   case 'shifts': await cmdShifts(); break;
   case 'who': await cmdWhoIsOnCall(args); break;
   case 'whoisoncall': await cmdWhoIsOnCall(args); break;
+  case 'history': await cmdHistory(args); break;
   case 'monday': await cmdMonday(args); break;
   default:
     console.error('Unknown command: ' + cmd);
