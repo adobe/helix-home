@@ -6,6 +6,7 @@ const ONCALL_PATH = '/x/adosy/on-call/home';
 const INCIDENT_TABLE = 'x_adosy_adb_on_ca_incident';
 const DATABROKER_ENDPOINT = '/api/now/uxf/databroker/exec';
 const SUMMARY_DEFINITION_ID = '1a7dd83d1b31b114fde1c8451a4bcba3';
+const DEFAULT_GROUP_ID = 'f3483b5047f11610c49b3d54116d4348'; // AEM - Helix v2
 
 let _tabId = null;
 
@@ -280,7 +281,7 @@ async function cmdShifts() {
 }
 
 async function cmdWhoIsOnCall(args) {
-  var groupSysId = null;
+  var groupSysId = DEFAULT_GROUP_ID;
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--group=')) groupSysId = args[i].split('=')[1];
   }
