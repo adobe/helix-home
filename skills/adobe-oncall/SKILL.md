@@ -73,7 +73,9 @@ Update incident state. Optionally add a work note.
 
 ### oncall who [--group=GROUP]
 
-Show who is currently on-call for your groups (or a specific group).
+Show who is currently on-call across **both EMEA and NA rosters**.
+Returns coverage (primary pager carrier) and shift (rotation slot) info.
+Uses the calendar spans databroker to get real-time schedule data.
 
 ### oncall shifts
 
@@ -89,6 +91,10 @@ Output active incidents in monday aggregator protocol format.
 - **Major incident table:** `x_adosy_mi_major_incident`
 - **Schedule API:** UX Framework Databroker pipeline `get_on_call_summary_info`
   (definition: `1a7dd83d1b31b114fde1c8451a4bcba3`)
+- **Calendar API:** UX Framework Databroker pipeline `get_calendar_spans_1`
+  (definition: `b90d6f7a1be2fd10fde1c8451a4bcba6`) — returns both EMEA and NA rosters
+- **EMEA roster:** `a99c33f58360c7d00479abe0deaad33d` (03:00–15:00 UTC)
+- **NA roster:** `6f4df71c47f11610c49b3d54116d4335` (15:00–03:00 UTC)
 - **Access method:** XHR from ServiceNow workspace page context with `X-UserToken` header
 - **On-Call app path:** `/x/adosy/on-call/home`
 

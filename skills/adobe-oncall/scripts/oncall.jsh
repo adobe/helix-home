@@ -6,7 +6,10 @@ const ONCALL_PATH = '/x/adosy/on-call/home';
 const INCIDENT_TABLE = 'x_adosy_adb_on_ca_incident';
 const DATABROKER_ENDPOINT = '/api/now/uxf/databroker/exec';
 const SUMMARY_DEFINITION_ID = '1a7dd83d1b31b114fde1c8451a4bcba3';
+const CALENDAR_DEFINITION_ID = 'b90d6f7a1be2fd10fde1c8451a4bcba6';
 const DEFAULT_GROUP_ID = 'f3483b5047f11610c49b3d54116d4348'; // AEM - Helix v2
+const EMEA_ROSTER_ID = 'a99c33f58360c7d00479abe0deaad33d';
+const NA_ROSTER_ID = '6f4df71c47f11610c49b3d54116d4335';
 
 let _tabId = null;
 
@@ -285,11 +288,71 @@ async function cmdWhoIsOnCall(args) {
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--group=')) groupSysId = args[i].split('=')[1];
   }
-  var payload = [{ type: 'GRAPHQL', definitionSysId: SUMMARY_DEFINITION_ID, inputValues: { groupSysId: { type: 'JSON_LITERAL', value: groupSysId }, userSysId: { type: 'JSON_LITERAL', value: null } }, pipelineId: 'get_on_call_summary_info' }];
+  // Use the calendar spans API (gets both EMEA and NA)
+  var now = new Date();
+  var pad = function(n) { return n < 10 ? '0' + n : '' + n; };
+  var today = now.getUTCFullYear() + '-' + pad(now.getUTCMonth() + 1) + '-' + pad(now.getUTCDate());
+  // Query a 2-day window to cover timezone boundaries
+  var tomorrow = new Date(now.getTime() + 86400000);
+  var end = tomorrow.getUTCFullYear() + '-' + pad(tomorrow.getUTCMonth() + 1) + '-' + pad(tomorrow.getUTCDate());
+
+  var payload = [{
+    type: 'GRAPHQL',
+    definitionSysId: CALENDAR_DEFINITION_ID,
+    inputValues: {
+      input: {
+        type: 'JSON_LITERAL',
+        value: {
+          startDate: today,
+          endDate: end,
+          groupIds: groupSysId,
+          userIds: null
+        }
+      }
+    },
+    pipelineId: 'get_calendar_spans_1'
+  }];
   var data = await databrokerExec(payload);
-  var info = data.result && data.result[0] && data.result[0].executionResult && data.result[0].executionResult.output && data.result[0].executionResult.output.data && data.result[0].executionResult.output.data.xAdosyAdbOnCa && data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall && data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getSummaryCardInfo;
-  if (!info) { console.error('Could not retrieve on-call info.'); process.exit(1); }
-  console.log(JSON.stringify(info.whoIsOnCall || [], null, 2));
+  var spans = data.result && data.result[0] && data.result[0].executionResult &&
+    data.result[0].executionResult.output && data.result[0].executionResult.output.data &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getCalendarSpans &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getCalendarSpans.events;
+  if (!spans) { console.error('Could not retrieve on-call calendar.'); process.exit(1); }
+
+  var nowMs = now.getTime();
+  var currentlyOnCall = [];
+  var nextUp = [];
+
+  for (var i = 0; i < spans.length; i++) {
+    var ev = spans[i];
+    // Skip meta entries (Shift/Roster labels)
+    if (ev.title.indexOf('Shift:') === 0 || ev.title.indexOf('Roster:') === 0) continue;
+    var startMs = parseInt(ev.start);
+    var endMs = parseInt(ev.end);
+    var rosterLabel = ev.roster === EMEA_ROSTER_ID ? 'EMEA' : (ev.roster === NA_ROSTER_ID ? 'NA' : ev.roster);
+    var isCoverage = ev.title.indexOf('Coverage') !== -1;
+    var entry = {
+      name: ev.title,
+      roster: rosterLabel,
+      type: isCoverage ? 'coverage' : 'shift',
+      start: new Date(startMs).toISOString(),
+      end: new Date(endMs).toISOString()
+    };
+    if (nowMs >= startMs && nowMs < endMs) {
+      currentlyOnCall.push(entry);
+    } else if (startMs > nowMs && startMs - nowMs < 24 * 3600 * 1000) {
+      nextUp.push(entry);
+    }
+  }
+
+  // Sort nextUp by start time
+  nextUp.sort(function(a, b) { return new Date(a.start) - new Date(b.start); });
+
+  var result = { now: now.toISOString(), currently_on_call: currentlyOnCall };
+  if (nextUp.length > 0) result.next_up = nextUp.slice(0, 6);
+  console.log(JSON.stringify(result, null, 2));
 }
 
 async function cmdHistory(args) {
