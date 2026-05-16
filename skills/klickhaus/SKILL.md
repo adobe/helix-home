@@ -40,7 +40,7 @@ klickhaus monday --range=24h
 # Run arbitrary SQL
 klickhaus query "SELECT count() FROM delivery WHERE timestamp >= now() - INTERVAL 1 HOUR"
 klickhaus query --file=query.sql
-klickhaus query "$(cat query.sql)"
+cat query.sql | klickhaus query
 ```
 
 ## Available commands
@@ -72,7 +72,7 @@ klickhaus query "$(cat query.sql)"
 ## Architecture
 
 - **Database**: ClickHouse Cloud (`helix_logs_production`)
-- **Auth**: Basic auth over HTTPS (credentials stored in `.config.json`)
+- **Auth**: Basic auth over HTTPS (credentials stored in `$HOME/.config/klickhaus/config.json` with mode 0600, outside the repository)
 - **Sampling**: Rows are sampled — always uses `sum(weight)` not `count(*)`
 - **Tables**: `delivery` (CDN edge), `admin` (admin service), `backend` (backend services), `da` (Document Authoring)
 - **Key columns**: `timestamp`, `response.status`, `request.host`, `request.url`, `weight`

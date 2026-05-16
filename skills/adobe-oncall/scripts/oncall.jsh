@@ -51,10 +51,11 @@ async function ensureTab() {
 
 async function apiGet(path) {
   const tabId = await ensureTab();
+  const pathLiteral = JSON.stringify(path);
   const code = [
     'new Promise(function(r) {',
     '  var xhr = new XMLHttpRequest();',
-    '  xhr.open("GET", "' + path.replace(/"/g, '\\"') + '");',
+    '  xhr.open("GET", ' + pathLiteral + ');',
     '  xhr.setRequestHeader("Accept", "application/json");',
     '  xhr.setRequestHeader("X-UserToken", window.g_ck || "");',
     '  xhr.onload = function() {',
@@ -94,11 +95,16 @@ async function apiGet(path) {
 
 async function apiPatch(path, body) {
   const tabId = await ensureTab();
-  const bodyStr = JSON.stringify(body).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  // Use JSON.stringify twice: once to serialize the body, then again to embed
+  // that JSON safely inside a JS string literal in the eval code. This handles
+  // newlines, quotes, and other control characters that would otherwise break
+  // the generated script (e.g. multi-line --comment= values for work_notes).
+  const bodyLiteral = JSON.stringify(JSON.stringify(body));
+  const pathLiteral = JSON.stringify(path);
   const code = [
     'new Promise(function(r) {',
     '  var xhr = new XMLHttpRequest();',
-    '  xhr.open("PATCH", "' + path.replace(/"/g, '\\"') + '");',
+    '  xhr.open("PATCH", ' + pathLiteral + ');',
     '  xhr.setRequestHeader("Accept", "application/json");',
     '  xhr.setRequestHeader("Content-Type", "application/json");',
     '  xhr.setRequestHeader("X-UserToken", window.g_ck || "");',
@@ -112,7 +118,7 @@ async function apiPatch(path, body) {
     '  xhr.onerror = function() { r(JSON.stringify({__error: "network"})); };',
     '  xhr.timeout = 15000;',
     '  xhr.ontimeout = function() { r(JSON.stringify({__error: "timeout"})); };',
-    '  xhr.send("' + bodyStr + '");',
+    '  xhr.send(' + bodyLiteral + ');',
     '})'
   ].join('\n');
   const tmpFile = '/shared/.oncall_eval_' + Date.now() + '.js';
@@ -127,11 +133,12 @@ async function apiPatch(path, body) {
 
 async function databrokerExec(payload) {
   const tabId = await ensureTab();
-  const payloadStr = JSON.stringify(payload).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const payloadLiteral = JSON.stringify(JSON.stringify(payload));
+  const endpointLiteral = JSON.stringify(DATABROKER_ENDPOINT);
   const code = [
     'new Promise(function(r) {',
     '  var xhr = new XMLHttpRequest();',
-    '  xhr.open("POST", "' + DATABROKER_ENDPOINT + '");',
+    '  xhr.open("POST", ' + endpointLiteral + ');',
     '  xhr.setRequestHeader("Accept", "application/json");',
     '  xhr.setRequestHeader("Content-Type", "application/json");',
     '  xhr.setRequestHeader("X-UserToken", window.g_ck || "");',
@@ -139,7 +146,7 @@ async function databrokerExec(payload) {
     '  xhr.onerror = function() { r(JSON.stringify({__error: "network"})); };',
     '  xhr.timeout = 15000;',
     '  xhr.ontimeout = function() { r(JSON.stringify({__error: "timeout"})); };',
-    '  xhr.send("' + payloadStr + '");',
+    '  xhr.send(' + payloadLiteral + ');',
     '})'
   ].join('\n');
   const tmpFile = '/shared/.oncall_eval_' + Date.now() + '.js';
@@ -180,14 +187,21 @@ var STATE_LABELS = { '1': 'Open', '2': 'Work in Progress', '3': 'Resolved', '4':
 
 async function cmdIncidents(args) {
   var stateFilter = '1,2,60';
+  var groupId = null;
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--state=')) {
       var stateMap = { 'open': '1', 'wip': '2', 're-open': '60', 'resolved': '3', 'closed': '4', 'all': '1,2,3,4,60' };
       var val = args[i].split('=')[1];
       stateFilter = stateMap[val] || val;
     }
+    if (args[i].startsWith('--group=')) {
+      groupId = args[i].split('=')[1];
+    }
   }
-  var query = 'assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744^active=true^stateIN' + stateFilter + '^ORDERBYDESCopened_at';
+  var groupClause = groupId
+    ? 'assignment_group=' + groupId
+    : 'assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744';
+  var query = groupClause + '^active=true^stateIN' + stateFilter + '^ORDERBYDESCopened_at';
   var fields = 'number,short_description,state,priority,assigned_to,assignment_group,opened_at,sys_id';
   var path = '/api/now/table/' + INCIDENT_TABLE + '?sysparm_query=' + encodeURIComponent(query) + '&sysparm_fields=' + fields + '&sysparm_limit=20&sysparm_display_value=true';
   var data = await apiGet(path);
@@ -403,7 +417,22 @@ async function cmdMonday(args) {
     if (args[i].startsWith('--limit=')) limit = parseInt(args[i].split('=')[1]);
     if (args[i].startsWith('--date=')) date = args[i].split('=')[1];
   }
-  var query = 'assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744^active=true^stateIN1,2,60^ORDERBYDESCopened_at';
+  var dateMatch = /^(\d+)d$/.exec(date);
+  if (!dateMatch) {
+    console.error('Invalid --date value: ' + date + '. Expected Nd (e.g. 7d).');
+    process.exit(1);
+  }
+  var days = parseInt(dateMatch[1]);
+  var sinceMs = Date.now() - days * 24 * 3600 * 1000;
+  var since = new Date(sinceMs);
+  var pad = function(n) { return n < 10 ? '0' + n : '' + n; };
+  var sinceStr = since.getUTCFullYear() + '-' + pad(since.getUTCMonth() + 1) + '-' + pad(since.getUTCDate())
+    + ' ' + pad(since.getUTCHours()) + ':' + pad(since.getUTCMinutes()) + ':' + pad(since.getUTCSeconds());
+  // Constrain to incidents updated within the requested date window.
+  var query = 'assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744'
+    + '^stateIN1,2,60'
+    + '^sys_updated_on>=' + sinceStr
+    + '^ORDERBYDESCsys_updated_on';
   var fields = 'number,short_description,state,priority,assigned_to,assignment_group,opened_at,sys_updated_on,sys_id';
   var path = '/api/now/table/' + INCIDENT_TABLE + '?sysparm_query=' + encodeURIComponent(query) + '&sysparm_fields=' + fields + '&sysparm_limit=' + limit + '&sysparm_display_value=true';
   var data = await apiGet(path);

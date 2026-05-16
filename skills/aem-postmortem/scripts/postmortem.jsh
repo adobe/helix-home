@@ -30,9 +30,22 @@ function parseArgs(args) {
   return { flags, positional };
 }
 
+// Accept only alphanumeric incident codes with an optional AEM- prefix.
+// Anything else (path separators, "..", etc.) is rejected to prevent path traversal.
+const INCIDENT_ID_RE = /^(?:AEM-)?[A-Za-z0-9]{1,64}$/;
+
+function validateIncidentId(id) {
+  if (!id || typeof id !== 'string' || !INCIDENT_ID_RE.test(id)) {
+    console.error('Invalid incident id: ' + JSON.stringify(id));
+    console.error('  Expected AEM-xxxx or xxxx (alphanumeric, max 64 chars).');
+    process.exit(1);
+  }
+  return id;
+}
+
 function normalizeIncidentId(id) {
   if (!id) return null;
-  // Accept "AEM-xxxx" or just "xxxx"
+  validateIncidentId(id);
   if (id.toUpperCase().startsWith('AEM-')) {
     return id;
   }
@@ -94,6 +107,7 @@ async function readIndex() {
 }
 
 async function findIncidentFile(id) {
+  validateIncidentId(id);
   // Try exact ID as filename
   let path = INCIDENTS_DIR + '/' + id + '.markdown';
   if (await fs.exists(path)) return path;
@@ -119,6 +133,12 @@ async function cmdNew(args) {
   const { flags } = parseArgs(args);
   const template = flags.template || 'short';
   const title = flags.title || '';
+
+  if (template !== 'short' && template !== 'long') {
+    console.error('Invalid --template value: ' + JSON.stringify(template));
+    console.error('  Expected one of: short, long');
+    process.exit(1);
+  }
 
   // Generate incident ID
   const id = generateId(8);
@@ -335,18 +355,23 @@ async function cmdClassify(id) {
 async function cmdImpact(rateStr) {
   if (!rateStr) {
     console.error('Usage: postmortem impact <error-rate>');
-    console.error('  Rate as decimal (0.034) or percentage (3.4)');
+    console.error('  Rate as decimal (0.034), percentage with sign (3.4%), or bare number > 1 (3.4)');
     process.exit(1);
   }
 
+  const hasPercentSign = /%\s*$/.test(rateStr);
   let rate = parseFloat(rateStr);
   if (isNaN(rate)) {
     console.error('Invalid rate: ' + rateStr);
     process.exit(1);
   }
 
-  // If rate > 1, assume it was given as a percentage
-  if (rate > 1) {
+  // Explicit "%" suffix always means percentage, even for values below 1.
+  // Otherwise, bare numbers > 1 are interpreted as percentages.
+  if (hasPercentSign) {
+    console.log('Interpreting ' + rateStr + ' as ' + rate + '% (' + (rate / 100) + ' decimal)');
+    rate = rate / 100;
+  } else if (rate > 1) {
     console.log('Interpreting ' + rateStr + ' as ' + rate + '% (' + (rate / 100) + ' decimal)');
     rate = rate / 100;
   }
@@ -388,6 +413,8 @@ async function cmdBranch(id) {
   }
 
   const commitMsg = title ? 'feat: ' + title : 'feat: Postmortem for ' + incidentId;
+  // Single-quote for shell safety; escape any embedded single quotes.
+  const shellQuotedMsg = "'" + commitMsg.replace(/'/g, "'\\''") + "'";
   const previewUrl = 'https://' + branchName + '--aem-status--adobe.aem.page/details.html?incident=' + incidentId;
 
   console.log('Git workflow for ' + incidentId + ':');
@@ -398,7 +425,7 @@ async function cmdBranch(id) {
   console.log('');
   console.log('2. Stage and commit:');
   console.log('   git add incidents/md/' + incidentId + '.markdown');
-  console.log('   git commit -m "' + commitMsg + '"');
+  console.log('   git commit -m ' + shellQuotedMsg);
   console.log('');
   console.log('3. Push and create PR:');
   console.log('   git push origin ' + branchName);

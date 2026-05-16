@@ -1,7 +1,8 @@
 // Klickhaus — CDN incident investigation tool
 // Queries AEM Edge Delivery Services CDN logs in ClickHouse
 
-const CONFIG_FILE = '/workspace/skills/klickhaus/.config.json';
+const CONFIG_DIR = (process.env.HOME || process.env.USERPROFILE || '/root') + '/.config/klickhaus';
+const CONFIG_FILE = CONFIG_DIR + '/config.json';
 const CLICKHOUSE_URL = 'https://s2p5b8wmt5.eastus2.azure.clickhouse.cloud/';
 const DATABASE = 'helix_logs_production';
 
@@ -48,7 +49,9 @@ async function loadConfig() {
 
 async function saveConfig(config) {
   _config = config;
+  await fs.mkdir(CONFIG_DIR, { recursive: true }).catch(function() {});
   await fs.writeFile(CONFIG_FILE, JSON.stringify(config, null, 2));
+  await fs.chmod(CONFIG_FILE, 0o600).catch(function() {});
 }
 
 async function ensureAuth() {
@@ -200,8 +203,9 @@ SELECT
   sumIf(weight, \`response.status\` >= 500) as errors_5xx,
   round(sumIf(weight, \`response.status\` >= 500) * 100.0 / sum(weight), 2) as error_rate
 FROM ${DATABASE}.delivery
-WHERE ${where} AND \`response.status\` >= 500
+WHERE ${where}
 GROUP BY host
+HAVING errors_5xx > 0
 ORDER BY errors_5xx DESC
 LIMIT 10`;
 
@@ -231,7 +235,30 @@ LIMIT 10`;
 
 async function cmdErrors(args) {
   const { opts } = parseArgs(args);
-  const where = buildWhereClause({ ...opts, status: null }); // Don't filter status — we're showing errors
+  // Default to all errors (4xx + 5xx) when no status filter is given.
+  // Honor --status=4xx, --status=5xx, or a specific code.
+  let errorFilter;
+  let errorMetricExpr;
+  if (!opts.status) {
+    errorFilter = '`response.status` >= 400';
+    errorMetricExpr = '`response.status` >= 500';
+  } else if (opts.status === '5xx') {
+    errorFilter = '`response.status` >= 500';
+    errorMetricExpr = '`response.status` >= 500';
+  } else if (opts.status === '4xx') {
+    errorFilter = '`response.status` >= 400 AND `response.status` < 500';
+    errorMetricExpr = '`response.status` >= 400 AND `response.status` < 500';
+  } else {
+    const code = parseInt(opts.status);
+    if (isNaN(code)) {
+      console.error('Invalid --status value: ' + opts.status + '. Use 4xx, 5xx, or an exact code.');
+      process.exit(1);
+    }
+    errorFilter = '`response.status` = ' + code;
+    errorMetricExpr = '`response.status` = ' + code;
+  }
+  // Build base WHERE without status filter so the denominator is total traffic.
+  const baseWhere = buildWhereClause({ ...opts, status: null });
 
   const sql = `
 SELECT
@@ -240,7 +267,7 @@ SELECT
   \`request.url\` as path,
   sum(weight) as cnt
 FROM ${DATABASE}.${opts.table}
-WHERE ${where} AND \`response.status\` >= 500
+WHERE ${baseWhere} AND ${errorFilter}
 GROUP BY host, status, path
 ORDER BY cnt DESC
 LIMIT ${opts.limit}`;
@@ -249,12 +276,13 @@ LIMIT ${opts.limit}`;
 SELECT
   \`request.host\` as host,
   sum(weight) as total,
-  sumIf(weight, \`response.status\` >= 500) as errors_5xx,
-  round(sumIf(weight, \`response.status\` >= 500) * 100.0 / sum(weight), 2) as error_rate
+  sumIf(weight, ${errorMetricExpr}) as errors,
+  round(sumIf(weight, ${errorMetricExpr}) * 100.0 / sum(weight), 2) as error_rate
 FROM ${DATABASE}.${opts.table}
-WHERE ${where} AND \`response.status\` >= 500
+WHERE ${baseWhere}
 GROUP BY host
-ORDER BY errors_5xx DESC
+HAVING errors > 0
+ORDER BY errors DESC
 LIMIT 10`;
 
   const statusSql = `
@@ -262,7 +290,7 @@ SELECT
   toString(\`response.status\`) as status,
   sum(weight) as cnt
 FROM ${DATABASE}.${opts.table}
-WHERE ${where} AND \`response.status\` >= 400
+WHERE ${baseWhere} AND ${errorFilter}
 GROUP BY status
 ORDER BY cnt DESC
 LIMIT 20`;
@@ -277,10 +305,11 @@ LIMIT 20`;
     table: opts.table,
     range: opts.range,
     host_filter: opts.host || '(all)',
+    status_filter: opts.status || '(4xx+5xx)',
     by_host: byHost.data.map(r => ({
       host: r.host,
       total: parseInt(r.total),
-      errors_5xx: parseInt(r.errors_5xx),
+      errors: parseInt(r.errors),
       error_rate_pct: parseFloat(r.error_rate),
     })),
     by_status: byStatus.data.map(r => ({
@@ -488,10 +517,13 @@ LIMIT 5`;
 }
 
 async function cmdMonday(args) {
-  const { opts } = parseArgs(args);
-  // Default to 24h for monday
-  const range = opts.range || '24h';
-  const tr = TIME_RANGES[range] || TIME_RANGES['24h'];
+  // Default to 24h for monday (parseArgs default of 1h doesn't fit here),
+  // unless the user passed --range= explicitly.
+  const hasRangeFlag = args.some(a => a.startsWith('--range='));
+  const argsWithRange = hasRangeFlag ? args : args.concat(['--range=24h']);
+  const { opts } = parseArgs(argsWithRange);
+  const range = opts.range;
+  const tr = TIME_RANGES[range];
   const where = 'timestamp >= now() - ' + tr.interval;
 
   // Overview
@@ -505,7 +537,7 @@ SELECT
 FROM ${DATABASE}.delivery
 WHERE ${where}`;
 
-  // Top error hosts
+  // Top error hosts (denominator is total host traffic, not just 5xx)
   const errorHostsSql = `
 SELECT
   \`request.host\` as host,
@@ -513,8 +545,9 @@ SELECT
   sumIf(weight, \`response.status\` >= 500) as errors_5xx,
   round(sumIf(weight, \`response.status\` >= 500) * 100.0 / sum(weight), 2) as error_rate
 FROM ${DATABASE}.delivery
-WHERE ${where} AND \`response.status\` >= 500
+WHERE ${where}
 GROUP BY host
+HAVING errors_5xx > 0
 ORDER BY errors_5xx DESC
 LIMIT 10`;
 
@@ -562,21 +595,33 @@ LIMIT 10`;
   console.log(JSON.stringify(result, null, 2));
 }
 
+async function readStdin() {
+  return new Promise(function(resolve, reject) {
+    if (process.stdin.isTTY) { resolve(''); return; }
+    let data = '';
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', function(chunk) { data += chunk; });
+    process.stdin.on('end', function() { resolve(data); });
+    process.stdin.on('error', reject);
+  });
+}
+
 async function cmdQuery(args) {
   let sql = '';
-  // Check for --file= flag
   const fileArg = args.find(a => a.startsWith('--file='));
   if (fileArg) {
     const filePath = fileArg.split('=').slice(1).join('=');
     sql = await fs.readFile(filePath, 'utf8');
-  } else {
+  } else if (args.length > 0) {
     sql = args.join(' ');
+  } else if (!process.stdin.isTTY) {
+    sql = await readStdin();
   }
   sql = sql.trim();
   if (!sql) {
     console.error('Usage: klickhaus query <SQL>');
     console.error('       klickhaus query --file=query.sql');
-    console.error('       klickhaus query "$(cat query.sql)"');
+    console.error('       cat query.sql | klickhaus query');
     process.exit(1);
   }
 
@@ -596,7 +641,7 @@ function showHelp() {
   console.log('  logs [FLAGS]                 Individual log entries');
   console.log('  investigate [FLAGS]          Automatic multi-dimension error analysis');
   console.log('  monday [FLAGS]               Monday protocol summary');
-  console.log('  query <SQL>                  Run arbitrary SQL (also accepts stdin)\n');
+  console.log('  query <SQL>                  Run arbitrary SQL (also accepts --file= or stdin)\n');
   console.log('Flags:');
   console.log('  --table=TABLE                delivery, admin, backend, da (default: delivery)');
   console.log('  --range=RANGE                15m, 1h, 12h, 24h, 3d, 7d (default: 1h)');
