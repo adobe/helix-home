@@ -50,6 +50,7 @@ Just put your idea on the list:
 - ~~SoCal (L.A. / San Diego / Palm Springs), ideal for a winter location !~~
 - Sydney / Melbourne
 - Singapore
+- Toronto, Canada
 
 ## Let's do it!
 
