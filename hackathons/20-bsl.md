@@ -65,6 +65,7 @@ If you have been invited and will come, please put your name down in the list.
 8. @karlpauls
 9. [@hannessolo](https://github.com/hannessolo)
 10. [@sharanyavinod](https://github.com/sharanyavinod)
+11. [@QuentinVecchio](https://github.com/QuentinVecchio)
 
 ### Preparation
 
