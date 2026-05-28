@@ -48,6 +48,9 @@ The theme of this offsite is to be determined based on team input and current pr
 
 Let's make the list of topics more of operational tasks, than garage week style explorations.
 
+- R.I.P `fstab.yaml` (replace with bootstrap (https://github.com/adobe/helix-bot/issues/1908) and clean documentation)
+- Remove all file based config references and examples in documentation
+  
 ### Attendees
 
 > Who is going to be there? Can I come?
@@ -67,6 +70,7 @@ If you have been invited and will come, please put your name down in the list.
 10. [@sharanyavinod](https://github.com/sharanyavinod)
 11. @catalan-adobe
 12. [@mokimo](https://github.com/mokimo) (22nd + 23rd June)
+13. [@tripod](https://github.com/tripodsan)
 
 ### Preparation
 
