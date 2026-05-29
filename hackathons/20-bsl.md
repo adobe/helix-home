@@ -69,6 +69,7 @@ If you have been invited and will come, please put your name down in the list.
 9. [@hannessolo](https://github.com/hannessolo)
 10. [@sharanyavinod](https://github.com/sharanyavinod)
 11. @catalan-adobe
+12. [@paolomoz](https://github.com/paolomoz)
 12. [@mokimo](https://github.com/mokimo) (22nd + 23rd June)
 13. [@tripod](https://github.com/tripodsan)
 
