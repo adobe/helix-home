@@ -61,7 +61,3 @@ Just put your idea on the list:
 4. Measure the network speed at the venue (in Basel we had 10MBps up, which was a bit on the slow side)
 5. Copy one of the existing Hackathon pages
 6. Invite everyone
-
----
-
-*Hacking on SLICC instead? There's a separate track: [Brain Freezes](../brain-freezes/README.md).*

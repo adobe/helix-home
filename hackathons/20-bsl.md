@@ -58,7 +58,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 This workshop is for the Helix on-call team as well as invited black belt VIP leads and invited frequent collaborators.
 If you have been invited and will come, please put your name down in the list.
 
-(SLICC contributors have forked off into their own track — see the co-located [SLICC Brain Freeze](../brain-freezes/2-bsl.md).)
+(SLICC contributors have forked off into their own track — see the co-located [SLICC Brain Freeze](https://github.com/ai-ecoverse/.github/blob/main/brain-freezes/2-bsl.md) in the AI Ecoverse org.)
 
 1. @trieloff
 2. [@stefan](https://github.com/stefan-guggisberg)
