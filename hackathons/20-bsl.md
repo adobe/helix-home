@@ -58,6 +58,8 @@ Let's make the list of topics more of operational tasks, than garage week style 
 This workshop is for the Helix on-call team as well as invited black belt VIP leads and invited frequent collaborators.
 If you have been invited and will come, please put your name down in the list.
 
+(SLICC contributors have forked off into their own track — see the co-located [SLICC Brain Freeze](https://github.com/ai-ecoverse/.github/blob/main/brain-freezes/2-bsl.md) in the AI Ecoverse org.)
+
 1. @trieloff
 2. [@stefan](https://github.com/stefan-guggisberg)
 3. [@kptdobe](https://github.com/kptdobe)
@@ -65,13 +67,10 @@ If you have been invited and will come, please put your name down in the list.
 5. [@mhaack](https://github.com/mhaack)
 6. @bosschaert
 7. [@dkuntze](https://github.com/dkuntze)
-8. @karlpauls
-9. [@hannessolo](https://github.com/hannessolo)
-10. [@sharanyavinod](https://github.com/sharanyavinod)
-11. @catalan-adobe
-12. [@paolomoz](https://github.com/paolomoz)
-12. [@mokimo](https://github.com/mokimo) (22nd + 23rd June)
-13. [@tripod](https://github.com/tripodsan)
+8. [@hannessolo](https://github.com/hannessolo)
+9. [@sharanyavinod](https://github.com/sharanyavinod)
+10. [@mokimo](https://github.com/mokimo) (22nd + 23rd June)
+11. [@tripod](https://github.com/tripodsan)
 
 ### Preparation
 
