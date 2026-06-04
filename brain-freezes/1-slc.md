@@ -57,7 +57,7 @@ make skills easy to install and discover.
 
 > (For the record — what we asked people to do beforehand)
 
-1. Join `#slicc` on Slack
+1. Join `#ai-ecoverse` on Slack
 2. Run the latest SLICC Mac app
 3. Bring a real task you'd normally do by hand in the browser
 

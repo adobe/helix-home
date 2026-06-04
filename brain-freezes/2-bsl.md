@@ -71,7 +71,7 @@ planning is easier:
 
 > What can I do to prepare for the Brain Freeze?
 
-1. Join `#slicc` on Slack
+1. Join `#ai-ecoverse` on Slack
 2. Grab the latest `.dmg` from [releases](https://github.com/ai-ecoverse/slicc/releases) and run the Mac app
 3. Add your topics and ideas to the collection above
 4. Check out the following repositories:
