@@ -28,8 +28,8 @@ work on stuff that won't fit neatly into a 45-minute Teams meeting.
 > Where is this going to happen? Do you have a windowless conference room blocked out?
 
 Adobe Basel Office\
-Room: Vogel Gryff (the *separate* room — the Operations Workshop is down the hall in Morgestraich)\
-Floor: 3
+Room: TBD (a *separate* room from the Operations Workshop — book one down the hall from Morgestraich)\
+Floor: TBD
 
 #### Travel
 
