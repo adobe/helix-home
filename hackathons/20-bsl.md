@@ -50,6 +50,13 @@ Let's make the list of topics more of operational tasks, than garage week style 
 
 - R.I.P `fstab.yaml` (replace with bootstrap (https://github.com/adobe/helix-bot/issues/1908) and clean documentation)
 - Remove all file based config references and examples in documentation
+
+#### DA & EW Track
+
+- DA & EW alignment & cleanup (component model, shared components)
+- Move to NX2 (browse, landing, start page, ...)
+- DA/EW & HLX 6 alignment (ongoing effort, sync on current status and next steps)
+- Permissions in DA (& HLX6) - current shortcomings and improvements
   
 ### Attendees
 
