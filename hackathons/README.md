@@ -4,8 +4,7 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 
 ## Upcoming Hackathons
 
-1. [April 13th to 17th 2026, San Francisco, CA](opt-6-sfo.md)
-2. [June 22nd to 26th 2026, Copenhagen, Denmark](20-cph.md)
+1. [June 22nd to 26th 2026, Basel, Switzerland](20-bsl.md)
 
 
 ## Past Hackathons
@@ -34,6 +33,7 @@ Hackathons are back on! We have two tracks: one for Helix Operations and one for
 22. [October 6th to 10th 2025, Noida, India](opt-5-noi.md)
 23. [November 10th to 14th 2025, San Francisco, CA](18-sfo.md)
 24. [February 2nd to 6th 2026, Palm Springs, CA](19-psp.md)
+25. [April 13th to 17th 2026, San Francisco, CA](opt-6-sfo.md)
 
 ## Ideas for future Hackathons
 
@@ -61,3 +61,7 @@ Just put your idea on the list:
 4. Measure the network speed at the venue (in Basel we had 10MBps up, which was a bit on the slow side)
 5. Copy one of the existing Hackathon pages
 6. Invite everyone
+
+---
+
+*Hacking on SLICC instead? There's a separate track: [Brain Freezes](../brain-freezes/README.md).*
