@@ -73,7 +73,6 @@ If you have been invited and will come, please put your name down in the list.
 4. [@rofe](https://github.com/rofe)
 5. [@mhaack](https://github.com/mhaack)
 6. @bosschaert
-7. [@dkuntze](https://github.com/dkuntze)
 8. [@hannessolo](https://github.com/hannessolo)
 9. [@sharanyavinod](https://github.com/sharanyavinod)
 10. [@mokimo](https://github.com/mokimo) (22nd + 23rd June)
