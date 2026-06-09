@@ -56,7 +56,7 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - DA & EW alignment & cleanup (component model, shared components)
 - Move to NX2 (browse, landing, start page, ...)
 - DA/EW & HLX 6 alignment (ongoing effort, sync on current status and next steps)
-- Permissions in DA (& HLX6) - current shortcomings and improvements
+- Permissions in DA (& HLX6) - current shortcomings, improvements, protected sites (for DA Apps)
   
 ### Attendees
 
