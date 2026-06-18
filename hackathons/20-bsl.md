@@ -77,6 +77,7 @@ If you have been invited and will come, please put your name down in the list.
 9. [@sharanyavinod](https://github.com/sharanyavinod)
 10. [@mokimo](https://github.com/mokimo) (22nd + 23rd June)
 11. [@tripod](https://github.com/tripodsan)
+12. [@andreituicu](https://github.com/andreituicu)
 
 ### Preparation
 
