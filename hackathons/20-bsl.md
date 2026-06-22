@@ -69,7 +69,8 @@ The theme of this offsite is to be determined based on team input and current pr
 
 Let's make the list of topics more of operational tasks, than garage week style explorations.
 
-- R.I.P `fstab.yaml` (replace with bootstrap (https://github.com/adobe/helix-bot/issues/1908) and clean documentation)
+- ~~R.I.P `fstab.yaml` (replace with bootstrap (https://github.com/adobe/helix-bot/issues/1908) and clean documentation)~~
+- initial content by boilerplate
 - Remove all file based config references and examples in documentation
 
 
