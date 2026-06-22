@@ -62,6 +62,9 @@ The theme of this offsite is to be determined based on team input and current pr
 - DA/EW & HLX 6 alignment (ongoing effort, sync on current status and next steps)
 - Permissions in DA (& HLX6) - current shortcomings, improvements, protected sites (for DA Apps)
 
+**Track 5: byoCDN cleanup**
+- identify and fix broken configs
+
 #### Ideas / Suggestions / Topics Collection
 
 Let's make the list of topics more of operational tasks, than garage week style explorations.
