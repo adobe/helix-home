@@ -44,6 +44,24 @@ Put down the topic and the people that would like to discuss it:
 
 The theme of this offsite is to be determined based on team input and current priorities.
 
+### Tracks
+
+**Track 1: First run experience**
+- load initial content by boilerplate
+
+**Track 2: Doc cleanup**
+- Remove all file based config references and examples in documentation
+
+**Track 3: hlx6 e2e**
+- Project set up on Helix 6
+- Content authored in DA (or EW)
+
+**Track 4: DA/EW**
+- DA & EW alignment & cleanup (component model, shared components)
+- Move to NX2 (browse, landing, start page, ...)
+- DA/EW & HLX 6 alignment (ongoing effort, sync on current status and next steps)
+- Permissions in DA (& HLX6) - current shortcomings, improvements, protected sites (for DA Apps)
+
 #### Ideas / Suggestions / Topics Collection
 
 Let's make the list of topics more of operational tasks, than garage week style explorations.
@@ -51,7 +69,6 @@ Let's make the list of topics more of operational tasks, than garage week style 
 - R.I.P `fstab.yaml` (replace with bootstrap (https://github.com/adobe/helix-bot/issues/1908) and clean documentation)
 - Remove all file based config references and examples in documentation
 
-#### DA & EW Track
 
 - DA & EW alignment & cleanup (component model, shared components)
 - Move to NX2 (browse, landing, start page, ...)
