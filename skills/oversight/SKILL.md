@@ -416,23 +416,23 @@ and the `weightedThreshold` helper in `src/support/util.js`.
 
 ### Gotchas
 
-- **Don't skip `utils.addCalculatedProps(b)`**  it walks `b.events`, sets
+- **Don't skip `utils.addCalculatedProps(b)`** — it walks `b.events`, sets
   `b.visit = true` when an `enter` checkpoint exists, and copies CWV values
   out of `cwv-lcp` / `cwv-cls` / `cwv-inp` events into `b.cwvLCP` / `b.cwvCLS` /
   `b.cwvINP`. Skip it and visits/vitals come back as 0/undefined.
-- **The bundler API normalizes URLs**: numeric path segments � `<number>`,
-  long hex � `<hex>`, UUIDs � `<uuid>`. Treat `facets.url` values as URL
+- **The bundler API normalizes URLs**: numeric path segments → `<number>`,
+  long hex → `<hex>`, UUIDs → `<uuid>`. Treat `facets.url` values as URL
   *patterns*, not literal URLs.
 - **Each bundle has a `weight` field** (e.g. 100, 700, 1000) representing the
   inverse sampling rate. Series functions return `weight` (not 1) when their
-  predicate matches  that's how `.sum` becomes the weight-adjusted estimate.
-- **Use `--range=year` cautiously**  pulling 12 months of bundles for a busy
+  predicate matches — that's how `.sum` becomes the weight-adjusted estimate.
+- **Use `--range=year` cautiously** — pulling 12 months of bundles for a busy
   domain can fetch tens of thousands of records. Prefer monthly `/YYYY/MM`
   endpoints in a loop so you can show progress and resume.
 - **Top-level `await` works in `.mjs` files**, but `import x from '...'`
   syntax is rejected by the realm worker. Use `await import(...)` exclusively.
 - **`fs.writeFile` is the global SLICC `fs`**, not `node:fs`. Don't try to
-  `import('node:fs')`  that 404s in the realm. Just call `await fs.writeFile(...)`.
+  `import('node:fs')` — that 404s in the realm. Just call `await fs.writeFile(...)`.
 
 ### When to reach for rum-distiller vs. the CLI
 
@@ -454,9 +454,9 @@ and the `weightedThreshold` helper in `src/support/util.js`.
 
 ## Don't
 
-- Don't use raw event counts  always weight-adjusted (`sum of weights`)
+- Don't use raw event counts — always weight-adjusted (`sum of weights`)
 - Don't expose admin keys or domain keys in logs, commit messages, or PR descriptions
-- Don't assume a domain key exists  mint one first if you get 401 on bundle fetches
+- Don't assume a domain key exists — mint one first if you get 401 on bundle fetches
 - Don't confuse GET (retrieve existing key) with POST (mint new key) on `/domainkey/`
-- Don't forget `utils.addCalculatedProps(b)` before loading bundles into `DataChunks` 
+- Don't forget `utils.addCalculatedProps(b)` before loading bundles into `DataChunks` —
   visits and core-web-vitals series silently return zero/undefined without it
