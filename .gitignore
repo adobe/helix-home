@@ -1,3 +1,5 @@
 .DS_Store
 .hlx
 logs
+# klickhaus skill stores ClickHouse credentials in a per-skill config bridge file
+skills/klickhaus/scripts/.config
