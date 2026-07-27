@@ -1,30 +1,27 @@
 // Oversight — RUM / Operational Telemetry query tool
 // Queries AEM Edge Delivery Services RUM data via bundles.aem.page
 
-const CONFIG_DIR = (process.env.HOME || process.env.USERPROFILE || '/root') + '/.config/oversight';
-const CONFIG_FILE = CONFIG_DIR + '/config.json';
 const API_ENDPOINT = 'https://bundles.aem.page';
+
+// Runtime bridges: in the SLICC .jsh runtime former bare globals are exposed
+// via require('sliccy:<name>'). Credentials (the RUM admin key and cached
+// domain keys) are persisted through the per-skill config bridge (skill.config),
+// which writes a gitignored `.config` next to the skill — no raw fs to $HOME.
+const skill = require('sliccy:skill');
 
 // --- Config ---
 
-let _config = null;
-
 async function loadConfig() {
-  if (_config) return _config;
-  try {
-    const raw = await fs.readFile(CONFIG_FILE, 'utf8');
-    _config = JSON.parse(raw);
-    return _config;
-  } catch (e) {
-    return { adminKey: '', domainKeys: {} };
-  }
+  // skill.config() reads the parsed JSON from the skill's gitignored `.config`
+  // (returns null when it does not exist yet). Must await before the fallback:
+  // the raw call returns a Promise, which is always truthy.
+  return (await skill.config()) || { adminKey: '', domainKeys: {} };
 }
 
 async function saveConfig(config) {
-  _config = config;
-  await fs.mkdir(CONFIG_DIR, { recursive: true }).catch(function() {});
-  await fs.writeFile(CONFIG_FILE, JSON.stringify(config, null, 2));
-  await fs.chmod(CONFIG_FILE, 0o600).catch(function() {});
+  // skill.config(updates) shallow-merges and persists to the skill's
+  // gitignored `.config`, returning the merged object.
+  return await skill.config(config);
 }
 
 async function ensureAdminKey() {
@@ -292,7 +289,7 @@ async function cmdLogin(args) {
   config.adminKey = opts.key;
   config.domainKeys = config.domainKeys || {};
   await saveConfig(config);
-  console.log('Admin key saved to ' + CONFIG_FILE);
+  console.log('Admin key saved to the oversight skill config (gitignored).');
   console.log('');
   console.log('Next steps:');
   console.log('  oversight mint <domain>     — mint a domain key');
