@@ -1,8 +1,12 @@
 // Klickhaus — CDN incident investigation tool
 // Queries AEM Edge Delivery Services CDN logs in ClickHouse
 
-const CONFIG_DIR = (process.env.HOME || process.env.USERPROFILE || '/root') + '/.config/klickhaus';
-const CONFIG_FILE = CONFIG_DIR + '/config.json';
+// Runtime bridges: in the SLICC .jsh runtime former bare globals are exposed
+// via require('sliccy:<name>') / require('fs'). Credentials are persisted
+// through the per-skill config bridge (skill.config), which writes a
+// gitignored `.config` next to the skill — no raw fs to $HOME.
+const skill = require('sliccy:skill');
+
 const CLICKHOUSE_URL = 'https://s2p5b8wmt5.eastus2.azure.clickhouse.cloud/';
 const DATABASE = 'helix_logs_production';
 
@@ -34,24 +38,17 @@ const DIMENSIONS = {
 
 // --- Config ---
 
-let _config = null;
-
 async function loadConfig() {
-  if (_config) return _config;
-  try {
-    const raw = await fs.readFile(CONFIG_FILE, 'utf8');
-    _config = JSON.parse(raw);
-    return _config;
-  } catch (e) {
-    return null;
-  }
+  // skill.config() reads the parsed JSON from the skill's gitignored `.config`
+  // (returns null when it does not exist yet). Must await before any fallback:
+  // the raw call returns a Promise, which is always truthy.
+  return (await skill.config()) || null;
 }
 
 async function saveConfig(config) {
-  _config = config;
-  await fs.mkdir(CONFIG_DIR, { recursive: true }).catch(function() {});
-  await fs.writeFile(CONFIG_FILE, JSON.stringify(config, null, 2));
-  await fs.chmod(CONFIG_FILE, 0o600).catch(function() {});
+  // skill.config(updates) shallow-merges and persists to the skill's
+  // gitignored `.config`, returning the merged object.
+  return await skill.config(config);
 }
 
 async function ensureAuth() {
@@ -177,7 +174,7 @@ async function cmdLogin(args) {
   }
 
   await saveConfig({ user, password, logged_in_at: new Date().toISOString() });
-  console.log('Login successful. Config saved to ' + CONFIG_FILE);
+  console.log('Login successful. Credentials saved to the klickhaus skill config (gitignored).');
   console.log('');
   console.log('Try:');
   console.log('  klickhaus status');
@@ -611,7 +608,10 @@ async function cmdQuery(args) {
   const fileArg = args.find(a => a.startsWith('--file='));
   if (fileArg) {
     const filePath = fileArg.split('=').slice(1).join('=');
-    sql = await fs.readFile(filePath, 'utf8');
+    // The SLICC VFS fs bridge must be require()'d; its sync API (readFileSync)
+    // behaves like Node's, unlike the promise-style methods.
+    const fs = require('fs');
+    sql = fs.readFileSync(filePath, 'utf8');
   } else if (args.length > 0) {
     sql = args.join(' ');
   } else if (!process.stdin.isTTY) {
