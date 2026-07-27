@@ -1,6 +1,13 @@
 // Adobe On-Call — incident management skill
 // Uses ServiceNow Table API + UX Databroker from workspace page context.
 
+// Runtime bridges: in the SLICC .jsh runtime the former bare `exec` and `fs`
+// globals are exposed via require('sliccy:exec') / require('fs'). Without these
+// imports every command throws `ReferenceError: exec is not defined` (in
+// ensureTab) / `fs is not defined` (in the XHR eval helpers).
+const exec = require('sliccy:exec');
+const fs = require('fs');
+
 const DOMAIN = 'adobe.service-now.com';
 const ONCALL_PATH = '/x/adosy/on-call/home';
 const INCIDENT_TABLE = 'x_adosy_adb_on_ca_incident';
