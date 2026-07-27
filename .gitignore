@@ -1,3 +1,5 @@
 .DS_Store
 .hlx
 logs
+# oversight skill stores the RUM admin key + domain keys in a per-skill config bridge file
+skills/oversight/scripts/.config
