@@ -1,6 +1,11 @@
 // AEM Postmortem — manage incident post-mortems for AEM Edge Delivery Services
 // Works with the aem-status repo at /workspace/aem-status/
 
+// In the SLICC .jsh runtime the former bare `fs` global is exposed via
+// require('fs') (VFS bridge). Without this import every file command throws
+// `ReferenceError: fs is not defined`.
+const fs = require('fs');
+
 const INCIDENTS_DIR = '/workspace/aem-status/incidents/md';
 const INDEX_FILE = '/workspace/aem-status/incidents/index.json';
 const TEMPLATE_SHORT = INCIDENTS_DIR + '/incident-template-short.markdown';

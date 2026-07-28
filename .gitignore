@@ -3,3 +3,5 @@
 logs
 # klickhaus skill stores ClickHouse credentials in a per-skill config bridge file
 skills/klickhaus/scripts/.config
+# oversight skill stores the RUM admin key + domain keys in a per-skill config bridge file
+skills/oversight/scripts/.config
