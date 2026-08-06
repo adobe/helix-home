@@ -24,6 +24,14 @@ const NA_ROSTER_ID = '6f4df71c47f11610c49b3d54116d4335';
 const WATCH_STATE = '/shared/.oncall-watch.json';
 const WATCH_SEEN = '/shared/.oncall-watch-seen.json';
 
+// Default Slack channel that receives ServiceNow escalation messages
+// (helix-ops). Override with `oncall watch --channel <id>`.
+const DEFAULT_WATCH_CHANNEL = 'C01UB5Y1YQ7';
+// Default webhook filter: forward only NEW-incident escalation messages to the
+// investigator scoop (drops resolutions/assignments/chatter before they wake
+// the agent). Override with `oncall watch --filter <js>`.
+const DEFAULT_ESCALATION_FILTER = "(e)=>{try{return /was escalated/i.test(JSON.stringify(e.body||e))}catch(_){return false}}";
+
 // Single-quote shell-escape for building `exec` command strings safely.
 function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
 
@@ -318,81 +326,76 @@ function readJsonFile(path, fallback) {
 
 // The standing instruction handed to the investigator scoop on each tick.
 // Must contain NO single quotes (it is embedded in a shell-escaped --filter).
-var WATCH_INSTRUCTION =
-  'Adobe on-call watch tick. Run this shell command: oncall watch-poll --json ' +
-  '-- it prints a JSON array of NEW (not-yet-investigated) on-call incidents (empty [] if none). ' +
-  'If it returns [], do nothing and stop. For each incident, start the investigation immediately so the ' +
-  'legwork is done before the human acks: follow the klickhaus RCA playbook (read /workspace/skills/klickhaus/SKILL.md) ' +
-  '-- klickhaus status; per-minute 5xx timeseries to find the burst; breakdown x_error to identify the subsystem; ' +
-  'localize by cdn.datacenter; scope by host (many tenants=infra, one=customer); confirm ongoing vs recovered. ' +
-  'Attribute the failure to the layer that emitted the error, and cross-tabulate to falsify. ' +
-  'Then post a concise findings work note to the incident with: oncall update <NUMBER> --comment=<your findings>. ' +
-  'Do NOT change incident state or resolve it -- leave that to the human.';
-
-// oncall watch --scoop <name> [--interval <min>] [--force]
-// Sets up a cron poller that wakes the given scoop; the scoop runs
-// `oncall watch-poll` and investigates any new incident. Also: `oncall watch`
-// (no args) shows status.
+// oncall watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]
+// Event-driven: watches the Slack channel that receives ServiceNow escalation
+// messages (default helix-ops) and wakes the given scoop ONLY when a new-incident
+// escalation arrives — no polling, no empty wakes. The scoop then runs
+// `oncall watch-poll` and investigates. `oncall watch` (no args) shows status.
 async function cmdWatch(args) {
-  var scoop = null, interval = 2, force = false;
+  var scoop = null, channel = DEFAULT_WATCH_CHANNEL, workspace = null, filter = DEFAULT_ESCALATION_FILTER, force = false;
   for (var i = 0; i < (args || []).length; i++) {
-    if (args[i].startsWith('--scoop=')) scoop = args[i].split('=')[1];
-    else if (args[i] === '--scoop') scoop = args[i + 1];
-    else if (args[i].startsWith('--interval=')) interval = parseInt(args[i].split('=')[1], 10) || 2;
-    else if (args[i] === '--interval') interval = parseInt(args[i + 1], 10) || 2;
-    else if (args[i] === '--force') force = true;
+    var a = args[i];
+    if (a.startsWith('--scoop=')) scoop = a.split('=')[1];
+    else if (a === '--scoop') scoop = args[++i];
+    else if (a.startsWith('--channel=')) channel = a.split('=')[1];
+    else if (a === '--channel') channel = args[++i];
+    else if (a.startsWith('--workspace=')) workspace = a.split('=')[1];
+    else if (a === '--workspace') workspace = args[++i];
+    else if (a.startsWith('--filter=')) filter = a.split('=').slice(1).join('=');
+    else if (a === '--filter') filter = args[++i];
+    else if (a === '--force') force = true;
   }
 
   var existing = readJsonFile(WATCH_STATE, null);
 
   // No scoop → status view.
   if (!scoop) {
-    if (existing) {
-      console.log(JSON.stringify({ watching: true, scoop: existing.scoop, interval_min: existing.interval, cron_id: existing.cronId, since: existing.createdAt }, null, 2));
-    } else {
-      console.error('Not watching. Usage: oncall watch --scoop <name> [--interval <min>] [--force]');
-      process.exit(1);
-    }
+    if (existing) console.log(JSON.stringify({ watching: true, scoop: existing.scoop, channel: existing.channel, since: existing.createdAt }, null, 2));
+    else { console.error('Not watching. Usage: oncall watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]'); process.exit(1); }
     return;
   }
 
   if (!/^[a-zA-Z0-9_-]+$/.test(scoop)) { console.error('Invalid --scoop "' + scoop + '". Alphanumeric, dash, underscore only.'); process.exit(1); }
-  if (!(interval >= 1 && interval <= 59)) { console.error('--interval must be 1-59 (minutes).'); process.exit(1); }
+  if (!/^[A-Za-z0-9]+$/.test(channel)) { console.error('Invalid --channel "' + channel + '".'); process.exit(1); }
+  if (workspace && !/^[A-Za-z0-9]+$/.test(workspace)) { console.error('Invalid --workspace "' + workspace + '".'); process.exit(1); }
 
-  if (existing && !force) {
-    console.error('Already watching (scoop: ' + existing.scoop + ', every ' + existing.interval + ' min). Use --force to replace.');
+  if (existing && !force) { console.error('Already watching (scoop: ' + existing.scoop + ', channel: ' + existing.channel + '). Use --force to replace.'); process.exit(1); }
+  if (existing) { await teardownWatch(existing).catch(function () {}); }
+
+  // Delegate the Slack channel observation to the slack skill: a filtered
+  // webhook (escalation-only) routed to the scoop. Requires the slack skill.
+  var wsArg = workspace ? (' --workspace ' + shq(workspace)) : '';
+  var forceArg = force ? ' --force' : '';
+  var watchCmd = 'slack watch ' + shq(channel) + ' --scoop ' + shq(scoop) + ' --filter ' + shq(filter) + wsArg + forceArg;
+  var res = await exec(watchCmd);
+  if (res.exitCode !== 0) {
+    console.error('Failed to start Slack channel watch:', (res.stderr || res.stdout || '').split('\n')[0]);
+    console.error('(The slack skill must be installed and logged in. Command: ' + watchCmd + ')');
     process.exit(1);
   }
-  if (existing && existing.cronId) {
-    await exec('crontask delete ' + shq(existing.cronId)).catch(function () {});
-  }
 
-  var cron = '*/' + interval + ' * * * *';
-  var filterJs = '() => ({ source: "oncall-watch", ts: Date.now(), instruction: "' + WATCH_INSTRUCTION + '" })';
-  var createCmd = 'crontask create --name ' + shq('oncall-watch') + ' --scoop ' + shq(scoop) + ' --cron ' + shq(cron) + ' --filter ' + shq(filterJs);
-  var res = await exec(createCmd);
-  if (res.exitCode !== 0) { console.error('Failed to create cron task:', res.stderr || res.stdout); process.exit(1); }
-  var idMatch = res.stdout.match(/^ID:\s*(\S+)/m);
-  if (!idMatch) { console.error('Could not parse cron task id from:', res.stdout.substring(0, 200)); process.exit(1); }
-  var cronId = idMatch[1];
-
-  // Seed the seen-set with CURRENTLY-active incidents so the watch only fires
-  // on genuinely new ones (existing open incidents are already known).
+  // Seed the seen-set with currently-active incidents so watch-poll only
+  // surfaces genuinely new ones.
   var nowIso = new Date().toISOString();
   var seen = {};
-  try {
-    var current = await fetchActiveIncidents();
-    for (var j = 0; j < current.length; j++) seen[current[j].sys_id] = nowIso;
-  } catch (e) { /* best effort */ }
+  try { var current = await fetchActiveIncidents(); for (var j = 0; j < current.length; j++) seen[current[j].sys_id] = nowIso; } catch (e) {}
   require('fs').writeFileSync(WATCH_SEEN, JSON.stringify({ updated: nowIso, seen: seen }, null, 2));
-  require('fs').writeFileSync(WATCH_STATE, JSON.stringify({ scoop: scoop, interval: interval, cronId: cronId, createdAt: nowIso }, null, 2));
+  require('fs').writeFileSync(WATCH_STATE, JSON.stringify({ scoop: scoop, channel: channel, workspace: workspace, filter: filter, mode: 'slack-escalation', createdAt: nowIso }, null, 2));
 
-  console.log('Watching on-call incidents -> scoop "' + scoop + '" (every ' + interval + ' min).');
-  console.log('  Cron task: ' + cronId);
+  console.log('Watching on-call escalations on Slack channel ' + channel + ' -> scoop "' + scoop + '".');
+  console.log('  Trigger: new-incident escalation message (event-driven; no polling).');
   console.log('  Seeded ' + Object.keys(seen).length + ' currently-active incident(s) as already-seen.');
-  console.log('  The scoop will run `oncall watch-poll` each tick and investigate new incidents.');
+  console.log('  The scoop runs `oncall watch-poll` on each escalation and investigates new incidents.');
   console.log('  Stop with: oncall unwatch');
 }
+
+// Tear down the underlying Slack channel watch for a given state object.
+async function teardownWatch(state) {
+  if (!state || !state.channel) return;
+  var wsArg = state.workspace ? (' --workspace ' + shq(state.workspace)) : '';
+  await exec('slack unwatch ' + shq(state.channel) + wsArg).catch(function () {});
+}
+
 
 // oncall watch-poll [--json]
 // Returns on-call incidents not yet surfaced (dedup via WATCH_SEEN). Idempotent;
@@ -434,10 +437,10 @@ async function cmdWatchPoll(args) {
 async function cmdUnwatch() {
   var existing = readJsonFile(WATCH_STATE, null);
   if (!existing) { console.log('Not watching.'); return; }
-  if (existing.cronId) await exec('crontask delete ' + shq(existing.cronId)).catch(function () {});
+  await teardownWatch(existing);
   try { require('fs').unlinkSync(WATCH_STATE); } catch (e) {}
   try { require('fs').unlinkSync(WATCH_SEEN); } catch (e) {}
-  console.log('Stopped watching (scoop: ' + existing.scoop + ', cron task ' + (existing.cronId || 'n/a') + ' deleted).');
+  console.log('Stopped watching (scoop: ' + existing.scoop + ', Slack channel ' + (existing.channel || 'n/a') + ' watch removed).');
 }
 
 // Fetch on-call calendar spans (events) for a UTC date window. Each event:
@@ -695,8 +698,9 @@ function showHelp() {
   console.log('                                Update incident state');
   console.log('  shifts [--days=N]             View your upcoming shifts (default 14 days)');
   console.log('  who [--group=ID]              Show who is on-call');
-  console.log('  watch --scoop <name> [--interval <min>] [--force]');
-  console.log('                                Auto-investigate new incidents via a scoop (default every 2 min)');
+  console.log('  watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]');
+  console.log('                                Event-driven: wake a scoop to investigate on each new-incident');
+  console.log('                                escalation (Slack), so legwork is done before you ack');
   console.log('  watch-poll [--json]           List new (un-surfaced) incidents; used by the watcher scoop');
   console.log('  unwatch                       Stop watching');
   console.log('  history [--period=PERIOD]     Incidents for a time period');
@@ -710,7 +714,7 @@ function showHelp() {
   console.log('  oncall ack OCINC2145403');
   console.log('  oncall who');
   console.log('  oncall shifts');
-  console.log('  oncall watch --scoop oncall-investigator --interval 2');
+  console.log('  oncall watch --scoop oncall-investigator --channel C01UB5Y1YQ7');
 }
 
 // --- Main ---
