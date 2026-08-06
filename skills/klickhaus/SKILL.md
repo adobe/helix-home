@@ -93,6 +93,16 @@ Fast root-cause routine for a "More than 100 5xx on aem.(page|live) in 10m" styl
 
 **Known non-incidents already excluded from the alert trigger:** Project Elmo huge-JSON worker OOM (503 `Worker: Service Unavailable`), and Cloudflare `530`s from the `websiphon-x2` scanner (UA blocked at the edge).
 
+### RCA reasoning principles
+
+Signature-matching finds *symptoms*; these keep you honest about *cause*:
+
+- **Attribute the failure to the layer that *emitted* the error, not the nearest labeled field.** Every field has a role — edge / origin / client / subsystem. Identify which component produced the error, then read each field relative to that emitter. Example trap: `backends failed (chash)` with `helix.backend_type=aws` is a **Fastly-edge→origin** reachability failure; `aws` names the *destination*, not the culprit. Don't let the most id-like value in the row become the defendant.
+- **Pivot on the invariant, not the vivid.** To correlate anomalies, group by the dimension that stays *constant* across them, not the flashiest attribute. Surface signatures diverge: **different `x_error`/status ≠ different root cause**, and **the same `x_error` ≠ the same root cause**. (One regional Fastly egress fault showed up as `chash` for pipeline→AWS *and* `[media] Service Unavailable` for media→Cloudflare — same cause, different dialects.)
+- **Differences are weak evidence of separateness.** Before declaring two incidents unrelated, test whether one upstream factor explains both. Being precise about *how* they differ is not the same as being right about *whether they share a cause*.
+- **Mandatory second pivot / cross-tabulate to falsify.** Never conclude from one breakdown. Re-slice by an orthogonal dimension (`datacenter` × `backend_type` × `x_error` × `host` × time) and keep the pivot where your hypothesized cause explains the variance *and the leading alternative does not*. Litmus used here: region predicts failure, backend provider does not (it spans both AWS and Cloudflare) → regional/Fastly, not a provider outage.
+- **Separate description from causation in the writeup.** "It involved AWS origins" (descriptive) is not "the AWS backend failed" (causal). Conflating the two is the classic misattribution.
+
 ## Architecture
 
 - **Database**: ClickHouse Cloud (`helix_logs_production`)
