@@ -12,11 +12,30 @@ const DOMAIN = 'adobe.service-now.com';
 const ONCALL_PATH = '/x/adosy/on-call/home';
 const INCIDENT_TABLE = 'x_adosy_adb_on_ca_incident';
 const DATABROKER_ENDPOINT = '/api/now/uxf/databroker/exec';
-const SUMMARY_DEFINITION_ID = '1a7dd83d1b31b114fde1c8451a4bcba3';
 const CALENDAR_DEFINITION_ID = 'b90d6f7a1be2fd10fde1c8451a4bcba6';
 const DEFAULT_GROUP_ID = 'f3483b5047f11610c49b3d54116d4348'; // AEM - Helix v2
 const EMEA_ROSTER_ID = 'a99c33f58360c7d00479abe0deaad33d';
 const NA_ROSTER_ID = '6f4df71c47f11610c49b3d54116d4335';
+
+// Watch state (runtime artifacts): the active watch config and the set of
+// incident sys_ids already surfaced (for dedup across polls). Kept in /shared/
+// so the watcher SCOOP can write them too (/workspace/skills is read-only to
+// scoops).
+const WATCH_STATE = '/shared/.oncall-watch.json';
+const WATCH_SEEN = '/shared/.oncall-watch-seen.json';
+
+// Default Slack channel that receives ServiceNow escalation messages
+// (helix-ops). Override with `oncall watch --channel <id>`.
+const DEFAULT_WATCH_CHANNEL = 'C01UB5Y1YQ7';
+// Default webhook filter: forward only NEW-incident escalation messages to the
+// investigator scoop. Requires the "was escalated" text AND that the frame is a
+// genuine new root message — excludes thread replies / edits / broadcasts, whose
+// frames embed the parent's "was escalated" text and would otherwise re-trigger
+// on any reply in an escalation thread. Override with `oncall watch --filter <js>`.
+const DEFAULT_ESCALATION_FILTER = "(e)=>{try{var b=(e&&e.body)||{};if(b.subtype&&/replied|changed|deleted|broadcast/.test(b.subtype))return false;if(b.thread_ts&&b.thread_ts!==b.ts)return false;return /was escalated/i.test(JSON.stringify(b))}catch(_){return false}}";
+
+// Single-quote shell-escape for building `exec` command strings safely.
+function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
 
 let _tabId = null;
 
@@ -190,14 +209,14 @@ async function getCurrentUser() {
 
 // --- Commands ---
 
-var STATE_LABELS = { '1': 'Open', '2': 'Work in Progress', '3': 'Resolved', '4': 'Closed', '60': 'Re-Open' };
+var STATE_LABELS = { '1': 'Open', '-5': 'Pending', '2': 'Work in Progress', '6': 'Resolved', '8': 'Cancelled', '60': 'Re-Open' };
 
 async function cmdIncidents(args) {
   var stateFilter = '1,2,60';
   var groupId = null;
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--state=')) {
-      var stateMap = { 'open': '1', 'wip': '2', 're-open': '60', 'resolved': '3', 'closed': '4', 'all': '1,2,3,4,60' };
+      var stateMap = { 'open': '1', 'pending': '-5', 'wip': '2', 'resolved': '6', 'cancelled': '8', 'canceled': '8', 're-open': '60', 'reopen': '60', 'all': '1,-5,2,6,8,60' };
       var val = args[i].split('=')[1];
       stateFilter = stateMap[val] || val;
     }
@@ -274,7 +293,11 @@ async function cmdUpdate(numberOrId, args) {
   var comment = '';
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--state=')) {
-      var stateMap = { 'open': '1', 'wip': '2', 'resolved': '3', 'closed': '4', 're-open': '60' };
+      // On-Call Incident (x_adosy_adb_on_ca_incident) state values, verified live
+      // against the table's choice list / g_form: 1 Open, -5 Pending,
+      // 2 Work in Progress, 6 Resolved, 8 Cancelled, 60 Re-Open. Unknown names
+      // fall through as a raw value so a numeric state still works.
+      var stateMap = { 'open': '1', 'pending': '-5', 'wip': '2', 'resolved': '6', 'cancelled': '8', 'canceled': '8', 're-open': '60', 'reopen': '60' };
       var val = args[i].split('=')[1];
       body.state = stateMap[val] || val;
     }
@@ -289,17 +312,218 @@ async function cmdUpdate(numberOrId, args) {
   console.log('Updated ' + numberOrId + '.');
 }
 
-async function cmdShifts() {
-  var payload = [{ type: 'GRAPHQL', definitionSysId: SUMMARY_DEFINITION_ID, inputValues: { groupSysId: { type: 'JSON_LITERAL', value: null }, userSysId: { type: 'JSON_LITERAL', value: null } }, pipelineId: 'get_on_call_summary_info' }];
+// Fetch active on-call incidents for the group (raw result rows).
+async function fetchActiveIncidents(stateFilter) {
+  var sf = stateFilter || '1,2,60';
+  var query = 'assignment_group=' + DEFAULT_GROUP_ID + '^active=true^stateIN' + sf + '^ORDERBYDESCopened_at';
+  var fields = 'number,short_description,state,priority,assigned_to,opened_at,sys_id';
+  var path = '/api/now/table/' + INCIDENT_TABLE + '?sysparm_query=' + encodeURIComponent(query) + '&sysparm_fields=' + fields + '&sysparm_limit=50&sysparm_display_value=true';
+  var data = await apiGet(path);
+  return (data && data.result) || [];
+}
+
+function readJsonFile(path, fallback) {
+  try { return JSON.parse(require('fs').readFileSync(path, 'utf8')); } catch (e) { return fallback; }
+}
+
+// The standing instruction handed to the investigator scoop on each tick.
+// Must contain NO single quotes (it is embedded in a shell-escaped --filter).
+// oncall watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]
+// Event-driven: watches the Slack channel that receives ServiceNow escalation
+// messages (default helix-ops) and wakes the given scoop ONLY when a new-incident
+// escalation arrives — no polling, no empty wakes. The scoop then runs
+// `oncall watch-poll` and investigates. `oncall watch` (no args) shows status.
+async function cmdWatch(args) {
+  var scoop = null, channel = DEFAULT_WATCH_CHANNEL, workspace = null, filter = DEFAULT_ESCALATION_FILTER, force = false;
+  for (var i = 0; i < (args || []).length; i++) {
+    var a = args[i];
+    if (a.startsWith('--scoop=')) scoop = a.split('=')[1];
+    else if (a === '--scoop') scoop = args[++i];
+    else if (a.startsWith('--channel=')) channel = a.split('=')[1];
+    else if (a === '--channel') channel = args[++i];
+    else if (a.startsWith('--workspace=')) workspace = a.split('=')[1];
+    else if (a === '--workspace') workspace = args[++i];
+    else if (a.startsWith('--filter=')) filter = a.split('=').slice(1).join('=');
+    else if (a === '--filter') filter = args[++i];
+    else if (a === '--force') force = true;
+  }
+
+  var existing = readJsonFile(WATCH_STATE, null);
+
+  // No scoop → status view.
+  if (!scoop) {
+    if (existing) console.log(JSON.stringify({ watching: true, scoop: existing.scoop, channel: existing.channel, since: existing.createdAt }, null, 2));
+    else { console.error('Not watching. Usage: oncall watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]'); process.exit(1); }
+    return;
+  }
+
+  if (!/^[a-zA-Z0-9_-]+$/.test(scoop)) { console.error('Invalid --scoop "' + scoop + '". Alphanumeric, dash, underscore only.'); process.exit(1); }
+  if (!/^[A-Za-z0-9]+$/.test(channel)) { console.error('Invalid --channel "' + channel + '".'); process.exit(1); }
+  if (workspace && !/^[A-Za-z0-9]+$/.test(workspace)) { console.error('Invalid --workspace "' + workspace + '".'); process.exit(1); }
+
+  if (existing && !force) { console.error('Already watching (scoop: ' + existing.scoop + ', channel: ' + existing.channel + '). Use --force to replace.'); process.exit(1); }
+  if (existing) { await teardownWatch(existing).catch(function () {}); }
+
+  // Delegate the Slack channel observation to the slack skill: a filtered
+  // webhook (escalation-only) routed to the scoop. Requires the slack skill.
+  var wsArg = workspace ? (' --workspace ' + shq(workspace)) : '';
+  var forceArg = force ? ' --force' : '';
+  var watchCmd = 'slack watch ' + shq(channel) + ' --scoop ' + shq(scoop) + ' --filter ' + shq(filter) + wsArg + forceArg;
+  var res = await exec(watchCmd);
+  if (res.exitCode !== 0) {
+    console.error('Failed to start Slack channel watch:', (res.stderr || res.stdout || '').split('\n')[0]);
+    console.error('(The slack skill must be installed and logged in. Command: ' + watchCmd + ')');
+    process.exit(1);
+  }
+
+  // Seed the seen-set with currently-active incidents so watch-poll only
+  // surfaces genuinely new ones.
+  var nowIso = new Date().toISOString();
+  var seen = {};
+  try { var current = await fetchActiveIncidents(); for (var j = 0; j < current.length; j++) seen[current[j].sys_id] = nowIso; } catch (e) {}
+  require('fs').writeFileSync(WATCH_SEEN, JSON.stringify({ updated: nowIso, seen: seen }, null, 2));
+  require('fs').writeFileSync(WATCH_STATE, JSON.stringify({ scoop: scoop, channel: channel, workspace: workspace, filter: filter, mode: 'slack-escalation', createdAt: nowIso }, null, 2));
+
+  console.log('Watching on-call escalations on Slack channel ' + channel + ' -> scoop "' + scoop + '".');
+  console.log('  Trigger: new-incident escalation message (event-driven; no polling).');
+  console.log('  Seeded ' + Object.keys(seen).length + ' currently-active incident(s) as already-seen.');
+  console.log('  The scoop runs `oncall watch-poll` on each escalation and investigates new incidents.');
+  console.log('  Stop with: oncall unwatch');
+}
+
+// Tear down the underlying Slack channel watch for a given state object.
+async function teardownWatch(state) {
+  if (!state || !state.channel) return;
+  var wsArg = state.workspace ? (' --workspace ' + shq(state.workspace)) : '';
+  await exec('slack unwatch ' + shq(state.channel) + wsArg).catch(function () {});
+}
+
+
+// oncall watch-poll [--json]
+// Returns on-call incidents not yet surfaced (dedup via WATCH_SEEN). Idempotent;
+// safe to run every tick. This is the detection engine the watcher scoop calls.
+async function cmdWatchPoll(args) {
+  var asJson = (args || []).indexOf('--json') !== -1;
+  var store = readJsonFile(WATCH_SEEN, { seen: {} });
+  var seen = store.seen || {};
+  var incidents = await fetchActiveIncidents();
+
+  var nowMs = Date.now();
+  var nowIso = new Date().toISOString();
+  var fresh = [];
+  for (var i = 0; i < incidents.length; i++) {
+    var r = incidents[i];
+    if (!seen[r.sys_id]) {
+      fresh.push({
+        number: r.number,
+        short_description: (r.short_description || '').trim(),
+        priority: typeof r.priority === 'object' ? r.priority.display_value : r.priority,
+        state: typeof r.state === 'object' ? r.state.display_value : r.state,
+        opened: typeof r.opened_at === 'object' ? r.opened_at.display_value : r.opened_at,
+        sys_id: r.sys_id
+      });
+    }
+    seen[r.sys_id] = seen[r.sys_id] || nowIso;
+  }
+  // Prune seen entries older than 7 days to bound the file.
+  for (var k in seen) { if (nowMs - new Date(seen[k]).getTime() > 7 * 86400000) delete seen[k]; }
+  require('fs').writeFileSync(WATCH_SEEN, JSON.stringify({ updated: nowIso, seen: seen }, null, 2));
+
+  if (asJson) { console.log(JSON.stringify(fresh)); return; }
+  if (fresh.length === 0) { console.log('No new incidents.'); return; }
+  console.log(fresh.length + ' new incident(s):');
+  for (var m = 0; m < fresh.length; m++) console.log('  ' + fresh[m].number + '  [' + fresh[m].priority + ']  ' + fresh[m].short_description);
+}
+
+// oncall unwatch — tear down the active watch.
+async function cmdUnwatch() {
+  var existing = readJsonFile(WATCH_STATE, null);
+  if (!existing) { console.log('Not watching.'); return; }
+  await teardownWatch(existing);
+  try { require('fs').unlinkSync(WATCH_STATE); } catch (e) {}
+  try { require('fs').unlinkSync(WATCH_SEEN); } catch (e) {}
+  console.log('Stopped watching (scoop: ' + existing.scoop + ', Slack channel ' + (existing.channel || 'n/a') + ' watch removed).');
+}
+
+// Fetch on-call calendar spans (events) for a UTC date window. Each event:
+// { id, title:"Name (ROSTER)", start, end (ms-epoch strings), roster, group }.
+// Returns the events array or null. Shared by `shifts` (and mirrors the query
+// `who` uses).
+async function getCalendarSpans(startDate, endDate, groupSysId) {
+  var payload = [{
+    type: 'GRAPHQL',
+    definitionSysId: CALENDAR_DEFINITION_ID,
+    inputValues: { input: { type: 'JSON_LITERAL', value: { startDate: startDate, endDate: endDate, groupIds: groupSysId, userIds: null } } },
+    pipelineId: 'get_calendar_spans_1'
+  }];
   var data = await databrokerExec(payload);
-  var info = data.result && data.result[0] && data.result[0].executionResult && data.result[0].executionResult.output && data.result[0].executionResult.output.data && data.result[0].executionResult.output.data.xAdosyAdbOnCa && data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall && data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getSummaryCardInfo;
-  if (!info) { console.error('Could not retrieve schedule info.'); process.exit(1); }
+  return (data.result && data.result[0] && data.result[0].executionResult &&
+    data.result[0].executionResult.output && data.result[0].executionResult.output.data &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getCalendarSpans &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getCalendarSpans.events) || null;
+}
+
+// Resolve the signed-in user's display name. window.NOW.user carries only a
+// sys_id in this instance, so fall back to a sys_user lookup.
+async function resolveUserName() {
+  var u = await getCurrentUser();
+  if (u && u.name) return u.name;
+  if (u && u.sys_id) {
+    var data = await apiGet('/api/now/table/sys_user/' + u.sys_id + '?sysparm_fields=name');
+    if (data && data.result && data.result.name) return data.result.name;
+  }
+  return null;
+}
+
+// Your upcoming on-call shifts. Rebuilt on the calendar-spans query (the old
+// summary-card GraphQL returned no data). `--days=N` sets the window (default 14).
+async function cmdShifts(args) {
+  var days = 14;
+  for (var i = 0; i < (args || []).length; i++) {
+    if (args[i].startsWith('--days=')) days = parseInt(args[i].split('=')[1], 10) || 14;
+  }
+
+  var name = await resolveUserName();
+  if (!name) { console.error('Could not determine the signed-in user.'); process.exit(1); }
+
+  var now = new Date();
+  var pad = function(n) { return n < 10 ? '0' + n : '' + n; };
+  var d0 = now.getUTCFullYear() + '-' + pad(now.getUTCMonth() + 1) + '-' + pad(now.getUTCDate());
+  var t2 = new Date(now.getTime() + days * 86400000);
+  var d1 = t2.getUTCFullYear() + '-' + pad(t2.getUTCMonth() + 1) + '-' + pad(t2.getUTCDate());
+
+  var events = await getCalendarSpans(d0, d1, DEFAULT_GROUP_ID);
+  if (!events) { console.error('Could not retrieve on-call calendar.'); process.exit(1); }
+
+  var nowMs = now.getTime();
+  var mine = [];
+  for (var j = 0; j < events.length; j++) {
+    var ev = events[j];
+    if (!ev.title || ev.title.indexOf('Shift:') === 0 || ev.title.indexOf('Roster:') === 0) continue;
+    if (ev.title.indexOf(name) === -1) continue; // titles are "Name (ROSTER)"
+    var startMs = parseInt(ev.start, 10), endMs = parseInt(ev.end, 10);
+    var rosterLabel = ev.roster === EMEA_ROSTER_ID ? 'EMEA' : (ev.roster === NA_ROSTER_ID ? 'NA' : ev.roster);
+    mine.push({ roster: rosterLabel, type: ev.title.indexOf('Coverage') !== -1 ? 'coverage' : 'shift', start: new Date(startMs).toISOString(), end: new Date(endMs).toISOString(), _s: startMs, _e: endMs });
+  }
+  mine.sort(function(a, b) { return a._s - b._s; });
+
+  var current = null, upcoming = [];
+  for (var k = 0; k < mine.length; k++) {
+    var m = mine[k];
+    if (nowMs >= m._s && nowMs < m._e) current = m;
+    else if (m._s > nowMs) upcoming.push(m);
+    delete m._s; delete m._e;
+  }
+
   var result = {
-    currently_oncall: info.userIsOnCall,
-    current_shifts: info.usersCurrentShifts || [],
-    upcoming_shifts: (info.usersFutureShifts || []).map(function(s) {
-      return { start: s.startDate, end: s.endDate, roster: s.roster, group: s.groupName };
-    })
+    user: name,
+    now: now.toISOString(),
+    on_call_now: !!current,
+    current_shift: current,
+    current_shift_ends: current ? current.end : null,
+    upcoming_shifts: upcoming
   };
   console.log(JSON.stringify(result, null, 2));
 }
@@ -474,8 +698,13 @@ function showHelp() {
   console.log('  ack <NUMBER>                  Acknowledge an incident');
   console.log('  update <NUMBER> --state=STATE [--comment=TEXT]');
   console.log('                                Update incident state');
-  console.log('  shifts                        View your upcoming shifts');
+  console.log('  shifts [--days=N]             View your upcoming shifts (default 14 days)');
   console.log('  who [--group=ID]              Show who is on-call');
+  console.log('  watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]');
+  console.log('                                Event-driven: wake a scoop to investigate on each new-incident');
+  console.log('                                escalation (Slack), so legwork is done before you ack');
+  console.log('  watch-poll [--json]           List new (un-surfaced) incidents; used by the watcher scoop');
+  console.log('  unwatch                       Stop watching');
   console.log('  history [--period=PERIOD]     Incidents for a time period');
   console.log('  monday [--limit N] [--date Nd]  Monday protocol output\n');
   console.log('Periods: today, yesterday, this_week, last_week (default), this_month, last_month');
@@ -487,6 +716,7 @@ function showHelp() {
   console.log('  oncall ack OCINC2145403');
   console.log('  oncall who');
   console.log('  oncall shifts');
+  console.log('  oncall watch --scoop oncall-investigator --channel C01UB5Y1YQ7');
 }
 
 // --- Main ---
@@ -504,7 +734,10 @@ switch (cmd) {
   case 'get': await cmdGet(args[0]); break;
   case 'ack': await cmdAck(args[0]); break;
   case 'update': await cmdUpdate(args[0], args.slice(1)); break;
-  case 'shifts': await cmdShifts(); break;
+  case 'shifts': await cmdShifts(args); break;
+  case 'watch': await cmdWatch(args); break;
+  case 'watch-poll': await cmdWatchPoll(args); break;
+  case 'unwatch': await cmdUnwatch(); break;
   case 'who': await cmdWhoIsOnCall(args); break;
   case 'whoisoncall': await cmdWhoIsOnCall(args); break;
   case 'history': await cmdHistory(args); break;
