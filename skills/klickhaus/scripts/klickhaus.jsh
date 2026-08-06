@@ -7,8 +7,21 @@
 // gitignored `.config` next to the skill — no raw fs to $HOME.
 const skill = require('sliccy:skill');
 
+// Optional browser bridge — used to auto-detect credentials from a logged-in
+// klickhaus web tab. Guarded so the tool still works in environments where the
+// browser bridge is unavailable (e.g. pure CI).
+let browser = null;
+try { browser = require('sliccy:browser'); } catch (_) { /* no browser bridge */ }
+
 const CLICKHOUSE_URL = 'https://s2p5b8wmt5.eastus2.azure.clickhouse.cloud/';
 const DATABASE = 'helix_logs_production';
+
+// The klickhaus web dashboard (https://klickhaus.aemstatus.net) stores the
+// ClickHouse basic-auth creds in localStorage under this key as
+// {"user":"...","password":"..."}. If a logged-in tab is open we can reuse it
+// so `klickhaus login` needs no manual credential entry.
+const KLICKHAUS_WEB_DOMAIN = 'klickhaus.aemstatus.net';
+const CREDS_LS_KEY = 'clickhouse_credentials';
 
 const TIME_RANGES = {
   '15m': { interval: 'INTERVAL 15 MINUTE', bucket: "toStartOfInterval(timestamp, INTERVAL 1 MINUTE)", step: 'INTERVAL 1 MINUTE' },
@@ -51,13 +64,44 @@ async function saveConfig(config) {
   return await skill.config(config);
 }
 
+// Try to read ClickHouse credentials from a logged-in klickhaus web tab.
+// Returns { user, password, source } or null. Never throws — any failure
+// (no browser bridge, no open tab, no stored creds) resolves to null so
+// callers can fall back gracefully.
+async function credsFromTab() {
+  if (!browser) return null;
+  try {
+    const tab = await browser.findTab({ domain: KLICKHAUS_WEB_DOMAIN });
+    if (!tab) return null;
+    const raw = await browser.localStorage(tab, CREDS_LS_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.user && parsed.password) {
+      return { user: parsed.user, password: parsed.password, source: 'tab' };
+    }
+  } catch (_) { /* fall through to null */ }
+  return null;
+}
+
+// Ensure we have working credentials, auto-detecting from a logged-in
+// klickhaus web tab if the skill config is not yet populated.
 async function ensureAuth() {
   const config = await loadConfig();
-  if (!config || !config.user || !config.password) {
-    console.error('Not logged in. Run `klickhaus login` first.');
-    process.exit(1);
+  if (config && config.user && config.password) return config;
+
+  // Not configured yet — try to auto-detect a logged-in klickhaus web tab
+  // before giving up, so the tool works out of the box when the dashboard
+  // is open in the browser.
+  const fromTab = await credsFromTab();
+  if (fromTab) {
+    await saveConfig({ user: fromTab.user, password: fromTab.password, logged_in_at: new Date().toISOString(), source: 'tab' });
+    console.error('Detected credentials from an open ' + KLICKHAUS_WEB_DOMAIN + ' tab — logged in automatically.');
+    return { user: fromTab.user, password: fromTab.password };
   }
-  return config;
+
+  console.error('Not logged in. Run `klickhaus login` first');
+  console.error('(or open ' + KLICKHAUS_WEB_DOMAIN + ' in a logged-in tab and re-run — creds are picked up automatically).');
+  process.exit(1);
 }
 
 // --- Query engine ---
@@ -142,16 +186,34 @@ async function cmdLogin(args) {
   // Parse --user= and --password= from args
   let user = null;
   let password = null;
+  let fromTabFlag = false;
   for (let i = 0; i < args.length; i++) {
     if (args[i].startsWith('--user=')) user = args[i].split('=').slice(1).join('=');
     else if (args[i].startsWith('--password=')) password = args[i].split('=').slice(1).join('=');
+    else if (args[i] === '--from-tab' || args[i] === '--tab') fromTabFlag = true;
     else if (!user) user = args[i];
     else if (!password) password = args[i];
+  }
+
+  // If no explicit creds were given (or --from-tab was requested), try to
+  // pick them up from a logged-in klickhaus web tab.
+  if (fromTabFlag || (!user || !password)) {
+    const fromTab = await credsFromTab();
+    if (fromTab) {
+      user = fromTab.user;
+      password = fromTab.password;
+      console.error('Using credentials from an open ' + KLICKHAUS_WEB_DOMAIN + ' tab.');
+    } else if (fromTabFlag) {
+      console.error('No logged-in ' + KLICKHAUS_WEB_DOMAIN + ' tab found.');
+      console.error('Open the klickhaus dashboard in the browser and log in, then retry — or pass --user/--password.');
+      process.exit(1);
+    }
   }
 
   if (!user || !password) {
     console.error('Usage: klickhaus login --user=USERNAME --password=PASSWORD');
     console.error('   or: klickhaus login USERNAME PASSWORD');
+    console.error('   or: klickhaus login --from-tab   (reuse an open, logged-in ' + KLICKHAUS_WEB_DOMAIN + ' tab)');
     console.error('');
     console.error('URL: ' + CLICKHOUSE_URL);
     console.error('Database: ' + DATABASE);
