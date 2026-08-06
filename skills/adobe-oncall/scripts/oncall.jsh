@@ -17,10 +17,12 @@ const DEFAULT_GROUP_ID = 'f3483b5047f11610c49b3d54116d4348'; // AEM - Helix v2
 const EMEA_ROSTER_ID = 'a99c33f58360c7d00479abe0deaad33d';
 const NA_ROSTER_ID = '6f4df71c47f11610c49b3d54116d4335';
 
-// Watch state (runtime artifacts, gitignored): the active watch config and the
-// set of incident sys_ids already surfaced (for dedup across polls).
-const WATCH_STATE = '/workspace/skills/adobe-oncall/.watch.json';
-const WATCH_SEEN = '/workspace/skills/adobe-oncall/.watch-seen.json';
+// Watch state (runtime artifacts): the active watch config and the set of
+// incident sys_ids already surfaced (for dedup across polls). Kept in /shared/
+// so the watcher SCOOP can write them too (/workspace/skills is read-only to
+// scoops).
+const WATCH_STATE = '/shared/.oncall-watch.json';
+const WATCH_SEEN = '/shared/.oncall-watch-seen.json';
 
 // Single-quote shell-escape for building `exec` command strings safely.
 function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
