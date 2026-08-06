@@ -128,7 +128,8 @@ Output active incidents in monday aggregator protocol format.
 - **NA roster:** `6f4df71c47f11610c49b3d54116d4335` (15:00–03:00 UTC)
 - **Access method:** XHR from ServiceNow workspace page context with `X-UserToken` header
 - **Watch:** cron task (`crontask`) routed to a scoop; detection/dedup in `watch-poll`.
-  Runtime state (gitignored): `.watch.json`, `.watch-seen.json`.
+  Runtime state lives in `/shared/` (`/shared/.oncall-watch.json`, `/shared/.oncall-watch-seen.json`)
+  so the watcher scoop can write it too (`/workspace/skills` is read-only to scoops).
 - **On-Call app path:** `/x/adosy/on-call/home`
 
 ## Incident states
