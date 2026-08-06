@@ -28,9 +28,11 @@ const WATCH_SEEN = '/shared/.oncall-watch-seen.json';
 // (helix-ops). Override with `oncall watch --channel <id>`.
 const DEFAULT_WATCH_CHANNEL = 'C01UB5Y1YQ7';
 // Default webhook filter: forward only NEW-incident escalation messages to the
-// investigator scoop (drops resolutions/assignments/chatter before they wake
-// the agent). Override with `oncall watch --filter <js>`.
-const DEFAULT_ESCALATION_FILTER = "(e)=>{try{return /was escalated/i.test(JSON.stringify(e.body||e))}catch(_){return false}}";
+// investigator scoop. Requires the "was escalated" text AND that the frame is a
+// genuine new root message — excludes thread replies / edits / broadcasts, whose
+// frames embed the parent's "was escalated" text and would otherwise re-trigger
+// on any reply in an escalation thread. Override with `oncall watch --filter <js>`.
+const DEFAULT_ESCALATION_FILTER = "(e)=>{try{var b=(e&&e.body)||{};if(b.subtype&&/replied|changed|deleted|broadcast/.test(b.subtype))return false;if(b.thread_ts&&b.thread_ts!==b.ts)return false;return /was escalated/i.test(JSON.stringify(b))}catch(_){return false}}";
 
 // Single-quote shell-escape for building `exec` command strings safely.
 function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
