@@ -190,14 +190,14 @@ async function getCurrentUser() {
 
 // --- Commands ---
 
-var STATE_LABELS = { '1': 'Open', '2': 'Work in Progress', '3': 'Resolved', '4': 'Closed', '60': 'Re-Open' };
+var STATE_LABELS = { '1': 'Open', '-5': 'Pending', '2': 'Work in Progress', '6': 'Resolved', '8': 'Cancelled', '60': 'Re-Open' };
 
 async function cmdIncidents(args) {
   var stateFilter = '1,2,60';
   var groupId = null;
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--state=')) {
-      var stateMap = { 'open': '1', 'wip': '2', 're-open': '60', 'resolved': '3', 'closed': '4', 'all': '1,2,3,4,60' };
+      var stateMap = { 'open': '1', 'pending': '-5', 'wip': '2', 'resolved': '6', 'cancelled': '8', 'canceled': '8', 're-open': '60', 'reopen': '60', 'all': '1,-5,2,6,8,60' };
       var val = args[i].split('=')[1];
       stateFilter = stateMap[val] || val;
     }
@@ -274,7 +274,11 @@ async function cmdUpdate(numberOrId, args) {
   var comment = '';
   for (var i = 0; i < args.length; i++) {
     if (args[i].startsWith('--state=')) {
-      var stateMap = { 'open': '1', 'wip': '2', 'resolved': '3', 'closed': '4', 're-open': '60' };
+      // On-Call Incident (x_adosy_adb_on_ca_incident) state values, verified live
+      // against the table's choice list / g_form: 1 Open, -5 Pending,
+      // 2 Work in Progress, 6 Resolved, 8 Cancelled, 60 Re-Open. Unknown names
+      // fall through as a raw value so a numeric state still works.
+      var stateMap = { 'open': '1', 'pending': '-5', 'wip': '2', 'resolved': '6', 'cancelled': '8', 'canceled': '8', 're-open': '60', 'reopen': '60' };
       var val = args[i].split('=')[1];
       body.state = stateMap[val] || val;
     }
