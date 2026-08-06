@@ -13,7 +13,10 @@ CLI tool for querying AEM Edge Delivery Services CDN logs in ClickHouse. Designe
 
 ```bash
 # First time — store credentials
-klickhaus login
+klickhaus login --user=USERNAME --password=PASSWORD
+
+# Or reuse an open, logged-in klickhaus dashboard tab (no manual creds):
+klickhaus login --from-tab
 
 # Is something wrong right now?
 klickhaus status
@@ -47,7 +50,7 @@ cat query.sql | klickhaus query
 
 | Command | Purpose |
 |---------|---------|
-| `login` | Store ClickHouse credentials |
+| `login` | Store ClickHouse credentials (`--user`/`--password`, or `--from-tab` to reuse a logged-in dashboard tab) |
 | `status` | Quick health check: total requests, error rates, top error hosts (last hour) |
 | `errors` | Error breakdown by host, path, status code |
 | `timeseries` | Time series of ok/4xx/5xx traffic |
@@ -72,7 +75,7 @@ cat query.sql | klickhaus query
 ## Architecture
 
 - **Database**: ClickHouse Cloud (`helix_logs_production`)
-- **Auth**: Basic auth over HTTPS (credentials stored in `$HOME/.config/klickhaus/config.json` with mode 0600, outside the repository)
+- **Auth**: Basic auth over HTTPS. Credentials are stored via the per-skill config bridge (a gitignored `.config` next to the skill). If the config is empty, the tool auto-detects credentials from a logged-in `klickhaus.aemstatus.net` browser tab (localStorage key `clickhouse_credentials`) and logs in transparently — so `status`/`errors`/etc. just work when the dashboard is open.
 - **Sampling**: Rows are sampled — always uses `sum(weight)` not `count(*)`
 - **Tables**: `delivery` (CDN edge), `admin` (admin service), `backend` (backend services), `da` (Document Authoring)
 - **Key columns**: `timestamp`, `response.status`, `request.host`, `request.url`, `weight`
