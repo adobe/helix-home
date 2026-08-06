@@ -12,11 +12,18 @@ const DOMAIN = 'adobe.service-now.com';
 const ONCALL_PATH = '/x/adosy/on-call/home';
 const INCIDENT_TABLE = 'x_adosy_adb_on_ca_incident';
 const DATABROKER_ENDPOINT = '/api/now/uxf/databroker/exec';
-const SUMMARY_DEFINITION_ID = '1a7dd83d1b31b114fde1c8451a4bcba3';
 const CALENDAR_DEFINITION_ID = 'b90d6f7a1be2fd10fde1c8451a4bcba6';
 const DEFAULT_GROUP_ID = 'f3483b5047f11610c49b3d54116d4348'; // AEM - Helix v2
 const EMEA_ROSTER_ID = 'a99c33f58360c7d00479abe0deaad33d';
 const NA_ROSTER_ID = '6f4df71c47f11610c49b3d54116d4335';
+
+// Watch state (runtime artifacts, gitignored): the active watch config and the
+// set of incident sys_ids already surfaced (for dedup across polls).
+const WATCH_STATE = '/workspace/skills/adobe-oncall/.watch.json';
+const WATCH_SEEN = '/workspace/skills/adobe-oncall/.watch-seen.json';
+
+// Single-quote shell-escape for building `exec` command strings safely.
+function shq(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
 
 let _tabId = null;
 
@@ -293,17 +300,223 @@ async function cmdUpdate(numberOrId, args) {
   console.log('Updated ' + numberOrId + '.');
 }
 
-async function cmdShifts() {
-  var payload = [{ type: 'GRAPHQL', definitionSysId: SUMMARY_DEFINITION_ID, inputValues: { groupSysId: { type: 'JSON_LITERAL', value: null }, userSysId: { type: 'JSON_LITERAL', value: null } }, pipelineId: 'get_on_call_summary_info' }];
+// Fetch active on-call incidents for the group (raw result rows).
+async function fetchActiveIncidents(stateFilter) {
+  var sf = stateFilter || '1,2,60';
+  var query = 'assignment_group=' + DEFAULT_GROUP_ID + '^active=true^stateIN' + sf + '^ORDERBYDESCopened_at';
+  var fields = 'number,short_description,state,priority,assigned_to,opened_at,sys_id';
+  var path = '/api/now/table/' + INCIDENT_TABLE + '?sysparm_query=' + encodeURIComponent(query) + '&sysparm_fields=' + fields + '&sysparm_limit=50&sysparm_display_value=true';
+  var data = await apiGet(path);
+  return (data && data.result) || [];
+}
+
+function readJsonFile(path, fallback) {
+  try { return JSON.parse(require('fs').readFileSync(path, 'utf8')); } catch (e) { return fallback; }
+}
+
+// The standing instruction handed to the investigator scoop on each tick.
+// Must contain NO single quotes (it is embedded in a shell-escaped --filter).
+var WATCH_INSTRUCTION =
+  'Adobe on-call watch tick. Run this shell command: oncall watch-poll --json ' +
+  '-- it prints a JSON array of NEW (not-yet-investigated) on-call incidents (empty [] if none). ' +
+  'If it returns [], do nothing and stop. For each incident, start the investigation immediately so the ' +
+  'legwork is done before the human acks: follow the klickhaus RCA playbook (read /workspace/skills/klickhaus/SKILL.md) ' +
+  '-- klickhaus status; per-minute 5xx timeseries to find the burst; breakdown x_error to identify the subsystem; ' +
+  'localize by cdn.datacenter; scope by host (many tenants=infra, one=customer); confirm ongoing vs recovered. ' +
+  'Attribute the failure to the layer that emitted the error, and cross-tabulate to falsify. ' +
+  'Then post a concise findings work note to the incident with: oncall update <NUMBER> --comment=<your findings>. ' +
+  'Do NOT change incident state or resolve it -- leave that to the human.';
+
+// oncall watch --scoop <name> [--interval <min>] [--force]
+// Sets up a cron poller that wakes the given scoop; the scoop runs
+// `oncall watch-poll` and investigates any new incident. Also: `oncall watch`
+// (no args) shows status.
+async function cmdWatch(args) {
+  var scoop = null, interval = 2, force = false;
+  for (var i = 0; i < (args || []).length; i++) {
+    if (args[i].startsWith('--scoop=')) scoop = args[i].split('=')[1];
+    else if (args[i] === '--scoop') scoop = args[i + 1];
+    else if (args[i].startsWith('--interval=')) interval = parseInt(args[i].split('=')[1], 10) || 2;
+    else if (args[i] === '--interval') interval = parseInt(args[i + 1], 10) || 2;
+    else if (args[i] === '--force') force = true;
+  }
+
+  var existing = readJsonFile(WATCH_STATE, null);
+
+  // No scoop → status view.
+  if (!scoop) {
+    if (existing) {
+      console.log(JSON.stringify({ watching: true, scoop: existing.scoop, interval_min: existing.interval, cron_id: existing.cronId, since: existing.createdAt }, null, 2));
+    } else {
+      console.error('Not watching. Usage: oncall watch --scoop <name> [--interval <min>] [--force]');
+      process.exit(1);
+    }
+    return;
+  }
+
+  if (!/^[a-zA-Z0-9_-]+$/.test(scoop)) { console.error('Invalid --scoop "' + scoop + '". Alphanumeric, dash, underscore only.'); process.exit(1); }
+  if (!(interval >= 1 && interval <= 59)) { console.error('--interval must be 1-59 (minutes).'); process.exit(1); }
+
+  if (existing && !force) {
+    console.error('Already watching (scoop: ' + existing.scoop + ', every ' + existing.interval + ' min). Use --force to replace.');
+    process.exit(1);
+  }
+  if (existing && existing.cronId) {
+    await exec('crontask delete ' + shq(existing.cronId)).catch(function () {});
+  }
+
+  var cron = '*/' + interval + ' * * * *';
+  var filterJs = '() => ({ source: "oncall-watch", ts: Date.now(), instruction: "' + WATCH_INSTRUCTION + '" })';
+  var createCmd = 'crontask create --name ' + shq('oncall-watch') + ' --scoop ' + shq(scoop) + ' --cron ' + shq(cron) + ' --filter ' + shq(filterJs);
+  var res = await exec(createCmd);
+  if (res.exitCode !== 0) { console.error('Failed to create cron task:', res.stderr || res.stdout); process.exit(1); }
+  var idMatch = res.stdout.match(/^ID:\s*(\S+)/m);
+  if (!idMatch) { console.error('Could not parse cron task id from:', res.stdout.substring(0, 200)); process.exit(1); }
+  var cronId = idMatch[1];
+
+  // Seed the seen-set with CURRENTLY-active incidents so the watch only fires
+  // on genuinely new ones (existing open incidents are already known).
+  var nowIso = new Date().toISOString();
+  var seen = {};
+  try {
+    var current = await fetchActiveIncidents();
+    for (var j = 0; j < current.length; j++) seen[current[j].sys_id] = nowIso;
+  } catch (e) { /* best effort */ }
+  require('fs').writeFileSync(WATCH_SEEN, JSON.stringify({ updated: nowIso, seen: seen }, null, 2));
+  require('fs').writeFileSync(WATCH_STATE, JSON.stringify({ scoop: scoop, interval: interval, cronId: cronId, createdAt: nowIso }, null, 2));
+
+  console.log('Watching on-call incidents -> scoop "' + scoop + '" (every ' + interval + ' min).');
+  console.log('  Cron task: ' + cronId);
+  console.log('  Seeded ' + Object.keys(seen).length + ' currently-active incident(s) as already-seen.');
+  console.log('  The scoop will run `oncall watch-poll` each tick and investigate new incidents.');
+  console.log('  Stop with: oncall unwatch');
+}
+
+// oncall watch-poll [--json]
+// Returns on-call incidents not yet surfaced (dedup via WATCH_SEEN). Idempotent;
+// safe to run every tick. This is the detection engine the watcher scoop calls.
+async function cmdWatchPoll(args) {
+  var asJson = (args || []).indexOf('--json') !== -1;
+  var store = readJsonFile(WATCH_SEEN, { seen: {} });
+  var seen = store.seen || {};
+  var incidents = await fetchActiveIncidents();
+
+  var nowMs = Date.now();
+  var nowIso = new Date().toISOString();
+  var fresh = [];
+  for (var i = 0; i < incidents.length; i++) {
+    var r = incidents[i];
+    if (!seen[r.sys_id]) {
+      fresh.push({
+        number: r.number,
+        short_description: (r.short_description || '').trim(),
+        priority: typeof r.priority === 'object' ? r.priority.display_value : r.priority,
+        state: typeof r.state === 'object' ? r.state.display_value : r.state,
+        opened: typeof r.opened_at === 'object' ? r.opened_at.display_value : r.opened_at,
+        sys_id: r.sys_id
+      });
+    }
+    seen[r.sys_id] = seen[r.sys_id] || nowIso;
+  }
+  // Prune seen entries older than 7 days to bound the file.
+  for (var k in seen) { if (nowMs - new Date(seen[k]).getTime() > 7 * 86400000) delete seen[k]; }
+  require('fs').writeFileSync(WATCH_SEEN, JSON.stringify({ updated: nowIso, seen: seen }, null, 2));
+
+  if (asJson) { console.log(JSON.stringify(fresh)); return; }
+  if (fresh.length === 0) { console.log('No new incidents.'); return; }
+  console.log(fresh.length + ' new incident(s):');
+  for (var m = 0; m < fresh.length; m++) console.log('  ' + fresh[m].number + '  [' + fresh[m].priority + ']  ' + fresh[m].short_description);
+}
+
+// oncall unwatch — tear down the active watch.
+async function cmdUnwatch() {
+  var existing = readJsonFile(WATCH_STATE, null);
+  if (!existing) { console.log('Not watching.'); return; }
+  if (existing.cronId) await exec('crontask delete ' + shq(existing.cronId)).catch(function () {});
+  try { require('fs').unlinkSync(WATCH_STATE); } catch (e) {}
+  try { require('fs').unlinkSync(WATCH_SEEN); } catch (e) {}
+  console.log('Stopped watching (scoop: ' + existing.scoop + ', cron task ' + (existing.cronId || 'n/a') + ' deleted).');
+}
+
+// Fetch on-call calendar spans (events) for a UTC date window. Each event:
+// { id, title:"Name (ROSTER)", start, end (ms-epoch strings), roster, group }.
+// Returns the events array or null. Shared by `shifts` (and mirrors the query
+// `who` uses).
+async function getCalendarSpans(startDate, endDate, groupSysId) {
+  var payload = [{
+    type: 'GRAPHQL',
+    definitionSysId: CALENDAR_DEFINITION_ID,
+    inputValues: { input: { type: 'JSON_LITERAL', value: { startDate: startDate, endDate: endDate, groupIds: groupSysId, userIds: null } } },
+    pipelineId: 'get_calendar_spans_1'
+  }];
   var data = await databrokerExec(payload);
-  var info = data.result && data.result[0] && data.result[0].executionResult && data.result[0].executionResult.output && data.result[0].executionResult.output.data && data.result[0].executionResult.output.data.xAdosyAdbOnCa && data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall && data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getSummaryCardInfo;
-  if (!info) { console.error('Could not retrieve schedule info.'); process.exit(1); }
+  return (data.result && data.result[0] && data.result[0].executionResult &&
+    data.result[0].executionResult.output && data.result[0].executionResult.output.data &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getCalendarSpans &&
+    data.result[0].executionResult.output.data.xAdosyAdbOnCa.adbOnCall.getCalendarSpans.events) || null;
+}
+
+// Resolve the signed-in user's display name. window.NOW.user carries only a
+// sys_id in this instance, so fall back to a sys_user lookup.
+async function resolveUserName() {
+  var u = await getCurrentUser();
+  if (u && u.name) return u.name;
+  if (u && u.sys_id) {
+    var data = await apiGet('/api/now/table/sys_user/' + u.sys_id + '?sysparm_fields=name');
+    if (data && data.result && data.result.name) return data.result.name;
+  }
+  return null;
+}
+
+// Your upcoming on-call shifts. Rebuilt on the calendar-spans query (the old
+// summary-card GraphQL returned no data). `--days=N` sets the window (default 14).
+async function cmdShifts(args) {
+  var days = 14;
+  for (var i = 0; i < (args || []).length; i++) {
+    if (args[i].startsWith('--days=')) days = parseInt(args[i].split('=')[1], 10) || 14;
+  }
+
+  var name = await resolveUserName();
+  if (!name) { console.error('Could not determine the signed-in user.'); process.exit(1); }
+
+  var now = new Date();
+  var pad = function(n) { return n < 10 ? '0' + n : '' + n; };
+  var d0 = now.getUTCFullYear() + '-' + pad(now.getUTCMonth() + 1) + '-' + pad(now.getUTCDate());
+  var t2 = new Date(now.getTime() + days * 86400000);
+  var d1 = t2.getUTCFullYear() + '-' + pad(t2.getUTCMonth() + 1) + '-' + pad(t2.getUTCDate());
+
+  var events = await getCalendarSpans(d0, d1, DEFAULT_GROUP_ID);
+  if (!events) { console.error('Could not retrieve on-call calendar.'); process.exit(1); }
+
+  var nowMs = now.getTime();
+  var mine = [];
+  for (var j = 0; j < events.length; j++) {
+    var ev = events[j];
+    if (!ev.title || ev.title.indexOf('Shift:') === 0 || ev.title.indexOf('Roster:') === 0) continue;
+    if (ev.title.indexOf(name) === -1) continue; // titles are "Name (ROSTER)"
+    var startMs = parseInt(ev.start, 10), endMs = parseInt(ev.end, 10);
+    var rosterLabel = ev.roster === EMEA_ROSTER_ID ? 'EMEA' : (ev.roster === NA_ROSTER_ID ? 'NA' : ev.roster);
+    mine.push({ roster: rosterLabel, type: ev.title.indexOf('Coverage') !== -1 ? 'coverage' : 'shift', start: new Date(startMs).toISOString(), end: new Date(endMs).toISOString(), _s: startMs, _e: endMs });
+  }
+  mine.sort(function(a, b) { return a._s - b._s; });
+
+  var current = null, upcoming = [];
+  for (var k = 0; k < mine.length; k++) {
+    var m = mine[k];
+    if (nowMs >= m._s && nowMs < m._e) current = m;
+    else if (m._s > nowMs) upcoming.push(m);
+    delete m._s; delete m._e;
+  }
+
   var result = {
-    currently_oncall: info.userIsOnCall,
-    current_shifts: info.usersCurrentShifts || [],
-    upcoming_shifts: (info.usersFutureShifts || []).map(function(s) {
-      return { start: s.startDate, end: s.endDate, roster: s.roster, group: s.groupName };
-    })
+    user: name,
+    now: now.toISOString(),
+    on_call_now: !!current,
+    current_shift: current,
+    current_shift_ends: current ? current.end : null,
+    upcoming_shifts: upcoming
   };
   console.log(JSON.stringify(result, null, 2));
 }
@@ -478,8 +691,12 @@ function showHelp() {
   console.log('  ack <NUMBER>                  Acknowledge an incident');
   console.log('  update <NUMBER> --state=STATE [--comment=TEXT]');
   console.log('                                Update incident state');
-  console.log('  shifts                        View your upcoming shifts');
+  console.log('  shifts [--days=N]             View your upcoming shifts (default 14 days)');
   console.log('  who [--group=ID]              Show who is on-call');
+  console.log('  watch --scoop <name> [--interval <min>] [--force]');
+  console.log('                                Auto-investigate new incidents via a scoop (default every 2 min)');
+  console.log('  watch-poll [--json]           List new (un-surfaced) incidents; used by the watcher scoop');
+  console.log('  unwatch                       Stop watching');
   console.log('  history [--period=PERIOD]     Incidents for a time period');
   console.log('  monday [--limit N] [--date Nd]  Monday protocol output\n');
   console.log('Periods: today, yesterday, this_week, last_week (default), this_month, last_month');
@@ -491,6 +708,7 @@ function showHelp() {
   console.log('  oncall ack OCINC2145403');
   console.log('  oncall who');
   console.log('  oncall shifts');
+  console.log('  oncall watch --scoop oncall-investigator --interval 2');
 }
 
 // --- Main ---
@@ -508,7 +726,10 @@ switch (cmd) {
   case 'get': await cmdGet(args[0]); break;
   case 'ack': await cmdAck(args[0]); break;
   case 'update': await cmdUpdate(args[0], args.slice(1)); break;
-  case 'shifts': await cmdShifts(); break;
+  case 'shifts': await cmdShifts(args); break;
+  case 'watch': await cmdWatch(args); break;
+  case 'watch-poll': await cmdWatchPoll(args); break;
+  case 'unwatch': await cmdUnwatch(); break;
   case 'who': await cmdWhoIsOnCall(args); break;
   case 'whoisoncall': await cmdWhoIsOnCall(args); break;
   case 'history': await cmdHistory(args); break;
