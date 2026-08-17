@@ -54,7 +54,7 @@ newrelic graphql "{ actor { user { name } } }"
 | `nrql <QUERY>` | Run NRQL |
 | `graphql <QUERY>` | Run raw NerdGraph |
 | `set-period <NAME> <PERIOD>` | Change run frequency — needs `--confirm` |
-| `set-script <NAME> --file=F` | Replace a scripted monitor's source — needs `--confirm` |
+| `set-script <NAME> --file=F` | Replace a scripted monitor's source — needs `--confirm`, backs up the live version first |
 
 ## Common flags
 
@@ -63,6 +63,8 @@ newrelic graphql "{ actor { user { name } } }"
 - `--limit=N` — Result cap
 - `--file=PATH` — Read a query or script from a file
 - `--json` — Raw JSON instead of a table
+- `--backup=PATH` — Where `set-script` saves the version it is about to replace
+- `--no-backup` — Skip that backup (the deploy aborts if a backup fails and this is not set)
 - `--confirm` — Required by anything that writes
 
 ## Investigating a failing synthetic monitor
@@ -90,6 +92,9 @@ per-IP problems fail unevenly.
 - **Auth, tab mode**: POSTs to the relative `/graphql` from an open
   `one.newrelic.com` tab, reusing its cookies. Requires the
   `newrelic-requesting-services: nr1-ui` header or the proxy rejects it.
+- **Stale tabs**: a recreated tab leaves a dead CDP session behind while still
+  appearing in `tab-list`. Tab mode remembers dead ids and retries once against
+  another matching tab, which is why a long-lived shell keeps working.
 - **Events**: `SyntheticCheck` (one per monitor run per location: `result`,
   `error`, `locationLabel`) and `SyntheticRequest` (one per outbound HTTP call:
   `URL`, `responseCode`, `domain`, `minionPublicIp`, timings)
@@ -113,5 +118,8 @@ per-IP problems fail unevenly.
   only lever you have besides frequency and location count.
 - Don't run `newrelic accounts` unfiltered on a large identity and expect it to
   be readable — some logins can see hundreds of accounts.
-- Don't modify a live monitor without backing it up first:
-  `newrelic script "NAME" > backup.js` before any `set-script`.
+- Don't pass `--no-backup` to `set-script` casually. By default the live script
+  is snapshotted to `/shared/newrelic-script-backups/<slug>-<timestamp>.js` and a
+  failed backup aborts the deploy, so a monitor is never overwritten blind.
+- Don't trust `String.length` as a byte count when handling scripts. These files
+  contain box-drawing characters, so 12,886 characters is 15,042 bytes.
