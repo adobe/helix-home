@@ -12,6 +12,7 @@ const fs = require('fs');
 const API_ENDPOINT = 'https://api.newrelic.com/graphql';
 const UI_HOST = 'one.newrelic.com';
 const DEFAULT_ACCOUNT = 2429334; // DX_Project_Helix
+const BACKUP_DIR = '/shared/newrelic-script-backups';
 
 // NRQL time ranges -> SINCE clause
 const RANGES = {
@@ -56,26 +57,32 @@ async function saveConfig(updates) {
 
 let _tabId = null;
 
+// Tab ids go stale when a tab is recreated: tab-list may still show an id whose
+// CDP session is gone. Dead ids are remembered so a retry picks a different tab.
+const _deadTabs = new Set();
+
 async function findTab() {
-  if (_tabId) {
+  if (_tabId && !_deadTabs.has(_tabId)) {
     const list = await exec('playwright-cli tab-list');
     if (list.stdout.includes(_tabId)) return _tabId;
     _tabId = null;
   }
   const list = await exec('playwright-cli tab-list');
-  const re = new RegExp('\\[([A-F0-9]+)\\]\\s+https?://[^\\s]*' + UI_HOST.replace(/\./g, '\\.'));
-  const match = list.stdout.match(re);
-  if (!match) return null;
-  _tabId = match[1];
+  const re = new RegExp('\\[([A-F0-9]+)\\]\\s+https?://[^\\s]*' + UI_HOST.replace(/\./g, '\\.'), 'g');
+  const ids = [];
+  let m;
+  while ((m = re.exec(list.stdout)) !== null) ids.push(m[1]);
+  const usable = ids.find(function (id) { return !_deadTabs.has(id); });
+  if (!usable) return null;
+  _tabId = usable;
   return _tabId;
 }
 
-async function gqlViaTab(query) {
-  const tabId = await findTab();
-  if (!tabId) {
-    console.error('No ' + UI_HOST + ' tab found. Open one and log in, or use `newrelic login --key=NRAK-...`.');
-    process.exit(1);
-  }
+function isStaleTabError(err) {
+  return /Session with given id not found|-32001|Target closed|No target with given id/i.test(String((err && err.message) || err));
+}
+
+async function gqlViaTabOnce(query, tabId) {
   // The nr1-ui service header is required or the cookie-authenticated
   // /graphql proxy rejects the request.
   const code = [
@@ -111,6 +118,28 @@ async function gqlViaTab(query) {
     process.exit(1);
   }
   return JSON.parse(envelope.__body);
+}
+
+async function gqlViaTab(query) {
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const tabId = await findTab();
+    if (!tabId) {
+      console.error('No ' + UI_HOST + ' tab found. Open one and log in, or use `newrelic login --key=NRAK-...`.');
+      process.exit(1);
+    }
+    try {
+      return await gqlViaTabOnce(query, tabId);
+    } catch (err) {
+      // A recreated tab leaves a dead CDP session behind: drop it and re-list once.
+      if (isStaleTabError(err) && attempt === 0) {
+        _deadTabs.add(tabId);
+        _tabId = null;
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw new Error('unreachable');
 }
 
 async function gqlViaKey(query, apiKey) {
@@ -157,6 +186,8 @@ function parseFlags(args) {
     else if (arg.startsWith('--limit=')) opts.limit = parseInt(arg.split('=')[1], 10);
     else if (arg.startsWith('--file=')) opts.file = arg.split('=').slice(1).join('=');
     else if (arg.startsWith('--state=')) opts.state = arg.split('=')[1].toUpperCase();
+    else if (arg.startsWith('--backup=')) opts.backup = arg.split('=').slice(1).join('=');
+    else if (arg === '--no-backup') opts.noBackup = true;
     else if (arg === '--failed') opts.failed = true;
     else if (arg === '--json') opts.json = true;
     else if (arg === '--confirm') opts.confirm = true;
@@ -184,6 +215,12 @@ function since(range) {
 // NRQL string values are single-quoted, so single quotes must be escaped.
 function nrqlString(value) {
   return "'" + String(value).replace(/'/g, "\\'") + "'";
+}
+
+// String.length is UTF-16 code units; scripts with box-drawing characters are
+// meaningfully larger on the wire, so report real bytes.
+function byteLen(text) {
+  return Buffer.byteLength(String(text), 'utf8');
 }
 
 function looksLikeGuid(value) {
@@ -570,9 +607,41 @@ async function cmdSetScript(args) {
   }
   if (!opts.confirm) {
     console.error('Refusing to overwrite the script of ' + m.name + ' without --confirm.');
-    console.error(script.length + ' bytes staged from ' + opts.file + '.');
-    console.error('Back up first: newrelic script ' + JSON.stringify(name) + ' > backup.js');
+    console.error(byteLen(script) + ' bytes staged from ' + opts.file + '.');
+    console.error('The live script is backed up automatically; --no-backup skips it.');
     process.exit(1);
+  }
+
+  // Snapshot the live script first. A failed backup aborts the deploy unless the
+  // caller explicitly opted out, so a monitor is never overwritten blind.
+  if (!opts.noBackup) {
+    const slug = m.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const target = opts.backup || BACKUP_DIR + '/' + slug + '-' + stamp + '.js';
+    let current;
+    try {
+      const cur = await gql('{ actor { account(id: ' + (m.accountId || account) + ') { synthetics {'
+        + ' script(monitorGuid: ' + JSON.stringify(m.guid) + ') { text } } } } }');
+      current = cur.actor.account.synthetics.script && cur.actor.account.synthetics.script.text;
+    } catch (e) {
+      console.error('Could not read the current script for backup: ' + e.message);
+      console.error('Re-run with --no-backup to deploy anyway.');
+      process.exit(1);
+    }
+    if (!current) {
+      console.error('The monitor has no readable script to back up.');
+      console.error('Re-run with --no-backup to deploy anyway.');
+      process.exit(1);
+    }
+    try {
+      if (!opts.backup) await fs.mkdir(BACKUP_DIR, { recursive: true }).catch(function () {});
+      await fs.writeFile(target, current);
+    } catch (e) {
+      console.error('Backup write failed (' + target + '): ' + e.message);
+      console.error('Re-run with --no-backup to deploy anyway.');
+      process.exit(1);
+    }
+    console.log('Backed up ' + byteLen(current) + ' bytes to ' + target);
   }
   const data = await gql('mutation { syntheticsUpdateScriptApiMonitor(guid: ' + JSON.stringify(m.guid)
     + ', monitor: { script: ' + JSON.stringify(script) + ' }) { errors { description } monitor { name period status } } }');
@@ -581,7 +650,7 @@ async function cmdSetScript(args) {
     console.error('Deploy failed: ' + res.errors.map(function (e) { return e.description; }).join('; '));
     process.exit(1);
   }
-  console.log('Deployed ' + script.length + ' bytes to ' + res.monitor.name + '.');
+  console.log('Deployed ' + byteLen(script) + ' bytes to ' + res.monitor.name + '.');
   console.log('Verify after one period: newrelic checks ' + JSON.stringify(res.monitor.name) + ' --range=15m');
 }
 
@@ -618,13 +687,15 @@ function showHelp() {
   console.log('  graphql <QUERY>              Run raw NerdGraph\n');
   console.log('Mutations (all require --confirm):');
   console.log('  set-period <NAME> <PERIOD>   Change how often a monitor runs');
-  console.log('  set-script <NAME> --file=F    Replace a scripted monitor\'s source\n');
+  console.log('  set-script <NAME> --file=F   Replace a scripted monitor\'s source (backs up first)\n');
   console.log('Flags:');
   console.log('  --account=N                  Account id (default: config, else ' + DEFAULT_ACCOUNT + ')');
   console.log('  --range=RANGE                ' + Object.keys(RANGES).join(', ') + ' (default: 1h)');
   console.log('  --limit=N                    Result cap');
   console.log('  --file=PATH                  Read query or script from a file');
   console.log('  --json                       Raw JSON instead of a table');
+  console.log('  --backup=PATH                Where set-script saves the previous version');
+  console.log('  --no-backup                  Skip the set-script backup');
   console.log('  --confirm                    Required for anything that writes\n');
   console.log('Examples:');
   console.log('  newrelic issues');
