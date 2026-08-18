@@ -78,6 +78,9 @@ manual intervention, exit 0).
 | `--instance=` | EDS Delivery prod instance | `u_service_offering_instance`; a `glide_list`, so it is also written into the form before every submit |
 | `--via=servicenow\|ipaas` | `servicenow` | transport. The default needs **no secrets**; `ipaas` needs `IPAAS_API_KEY` plus the IMS triple and is unproven |
 | `--keep-open` | off | stop at Review instead of closing |
+| `--repair` | off | on a hop or `close`: if the **record** is missing a field the form demands, fill it from the flags and defaults, then continue. Same rules as `repair` |
+| `--force-field=<name>` | — | let `repair` overwrite that one populated field. Repeatable |
+| `--work-start=` `--work-end=` | — | hand-supplied **actual** window, UTC `YYYY-MM-DD HH:MM:SS`, for a bare `review` hop or `repair`. Both required together, end not before start, written verbatim, and disclosed both on stderr and in the change's work notes. `run` measures them instead |
 | `--notes-max=` | `4000` | cap on captured output in the work notes |
 | `--form-timeout=` | `30` | seconds to wait for the change form to become scriptable |
 | `--state-timeout=` | `60` | seconds to wait for a state transition to land |
@@ -106,6 +109,7 @@ A pipeline masks the exit code (`$?` is the last command's), so branch with a re
 | `close <CHG…>` | close fields + Closed |
 | `cancel <CHG…>` | Canceled |
 | `states <CHG…>` | pretty-print `nextstates`, including which conditions fail |
+| `repair <CHG…>` | fill **empty** tracked fields on an existing change, from the flags and defaults. Rescues a record an older client blanked. Never overwrites a populated field without `--force-field=<name>`, never touches anything outside the tracked list, works in any state |
 | `form <CHG…>` | read-only diagnostic: open or reuse the change form, time how long it takes to become scriptable, and report what the form holds (including whether `u_change_approver` reached the form) |
 | `config` | resolved non-secret configuration |
 
@@ -131,6 +135,53 @@ command line) · `--plan-url=` · `--implementation-plan=` · `--backout-plan=` 
 
 Resolution order for every setting: **flag → skill config (`.config`) →
 environment variable → built-in default.** `change config` prints what won.
+
+## Rescuing a stuck change
+
+A change whose record has been blanked — by an older client, or by any form save that posted an
+empty widget — **cannot be closed**: the form demands a field the record no longer has, and
+reconciliation fills the form *from the record*, so there is nothing to hydrate from. Passing
+`--instance=…` does not help either: the field flags are read when a change is **created**.
+
+That is what `repair` is for. It happened for real: CHG005368783 sat in `Review` and refused
+every hop with «The following mandatory fields are not filled in: Instance(s)».
+
+```bash
+change repair CHG005368783                     # dry run: shows the exact PATCH body
+change repair CHG005368783 --confirm           # fill the empty tracked fields
+change --repair --confirm close CHG005368783   # or repair just what the hop needs, then close
+```
+
+Rules, all deliberate — rewriting fields on someone else's production change is exactly what
+this tool exists to prevent:
+
+* it only fills fields that are **empty**; a populated field is left alone and named, unless
+  `--force-field=<that field>` is given;
+* it can only touch the tracked list: `u_service_offering_instance`, `u_change_approver`,
+  `u_hosting_location`, `u_environment`, `u_tenant_type`, `cmdb_ci`,
+  `u_change_fixing_cso`. It prints what it is leaving alone and why;
+* it verifies with `sysparm_display_value=false` afterwards and prints a before/after table,
+  failing if the server did not store a value;
+* it needs `--confirm`; without it you get the exact PATCH body and nothing else;
+* it works in any state, because a stuck record is the whole point.
+
+### Reaching Review without `run`
+
+`Implement → Review` needs `work_start` and `work_end` — the **actual** execution window.
+`change run` measures them, which is the normal path. `repair` will not fill them: fabricating
+actuals would falsify an audit trail, and there is nothing to fabricate them from.
+
+When the work really did happen outside the wrapper — an incident handled by hand, a command run
+before the change was filed — supply them explicitly:
+
+```bash
+change --work-start="2026-08-18 09:00:00" --work-end="2026-08-18 09:12:00" --confirm review CHG…
+```
+
+Both flags are required together, the end may not precede the start, the values are written
+**verbatim** (never floored, unlike a measured window), and a work note is added to the change
+recording that the window was supplied by hand and that no command output accompanies it. If that
+disclosing note cannot be written, the hop is not attempted.
 
 ## Transports
 
