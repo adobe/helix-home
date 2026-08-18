@@ -19,6 +19,7 @@ const skill = require('sliccy:skill');
 const cli = require('sliccy:cli');
 const c = require('sliccy:color');
 const fs = require('fs');
+const fmt = require('sliccy:fmt');
 
 // ─── Constants proven against the live instance (CHG005367969, Closed/Successful) ───
 
@@ -193,7 +194,7 @@ class ChangeExit extends Error {
 // would make the boundary between root params and the subcommand ambiguous.
 
 const SUBCOMMANDS = ['run', 'create', 'get', 'notes', 'assess', 'implement', 'review',
-  'close', 'cancel', 'states', 'form', 'config', 'help'];
+  'close', 'cancel', 'states', 'form', 'repair', 'config', 'help'];
 
 function parseFlags(tokens) {
   const flags = {};
@@ -201,8 +202,11 @@ function parseFlags(tokens) {
   for (const t of tokens) {
     if (t.startsWith('--')) {
       const eq = t.indexOf('=');
-      if (eq === -1) flags[t.slice(2)] = true;
-      else flags[t.slice(2, eq)] = t.slice(eq + 1);
+      if (eq === -1) { flags[t.slice(2)] = true; continue; }
+      const key = t.slice(2, eq);
+      const val = t.slice(eq + 1);
+      // repeated flags accumulate (--force-field=a --force-field=b), comma-joined
+      flags[key] = typeof flags[key] === 'string' && flags[key].length ? flags[key] + ',' + val : val;
     } else positional.push(t);
   }
   return { flags, positional };
@@ -320,6 +324,17 @@ function snDate(d) {
   return `${d.getUTCFullYear()}-${p2(d.getUTCMonth() + 1)}-${p2(d.getUTCDate())} `
     + `${p2(d.getUTCHours())}:${p2(d.getUTCMinutes())}:${p2(d.getUTCSeconds())}`;
 }
+/** Parse a caller-supplied UTC datetime: «YYYY-MM-DD HH:MM:SS» or ISO 8601. */
+function parseUtc(value, flag) {
+  const v = String(value).trim();
+  const m = v.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?Z?$/);
+  if (!m) {
+    cli.die(`${flag}: expected «YYYY-MM-DD HH:MM:SS» in UTC (or ISO 8601), got ${JSON.stringify(v)}`,
+      { prefix: 'change' });
+  }
+  return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] || 0)));
+}
+
 /** ServiceNow display datetime for this account: MM-DD-YYYY HH:MM:SS. */
 function snDisplayDate(d) {
   return `${p2(d.getUTCMonth() + 1)}-${p2(d.getUTCDate())}-${d.getUTCFullYear()} `
@@ -776,18 +791,22 @@ async function nextStates(sn, sysId) {
 // Fields the form validates before it will make a hop, with the flag that sets each one on
 // create. Checked before submitting, so a missing field is an instruction rather than a
 // banner nobody can act on.
+const BASE_REQUIREMENTS = [
+  { field: 'u_service_offering_instance', label: 'Instance(s)', flag: '--instance=<sys_id>', glide: true },
+  { field: 'u_change_fixing_cso', label: 'Change is related to an emergency', flag: '--cso=none|fix|prevent' },
+  { field: 'u_tenant_type', label: 'Tenant type', flag: '--tenant-type=Multi|Single' },
+];
+
 const HOP_REQUIREMENTS = {
-  '-4': [
-    { field: 'u_change_fixing_cso', label: 'Change is related to an emergency', flag: '--cso=none|fix|prevent' },
-    { field: 'u_tenant_type', label: 'Tenant type', flag: '--tenant-type=Multi|Single' },
-  ],
+  '-4': [],
   '-1': [
     { field: 'u_change_approver', label: 'Change approver', flag: '--approver=<sys_id>', glide: true },
-    { field: 'u_service_offering_instance', label: 'Instance(s)', flag: '--instance=<sys_id>', glide: true },
   ],
+  // work_start/work_end are ACTUAL execution times. `change run` measures them; a bare hop can
+  // only accept them from --work-start/--work-end, and never invents them.
   '0': [
-    { field: 'work_start', label: 'Actual start', flag: '(set by `change run`; not written by a bare hop)' },
-    { field: 'work_end', label: 'Actual end', flag: '(set by `change run`; not written by a bare hop)' },
+    { field: 'work_start', label: 'Actual start', flag: '--work-start=<UTC datetime>', actual: true },
+    { field: 'work_end', label: 'Actual end', flag: '--work-end=<UTC datetime>', actual: true },
   ],
   3: [
     { field: 'close_code', label: 'Close code', flag: '--close-code=successful' },
@@ -795,9 +814,49 @@ const HOP_REQUIREMENTS = {
   ],
 };
 
+/**
+ * What to tell someone whose hop is blocked. Every suggestion has to be a command that can
+ * actually succeed — the same rule that retired the old «set it with --instance» hint.
+ */
+function hopAdvice(missing, ident) {
+  const actuals = missing.filter((m) => m.actual);
+  const config = missing.filter((m) => !m.actual);
+  const out = [];
+  if (config.length) {
+    out.push('On an existing change the field flags alone do not help: they are read when a change'
+      + ' is CREATED. Repair the record first, either of:');
+    out.push(`  change repair ${ident} --confirm`);
+    out.push(`  change --repair --confirm <hop> ${ident}   (repairs only what the hop needs)`);
+    // Only ever name real flags, and only when there are any.
+    const flags = config.map((m) => m.flag).filter((f) => f && f.startsWith('--'));
+    if (flags.length) out.push(`  add ${flags.join(' ')} to either of the above to override the defaults`);
+  }
+  if (actuals.length) {
+    if (config.length) out.push('');
+    out.push(`${actuals.map((m) => m.field).join(' and ')} ${actuals.length > 1 ? 'are' : 'is'} the ACTUAL`
+      + ' execution window, so nothing can invent them. Either:');
+    out.push('  change --confirm run <command>          measures the real window (the normal path)');
+    out.push(`  change --work-start="YYYY-MM-DD HH:MM:SS" --work-end="…" --confirm review ${ident}`);
+    out.push('                                         hand-supplied, disclosed on the ticket');
+    out.push('The repair subcommand cannot fill them: it fills configuration fields, and fabricating actuals'
+      + ' would falsify the audit trail.');
+  }
+  return '\n' + out.join('\n');
+}
+
+/** Everything the form validates for this hop: the always-mandatory set plus the hop's own. */
+function requirementsFor(code) {
+  const seen = {};
+  const out = [];
+  for (const r of BASE_REQUIREMENTS.concat(HOP_REQUIREMENTS[code] || [])) {
+    if (!seen[r.field]) { seen[r.field] = true; out.push(r); }
+  }
+  return out;
+}
+
 /** Which required fields are empty on the record for this hop. */
 async function missingForHop(sn, sysId, code) {
-  const req = HOP_REQUIREMENTS[code] || [];
+  const req = requirementsFor(code);
   if (!req.length) return [];
   const rec = await readChange(sn, sysId, req.map((r) => r.field));
   return req.filter((r) => !REF(rec[r.field]));
@@ -807,12 +866,15 @@ async function missingForHop(sn, sysId, code) {
 function hintForBanner(banner) {
   if (!banner) return '';
   const hits = [];
-  for (const code of Object.keys(HOP_REQUIREMENTS)) {
-    for (const r of HOP_REQUIREMENTS[code]) {
-      if (banner.toLowerCase().includes(r.label.toLowerCase())) hits.push(`${r.field} — set it with ${r.flag}`);
+  for (const code of Object.keys(HOP_REQUIREMENTS).concat(['*'])) {
+    for (const r of (code === '*' ? BASE_REQUIREMENTS : HOP_REQUIREMENTS[code])) {
+      if (banner.toLowerCase().includes(r.label.toLowerCase())) hits.push(r.field);
     }
   }
-  return hits.length ? `\nThat maps to: ${hits.join('; ')}` : '';
+  if (!hits.length) return '';
+  return `\nThat maps to ${hits.join(', ')} on the record.`
+    + ' If the record itself is empty there (an older client can blank it), repair it first:'
+    + ` change repair <CHG…> --confirm, or pass --repair to this command.`;
 }
 
 // The lifecycle in order, so «it moved further than asked» can be told apart from «it did not
@@ -820,11 +882,67 @@ function hintForBanner(banner) {
 const LIFECYCLE = ['-5', '-4', '-3', '-2', '-1', '0', '3'];
 
 /**
+ * Refuse a hop whose form-mandatory fields are empty on the RECORD, or — with --repair — fill
+ * them first. `only` limits the check, which `close` uses to look at the always-mandatory set
+ * before it writes close_code.
+ */
+async function preflightHop(sn, io, sysId, code, o, cur, only) {
+  const log = o.log || (() => {});
+  const label = STATE[code] || code;
+  const scope = (list) => (only ? list.filter((m) => only.includes(m.field)) : list);
+  let missing = scope(await missingForHop(sn, sysId, code));
+  // Hand-supplied actuals need no --repair: giving the values IS the intent. They are written
+  // verbatim (never floored, never invented) and disclosed in the work notes.
+  const actualsMissing = missing.filter((m) => m.actual);
+  if (actualsMissing.length && o.resolved && o.resolved.workStart && o.resolved.workEnd) {
+    const ws = o.resolved.workStart;
+    const we = o.resolved.workEnd;
+    log(c.yellow(`  writing hand-supplied actuals ${snDate(ws)} → ${snDate(we)} (UTC)`));
+    await setWorkTimes(sn, sysId, ws, we, log, { verbatim: true });
+    try {
+      await postWorkNotes(sn, sysId,
+        ['Actual execution window supplied by hand, not measured by the change wrapper.',
+          `work_start: ${snDate(ws)} UTC`,
+          `work_end: ${snDate(we)} UTC`,
+          'Recorded via --work-start/--work-end on a bare state transition, so no command output'
+          + ' accompanies this window.'].join('\n'),
+        'Actual execution window supplied by hand');
+    } catch (err) {
+      throw new Error('the actuals were written but the disclosing work note failed: ' + err.message
+        + '. Undisclosed hand-supplied actuals are not acceptable, so the hop was not attempted.');
+    }
+    missing = scope(await missingForHop(sn, sysId, code));
+  }
+  if (missing.length && !o.relaxMandatory && o.repair && o.resolved) {
+    // --repair: fill exactly what this hop needs, then re-check. Same rules as `change repair`.
+    log(c.yellow(`  --repair: ${missing.map((m) => m.field).join(', ')} `
+      + `${missing.length > 1 ? 'are' : 'is'} empty on the record, filling from flags/defaults`));
+    await repairChange(sn, sysId, o.resolved, {
+      only: missing.map((m) => m.field), forced: o.forced || [], confirm: true, log,
+    });
+    missing = scope(await missingForHop(sn, sysId, code));
+  }
+  if (missing.length && !o.relaxMandatory) {
+    const ident = o.ident || sysId;
+    throw new Error(`${STATE[cur] || cur} → ${label} needs ${missing.map((m) => m.field).join(', ')},`
+      + ` which ${missing.length > 1 ? 'are' : 'is'} empty on this change.\n`
+      + missing.map((m) => `  ${m.field} («${m.label}»)`).join('\n')
+      + (o.repair
+        ? '\n--repair was given, but the value is not configured either: pass '
+          + missing.map((m) => m.flag).join(' and ') + ' alongside --repair.'
+        : hopAdvice(missing, ident)));
+  }
+
+
+}
+
+/**
  * Move a change to `code` through the form, then prove it moved by re-reading
  * the record. HTTP 200 from the form submit means nothing.
  */
 async function transition(sn, io, sysId, code, opts) {
   const o = opts || {};
+  const log = o.log || (() => {});
   const label = STATE[code] || code;
   const cur = REF((await readChange(sn, sysId, ['state'])).state);
   if (cur === code) return { state: code, moved: false };
@@ -843,15 +961,7 @@ async function transition(sn, io, sysId, code, opts) {
     }
   }
 
-  const missing = await missingForHop(sn, sysId, code);
-  if (missing.length && !o.relaxMandatory) {
-    throw new Error(`${STATE[cur] || cur} → ${label} needs ${missing.map((m) => m.field).join(', ')},`
-      + ` which ${missing.length > 1 ? 'are' : 'is'} empty on this change.\n`
-      + missing.map((m) => `  ${m.field} («${m.label}») — ${m.flag}`).join('\n')
-      + '\nSet them and retry; the form refuses the hop until they are populated.');
-  }
-
-  const log = o.log || (() => {});
+  await preflightHop(sn, io, sysId, code, o, cur);
 
   // Reconcile the WHOLE tracked field set, not just what this hop requires: the submit posts
   // every widget, so an empty one blanks a populated record field. This runs for cancels too —
@@ -1038,7 +1148,7 @@ async function readChangeDisplay(sn, sysId, fields) {
  * hidden input, the sys_display mirror and the selected <option>, then read back.
  */
 async function hydrateFormGlideLists(sn, io, sysId, code, log) {
-  const reqs = (HOP_REQUIREMENTS[code] || []).filter((r) => r.glide);
+  const reqs = requirementsFor(code).filter((r) => r.glide);
   if (!reqs.length) return [];
   const names = reqs.map((r) => r.field);
   const raw = await readChange(sn, sysId, names);
@@ -1126,13 +1236,18 @@ async function postWorkNotes(sn, sysId, text, preferredNeedle) {
 
 /** work_start/work_end: try the internal UTC format first, fall back to the
  *  account's display format (MM-DD-YYYY HH:MM:SS) with input_display_value. */
-async function setWorkTimes(sn, sysId, start, realEnd, log) {
+async function setWorkTimes(sn, sysId, start, realEnd, log, opts) {
   // A command that finishes inside a second would otherwise record work_start == work_end,
   // which reads like a bug and gives reports a zero-length window. The true duration is in the
   // work notes; this only floors what the record shows.
   const MIN_ACTUAL_MS = 60000;
   let end = realEnd;
-  if (end.getTime() - start.getTime() < MIN_ACTUAL_MS) {
+  if (opts && opts.verbatim) {
+    if (end.getTime() - start.getTime() < 1000) {
+      log(c.yellow('  the supplied actual window is under a second: the record will show it as given,'
+        + ' because hand-supplied values are never adjusted'));
+    }
+  } else if (end.getTime() - start.getTime() < MIN_ACTUAL_MS) {
     end = new Date(start.getTime() + MIN_ACTUAL_MS);
     log(c.dim(`  actual window floored to ${MIN_ACTUAL_MS / 1000}s on the record`
       + ` (real duration ${Math.round((realEnd.getTime() - start.getTime()) / 1000)}s is in the work notes)`));
@@ -1155,6 +1270,9 @@ async function setWorkTimes(sn, sysId, start, realEnd, log) {
 }
 
 async function closeChange(sn, io, sysId, o) {
+  // Check (and optionally repair) what the form always demands before writing anything.
+  const cur = REF((await readChange(sn, sysId, ['state'])).state);
+  await preflightHop(sn, io, sysId, S_CLOSED, o, cur, BASE_REQUIREMENTS.map((r) => r.field));
   const fields = {
     close_code: o.closeCode || DEFAULTS.closeCode,
     close_notes: o.closeNotes || 'Closed by `change`.',
@@ -1249,6 +1367,121 @@ function makeIpaas(io, creds, opts) {
   return { requireCreds, call, host };
 }
 
+// ─── Repairing an existing change ──────────────────────────────────────────────
+//
+// A record blanked by an older client (or by any form save that posted an empty widget) cannot
+// be closed: the form demands a field the record no longer has, and reconcileForm() fills the
+// FORM from the RECORD, so there is nothing to hydrate from. CHG005368783 was stuck in Review
+// for exactly this reason and had to be repaired with a Table API PATCH by hand.
+//
+// Repair is deliberately explicit: rewriting fields on someone else's production change request
+// is precisely what this tool exists to prevent, so it never happens implicitly.
+
+/** field → the value this invocation would use, from flags, then config, then defaults. */
+function repairValues(o) {
+  return {
+    u_service_offering_instance: o.instance,
+    u_change_approver: o.approver,
+    u_hosting_location: HOSTING_LOCATIONS[o.hostingLocation] || o.hostingLocation,
+    u_environment: o.environment,
+    u_tenant_type: o.tenantType,
+    cmdb_ci: o.ci,
+    u_change_fixing_cso: o.cso,
+  };
+}
+
+function forcedFields(flags) {
+  const raw = flags['force-field'];
+  if (!raw || raw === true) return [];
+  return String(raw).split(',').map((x) => x.trim()).filter(Boolean);
+}
+
+/**
+ * Fill empty tracked fields on an existing change.
+ *
+ * Only ever fills what is empty; a populated field is left alone unless it is named in
+ * --force-field. Nothing outside TRACKED_NAMES can be touched at all.
+ */
+async function repairChange(sn, sysId, o, opts) {
+  const only = (opts && opts.only) || null;      // limit to these fields (used by --repair)
+  const forced = (opts && opts.forced) || [];
+  const confirm = !!(opts && opts.confirm);
+  const log = (opts && opts.log) || console.log;
+
+  const bad = forced.filter((f) => !TRACKED_NAMES.includes(f) && f !== 'work_start' && f !== 'work_end');
+  if (bad.length) {
+    cli.die(`--force-field: ${bad.join(', ')} ${bad.length > 1 ? 'are' : 'is'} not a repairable field.\n`
+      + `Repairable: ${TRACKED_NAMES.join(', ')}`, { prefix: 'change' });
+  }
+
+  const wanted = repairValues(o);
+  // Actuals are not configuration: only in scope when the caller supplied both explicitly.
+  const repairable = TRACKED_NAMES.slice();
+  if (o.workStart && o.workEnd) {
+    wanted.work_start = snDate(o.workStart);
+    wanted.work_end = snDate(o.workEnd);
+    repairable.push('work_start', 'work_end');
+  }
+  const names = (only || repairable).filter((n) => repairable.includes(n));
+  const current = await readChange(sn, sysId, names);
+
+  const plan = [];
+  for (const field of names) {
+    const have = REF(current[field]);
+    const want = wanted[field];
+    if (!want) { plan.push({ field, have, want, action: 'no value configured' }); continue; }
+    if (!have) { plan.push({ field, have, want, action: 'fill' }); continue; }
+    if (have === want) { plan.push({ field, have, want, action: 'already correct' }); continue; }
+    if (forced.includes(field)) { plan.push({ field, have, want, action: 'overwrite (--force-field)' }); continue; }
+    plan.push({ field, have, want, action: 'left alone (populated)' });
+  }
+
+  const writes = plan.filter((p) => p.action === 'fill' || p.action.startsWith('overwrite'));
+  const body = {};
+  for (const p of writes) body[p.field] = p.want;
+
+  const untouched = repairable.filter((n) => !names.includes(n));
+  if (untouched.length) log(c.dim(`  not in scope for this repair: ${untouched.join(', ')}`));
+  const skipped = plan.filter((p) => p.action !== 'fill' && !p.action.startsWith('overwrite'));
+  if (skipped.length) {
+    log(c.dim('  leaving alone: ' + skipped.map((p) => `${p.field} (${p.action})`).join(', ')));
+  }
+  if (skipped.some((p) => p.action === 'left alone (populated)')) {
+    log(c.dim('  a populated field is never overwritten — use --force-field=<name> for that field'));
+  }
+  log(c.dim(`  fields outside the tracked list are never touched: ${repairable.length} repairable here`
+    + (o.workStart && o.workEnd ? ' (work_start/work_end included because both were supplied)' : '')));
+
+  if (!writes.length) {
+    log('Nothing to repair: every field in scope is populated or has no configured value.');
+    return { plan, body, changed: [], verified: true };
+  }
+
+  if (!confirm) {
+    console.log('DRY RUN — would PATCH /api/now/table/change_request/' + sysId);
+    console.log(JSON.stringify(body, null, 2));
+    for (const p of writes) console.log(`  ${p.field}: ${JSON.stringify(p.have)} → ${JSON.stringify(p.want)}  [${p.action}]`);
+    return { plan, body, changed: [], dryRun: true };
+  }
+
+  const res = await sn.api('PATCH', `/api/now/table/change_request/${sysId}`, body,
+    { sysparm_display_value: 'false', sysparm_fields: Object.keys(body).join(',') });
+  if (!res.ok) throw apiError('repairing the change', res);
+
+  const after = await readChange(sn, sysId, Object.keys(body));
+  const rows = writes.map((p) => ({
+    field: p.field, before: p.have || '(empty)', after: REF(after[p.field]) || '(empty)',
+    ok: REF(after[p.field]) === p.want,
+  }));
+  const failed = rows.filter((r) => !r.ok);
+  log(fmt.table([['field', 'before', 'after']].concat(rows.map((r) => [r.field, r.before, r.after + (r.ok ? '' : '  ✗')]))));
+  if (failed.length) {
+    throw new Error(`the server did not store ${failed.map((r) => r.field).join(', ')} as sent`
+      + ' — read the record and check field-level permissions.');
+  }
+  return { plan, body, changed: rows, verified: true };
+}
+
 // ─── Paper trail ───────────────────────────────────────────────────────────────
 
 function shellQuote(a) {
@@ -1305,6 +1538,8 @@ async function resolveOptions(flags, wrappedArgv) {
     json: flags.json === true,
     confirm: flags.confirm === true,
     keepOpen: flags['keep-open'] === true,
+    repair: flags.repair === true,
+    forced: forcedFields(flags),
     bearer: flags.bearer === true,
     title,
     description: str(flags.description) || commandLine || undefined,
@@ -1342,6 +1577,8 @@ async function resolveOptions(flags, wrappedArgv) {
     impactMinutes: resolve('impact-minutes', 'impactMinutes', null, DEFAULTS.impactMinutes),
     closeCode: resolve('close-code', null, null, DEFAULTS.closeCode),
     closeNotes: str(flags['close-notes']),
+    workStart: str(flags['work-start']) ? parseUtc(flags['work-start'], '--work-start') : undefined,
+    workEnd: str(flags['work-end']) ? parseUtc(flags['work-end'], '--work-end') : undefined,
     planUrl,
     implementationPlan: str(flags['implementation-plan'])
       || (planUrl ? `Runbook: ${planUrl}` : undefined)
@@ -1375,6 +1612,19 @@ async function resolveOptions(flags, wrappedArgv) {
   if (!['servicenow', 'ipaas'].includes(o.via)) cli.die(`--via must be servicenow or ipaas (got ${o.via})`, { prefix: 'change' });
   if (!(o.duration > 0)) cli.die('--duration must be a positive number of seconds', { prefix: 'change' });
   if (!(o.leadTime >= 0)) cli.die('--lead-time must be zero or more seconds', { prefix: 'change' });
+  // Hand-supplied actuals: both or neither, and they must describe a real window.
+  if (!!o.workStart !== !!o.workEnd) {
+    cli.die('--work-start and --work-end must be given together: they are one window, and half a'
+      + ' window on a production change is worse than none.', { prefix: 'change' });
+  }
+  if (o.workStart && o.workEnd) {
+    if (o.workEnd.getTime() < o.workStart.getTime()) {
+      cli.die(`--work-end (${snDate(o.workEnd)}) is before --work-start (${snDate(o.workStart)}).`,
+        { prefix: 'change' });
+    }
+    cli.warn(`actual window supplied by hand: ${snDate(o.workStart)} → ${snDate(o.workEnd)} (UTC).`
+      + ' These are NOT measured by change. That fact is recorded in the change\'s work notes.');
+  }
   if (o.leadTime === 0) {
     cli.warn('--lead-time=0 puts the planned start at «now». ServiceNow reclassifies such a change'
       + ' as type=latent, and the latent state machine refuses Assess → Implement.');
@@ -1404,8 +1654,8 @@ function printDryRun(o, argv, start, end, log) {
   log(JSON.stringify({ start_date: snDate(start), end_date: snDate(end) }, null, 2));
   log('');
   log(c.bold('3. PATCH /api/sn_chg_rest/change/{sys_id}')
-    + '  (u_risk_type only: it is derived from service + risk and dropped by create.'
-    + ' u_environment does land on create, so it is not re-sent.)');
+    + '  (u_risk_type is derived from service + risk and dropped by create. u_environment is'
+    + ' re-sent only if the read-back shows create did not keep it.)');
   log(JSON.stringify({ u_risk_type: o.riskType }, null, 2));
   log('');
   log(c.bold('4. Transitions (form, adb_sysverb_update_and_stay, nextstates checked before each hop)'));
@@ -1478,18 +1728,25 @@ async function cmdRun(flags, argv) {
     const win = await setWindow(sn, io, created.sysId, start, end, log);
     log(`  planned window ${win.start_date} → ${win.end_date} (UTC, starts in ${o.leadTime}s)`
       + (win.via === 'create' ? '' : c.yellow(`  [repaired over the ${win.via} API]`)));
-    // u_environment is accepted by create (proven: sys_history_line update #0 on
-    // CHG005368567 shows u_environment ""→"production"). Only u_risk_type is genuinely
-    // derived and dropped, so only it is re-sent here.
-    const rest = await setChgRest(sn, created.sysId, { u_risk_type: o.riskType });
+    // u_environment lands at create — sys_history_line #0 on CHG005368567, CHG005369180 and
+    // CHG005370120 all show u_environment ""→"production" — while u_risk_type is derived and
+    // dropped. Rather than trusting either observation forever, re-send whatever came back
+    // empty: the deciding read is one this code already makes.
+    const after = await readChange(sn, created.sysId, ['u_risk_type', 'u_environment']);
+    const resend = { u_risk_type: o.riskType };
+    if (!REF(after.u_environment)) {
+      log(c.yellow('  u_environment did not survive create on this record, re-sending it'));
+      resend.u_environment = o.environment;
+    }
+    const rest = await setChgRest(sn, created.sysId, resend);
     if (!rest.ok) log(c.yellow(`  warning: ${rest.bad.join(', ')} did not store as sent`));
-    const toAssess = await transition(sn, io, created.sysId, S_ASSESS, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime });
+    const toAssess = await transition(sn, io, created.sysId, S_ASSESS, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime, repair: o.repair, resolved: o, forced: o.forced, ident: o.ident });
     log(`  state → ${STATE[toAssess.state] || toAssess.state}`
       + (toAssess.overshot ? c.yellow(' (ServiceNow advanced it automatically)') : ''));
     // The type flip happens at the first hop, and it also clears three create fields, so
     // check here: the alternative is a confusing «Instance(s) not filled in» two steps later.
     await assertRequestedType(sn, created.sysId, o, 'after the Assess hop');
-    const toImpl = await transition(sn, io, created.sysId, S_IMPLEMENT, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime });
+    const toImpl = await transition(sn, io, created.sysId, S_IMPLEMENT, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime, repair: o.repair, resolved: o, forced: o.forced, ident: o.ident });
     log(`  state → ${STATE[toImpl.state] || toImpl.state}`
       + (toImpl.overshot ? c.yellow(' (ServiceNow advanced it automatically)') : ''));
     await assertRequestedType(sn, created.sysId, o, 'after the Implement hop');
@@ -1534,7 +1791,7 @@ async function cmdRun(flags, argv) {
   try {
     if (exitCode === 0) {
       await setWorkTimes(sn, created.sysId, t0, t1, log);
-      await transition(sn, io, created.sysId, S_REVIEW, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime });
+      await transition(sn, io, created.sysId, S_REVIEW, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime, repair: o.repair, resolved: o, forced: o.forced, ident: o.ident });
       log('  state → Review');
       if (o.keepOpen) {
         log(c.yellow(`  --keep-open: ${created.number} left in Review, close it yourself with \`change close ${created.number} --confirm\``));
@@ -1635,7 +1892,10 @@ async function cmdCreate(flags) {
   try {
     await assertRequestedType(sn, created.sysId, o, 'straight after create');
     win = await setWindow(sn, io, created.sysId, start, end, log);
-    await setChgRest(sn, created.sysId, { u_risk_type: o.riskType });
+    const afterCreate = await readChange(sn, created.sysId, ['u_environment']);
+  const resendFields = { u_risk_type: o.riskType };
+  if (!REF(afterCreate.u_environment)) resendFields.u_environment = o.environment;
+  await setChgRest(sn, created.sysId, resendFields);
   } catch (err) {
     console.error(c.red('change: ') + err.message);
     await cancelAfterFailure(sn, io, created, o, 'nothing was left in flight');
@@ -1732,7 +1992,7 @@ async function cmdStates(rootFlags, tail) {
 async function cmdTransition(name, code, rootFlags, tail) {
   const { positional } = parseFlags(tail);
   const flags = mergeFlags(rootFlags, tail);
-  if (!positional[0]) cli.die(`usage: change ${name} <CHG…|sys_id> --confirm`, { prefix: 'change' });
+  if (!positional[0]) cli.die(`usage: change ${name} <CHG…|sys_id> [--repair] --confirm`, { prefix: 'change' });
   const io = await loadIo();
   const o = await resolveOptions(flags, null);
   const sn = makeSn(io, { log: vlog, formTimeout: o.formTimeout });
@@ -1753,11 +2013,14 @@ async function cmdTransition(name, code, rootFlags, tail) {
   // close_code and u_impact_minutes belong to `run` and `close` alone.
   let result;
   if (name === 'close') {
-    result = await closeChange(sn, io, sysId, { closeCode: o.closeCode, impactMinutes: o.impactMinutes, closeNotes: o.closeNotes, timeout: o.stateTimeout });
+    result = await closeChange(sn, io, sysId, { closeCode: o.closeCode, impactMinutes: o.impactMinutes,
+      closeNotes: o.closeNotes, timeout: o.stateTimeout, log: (m) => console.error(m),
+      expectType: o.type, leadTime: o.leadTime, repair: o.repair, resolved: o, forced: o.forced,
+      ident: positional[0] });
   } else if (name === 'cancel') {
     result = await cancelChange(sn, io, sysId, { timeout: o.stateTimeout });
   } else {
-    result = await transition(sn, io, sysId, code, { timeout: o.stateTimeout, log: (m) => console.error(m), expectType: o.type, leadTime: o.leadTime });
+    result = await transition(sn, io, sysId, code, { timeout: o.stateTimeout, log: (m) => console.error(m), expectType: o.type, leadTime: o.leadTime, repair: o.repair, resolved: o, forced: o.forced, ident: positional[0] });
   }
   await sn.closeFormTab();
   if (result && result.overshot) {
@@ -1808,6 +2071,28 @@ async function cmdForm(rootFlags, tail) {
   else for (const k of Object.keys(out)) console.log(c.dim(k.padEnd(26)) + ' ' + out[k]);
   if (flags['keep-tab'] !== true) await sn.closeFormTab();
   else if (owned) console.log(c.yellow('--keep-tab: leaving tab ' + tab.targetId + ' open'));
+  return 0;
+}
+
+async function cmdRepair(rootFlags, tail) {
+  const { positional } = parseFlags(tail);
+  const flags = mergeFlags(rootFlags, tail);
+  if (!positional[0]) {
+    cli.die('usage: change repair <CHG…|sys_id> [--instance=… --approver=… …] [--force-field=<name>] --confirm\n'
+      + `Repairable fields: ${TRACKED_NAMES.join(', ')}`, { prefix: 'change' });
+  }
+  const io = await loadIo();
+  const o = await resolveOptions(flags, null);
+  const sn = makeSn(io, { log: vlog, formTimeout: o.formTimeout });
+  const sysId = await resolveSysId(sn, positional[0]);
+  const state = REF((await readChange(sn, sysId, ['state'])).state);
+  console.log(`${positional[0]}  state ${STATE[state] || state} (${state})`
+    + '  — repair works in any state, that is the point');
+  const r = await repairChange(sn, sysId, o, {
+    forced: forcedFields(flags), confirm: flags.confirm === true, log: (m) => console.log(m),
+  });
+  if (r.dryRun) console.log('\nAdd --confirm to apply.');
+  else if (r.changed.length) console.log(`Repaired ${r.changed.length} field${r.changed.length > 1 ? 's' : ''} on ${positional[0]}.`);
   return 0;
 }
 
@@ -1879,6 +2164,11 @@ function help() {
     '  close <CHG>              close_code + Closed',
     '  cancel <CHG>             Canceled',
     '  states <CHG>             Pretty-print nextstates with per-transition conditions',
+    '  form <CHG>               Read-only: open/reuse the form, time readiness, report what',
+    '                           the form holds (record value versus form node)',
+    '  repair <CHG>             Fill EMPTY tracked fields on an existing change, e.g. a record',
+    '                           an older client blanked. Never overwrites a populated field',
+    '                           without --force-field=<name>. Works in any state',
     '  config                   Show resolved non-secret configuration',
     '',
     c.bold('Root params') + ' (--flag=value only)',
@@ -1902,9 +2192,16 @@ function help() {
     '  --state-timeout=60       Seconds to wait for a state transition to land',
     '  --form-timeout=30        Seconds to wait for the change form to become scriptable',
     '  --impact-minutes=0       --close-code=successful  --close-notes=…',
+    '  --work-start=<UTC> --work-end=<UTC>',
+    '                           Hand-supplied ACTUAL window for a bare review hop or repair.',
+    '                           Both required together; disclosed on stderr and in the work',
+    '                           notes. `change run` measures them instead',
     '  --keep-open              Stop at Review instead of closing',
     '  --no-normalise-choices   Send choice values verbatim (see SKILL.md: raw vs label)',
     '  --via=servicenow|ipaas   Transport (default servicenow, needs no secrets)',
+    '  --repair                 On a hop or close: fill the fields that hop needs if the record',
+    '                           has them empty, then continue (same rules as the repair subcommand)',
+    '  --force-field=<name>     Let repair overwrite this populated field (repeatable)',
     '  --confirm                Required for anything that writes',
     '  --json                   Machine-readable output where it makes sense',
     '',
@@ -1942,6 +2239,7 @@ try {
     case 'cancel': code = await cmdTransition('cancel', S_CANCELED, root, tail); break;
     case 'states': code = await cmdStates(root, tail); break;
     case 'form': code = await cmdForm(root, tail); break;
+    case 'repair': code = await cmdRepair(root, tail); break;
     case 'config': code = await cmdConfig(root); break;
     default: help(); code = 1;
   }
