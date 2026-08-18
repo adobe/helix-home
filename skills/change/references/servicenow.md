@@ -81,6 +81,35 @@ The `New → Assess` hop requires none of those three fields, so a reconciliatio
 then fails with «The following mandatory fields are not filled in: Instance(s)» about a field
 the record had five seconds earlier.
 
+### A blanked record cannot be closed, and the form cannot fix it
+
+Reconciliation fills the form **from the record**. If the record itself has been blanked — by an
+older client, or by any earlier save that posted an empty widget — there is nothing to hydrate
+from, and every hop is refused for a field the record no longer has. CHG005368783 sat in
+`Review` refusing to close with «The following mandatory fields are not filled in: Instance(s)»
+until `u_service_offering_instance`, `u_hosting_location`, `u_environment` and
+`u_change_fixing_cso` were restored with a Table API PATCH:
+
+```
+PATCH /api/now/table/change_request/{sys_id}
+{ "u_service_offering_instance": "d0ae449893ffce50b7aef1e01bba1049", … }
+```
+
+That write works in any state, including `Review`, and needs no form. It is what
+`change repair <CHG…> --confirm` does, restricted to the tracked fields and only where they are
+empty.
+
+`u_environment` does survive the create call — `sys_history_line` update #0 shows
+`u_environment ""→"production"` on CHG005368567, CHG005369180 and CHG005370120 — while
+`u_risk_type` is derived and dropped. Since one read decides it, the safe implementation is to
+read both back after create and re-send whatever came back empty, rather than trusting either
+observation permanently.
+
+Note also that the form's mandatory set is validated on **every** save, not only on the hop that
+conceptually owns the field: `Instance(s)` blocked a `Review → Closed` hop. So a hop preflight
+has to check the always-mandatory fields (`u_service_offering_instance`,
+`u_change_fixing_cso`, `u_tenant_type`) regardless of which hop it is.
+
 ### The rule
 
 **Before every form submit, reconcile the whole form against the record.** For each field the
@@ -228,7 +257,7 @@ Required fields per hop (the form is the oracle — it names the missing field, 
 | --- | --- |
 | `-5 → -4` New → Assess | the create field set, **plus `u_change_fixing_cso`** and `u_tenant_type`. Without the CSO field the form refuses with «The following mandatory fields are not filled in: Change is related to an emergency» |
 | `-4 → -1` Assess → Implement | `u_change_approver`, and `u_tenant_type` if it was left empty |
-| `-1 → 0` Implement → Review | `work_start`, `work_end` |
+| `-1 → 0` Implement → Review | `work_start`, `work_end` — **actuals**, so they can only be measured or supplied, never derived from configuration |
 | `0 → 3` Review → Closed | `close_code`, `u_impact_minutes`, `close_notes` |
 
 Observed transition graph on the Adobe change model:
