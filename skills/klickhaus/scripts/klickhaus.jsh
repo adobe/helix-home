@@ -195,19 +195,30 @@ async function cmdLogin(args) {
     else if (!password) password = args[i];
   }
 
-  // If no explicit creds were given (or --from-tab was requested), try to
-  // pick them up from a logged-in klickhaus web tab.
-  if (fromTabFlag || (!user || !password)) {
+  // If no explicit creds were given at all (or --from-tab was requested),
+  // try to pick them up from a logged-in klickhaus web tab. A *partial*
+  // credential (only one of --user/--password) must never silently fall
+  // back to tab creds and override the caller's intent — that case is
+  // rejected explicitly below.
+  let source = 'manual';
+  if (fromTabFlag || (!user && !password)) {
     const fromTab = await credsFromTab();
     if (fromTab) {
       user = fromTab.user;
       password = fromTab.password;
+      source = 'tab';
       console.error('Using credentials from an open ' + KLICKHAUS_WEB_DOMAIN + ' tab.');
     } else if (fromTabFlag) {
       console.error('No logged-in ' + KLICKHAUS_WEB_DOMAIN + ' tab found.');
       console.error('Open the klickhaus dashboard in the browser and log in, then retry — or pass --user/--password.');
       process.exit(1);
     }
+  }
+
+  if ((user && !password) || (!user && password)) {
+    console.error('Partial credential given: both --user and --password are required.');
+    console.error('Pass both, or use --from-tab to reuse a logged-in ' + KLICKHAUS_WEB_DOMAIN + ' tab.');
+    process.exit(1);
   }
 
   if (!user || !password) {
@@ -235,7 +246,7 @@ async function cmdLogin(args) {
     process.exit(1);
   }
 
-  await saveConfig({ user, password, logged_in_at: new Date().toISOString() });
+  await saveConfig({ user, password, logged_in_at: new Date().toISOString(), source });
   console.log('Login successful. Credentials saved to the klickhaus skill config (gitignored).');
   console.log('');
   console.log('Try:');
