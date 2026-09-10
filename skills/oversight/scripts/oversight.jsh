@@ -35,28 +35,56 @@ async function ensureAdminKey() {
 
 // --- Domain key management ---
 
-async function mintDomainKey(domain) {
+function fingerprintKey(key) {
+  return String(key || '').substring(0, 8) + '...';
+}
+
+function redactSecrets(text) {
+  return String(text || '')
+    .replace(/"domainkey"\s*:\s*"[^"]*"/gi, '"domainkey":"[redacted]"')
+    .replace(/Bearer\s+\S+/gi, 'Bearer [redacted]');
+}
+
+function formatKeyResult(domain, key, show, extra) {
+  const result = {
+    domain,
+    domainkey: show ? key : fingerprintKey(key),
+    cached: true,
+  };
+  if (extra) {
+    for (const k of Object.keys(extra)) result[k] = extra[k];
+  }
+  if (!show) {
+    result.note = 'Full key cached in the skill config (gitignored). Pass --show to print it.';
+  }
+  return result;
+}
+
+async function mintDomainKey(domain, opts) {
+  const force = opts && opts.force;
   const config = await ensureAdminKey();
 
-  // First try GET to retrieve an existing key
-  const getResp = await fetch(API_ENDPOINT + '/domainkey/' + domain, {
-    method: 'GET',
-    headers: { authorization: 'Bearer ' + config.adminKey },
-  });
+  if (!force) {
+    // First try GET to retrieve an existing key
+    const getResp = await fetch(API_ENDPOINT + '/domainkey/' + domain, {
+      method: 'GET',
+      headers: { authorization: 'Bearer ' + config.adminKey },
+    });
 
-  if (getResp.ok) {
-    try {
-      const data = await getResp.json();
-      if (data.domainkey) {
-        config.domainKeys = config.domainKeys || {};
-        config.domainKeys[domain] = data.domainkey;
-        await saveConfig(config);
-        return data.domainkey;
-      }
-    } catch (e) { /* fall through to POST */ }
+    if (getResp.ok) {
+      try {
+        const data = await getResp.json();
+        if (data.domainkey) {
+          config.domainKeys = config.domainKeys || {};
+          config.domainKeys[domain] = data.domainkey;
+          await saveConfig(config);
+          return data.domainkey;
+        }
+      } catch (e) { /* fall through to POST */ }
+    }
   }
 
-  // If GET didn't return a key, POST to mint a new one
+  // POST to mint a new key, or to rotate (force) by replacing the existing one
   const postResp = await fetch(API_ENDPOINT + '/domainkey/' + domain, {
     method: 'POST',
     headers: { authorization: 'Bearer ' + config.adminKey },
@@ -64,7 +92,7 @@ async function mintDomainKey(domain) {
 
   if (!postResp.ok) {
     const text = await postResp.text();
-    console.error('Failed to mint domain key (' + postResp.status + '): ' + text);
+    console.error('Failed to mint domain key (' + postResp.status + '): ' + redactSecrets(text));
     process.exit(1);
   }
 
@@ -214,6 +242,37 @@ function computeMetrics(bundles) {
   };
 }
 
+function isSyntheticDomain(domain) {
+  return typeof domain === 'string' && domain.includes(':');
+}
+
+function formatStatusResult(domain, range, bundleCount, metrics) {
+  const result = {
+    domain,
+    range,
+    bundleCount,
+    pageViews: metrics.pageViews,
+    visits: metrics.visits,
+    engagement: metrics.engagement,
+    engagementRate: metrics.engagementRate + '%',
+    vitals: {
+      lcp: metrics.vitals.lcp !== null ? (metrics.vitals.lcp / 1000).toFixed(2) + 's' : 'N/A',
+      cls: metrics.vitals.cls !== null ? metrics.vitals.cls.toFixed(3) : 'N/A',
+      inp: metrics.vitals.inp !== null ? (metrics.vitals.inp / 1000).toFixed(2) + 's' : 'N/A',
+    },
+  };
+
+  if (isSyntheticDomain(domain)) {
+    result.synthetic = true;
+    result.visits = null;
+    result.engagement = null;
+    result.engagementRate = 'n/a (synthetic aggregate domain)';
+    result.note = 'Engagement and visits are not computable for a synthetic aggregate domain — most checkpoints are not collected.';
+  }
+
+  return result;
+}
+
 function computeTopPages(bundles, limit) {
   const pages = {};
   for (const bundle of bundles) {
@@ -247,6 +306,7 @@ function parseArgs(args) {
     date: null,
     limit: 20,
     key: null,
+    show: false,
   };
   const positional = [];
 
@@ -256,6 +316,7 @@ function parseArgs(args) {
     else if (arg.startsWith('--date=')) opts.date = arg.split('=')[1];
     else if (arg.startsWith('--limit=')) opts.limit = parseInt(arg.split('=')[1]);
     else if (arg.startsWith('--key=')) opts.key = arg.split('=').slice(1).join('=');
+    else if (arg === '--show' || arg === '--print-key') opts.show = true;
     else positional.push(arg);
   }
 
@@ -292,20 +353,33 @@ async function cmdLogin(args) {
   console.log('Admin key saved to the oversight skill config (gitignored).');
   console.log('');
   console.log('Next steps:');
-  console.log('  oversight mint <domain>     — mint a domain key');
+  console.log('  oversight mint <domain>     — mint or retrieve a domain key');
+  console.log('  oversight rotate <domain>   — replace a compromised domain key');
   console.log('  oversight status <domain>   — quick traffic overview');
 }
 
 async function cmdMint(args) {
-  const { positional } = parseArgs(args);
+  const { opts, positional } = parseArgs(args);
   const domain = positional[0];
   if (!domain) {
-    console.error('Usage: oversight mint <domain>');
+    console.error('Usage: oversight mint <domain> [--show]');
     process.exit(1);
   }
 
   const key = await mintDomainKey(domain);
-  console.log(JSON.stringify({ domain, domainkey: key }, null, 2));
+  console.log(JSON.stringify(formatKeyResult(domain, key, opts.show), null, 2));
+}
+
+async function cmdRotate(args) {
+  const { opts, positional } = parseArgs(args);
+  const domain = positional[0];
+  if (!domain) {
+    console.error('Usage: oversight rotate <domain> [--show]');
+    process.exit(1);
+  }
+
+  const key = await mintDomainKey(domain, { force: true });
+  console.log(JSON.stringify(formatKeyResult(domain, key, opts.show, { rotated: true }), null, 2));
 }
 
 async function cmdKeys() {
@@ -317,7 +391,7 @@ async function cmdKeys() {
   }
   const result = Object.entries(keys).map(([domain, key]) => ({
     domain,
-    domainkey: key.substring(0, 8) + '...',
+    domainkey: fingerprintKey(key),
   }));
   console.log(JSON.stringify(result, null, 2));
 }
@@ -332,21 +406,7 @@ async function cmdStatus(args) {
 
   const bundles = await fetchRange(domain, opts.range);
   const metrics = computeMetrics(bundles);
-
-  const result = {
-    domain,
-    range: opts.range,
-    bundleCount: bundles.length,
-    pageViews: metrics.pageViews,
-    visits: metrics.visits,
-    engagement: metrics.engagement,
-    engagementRate: metrics.engagementRate + '%',
-    vitals: {
-      lcp: metrics.vitals.lcp !== null ? (metrics.vitals.lcp / 1000).toFixed(2) + 's' : 'N/A',
-      cls: metrics.vitals.cls !== null ? metrics.vitals.cls.toFixed(3) : 'N/A',
-      inp: metrics.vitals.inp !== null ? (metrics.vitals.inp / 1000).toFixed(2) + 's' : 'N/A',
-    },
-  };
+  const result = formatStatusResult(domain, opts.range, bundles.length, metrics);
 
   console.log(JSON.stringify(result, null, 2));
 }
@@ -466,8 +526,9 @@ function showHelp() {
   console.log('Setup:');
   console.log('  login --key=<KEY>            Store admin key for domain key minting\n');
   console.log('Domain key management:');
-  console.log('  mint <domain>                Mint or retrieve a domain key');
-  console.log('  keys                         List cached domain keys\n');
+  console.log('  mint <domain>                Retrieve or create a domain key');
+  console.log('  rotate <domain>              Replace a domain key (POST, skips GET)');
+  console.log('  keys                         List cached domain keys (fingerprints)\n');
   console.log('Queries:');
   console.log('  status <domain>              Quick overview: page views, visits, vitals');
   console.log('  pageviews <domain>           Page view time series');
@@ -477,14 +538,17 @@ function showHelp() {
   console.log('Flags:');
   console.log('  --range=RANGE                day, week, month, year (default: month)');
   console.log('  --date=YYYY-MM-DD            Specific date for bundle fetch');
-  console.log('  --limit=N                    Number of results (default: 20)\n');
+  console.log('  --limit=N                    Number of results (default: 20)');
+  console.log('  --show                       Print the full domain key (mint/rotate only)\n');
   console.log('Auth model:');
   console.log('  Admin key → POST /domainkey/<domain> → mints a domain key (201)');
   console.log('  Domain key → ?domainkey=<key> on bundle fetches');
-  console.log('  GET /domainkey/<domain> retrieves an existing key (does not create)\n');
+  console.log('  GET /domainkey/<domain> retrieves an existing key (does not create)');
+  console.log('  rotate POSTs a new key even when GET would succeed\n');
   console.log('Examples:');
   console.log('  oversight login --key=YOUR-ADMIN-KEY');
   console.log('  oversight mint www.example.com');
+  console.log('  oversight rotate www.example.com');
   console.log('  oversight status www.example.com');
   console.log('  oversight vitals www.example.com --range=week');
   console.log('  oversight top-pages www.example.com --limit=10');
@@ -507,6 +571,9 @@ switch (cmd) {
     break;
   case 'mint':
     await cmdMint(args);
+    break;
+  case 'rotate':
+    await cmdRotate(args);
     break;
   case 'keys':
     await cmdKeys();
