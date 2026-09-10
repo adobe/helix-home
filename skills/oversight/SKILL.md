@@ -7,7 +7,8 @@ description: >-
   performance, checking page view trends, analyzing Core Web Vitals, or
   exploring RUM data for an EDS domain. Triggers on requests like "how many
   page views", "check web vitals", "RUM data for", "traffic for",
-  "oversight status", "mint a domain key", or "what's the LCP on".
+  "oversight status", "mint a domain key", "rotate a domain key",
+  or "what's the LCP on".
 allowed-tools: bash
 ---
 
@@ -22,11 +23,15 @@ via the bundler API at `bundles.aem.page`.
 # Store your admin key (a RUM bundler admin token)
 oversight login --key=<ADMIN_KEY>
 
-# Mint a domain key for a new domain (requires admin key)
+# Mint (retrieve-or-create) a domain key. Prints a fingerprint, not the full key.
 oversight mint example.com
+
+# Replace a compromised domain key (POST, skips GET)
+oversight rotate example.com
 
 # Quick traffic overview for a domain
 oversight status example.com
+oversight status www.aem.live
 
 # Page views over the last month
 oversight pageviews example.com --range=month
@@ -49,8 +54,9 @@ oversight keys
 | Command | Purpose |
 |---------|---------|
 | `login` | Store admin key for domain key minting |
-| `mint <domain>` | Mint (POST) or retrieve (GET) a domain key |
-| `keys` | List cached domain keys |
+| `mint <domain>` | Retrieve (GET) or create (POST) a domain key. Fingerprint only, unless `--show` |
+| `rotate <domain>` | Replace a domain key (POST, skips GET). Use when a key is compromised |
+| `keys` | List cached domain keys (fingerprints) |
 | `status <domain>` | Quick overview: page views, visits, engagement, vitals |
 | `pageviews <domain>` | Page view time series |
 | `vitals <domain>` | Core Web Vitals (LCP, CLS, INP) at p75 |
@@ -62,6 +68,7 @@ oversight keys
 - `--range=month` — Time range: `day`, `week`, `month`, `year` (default: `month`)
 - `--date=YYYY-MM-DD` — Specific date for bundle fetch (default: today)
 - `--limit=20` — Number of results for top-pages
+- `--show` — Print the full domain key from `mint` / `rotate` (off by default)
 
 ## Architecture
 
@@ -71,13 +78,34 @@ oversight keys
     and sent as `Authorization: Bearer <key>` to the `/domainkey/<domain>` endpoint.
   - **Domain key**: A per-domain token returned by the mint endpoint. Passed as
     `?domainkey=<key>` query parameter on bundle data requests.
-- **Minting**: `POST /domainkey/<domain>` with Bearer admin key → creates a new
-  domain key (201). `GET /domainkey/<domain>` with Bearer admin key → retrieves
-  an existing domain key.
+- **Minting**: `oversight mint <domain>` is retrieve-or-create: GET first, POST
+  only if GET yields nothing. `POST /domainkey/<domain>` with Bearer admin key
+  creates **or replaces** a domain key (201). `GET /domainkey/<domain>` retrieves
+  the current key without replacing it.
+- **Rotation**: `oversight rotate <domain>` POSTs immediately (skips GET) and
+  updates the cached key. Use this when a domain key has leaked; the previous
+  key stops working. Like `mint`, it prints a fingerprint unless you pass `--show`.
 - **Data format**: Bundles are JSON arrays of sampled page-load events grouped
   by time slot. Each bundle has a `weight` field for extrapolation.
 - **Sampling**: Data is sampled; always multiply by `weight` for accurate counts.
 - **Granularity**: `/bundles/<domain>/YYYY/MM` (month), `/bundles/<domain>/YYYY/MM/DD` (day)
+
+## Synthetic aggregate domains
+
+A domain containing a colon — for example `aem.live:all` — is a **synthetic
+aggregate**. It rolls up many AEM sites rather than describing one site. The
+real domain for the AEM/Helix website is `www.aem.live`; `aem.live:all` is the
+aggregate across all AEM sites.
+
+Most checkpoints are not collected on these aggregates (only `top` and CWV
+`cwv-lcp` / `cwv-cls` / `cwv-inp` / `cwv-ttfb` / `cwv-fid`). Metrics that need
+`enter`, `click`, `viewblock`, `viewmedia`, or other stripped checkpoints
+**cannot be computed**. `oversight status` reports `visits`, `engagement`, and
+`engagementRate` as `n/a (synthetic aggregate domain)` — never as `0` / `0%`.
+Page views and Core Web Vitals still work.
+
+Do not query a `:all` aggregate when the user asked about the AEM website
+itself; use `www.aem.live`.
 
 ## Going beyond the CLI: `@adobe/rum-distiller`
 
@@ -281,18 +309,19 @@ const r = await fetch(
 Two things to know up front, both unintuitive:
 
 **1. Use day granularity, not month, for windows wider than a day.** The
-bundler caps each response at ~8k bundles, so a month-granularity fetch on
-`aem.live:all` returns roughly **9× fewer bundles than the same period
-fetched day-by-day**:
+bundler caps each response, so a month-granularity fetch on `aem.live:all`
+returns only a fraction of the bundles you'd get fetching the same period
+day-by-day:
 
 ```
-month  /bundles/aem.live:all/2026/04           → 8,155 bundles
-day    /bundles/aem.live:all/2026/04/{01..30}  → 73,182 bundles
+month  /bundles/aem.live:all/YYYY/MM           → hits the per-response cap
+day    /bundles/aem.live:all/YYYY/MM/{01..31}  → full period
 ```
 
 The OpTel Explorer's standard date range falls into this trap on `:all`
 domains for ranges > 31 days — it uses the month branch and silently sees
-~10% of the data. When you script the analysis yourself, paginate per-day:
+a small slice of the data. When you script the analysis yourself, paginate
+per-day:
 
 ```javascript
 const all = [];
@@ -331,8 +360,10 @@ classifications, not customer-tier engagements.
 
 Also: `aem.live:all` retains only the `top` checkpoint and CWV checkpoints
 (`cwv-lcp/cls/inp/ttfb/fid`). All click, view, enter, navigate, and consent
-events are stripped. Don't try to compute visits, bounces, or acquisition
-source from this aggregate — those series will return zero.
+events are stripped. Don't compute visits, bounces, engagement, or acquisition
+source from this aggregate — those series are unavailable (the CLI reports
+`n/a (synthetic aggregate domain)`, never a misleading `0`). See **Synthetic
+aggregate domains** above.
 
 ### Worked example: counting Adobe-served domains for a quarter
 
@@ -346,7 +377,7 @@ const { DataChunks, series, facets, utils } =
 
 const KEY = '<aem.live:all domain key>';
 
-// 1. Pull 92 days of bundles per-day. ~225k bundles for a quarter.
+// 1. Pull 92 days of bundles per-day.
 const all = [];
 for (const [yr, mo, dmax] of [[2026,'03',31],[2026,'04',30],[2026,'05',31]]) {
   for (let d = 1; d <= dmax; d++) {
@@ -379,19 +410,19 @@ for (const t of ['aemcs', 'ams', 'helix', 'commerce']) {
 }
 ```
 
-Sample output for Mar 1 – May 31, 2026:
+Sample output (placeholders — do not paste real aggregate figures):
 
 ```
-aemcs     observed=4188  chao1=6603  CI=[6302 – 6946]
-ams       observed=2271  chao1=3315  CI=[3140 – 3525]
-helix     observed=644   chao1=1433  CI=[1207 – 1752]
-commerce  observed=1543  chao1=2017  CI=[1911 – 2154]
+aemcs     observed=<sObs>  chao1=<sHat>  CI=[<low> – <high>]
+ams       observed=<sObs>  chao1=<sHat>  CI=[<low> – <high>]
+helix     observed=<sObs>  chao1=<sHat>  CI=[<low> – <high>]
+commerce  observed=<sObs>  chao1=<sHat>  CI=[<low> – <high>]
 ```
 
-The "observed" column is roughly 2× what you'd see in the OpTel Explorer
-sidebar for the same window (because the explorer uses month granularity).
-The Chao1 column corrects for the further sampling that happens at the
-bundler's per-event probabilistic threshold.
+The "observed" column is higher than the OpTel Explorer sidebar for the same
+window (because the explorer uses month granularity). The Chao1 column
+corrects for the further sampling that happens at the bundler's per-event
+probabilistic threshold.
 
 ### Sampling threshold details (for tuning)
 
@@ -455,8 +486,16 @@ and the `weightedThreshold` helper in `src/support/util.js`.
 ## Don't
 
 - Don't use raw event counts — always weight-adjusted (`sum of weights`)
-- Don't expose admin keys or domain keys in logs, commit messages, or PR descriptions
+- Don't expose admin keys or domain keys in logs, commit messages, or PR descriptions.
+  `mint` and `rotate` print an 8-character fingerprint by default; only `--show`
+  prints the full value, and never copy that into a transcript or PR
 - Don't assume a domain key exists — mint one first if you get 401 on bundle fetches
-- Don't confuse GET (retrieve existing key) with POST (mint new key) on `/domainkey/`
+- Don't confuse GET (retrieve existing key) with POST (mint/replace key) on
+  `/domainkey/`. Plain `oversight mint <domain>` is retrieve-or-create (GET first).
+  If a domain key is compromised, `oversight rotate <domain>` POSTs a new key
+  and updates the cache; the previous key stops working
+- Don't report `visits: 0` / `engagement: 0` for a synthetic aggregate domain
+  (any domain containing a colon, e.g. `aem.live:all`). Those checkpoints are
+  not collected; the CLI reports `n/a`. The AEM website itself is `www.aem.live`
 - Don't forget `utils.addCalculatedProps(b)` before loading bundles into `DataChunks` —
   visits and core-web-vitals series silently return zero/undefined without it
