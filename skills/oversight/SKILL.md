@@ -59,7 +59,7 @@ oversight keys
 | `keys` | List cached domain keys (fingerprints) |
 | `status <domain>` | Quick overview: page views, visits, engagement, vitals |
 | `pageviews <domain>` | Page view time series |
-| `vitals <domain>` | Core Web Vitals (LCP, CLS, INP) at p75 |
+| `vitals <domain>` | Core Web Vitals (LCP, CLS, INP) at p75. Check `sampleSize`, and see [Reading LCP honestly](#reading-lcp-honestly) before quoting LCP |
 | `top-pages <domain>` | Top URLs by page views |
 | `bundles <domain>` | Fetch raw bundle data for a date |
 
@@ -192,6 +192,42 @@ for (const f of dc.facets.url.slice(0, 20)) {
 `url`, `plainURL`, `userAgent`, `checkpoint`, `vitals`, `lcpTarget`, `lcpSource`,
 `acquisitionSource`, `enterSource`, `mediaTarget`.
 
+**Facet factories** from `facetFns.*` — `checkpointSource(cp)` and
+`checkpointTarget(cp)` build a facet over the `source` / `target` of one
+checkpoint. These are how you turn raw checkpoints into behaviour, and they
+answer questions no built-in facet covers:
+
+```javascript
+import { facetFns } from '@adobe/rum-distiller/facets.js';
+
+dc.addFacet('model',      facetFns.checkpointTarget('formsubmit'));
+dc.addFacet('clicked',    facetFns.checkpointSource('click'));
+dc.addFacet('failStatus', facetFns.checkpointTarget('missingresource'));
+dc.addFacet('errMessage', facetFns.checkpointTarget('error'));
+```
+
+What `source` and `target` mean is per-checkpoint, and not guessable — read it
+off the data before interpreting:
+
+| checkpoint | `source` | `target` |
+| --- | --- | --- |
+| `click` | element / component selector | destination URL (if a navigation) |
+| `viewblock` | block or panel name | — |
+| `viewmedia` | container element | media URL |
+| `missingresource` | the URL that failed | **HTTP status** (`500`, `410`, ...) |
+| `error` | error type / family | error message |
+| `enter`, `reload`, `back_forward` | referrer (`enter`) or page URL | **visibility** (`visible` / `hidden`) |
+| `loadresource` | the fetched endpoint | number of resources |
+| `a11y` | severity (`off` / `low` / `medium` / `high`) | the severity scale |
+| `formsubmit` | form / surface name | (app-defined; e.g. the handler) |
+| `language` | language | full locale (`en-US`) |
+| `cwv-lcp` | the LCP element | — |
+| `cwv-cls` | the shifting element | — |
+
+Checkpoint names beyond the standard set are app-defined, so treat this table as
+a starting point and confirm against
+`dc.addFacet('cp', facets.checkpoint)` for the site you are looking at.
+
 **Utility helpers** from `utils.*`:
 `addCalculatedProps` (always run on raw bundles before loading), `scoreCWV`,
 `scoreBundle`, `toHumanReadable`, `classifyAcquisition`, `reclassifyAcquisition`.
@@ -227,6 +263,61 @@ dc.filter = { url: ['https://www.example.com/'], userAgent: ['mobile'] };
 Filter values are arrays; the default combiner is `some` (OR within a facet,
 AND across facets). Pass a 3rd argument to `addFacet` (`'every'`, `'none'`,
 `'never'`) for non-default semantics.
+
+### Reading LCP honestly
+
+LCP is the CWV metric most likely to make you report a regression that isn't
+there. Two independent traps, both measured on a real app domain (795 bundles
+over four months, 119 of them carrying `cwv-lcp`):
+
+**1. A small sample makes LCP meaningless, and the CLI will not warn you.**
+On a low-traffic domain, `oversight vitals` reported `lcp 6.99s` scored *poor*
+for a month whose `sampleSize` was **8** — resting on exactly two LCP
+observations, 1,160 ms and 8,416 ms. The same domain over a year (`sampleSize`
+122) reported **1.50 s**, scored *good*. One slow load produced an apparent
+4.7x regression. **Always read `sampleSize` before quoting a vitals number**, and
+prefer a wider `--range` on a quiet site rather than believing the narrow one.
+
+**2. Sessions with no interaction carry an unbounded LCP tail.**
+LCP is finalized at the first user interaction (or when the page is hidden). A
+session that renders and is then left alone keeps accumulating, so its reported
+LCP is a measure of *how long the tab sat there*, not of load performance.
+Grouping the same dataset by click count:
+
+| group | bundles | p75 | p90 | max |
+| --- | --- | --- | --- | --- |
+| all (what `vitals` reports) | 795 | 7,876 ms | 36,636 ms | **2,843,752 ms** |
+| `clicks >= 1` | 146 | 7,136 ms | 16,600 ms | 628,576 ms |
+| `clicks >= 3` | 114 | 6,618 ms | 13,206 ms | 366,732 ms |
+
+A p90 of 36.6 s and a max of **47 minutes** are not page loads. Restricting to
+sessions with real interaction cuts p90 by 64% and leaves p75 close to where it
+was — i.e. the tail is noise, the p75 is roughly honest, and **the mean is
+worthless**. CWV is judged at p75 for exactly this reason; never quote a mean.
+
+```javascript
+// Interaction-gated LCP. facets/series as usual, then filter by a facet you add:
+dc.addFacet('interacted', (bundle) =>
+  bundle.events.some((e) => e.checkpoint === 'click') ? ['yes'] : ['no']);
+dc.filter = { interacted: ['yes'] };
+console.log('LCP p75 (interacted only):', dc.totals.lcp.percentile(75));
+```
+
+**What does NOT work: filtering on entry visibility.** It is tempting to blame
+background/hidden tab opens, and to filter them out with
+`checkpointTarget('enter') === 'hidden'`. Measured on the same dataset, that
+filter is a **no-op for LCP**:
+
+| entry visibility | bundles | with `cwv-lcp` |
+| --- | --- | --- |
+| `hidden` | 121 | **0 (0.0%)** |
+| `visible` | 240 | 114 (47.5%) |
+| no `enter`/`reload` event | 434 | 5 (1.2%) |
+
+`web-vitals` already suppresses LCP for a page that starts hidden, so those
+bundles never contribute an LCP value and there is nothing to exclude. The
+multi-minute outliers all sit in the `visible` group — they are *foreground*
+sessions that were never interacted with. Gate on interaction, not visibility.
 
 ### Histograms and clusters
 
