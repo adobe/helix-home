@@ -50,7 +50,12 @@ parser reads the token after `--json` as that flag's value.
    month-over-month log mean and log sd, annualised growth over the full window
    *and* the trailing 6 months, and the implied 12-month-ahead level uncertainty
    (`mom_sd × sqrt(12)`). It emits a ready-to-paste component stanza — and
-   **withholds** it when the window still looks contaminated.
+   **withholds** it when the window still looks contaminated: `fit` runs the
+   same break scan as `detect-breaks` on its own window and withholds on any
+   break it finds (even when full and trailing growth agree in sign, as the
+   sample's `compute_authoring` does at −24% and −64%), as well as on
+   implausible growth, an implied uncertainty over 100%, or a full-vs-6m sign
+   flip. The warning names the break month to pass to `--from`.
 3. **Split fixed from usage.** A contractual subscription does not grow with
    traffic: a contractual line measures a CV of exactly 0.0%. Model it as its
    own component with `sig_m: 0` and a `g_sd` that represents renewal uplift
@@ -60,7 +65,7 @@ parser reads the token after `--json` as that flag's value.
    *on that growth*), `sig_m` (month-to-month lognormal jitter). 200,000 runs by
    default; `--runs N`, `--seed N` for a reproducible band.
 5. **Sanity-check the width.** `simulate` warns when the p10–p90 width is under
-   ~15% of the median for a 12-month horizon. A tighter band on a one-year-ahead
+   15% of the median (±7.5%) for a 12-month horizon. A tighter band on a one-year-ahead
    cloud forecast is a modelling bug, almost always an under-set `g_sd`.
 6. **`variance`** to see where the spread comes from, and **`scenario`** for line
    items that may not survive into the period at all.
@@ -81,8 +86,8 @@ parser reads the token after `--json` as that flag's value.
   rationale. Never damp without recording the reason.
 - **Fiscal vs calendar year.** A Dec–Nov fiscal year is not Jan–Dec.
   `--fiscal-year-start 12` computes the difference against the calendar year
-  with common random numbers rather than assuming it is zero — on the worked
-  example it is −1.3%, inside the band but not zero.
+  on the same simulated paths (common random numbers) rather than assuming it
+  is zero — on the worked example it is −1.2%, inside the band but not zero.
 
 ## Reading the output
 
