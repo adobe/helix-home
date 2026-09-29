@@ -227,13 +227,20 @@ async function cmdIncidents(args) {
   var groupClause = groupId
     ? 'assignment_group=' + groupId
     : 'assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744';
-  var query = groupClause + '^active=true^stateIN' + stateFilter + '^ORDERBYDESCopened_at';
+  // active=true excludes closed records (with it, --state=resolved returned
+  // nothing for a group that had resolved incidents), so it is only added when
+  // every requested state is an open-type one (1, -5, 2, 60), not for
+  // resolved, cancelled, all, or a raw value outside that set.
+  // The result is bounded by sysparm_limit=20, newest opened first.
+  var openStates = ['1', '-5', '2', '60'];
+  var onlyOpen = stateFilter.split(',').every(function(s) { return openStates.indexOf(s.trim()) !== -1; });
+  var query = groupClause + (onlyOpen ? '^active=true' : '') + '^stateIN' + stateFilter + '^ORDERBYDESCopened_at';
   var fields = 'number,short_description,state,priority,assigned_to,assignment_group,opened_at,sys_id';
   var path = '/api/now/table/' + INCIDENT_TABLE + '?sysparm_query=' + encodeURIComponent(query) + '&sysparm_fields=' + fields + '&sysparm_limit=20&sysparm_display_value=true';
   var data = await apiGet(path);
   var results = data.result || [];
   if (results.length === 0) {
-    console.log('No active on-call incidents.');
+    console.log(onlyOpen ? 'No active on-call incidents.' : 'No on-call incidents in state ' + stateFilter + '.');
     return;
   }
   var incidents = results.map(function(r) {
@@ -326,8 +333,6 @@ function readJsonFile(path, fallback) {
   try { return JSON.parse(require('fs').readFileSync(path, 'utf8')); } catch (e) { return fallback; }
 }
 
-// The standing instruction handed to the investigator scoop on each tick.
-// Must contain NO single quotes (it is embedded in a shell-escaped --filter).
 // oncall watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]
 // Event-driven: watches the Slack channel that receives ServiceNow escalation
 // messages (default helix-ops) and wakes the given scoop ONLY when a new-incident
@@ -693,19 +698,21 @@ async function cmdMonday(args) {
 function showHelp() {
   console.log('oncall — Adobe On-Call incident management\n');
   console.log('Commands:');
-  console.log('  incidents [--state=STATE]     List active on-call incidents');
+  console.log('  incidents [--state=STATE] [--group=ID]');
+  console.log('                                List on-call incidents (default: open, wip, re-open; max 20)');
   console.log('  get <NUMBER>                  View incident details');
   console.log('  ack <NUMBER>                  Acknowledge an incident');
   console.log('  update <NUMBER> --state=STATE [--comment=TEXT]');
   console.log('                                Update incident state');
   console.log('  shifts [--days=N]             View your upcoming shifts (default 14 days)');
-  console.log('  who [--group=ID]              Show who is on-call');
+  console.log('  who [--group=ID]              Show who is on-call (alias: whoisoncall)');
   console.log('  watch --scoop <name> [--channel <id>] [--workspace <id>] [--filter <js>] [--force]');
   console.log('                                Event-driven: wake a scoop to investigate on each new-incident');
   console.log('                                escalation (Slack), so legwork is done before you ack');
   console.log('  watch-poll [--json]           List new (un-surfaced) incidents; used by the watcher scoop');
   console.log('  unwatch                       Stop watching');
-  console.log('  history [--period=PERIOD]     Incidents for a time period');
+  console.log('  history [--period=PERIOD] [--group=ID]');
+  console.log('                                Incidents opened in a time period, any state (max 50)');
   console.log('  monday [--limit N] [--date Nd]  Monday protocol output\n');
   console.log('Periods: today, yesterday, this_week, last_week (default), this_month, last_month');
   console.log('States: open, pending, wip, resolved, cancelled, re-open, all (or a raw numeric value)');
