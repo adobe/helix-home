@@ -35,6 +35,8 @@ NOTES
   Growth uncertainty is drawn ONCE PER SIMULATED YEAR, not per month. Monthly
   jitter averages down by sqrt(12) and barely widens an annual total. See
   references/methodology.md.
+  fit runs the detect-breaks scan on its own window and withholds the suggested
+  stanza when it finds a regime break there; refit with --from the break month.
   Put the file argument BEFORE valueless flags: "fit s.json --json", because
   "--json s.json" makes the parser read the path as the flag's value.
 `.trim();
@@ -366,10 +368,24 @@ function fitSeries(series, opts = {}) {
       `implied 12-month uncertainty is ${pctStr(result.implied_12m_uncertainty, 0)} — almost certainly contaminated by a break or a partial month; damp it and record a 'why'`
     );
   }
+  // The same scan detect-breaks runs, over the clean points of THIS window.
+  // A level break inside the window contaminates both growth figures even
+  // when they agree in sign (a ramp then a halving reads -24% full, -64% 6m).
+  const strongest = scanBreaks(used.filter((p) => !p.partial && !p.estimated), 1.5, 1).breaks[0] || null;
+  result.regime_break = strongest
+    ? { at: strongest.at, ratio: strongest.ratio, t_stat: strongest.t_stat, direction: strongest.direction }
+    : null;
+  if (strongest) {
+    const step = strongest.ratio >= 1 ? `${strongest.ratio.toFixed(2)}x` : `÷${(1 / strongest.ratio).toFixed(2)}`;
+    warnings.push(
+      `regime break inside the fit window: ${strongest.direction} ${step} at ${strongest.at}${strongest.t_stat === null ? '' : ` (t=${strongest.t_stat})`} — run '${TOOL} detect-breaks', then refit with --from ${strongest.at}`
+    );
+  }
   result.warnings = warnings;
   // A suggestion derived from a break-contaminated window is worse than no
   // suggestion, so label it rather than let it be pasted into a config.
   const contaminated =
+    result.regime_break !== null ||
     (result.growth_full !== null && Math.abs(result.growth_full) > 5) ||
     (result.implied_12m_uncertainty !== null && result.implied_12m_uncertainty > 1.0) ||
     (result.growth_full !== null &&
@@ -445,6 +461,52 @@ async function cmdFit(positional, flags) {
 }
 
 // ── detect-breaks ─────────────────────────────────────────────────────
+// Every split point with at least MIN_SEG clean points per side: segment-mean
+// ratio plus a Welch t on log levels. Shared by detect-breaks and fit, so fit
+// can never offer a stanza for a window detect-breaks would call broken.
+function scanBreaks(usable, threshold = 1.5, top = 3) {
+  const candidates = [];
+  const MIN_SEG = 3;
+  for (let k = MIN_SEG; k <= usable.length - MIN_SEG; k++) {
+    const before = usable.slice(0, k).map((p) => p.amount);
+    const after = usable.slice(k).map((p) => p.amount);
+    const mb = mean(before);
+    const ma = mean(after);
+    if (mb <= 0 || ma <= 0) continue;
+    const ratio = ma / mb;
+    // Welch t on log levels: distinguishes a crisp modest step (a contract
+    // change) from a large step inside a very noisy series.
+    const lb = before.map(Math.log);
+    const la = after.map(Math.log);
+    const vb = lb.length > 1 ? stdev(lb) ** 2 / lb.length : 0;
+    const va = la.length > 1 ? stdev(la) ** 2 / la.length : 0;
+    const se = Math.sqrt(vb + va);
+    const t = se > 0 ? (mean(la) - mean(lb)) / se : null;
+    candidates.push({
+      t_stat: t === null ? null : Number(t.toFixed(2)),
+      at: usable[k].month,
+      ratio,
+      abs_log_ratio: Math.abs(Math.log(ratio)),
+      mean_before: mb,
+      mean_after: ma,
+      n_before: before.length,
+      n_after: after.length,
+      direction: ratio > 1 ? 'step up' : 'step down',
+    });
+  }
+  candidates.sort((a, b) => b.abs_log_ratio - a.abs_log_ratio);
+  const logThreshold = Math.abs(Math.log(threshold));
+  const breaks = candidates
+    .filter(
+      (c) =>
+        c.abs_log_ratio >= logThreshold ||
+        // crisp modest step: strongly significant AND at least 1.25x
+        (c.t_stat !== null && Math.abs(c.t_stat) > 4 && c.abs_log_ratio >= Math.log(1.25))
+    )
+    .slice(0, top);
+  return { candidates, breaks };
+}
+
 function detectBreaks(series, opts = {}) {
   const threshold = opts.threshold || 1.5;
   const top = opts.top || 3;
@@ -486,45 +548,7 @@ function detectBreaks(series, opts = {}) {
     }
   }
 
-  const candidates = [];
-  const MIN_SEG = 3;
-  for (let k = MIN_SEG; k <= usable.length - MIN_SEG; k++) {
-    const before = usable.slice(0, k).map((p) => p.amount);
-    const after = usable.slice(k).map((p) => p.amount);
-    const mb = mean(before);
-    const ma = mean(after);
-    if (mb <= 0 || ma <= 0) continue;
-    const ratio = ma / mb;
-    // Welch t on log levels: distinguishes a crisp modest step (a contract
-    // change) from a large step inside a very noisy series.
-    const lb = before.map(Math.log);
-    const la = after.map(Math.log);
-    const vb = lb.length > 1 ? stdev(lb) ** 2 / lb.length : 0;
-    const va = la.length > 1 ? stdev(la) ** 2 / la.length : 0;
-    const se = Math.sqrt(vb + va);
-    const t = se > 0 ? (mean(la) - mean(lb)) / se : null;
-    candidates.push({
-      t_stat: t === null ? null : Number(t.toFixed(2)),
-      at: usable[k].month,
-      ratio,
-      abs_log_ratio: Math.abs(Math.log(ratio)),
-      mean_before: mb,
-      mean_after: ma,
-      n_before: before.length,
-      n_after: after.length,
-      direction: ratio > 1 ? 'step up' : 'step down',
-    });
-  }
-  candidates.sort((a, b) => b.abs_log_ratio - a.abs_log_ratio);
-  const logThreshold = Math.abs(Math.log(threshold));
-  const breaks = candidates
-    .filter(
-      (c) =>
-        c.abs_log_ratio >= logThreshold ||
-        // crisp modest step: strongly significant AND at least 1.25x
-        (c.t_stat !== null && Math.abs(c.t_stat) > 4 && c.abs_log_ratio >= Math.log(1.25))
-    )
-    .slice(0, top);
+  const { candidates, breaks } = scanBreaks(usable, threshold, top);
 
   const full = fitSeries(series, {});
   const out = {
@@ -736,8 +760,17 @@ function windowFor(cfg) {
 // months of that year. Monthly jitter is iid and averages down by sqrt(12).
 function simulateCore(cfg, opts = {}) {
   const runs = opts.runs || RUNS;
-  const rng = mulberry32(opts.seed === undefined ? SEED : opts.seed);
+  const seed = opts.seed === undefined ? SEED : opts.seed;
+  const rng = mulberry32(seed);
   const normal = makeNormal(rng);
+  // opts.shift > 0 also totals a second window `shift` months later on the
+  // SAME paths (common random numbers): months both windows cover reuse the
+  // same draws, and the months only the shifted window reaches draw from a
+  // separate stream, so the main stream (and every unshifted number) is
+  // exactly what a shift-free run produces.
+  const shift = opts.shift || 0;
+  const extNormal = shift > 0 ? makeNormal(mulberry32((seed ^ 0x5bd1e995) | 0)) : null;
+  const shiftedTotals = shift > 0 ? new Float64Array(runs) : null;
   const useGrowth = opts.growth !== false;
   const useJitter = opts.jitter !== false;
   const useToggles = opts.toggles !== false;
@@ -754,6 +787,7 @@ function simulateCore(cfg, opts = {}) {
 
   for (let r = 0; r < runs; r++) {
     let total = 0;
+    let shiftedTotal = 0;
     for (let ci = 0; ci < nC; ci++) {
       const c = comps[ci];
       let sub = 0;
@@ -769,14 +803,16 @@ function simulateCore(cfg, opts = {}) {
       // Walk every month since the base, including the pre-window months an
       // accrue_months / fiscal shift implies, so growth compounds over them.
       const lastMonth = offset + H;
-      for (let t = 1; t <= lastMonth; t++) {
+      let shiftedSub = 0;
+      for (let t = 1; t <= lastMonth + shift; t++) {
         const yr = Math.floor((t - 1) / 12);
+        const draw = t <= lastMonth ? normal : extNormal;
         if (perMonthGrowth) {
           // THE BUG, kept switchable for audit: a fresh draw every month.
-          g = c.g_mu + (useGrowth && c.g_sd > 0 ? c.g_sd * normal() : 0);
+          g = c.g_mu + (useGrowth && c.g_sd > 0 ? c.g_sd * draw() : 0);
         } else if (yr !== yearOfDraw) {
           // One persistent draw per simulated year.
-          g = c.g_mu + (useGrowth && c.g_sd > 0 ? c.g_sd * normal() : 0);
+          g = c.g_mu + (useGrowth && c.g_sd > 0 ? c.g_sd * draw() : 0);
           yearOfDraw = yr;
         }
         if (t > offset) {
@@ -786,14 +822,16 @@ function simulateCore(cfg, opts = {}) {
           let level = c.base * Math.exp(accrued + (g * 0.5) / 12);
           if (useJitter && c.sig_m > 0) {
             // Median-preserving lognormal jitter.
-            level *= Math.exp(c.sig_m * normal() - (c.sig_m * c.sig_m) / 2);
+            level *= Math.exp(c.sig_m * draw() - (c.sig_m * c.sig_m) / 2);
           }
-          sub += level;
+          if (t <= lastMonth) sub += level;
+          if (t > offset + shift) shiftedSub += level;
         }
         accrued += g / 12;
       }
       per[ci][r] = sub;
       total += sub;
+      shiftedTotal += shiftedSub;
     }
     if (useToggles) {
       for (let ti = 0; ti < cfg.toggles.length; ti++) {
@@ -801,13 +839,15 @@ function simulateCore(cfg, opts = {}) {
         const p = overrides[t.name] === undefined ? t.prob : overrides[t.name];
         if (p >= 1 || (p > 0 && rng() < p)) {
           total += (t.annual * H) / 12;
+          shiftedTotal += (t.annual * H) / 12;
           toggleHits[ti]++;
         }
       }
     }
     totals[r] = total;
+    if (shiftedTotals) shiftedTotals[r] = shiftedTotal;
   }
-  return { totals, per, runs, toggleHits };
+  return { totals, per, runs, toggleHits, shiftedTotals };
 }
 
 const PCTS = [0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95];
@@ -869,7 +909,14 @@ async function cmdSimulate(positional) {
   const raw = await loadJson(positional[0], 'config.json');
   const cfg = normalizeConfig(raw, positional[0]);
   const win = windowFor(cfg);
-  const res = simulateCore(cfg, { offset: win.offset });
+  // Fiscal vs calendar year: compute the difference, never assume it is zero.
+  // The calendar year covering the same period starts in the next January;
+  // that window sits N months further along the same growth curve, and is
+  // totalled on the same simulated paths (common random numbers).
+  const fiscal = cfg.fiscal_year_start !== 1 && win.startIdx !== null;
+  const cyStartIdx = fiscal ? fyStartIndex(win.startIdx, 1) : null;
+  const shift = fiscal ? cyStartIdx - win.startIdx : 0;
+  const res = simulateCore(cfg, { offset: win.offset, shift });
   const s = summarize(res.totals);
   const warn = narrowBandWarning(cfg, s);
 
@@ -878,15 +925,9 @@ async function cmdSimulate(positional) {
     return { name: c.name, kind: c.kind, p10: percentile(sorted, 0.1), p50: percentile(sorted, 0.5), p90: percentile(sorted, 0.9) };
   });
 
-  // Fiscal vs calendar year: compute the difference, never assume it is zero.
   let fyVsCy = null;
-  if (cfg.fiscal_year_start !== 1 && win.startIdx !== null) {
-    // The calendar year covering the same period starts in the next January;
-    // that window sits N months further along the same growth curve.
-    const cyStartIdx = fyStartIndex(win.startIdx, 1);
-    const shift = cyStartIdx - win.startIdx;
-    const cyRes = simulateCore(cfg, { offset: win.offset + shift, seed: SEED }); // common random numbers
-    const cyS = summarize(cyRes.totals);
+  if (fiscal) {
+    const cyS = shift > 0 ? summarize(res.shiftedTotals) : s;
     fyVsCy = {
       fiscal: { start: monthLabel(win.startIdx), p50: s.p50 },
       calendar: { start: monthLabel(cyStartIdx), p50: cyS.p50 },
