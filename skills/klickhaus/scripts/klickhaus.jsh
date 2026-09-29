@@ -108,7 +108,11 @@ async function ensureAuth() {
 
 async function runQuery(sql) {
   const config = await ensureAuth();
-  const url = CLICKHOUSE_URL + '?database=' + DATABASE;
+  // Request JSON via default_format instead of appending ` FORMAT JSON` to
+  // the SQL: an appended clause is silently swallowed when the SQL ends in a
+  // `-- comment` line, and ClickHouse then answers in TabSeparated, which
+  // response.json() cannot parse.
+  const url = CLICKHOUSE_URL + '?database=' + DATABASE + '&default_format=JSON';
   const auth = btoa(config.user + ':' + config.password);
 
   const response = await fetch(url, {
@@ -116,7 +120,7 @@ async function runQuery(sql) {
     headers: {
       'Authorization': 'Basic ' + auth,
     },
-    body: sql + ' FORMAT JSON',
+    body: sql,
   });
 
   if (!response.ok) {
@@ -678,6 +682,9 @@ async function readStdin() {
 
 async function cmdQuery(args) {
   let sql = '';
+  // Flags such as --table= must not become part of the SQL: `--` starts a
+  // ClickHouse line comment. The SQL names its own table, so they are ignored.
+  const sqlArgs = args.filter(a => !/^--[a-z][\w-]*(=.*)?$/i.test(a));
   const fileArg = args.find(a => a.startsWith('--file='));
   if (fileArg) {
     const filePath = fileArg.split('=').slice(1).join('=');
@@ -685,8 +692,8 @@ async function cmdQuery(args) {
     // behaves like Node's, unlike the promise-style methods.
     const fs = require('fs');
     sql = fs.readFileSync(filePath, 'utf8');
-  } else if (args.length > 0) {
-    sql = args.join(' ');
+  } else if (sqlArgs.length > 0) {
+    sql = sqlArgs.join(' ');
   } else if (!process.stdin.isTTY) {
     sql = await readStdin();
   }
