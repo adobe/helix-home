@@ -28,6 +28,19 @@ const RANGES = {
   '7d': '7 days ago',
 };
 
+// Cursor pagination cap. entitySearch returns up to 200 entities per page, so
+// this covers 10,000 monitors; hitting it is reported on stderr, never silent.
+const MAX_PAGES = 50;
+
+// set-period / set-script: each monitor type has its own update mutation, and
+// only the scripted types accept `script` in their input.
+const UPDATE_MUTATIONS = {
+  SIMPLE: { mutation: 'syntheticsUpdateSimpleMonitor', script: false },
+  BROWSER: { mutation: 'syntheticsUpdateSimpleBrowserMonitor', script: false },
+  SCRIPT_BROWSER: { mutation: 'syntheticsUpdateScriptBrowserMonitor', script: true },
+  SCRIPT_API: { mutation: 'syntheticsUpdateScriptApiMonitor', script: true },
+};
+
 const MONITOR_PERIODS = [
   'EVERY_MINUTE', 'EVERY_5_MINUTES', 'EVERY_10_MINUTES', 'EVERY_15_MINUTES',
   'EVERY_30_MINUTES', 'EVERY_HOUR', 'EVERY_6_HOURS', 'EVERY_12_HOURS', 'EVERY_DAY',
@@ -250,16 +263,51 @@ function table(rows, headers) {
   }
 }
 
+/**
+ * Follow NerdGraph `nextCursor` until it is null/empty or MAX_PAGES is hit.
+ * build(cursor) returns the query for one page (cursor is null on the first);
+ * extract(data) returns the page's { items, nextCursor }.
+ */
+async function paginate(build, extract, label) {
+  const all = [];
+  let cursor = null;
+  for (let page = 0; page < MAX_PAGES; page += 1) {
+    const res = extract(await gql(build(cursor)));
+    all.push(...(res.items || []));
+    cursor = res.nextCursor;
+    if (!cursor) return all;
+  }
+  console.error('Warning: stopped after ' + MAX_PAGES + ' pages of ' + label + ' (' + all.length
+    + ' results); more exist. Narrow the query to see the rest.');
+  return all;
+}
+
+function cursorArg(cursor) {
+  return cursor ? '(cursor: ' + JSON.stringify(cursor) + ')' : '';
+}
+
+/** All entities matching an entitySearch query, across every results page. */
+async function searchEntities(search, fields, label) {
+  return paginate(function (cursor) {
+    return '{ actor { entitySearch(query: ' + JSON.stringify(search) + ') { results' + cursorArg(cursor)
+      + ' { nextCursor entities { ' + fields + ' } } } } }';
+  }, function (data) {
+    const r = data.actor.entitySearch.results;
+    return { items: r.entities, nextCursor: r.nextCursor };
+  }, label);
+}
+
 async function runNrql(account, query) {
   const data = await gql('{ actor { account(id: ' + account + ') { nrql(query: ' + JSON.stringify(query) + ') { results } } } }');
   const acct = data && data.actor && data.actor.account;
   return (acct && acct.nrql && acct.nrql.results) || [];
 }
 
-/** Resolve a monitor name or guid to { guid, name, accountId }. */
+/** Resolve a monitor name or guid to { guid, name, accountId, monitorType }. */
 async function resolveMonitor(nameOrGuid, account) {
   if (looksLikeGuid(nameOrGuid)) {
-    const data = await gql('{ actor { entity(guid: ' + JSON.stringify(nameOrGuid) + ') { guid name accountId } } }');
+    const data = await gql('{ actor { entity(guid: ' + JSON.stringify(nameOrGuid) + ') { guid name accountId'
+      + ' ... on SyntheticMonitorEntity { monitorType } } } }');
     const e = data.actor.entity;
     if (!e) {
       console.error('No entity with guid ' + nameOrGuid);
@@ -269,9 +317,8 @@ async function resolveMonitor(nameOrGuid, account) {
   }
   const search = "domain = 'SYNTH' AND type = 'MONITOR' AND name = " + nrqlString(nameOrGuid)
     + ' AND accountId = ' + account;
-  const data = await gql('{ actor { entitySearch(query: ' + JSON.stringify(search)
-    + ') { results { entities { guid name accountId } } } } }');
-  const entities = data.actor.entitySearch.results.entities;
+  const entities = await searchEntities(search,
+    'guid name accountId ... on SyntheticMonitorEntityOutline { monitorType }', 'monitor matches');
   if (!entities.length) {
     console.error('No synthetic monitor named "' + nameOrGuid + '" in account ' + account + '.');
     console.error('Run `newrelic monitors` to list them.');
@@ -376,9 +423,14 @@ async function cmdIssues(args) {
   const opts = parseFlags(args);
   const account = await accountId(opts);
   const state = opts.state || 'ACTIVATED';
-  const data = await gql('{ actor { account(id: ' + account + ') { aiIssues { issues(filter: {states: '
-    + state + '}) { issues { issueId title state priority activatedAt closedAt entityNames } } } } } }');
-  const issues = data.actor.account.aiIssues.issues.issues;
+  const issues = await paginate(function (cursor) {
+    return '{ actor { account(id: ' + account + ') { aiIssues { issues('
+      + (cursor ? 'cursor: ' + JSON.stringify(cursor) + ', ' : '') + 'filter: {states: ' + state + '})'
+      + ' { nextCursor issues { issueId title state priority activatedAt closedAt entityNames } } } } } }';
+  }, function (data) {
+    const r = data.actor.account.aiIssues.issues;
+    return { items: r.issues, nextCursor: r.nextCursor };
+  }, 'issues');
   if (opts.json) {
     console.log(JSON.stringify(issues, null, 2));
     return;
@@ -403,10 +455,9 @@ async function cmdMonitors(args) {
   const opts = parseFlags(args);
   const account = await accountId(opts);
   const search = "domain = 'SYNTH' AND type = 'MONITOR' AND accountId = " + account;
-  const data = await gql('{ actor { entitySearch(query: ' + JSON.stringify(search)
-    + ') { results { entities { guid name'
-    + ' ... on SyntheticMonitorEntityOutline { monitorType period monitorSummary { status locationsFailing locationsRunning } } } } } } }');
-  const entities = data.actor.entitySearch.results.entities;
+  const entities = await searchEntities(search, 'guid name'
+    + ' ... on SyntheticMonitorEntityOutline { monitorType period monitorSummary { status locationsFailing locationsRunning } }',
+  'monitors');
   if (opts.json) {
     console.log(JSON.stringify(entities, null, 2));
     return;
@@ -482,9 +533,9 @@ async function cmdChecks(args) {
     console.error('Usage: newrelic checks <NAME|GUID> [--range=1h] [--failed]');
     process.exit(1);
   }
+  const window = since(opts.range);
   const account = await accountId(opts);
   const m = await resolveMonitor(name, account);
-  const window = since(opts.range);
 
   const summary = await runNrql(account, 'SELECT count(*) FROM SyntheticCheck WHERE monitorName = '
     + nrqlString(m.name) + ' FACET result SINCE ' + window);
@@ -518,9 +569,9 @@ async function cmdRequests(args) {
     console.error('the fastest way to see which dependency is failing.');
     process.exit(1);
   }
+  const window = since(opts.range);
   const account = await accountId(opts);
   const m = await resolveMonitor(name, account);
-  const window = since(opts.range);
   const limit = opts.limit || 25;
 
   const rows = await runNrql(account, 'SELECT count(*) FROM SyntheticRequest WHERE monitorName = '
@@ -546,9 +597,7 @@ async function cmdCredentials(args) {
   // account.synthetics. Values are write-only and never returned by any API —
   // only the key name is visible.
   const search = "domain = 'SYNTH' AND type = 'SECURE_CRED' AND accountId = " + account;
-  const data = await gql('{ actor { entitySearch(query: ' + JSON.stringify(search)
-    + ') { results { entities { guid name } } } } }');
-  const creds = data.actor.entitySearch.results.entities;
+  const creds = await searchEntities(search, 'guid name', 'credentials');
   if (opts.json) {
     console.log(JSON.stringify(creds, null, 2));
     return;
@@ -557,6 +606,21 @@ async function cmdCredentials(args) {
   console.log("");
   console.log("Values are write-only: no API returns a secure credential's contents.");
 }
+/** The update mutation for a monitor's type; exits if the type has none here. */
+function updateMutation(m, needsScript) {
+  const entry = UPDATE_MUTATIONS[m.monitorType];
+  if (!entry) {
+    console.error('Cannot update ' + m.name + ': unsupported monitor type ' + (m.monitorType || '(unknown)') + '.');
+    console.error('Supported: ' + Object.keys(UPDATE_MUTATIONS).join(', ') + '. Use `newrelic graphql` for others.');
+    process.exit(1);
+  }
+  if (needsScript && !entry.script) {
+    console.error('Refusing set-script: ' + m.name + ' is a ' + m.monitorType + ' monitor, which has no script.');
+    process.exit(1);
+  }
+  return entry.mutation;
+}
+
 async function cmdSetPeriod(args) {
   const opts = parseFlags(args);
   const name = opts.positional[0];
@@ -573,16 +637,17 @@ async function cmdSetPeriod(args) {
   }
   const account = await accountId(opts);
   const m = await resolveMonitor(name, account);
+  const mutation = updateMutation(m, false);
   if (!opts.confirm) {
     console.error('Refusing to modify ' + m.name + ' without --confirm.');
     console.error('This changes a live monitor: newrelic set-period ' + JSON.stringify(name) + ' ' + period + ' --confirm');
     process.exit(1);
   }
-  // Note: this mutation takes only `guid` and `monitor`. Passing accountId is a
+  // Note: these mutations take only `guid` and `monitor`. Passing accountId is a
   // schema error. Fields left out of `monitor` are preserved.
-  const data = await gql('mutation { syntheticsUpdateScriptApiMonitor(guid: ' + JSON.stringify(m.guid)
+  const data = await gql('mutation { ' + mutation + '(guid: ' + JSON.stringify(m.guid)
     + ', monitor: { period: ' + period + ' }) { errors { description } monitor { name period status } } }');
-  const res = data.syntheticsUpdateScriptApiMonitor;
+  const res = data[mutation];
   if (res.errors && res.errors.length) {
     console.error('Update failed: ' + res.errors.map(function (e) { return e.description; }).join('; '));
     process.exit(1);
@@ -600,6 +665,7 @@ async function cmdSetScript(args) {
   }
   const account = await accountId(opts);
   const m = await resolveMonitor(name, account);
+  const mutation = updateMutation(m, true);
   const script = await fs.readFile(opts.file, 'utf8');
   if (!script || !script.trim()) {
     console.error('Refusing to deploy an empty script.');
@@ -643,9 +709,9 @@ async function cmdSetScript(args) {
     }
     console.log('Backed up ' + byteLen(current) + ' bytes to ' + target);
   }
-  const data = await gql('mutation { syntheticsUpdateScriptApiMonitor(guid: ' + JSON.stringify(m.guid)
+  const data = await gql('mutation { ' + mutation + '(guid: ' + JSON.stringify(m.guid)
     + ', monitor: { script: ' + JSON.stringify(script) + ' }) { errors { description } monitor { name period status } } }');
-  const res = data.syntheticsUpdateScriptApiMonitor;
+  const res = data[mutation];
   if (res.errors && res.errors.length) {
     console.error('Deploy failed: ' + res.errors.map(function (e) { return e.description; }).join('; '));
     process.exit(1);
@@ -681,17 +747,20 @@ function showHelp() {
   console.log('  monitor <NAME|GUID>          Monitor detail, including tags');
   console.log('  script <NAME|GUID>           Print a scripted monitor\'s source');
   console.log('  checks <NAME> [--failed]     Check results, failure messages, locations');
-  console.log('  requests <NAME>              Outbound URLs and HTTP statuses');
+  console.log('  requests <NAME> [--limit=N]  Outbound URLs and HTTP statuses (default 25 rows)');
   console.log('  credentials                  Secure credential keys (never values)');
   console.log('  nrql <QUERY>                 Run NRQL');
   console.log('  graphql <QUERY>              Run raw NerdGraph\n');
   console.log('Mutations (all require --confirm):');
   console.log('  set-period <NAME> <PERIOD>   Change how often a monitor runs');
-  console.log('  set-script <NAME> --file=F   Replace a scripted monitor\'s source (backs up first)\n');
+  console.log('  set-script <NAME> --file=F   Replace a scripted monitor\'s source (backs up first;');
+  console.log('                               SCRIPT_API and SCRIPT_BROWSER only)\n');
   console.log('Flags:');
   console.log('  --account=N                  Account id (default: config, else ' + DEFAULT_ACCOUNT + ')');
   console.log('  --range=RANGE                ' + Object.keys(RANGES).join(', ') + ' (default: 1h)');
-  console.log('  --limit=N                    Result cap');
+  console.log('  --limit=N                    Row cap for `requests` only (default: 25)');
+  console.log('  --failed                     `checks`: per-location breakdown counts failures only');
+  console.log('  --state=STATE                `issues`: ACTIVATED (default), CLOSED, CREATED');
   console.log('  --file=PATH                  Read query or script from a file');
   console.log('  --json                       Raw JSON instead of a table');
   console.log('  --backup=PATH                Where set-script saves the previous version');
