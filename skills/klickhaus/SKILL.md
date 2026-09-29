@@ -58,7 +58,7 @@ cat query.sql | klickhaus query
 | `logs` | Individual log entries matching filters |
 | `investigate` | Automatic multi-dimension error analysis |
 | `monday` | Monday protocol output for handoff |
-| `query` | Run arbitrary SQL — pass as argument or pipe through stdin |
+| `query` | Run arbitrary SQL — pass as argument or pipe through stdin. Name the table in the SQL; `--table` and other flags are ignored |
 
 ## Common flags
 
@@ -116,6 +116,6 @@ Signature-matching finds *symptoms*; these keep you honest about *cause*:
 - Don't use `count(*)` — always `sum(weight)` for accurate counts (data is sampled)
 - Don't forget backticks around dotted column names in ClickHouse
 - Don't query without a time filter — tables have 2-week TTL but are large
-- Don't append `FORMAT JSON` to `klickhaus query` SQL — the command adds it for you (a trailing `FORMAT` is a syntax error)
+- Don't add a `FORMAT` clause to `klickhaus query` SQL — the command requests JSON via the `default_format=JSON` URL parameter, and any other format cannot be parsed
 - Don't read the freshest 1–2 minutes as gospel — ingestion lags ~1–2 min, so the latest minute(s) may be empty or partial; confirm recovery against minutes a couple back
 - Don't conflate `helix.backend_type` (origin behind Fastly) with the CDN edge (Fastly) — see the RCA playbook
