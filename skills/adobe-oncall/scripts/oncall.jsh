@@ -708,7 +708,7 @@ function showHelp() {
   console.log('  history [--period=PERIOD]     Incidents for a time period');
   console.log('  monday [--limit N] [--date Nd]  Monday protocol output\n');
   console.log('Periods: today, yesterday, this_week, last_week (default), this_month, last_month');
-  console.log('States: open, wip, re-open, resolved, closed, all');
+  console.log('States: open, pending, wip, resolved, cancelled, re-open, all (or a raw numeric value)');
   console.log('');
   console.log('Examples:');
   console.log('  oncall incidents');
