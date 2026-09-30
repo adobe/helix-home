@@ -79,7 +79,8 @@ If you have been invited and will come, please put your name down in the list.
 
 1. @trieloff
 2. @royfielding
-3. 
+3. [@stefan](https://github.com/stefan-guggisberg)
+4. 
 
 ### Preparation
 
