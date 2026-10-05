@@ -57,16 +57,21 @@ oversight keys
 | `mint <domain>` | Retrieve (GET) or create (POST) a domain key. Fingerprint only, unless `--show` |
 | `rotate <domain>` | Replace a domain key (POST, skips GET). Use when a key is compromised |
 | `keys` | List cached domain keys (fingerprints) |
-| `status <domain>` | Quick overview: page views, visits, engagement, vitals |
+| `status <domain>` | Quick overview: page views, visits, bounces, engagement, vitals |
 | `pageviews <domain>` | Page view time series |
-| `vitals <domain>` | Core Web Vitals (LCP, CLS, INP) at p75. Check `sampleSize`, and see [Reading LCP honestly](#reading-lcp-honestly) before quoting LCP |
+| `vitals <domain>` | Core Web Vitals (LCP, CLS, INP) at p75. Check `sampleSize` and each metric's `samples` (bundles carrying that metric), and see [Reading LCP honestly](#reading-lcp-honestly) before quoting LCP |
 | `top-pages <domain>` | Top URLs by page views |
 | `bundles <domain>` | Fetch raw bundle data for a date |
 
 ## Common flags
 
-- `--range=month` — Time range: `day`, `week`, `month`, `year` (default: `month`)
-- `--date=YYYY-MM-DD` — Specific date for bundle fetch (default: today)
+- `--range=month` — Time range (default: `month`). All dates are **UTC**, like the bundler:
+  - `day` — the last 24 hours: yesterday's and today's UTC daily files, trimmed to
+    bundles whose `time` falls in `(now - 24h, now]`
+  - `week` — the last 7 x 24 hours: 8 UTC daily files, trimmed the same way
+  - `month` — today plus the previous 30 UTC days (31 daily files, not trimmed)
+  - `year` — this UTC month plus the previous 11 (12 monthly files, not trimmed)
+- `--date=YYYY-MM-DD` — Specific UTC date for `bundles` (default: today, UTC)
 - `--limit=20` — Number of results for top-pages
 - `--show` — Print the full domain key from `mint` / `rotate` (off by default)
 
@@ -88,7 +93,43 @@ oversight keys
 - **Data format**: Bundles are JSON arrays of sampled page-load events grouped
   by time slot. Each bundle has a `weight` field for extrapolation.
 - **Sampling**: Data is sampled; always multiply by `weight` for accurate counts.
-- **Granularity**: `/bundles/<domain>/YYYY/MM` (month), `/bundles/<domain>/YYYY/MM/DD` (day)
+- **Granularity**: `/bundles/<domain>/YYYY/MM` (month), `/bundles/<domain>/YYYY/MM/DD` (day),
+  `/bundles/<domain>/YYYY/MM/DD/HH` (hour). Paths are UTC dates.
+
+## How the CLI computes its numbers
+
+`status`, `pageviews`, `vitals` and `top-pages` do not implement metric rules of
+their own. They load the pinned `@adobe/rum-distiller@1.23.1` (the library behind
+the OpTel Explorer), run `utils.addCalculatedProps` on every bundle, and read
+`DataChunks` totals, facets and groups for the standard series:
+
+| Output | Definition (from rum-distiller) |
+| --- | --- |
+| `pageViews` | `series.pageViews`: weighted bundles, **excluding prerendered pages** unless a `navigate` event with target `prerendered` shows the prerender was actually shown |
+| `visits` | `series.visits`: weighted bundles with an `enter` checkpoint |
+| `bounces` | `series.bounces`: visits with no `click` |
+| `engagement` | `series.engagement`: weighted bundles with a `click`, **or more than 3** `viewblock`/`viewmedia` events |
+| `engagementRate` | `engagement / pageViews`, as the Explorer shows it (`utils.computeConversionRate`) |
+| `bounceRate` | `bounces / visits` |
+| `vitals.lcp` / `cls` / `inp` | p75 of one value **per bundle** from `addCalculatedProps` (`cwvLCP`/`cwvCLS` = the max over the bundle's events, `cwvINP` = the last), not of every raw event |
+| `top-pages`, `pageviews` | `series.pageViews` summed per bundle URL / per `timeSlot` |
+
+Every count is the sum of bundle `weight`s; nothing defaults a missing weight.
+So the CLI and a hand-written rum-distiller script over the same bundles agree, and
+the CLI agrees with the Explorer except where they fetch different windows
+(Explorer `week` uses hourly files, the CLI uses trimmed daily files).
+
+Before this, the CLI counted every bundle as a page view (prerenders too), counted
+only clicks as engagement, divided that by visits, and took p75 over every raw
+`cwv-lcp` event. On 732 `www.aem.live` bundles (2026-09-28..10-04) that gave
+71,130 page views (distiller: 54,030), 7,720 engagement (35,520) and LCP p75
+1,164 ms (1,196). Do not compare numbers from older runs with current ones.
+
+**Failed fetches are reported, not hidden.** Each range is fetched slot by slot.
+A slot that errors goes into `failedSlots` (`[{ slot, error }]`) and a warning
+on stderr; the totals cover only the slots that loaded. If every slot fails, the
+command exits 1. `window` (`{ from, to, slots }`) records what was asked for.
+Never quote a total with a non-empty `failedSlots` as the full range.
 
 ## Synthetic aggregate domains
 
@@ -100,8 +141,9 @@ aggregate across all AEM sites.
 Most checkpoints are not collected on these aggregates (only `top` and CWV
 `cwv-lcp` / `cwv-cls` / `cwv-inp` / `cwv-ttfb` / `cwv-fid`). Metrics that need
 `enter`, `click`, `viewblock`, `viewmedia`, or other stripped checkpoints
-**cannot be computed**. `oversight status` reports `visits`, `engagement`, and
-`engagementRate` as `n/a (synthetic aggregate domain)` — never as `0` / `0%`.
+**cannot be computed**. `oversight status` reports `visits`, `bounces` and
+`engagement` as `null`, and `engagementRate` / `bounceRate` as
+`n/a (synthetic aggregate domain)` — never as `0` / `0%`.
 Page views and Core Web Vitals still work.
 
 Do not query a `:all` aggregate when the user asked about the AEM website
@@ -114,17 +156,24 @@ pages). When the user asks for something the CLI doesn't expose — visits per
 URL, custom facets, conversion rates, traffic-source breakdowns, histograms,
 linear regression — drop into Node and use the
 [`@adobe/rum-distiller`](https://www.npmjs.com/package/@adobe/rum-distiller)
-library directly. It's the same library the OpTel Explorer uses, so the numbers
-will match what customers see in the UI.
+library directly. It's the same library the OpTel Explorer uses, and the same one
+the CLI itself runs (see [How the CLI computes its numbers](#how-the-cli-computes-its-numbers)),
+so the numbers will match what customers see in the UI.
 
 ### Loading the library
 
 In SLICC's Node shim, top-level `await` is supported in `.mjs` files but
-synchronous `import` statements are not. Use a dynamic `import()` instead:
+synchronous `import` statements are not. A **literal** `import('https://...')` is
+not enough either: the realm lowers it to `require()`, which rejects URLs
+(`Cannot find module 'https://esm.sh/...' (run: ipk install https:)`, measured on
+SLICC 6.237.0 in both `.mjs` and `.jsh`). Build the `import()` from a string so
+the worker's native `import()` runs, and pin the version:
 
 ```javascript
 // /tmp/rum.mjs
-const { DataChunks, series, facets, utils } = await import('https://esm.sh/@adobe/rum-distiller');
+const nativeImport = new Function('specifier', 'return import(specifier)');
+const { DataChunks, series, facets, utils } =
+  await nativeImport('https://esm.sh/@adobe/rum-distiller@1.23.1');
 ```
 
 Then run with `node /tmp/rum.mjs`. The realm worker will keep the event loop
@@ -133,7 +182,9 @@ alive long enough for fetches to resolve.
 ### The complete flow
 
 ```javascript
-const { DataChunks, series, facets, utils } = await import('https://esm.sh/@adobe/rum-distiller');
+const nativeImport = new Function('specifier', 'return import(specifier)');
+const { DataChunks, series, facets, utils } =
+  await nativeImport('https://esm.sh/@adobe/rum-distiller@1.23.1');
 
 const DOMAIN = 'www.example.com';
 const KEY = '<DOMAINKEY-from-oversight-mint>';
@@ -463,8 +514,9 @@ bucket by `hostType`, and apply Chao1 to get a defensible distinct-domain
 estimate with a CI:
 
 ```javascript
+const nativeImport = new Function('specifier', 'return import(specifier)');
 const { DataChunks, series, facets, utils } =
-  await import('https://esm.sh/@adobe/rum-distiller');
+  await nativeImport('https://esm.sh/@adobe/rum-distiller@1.23.1');
 
 const KEY = '<aem.live:all domain key>';
 
@@ -552,7 +604,8 @@ and the `weightedThreshold` helper in `src/support/util.js`.
   domain can fetch tens of thousands of records. Prefer monthly `/YYYY/MM`
   endpoints in a loop so you can show progress and resume.
 - **Top-level `await` works in `.mjs` files**, but `import x from '...'`
-  syntax is rejected by the realm worker. Use `await import(...)` exclusively.
+  syntax is rejected by the realm worker, and a literal `await import('https://...')`
+  is lowered to `require()` and fails. Use the string-built `nativeImport(...)` above.
 - **`fs.writeFile` is the global SLICC `fs`**, not `node:fs`. Don't try to
   `import('node:fs')` — that 404s in the realm. Just call `await fs.writeFile(...)`.
 
@@ -577,6 +630,8 @@ and the `weightedThreshold` helper in `src/support/util.js`.
 ## Don't
 
 - Don't use raw event counts — always weight-adjusted (`sum of weights`)
+- Don't quote a range total when `failedSlots` is non-empty without saying which
+  days/months are missing
 - Don't expose admin keys or domain keys in logs, commit messages, or PR descriptions.
   `mint` and `rotate` print an 8-character fingerprint by default; only `--show`
   prints the full value, and never copy that into a transcript or PR
