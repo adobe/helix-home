@@ -82,6 +82,7 @@ If you have been invited and will come, please put your name down in the list.
 3. [@stefan](https://github.com/stefan-guggisberg)
 4. @rofe
 5. @tripodsan
+6. @dkuntze
 
 ### Preparation
 
