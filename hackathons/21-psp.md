@@ -83,6 +83,7 @@ If you have been invited and will come, please put your name down in the list.
 4. @rofe
 5. @tripodsan
 6. @dkuntze
+7. @shsteimer
 
 ### Preparation
 
