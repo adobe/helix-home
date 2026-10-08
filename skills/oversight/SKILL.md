@@ -149,6 +149,42 @@ Page views and Core Web Vitals still work.
 Do not query a `:all` aggregate when the user asked about the AEM website
 itself; use `www.aem.live`.
 
+## Opening the OpTel Explorer
+
+The Explorer UI lives on **tools.aem.live**, under `tools/optel/`:
+
+| Page | URL |
+| --- | --- |
+| OpTel Explorer (current) | `https://tools.aem.live/tools/optel/explorer/explorer.html?domain=<domain>&view=month` |
+| Classic explorer and its companion pages (`list`, `flow`, `cwvperf`, `share`, ...) | `https://tools.aem.live/tools/optel/oversight/<page>.html` |
+
+The old `https://www.aem.live/tools/oversight/*` pages are the previous home; link
+to tools.aem.live instead. tools.aem.live does not list these pages on its home
+page or in its sitemaps, so guessing a path there returns 404.
+
+The Explorer authenticates from `localStorage['rum-bundler-token']`, which holds the
+same admin key the CLI stores with `oversight login`. With it set, the page mints
+the domain key itself (`/domainkey/<domain>`, or `/orgs/<org>/key` for an `<org>:all` other than
+`aem.live:all`).
+localStorage is per origin, so a token set on www.aem.live does not carry over to
+tools.aem.live. Set it from a script that reads the key without printing it:
+
+```javascript
+// run in the Explorer tab; KEY comes from the skill config, never from a transcript
+localStorage.setItem('rum-bundler-token', KEY);
+location.reload();
+```
+
+In "open" mode the Explorer writes the full domain key into the page URL
+(`?domainkey=...`). Anything that records URLs (browser history, screenshots,
+agent navigation events) then captures the key. Toggle the eye control to
+incognito after the data loads: the URL goes back to `domainkey=incognito` and the
+page keeps the key in memory.
+
+For large `:all` analyses, run the fetch loop inside the Explorer tab and keep
+only running totals per day instead of shelling out per day: a month of daily
+`aem.live:all` files captured as command output can exhaust a constrained shell.
+
 ## Going beyond the CLI: `@adobe/rum-distiller`
 
 The `oversight` CLI gives you the common queries (status, page views, vitals, top
