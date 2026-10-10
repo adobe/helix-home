@@ -34,6 +34,9 @@ oncall ack OCINC2145403
 # Check who is currently on-call
 oncall who
 
+# Incidents opened this month (any state)
+oncall history --period=this_month
+
 # View your upcoming shifts (next 14 days by default)
 oncall shifts
 
@@ -58,10 +61,15 @@ If the session has expired: "Session expired — open adobe.service-now.com/x/ad
 
 ### oncall incidents [--state=STATE] [--group=GROUP]
 
-List active on-call incidents assigned to your groups.
+List on-call incidents assigned to your groups (or to `--group=<sys_id>`),
+newest opened first, at most 20.
 
-States: `open` (1), `pending` (-5), `wip` (2), `resolved` (6), `cancelled` (8), `re-open` (60), `all`
-Default: open + wip + re-open
+States: `open` (1), `pending` (-5), `wip` (2), `resolved` (6), `cancelled` (8), `re-open` (60), `all`,
+or a raw numeric value. Default: open + wip + re-open.
+
+The query adds `active=true` only when every requested state is open-type
+(1, -5, 2, 60). `resolved`, `cancelled` and `all` omit it, since closed records
+are not active; they are bounded by the same 20-row limit, not by a time window.
 
 ### oncall get <OCINC_NUMBER|sys_id>
 
@@ -79,6 +87,8 @@ Update incident state. Optionally add a work note. State names: `open`, `pending
 work note without changing state, pass only `--comment`.
 
 ### oncall who [--group=GROUP]
+
+Alias: `oncall whoisoncall`.
 
 Show who is currently on-call across **both EMEA and NA rosters**.
 Returns coverage (primary pager carrier) and shift (rotation slot) info.
@@ -126,6 +136,13 @@ scoop calls once woken by an escalation.
 ### oncall unwatch
 
 Stop watching: removes the Slack channel watch and clears watch state.
+
+### oncall history [--period=PERIOD] [--group=GROUP]
+
+Incidents opened in a time period for the group (default AEM - Helix v2), in any
+state, newest first, at most 50. Periods: `today`, `yesterday`, `this_week`,
+`last_week` (default), `this_month`, `last_month`. Use it for recurring
+incident reviews.
 
 ### oncall monday [--limit N] [--date Nd]
 
