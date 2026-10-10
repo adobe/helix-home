@@ -80,11 +80,12 @@ this projection belongs there.
 | window | start | P50 |
 |---|---|---|
 | fiscal FY27 | 2026-12 | $469,795 |
-| calendar 2027 | 2027-01 | $475,874 |
+| calendar 2027 | 2027-01 | $475,687 |
 
-delta **−$6,079 = −1.3%** — the fiscal window is one month less far along the
-growth curve. Computed with common random numbers, and well inside a ±11.1%
-band, but computed rather than assumed.
+delta **−$5,892 = −1.2%** — the fiscal window is one month less far along the
+growth curve. Computed with common random numbers (both windows totalled on
+the same simulated paths), and well inside a ±11.1% band, but computed rather
+than assumed.
 
 ### Variance decomposition
 
@@ -154,7 +155,11 @@ cost-projection detect-breaks series.json
   above — and `detect-breaks` flags it as an unflagged suspect.
 - **`compute_authoring`** contains an optimisation break: mean $13,360 over 5
   months steps down to **$8,642** over 6 months, a ÷1.55 step with `t = −7.6`.
-  Full history reports −24%/yr; that is an artefact. `detect-breaks` recommends
-  `--from 2026-02`, which yields a clean +4.2%/yr on a mean of $8,642.
+  Full history reports −24%/yr and the trailing 6 months −63.6%/yr; both are
+  artefacts, and because they agree in sign only the break scan catches it.
+  `fit` on the full history therefore withholds its suggested stanza and warns
+  `regime break inside the fit window: step down ÷1.55 at 2026-02 (t=-7.6)`.
+  `detect-breaks` recommends `--from 2026-02`, which yields a clean +4.2%/yr on
+  a mean of $8,642 and a usable stanza.
 - **`cdn_fixed`** is flat at $2,500 for 7 months, CV **exactly 0.0%**, and `fit`
   warns to model it as a fixed line with `sig_m: 0`.

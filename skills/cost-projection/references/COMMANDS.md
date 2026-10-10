@@ -40,13 +40,19 @@ Reported per series:
 - `implied_12m_uncertainty` — `mom_log_sd × sqrt(12)`, the 12-month-ahead level
   uncertainty implied by the monthly volatility. This is the natural starting
   point for `g_sd`.
+- `regime_break` — the strongest break the `detect-breaks` scan (default
+  1.5x / crisp-step rules, below) finds among the window's clean points, as
+  `{at, ratio, t_stat, direction}`, or `null`.
 - `suggested_component` — a paste-ready stanza for a config. It is **withheld**
-  (`suggestion_safe: false`) when the window looks break-contaminated:
-  `|growth_full| > 5`, implied uncertainty > 100%, or a full-vs-6m sign flip.
+  (`suggestion_safe: false`) when the window looks break-contaminated: a
+  `regime_break` inside the window, `|growth_full| > 5`, implied uncertainty >
+  100%, or a full-vs-6m sign flip. The break check matters because a ramp
+  followed by a halving can read negative on both the full and the 6-month
+  window, so no sign flip fires.
 
-Warnings fire for implausible full-window growth, full-vs-6m sign
-disagreement, a CV of exactly 0 (a fixed contractual line), skipped gaps, and
-an implied uncertainty above 100%.
+Warnings fire for a regime break inside the window (naming the `--from` month),
+implausible full-window growth, full-vs-6m sign disagreement, a CV of exactly 0
+(a fixed contractual line), skipped gaps, and an implied uncertainty above 100%.
 
 ## `detect-breaks <series.json>`
 
@@ -100,7 +106,10 @@ year boundary. `accrue_months` compounds over the pre-window months the same way
 Output: `p05 p10 p25 p50 p75 p90 p95`, mean and sd of the annual total;
 `band_width_pct_of_median` = `(p90 − p10)/p50`; per-component p10/p50/p90 with
 its share of the median; realised toggle rates; and the fiscal-vs-calendar
-comparison when `fiscal_year_start ≠ 1`.
+comparison when `fiscal_year_start ≠ 1`. The calendar window is totalled on the
+same simulated paths as the fiscal one (common random numbers); months only the
+later window reaches draw from a separate stream, so the fiscal figures are
+identical to a run without the comparison.
 
 A warning fires when the p10–p90 width is below `0.15 × sqrt(horizon/12)` of the
 median — implausibly precise for a cloud-cost forecast.
@@ -185,6 +194,7 @@ Non-positive amounts are excluded from fits — a log is undefined there.
 | `kind` | `fixed` or `usage`, cosmetic; defaults from `sig_m === 0` |
 | `damping` | Optional, but `why` is **mandatory** when present |
 | `base_month` | Provenance only — when the base level was measured |
+| `start` | `YYYY-MM`, first month of the projection window. Optional; when absent the window starts at the first `fiscal_year_start` month on/after `base_month` |
 | `accrue_months` | Months of growth to accrue *before* month 1, default `0`. Never inferred |
 | `horizon_months` | Default 12, max 120 |
 | `fiscal_year_start` | 1–12; overridden by `--fiscal-year-start` |
