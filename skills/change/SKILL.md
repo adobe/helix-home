@@ -80,7 +80,7 @@ manual intervention, exit 0).
 | `--keep-open` | off | stop at Review instead of closing |
 | `--repair` | off | on a hop or `close`: if the **record** is missing a field the form demands, fill it from the flags and defaults, then continue. Same rules as `repair` |
 | `--force-field=<name>` | — | let `repair` overwrite that one populated field. Repeatable |
-| `--work-start=` `--work-end=` | — | hand-supplied **actual** window, UTC `YYYY-MM-DD HH:MM:SS`, for a bare `review` hop or `repair`. Both required together, end not before start, written verbatim, and disclosed both on stderr and in the change's work notes. `run` measures them instead |
+| `--work-start=` `--work-end=` | — | hand-supplied **actual** window, UTC `YYYY-MM-DD HH:MM:SS`, for a bare `review` hop or `repair`. Both required together, end not before start, written verbatim, and disclosed on stderr and in a work note that is posted and read back **before** the actuals are written. `run` measures them instead |
 | `--notes-max=` | `4000` | cap on captured output in the work notes |
 | `--form-timeout=` | `30` | seconds to wait for the change form to become scriptable |
 | `--state-timeout=` | `60` | seconds to wait for a state transition to land |
@@ -110,7 +110,7 @@ A pipeline masks the exit code (`$?` is the last command's), so branch with a re
 | `cancel <CHG…>` | Canceled |
 | `states <CHG…>` | pretty-print `nextstates`, including which conditions fail |
 | `repair <CHG…>` | fill **empty** tracked fields on an existing change, from the flags and defaults. Rescues a record an older client blanked. Never overwrites a populated field without `--force-field=<name>`, never touches anything outside the tracked list, works in any state |
-| `form <CHG…>` | read-only diagnostic: open or reuse the change form, time how long it takes to become scriptable, and report what the form holds (including whether `u_change_approver` reached the form) |
+| `form <CHG…>` | read-only diagnostic: open or reuse the change form, time how long it takes to become scriptable, and report what the form holds (including whether `u_change_approver` reached the form). `--fresh-tab` opens a new tab even if one is on the form; `--keep-tab` leaves a tab it opened open |
 | `config` | resolved non-secret configuration |
 
 Everything that writes requires `--confirm`.
@@ -126,10 +126,19 @@ command line) · `--plan-url=` · `--implementation-plan=` · `--backout-plan=` 
 `--instance=` · `--hosting-location=` · `--environment=` · `--tenant-type=` ·
 `--customer-impact=` · `--complexity=` · `--reason=` · `--backout-type=` ·
 `--validation=` · `--risk-type=` · `--cso=none|fix|prevent` (mandatory for New → Assess) · `--risk=` · `--sn-impact=` · `--urgency=` ·
-`--scope=` · `--approver=` · `--deployer=` · `--requested-by=` · `--submitter=` ·
+`--scope=` · `--chg-model=` · `--documentation=` · `--approver=` · `--deployer=` · `--requested-by=` · `--submitter=` ·
 `--lead-time=` · `--duration=` · `--notes-max=` · `--state-timeout=` · `--form-timeout=` · `--impact-minutes=` ·
-`--close-code=` · `--close-notes=` · `--keep-open` · `--no-normalise-choices` · `--via=` · `--confirm` ·
-`--json`.
+`--close-code=` · `--close-notes=` · `--keep-open` · `--no-normalise-choices` · `--via=` · `--ipaas-env=` ·
+`--bearer` · `--confirm` · `--json`.
+
+| Flag | Default | Meaning |
+| --- | --- | --- |
+| `--chg-model=<sys_id>` | `74c98c77876939502140b916cebb357c` (Adobe Change Model) | `chg_model` on create. Config key `chgModel` |
+| `--documentation=<url>` | the ITChangeManagement SharePoint home page | `u_documentation` on create. Config key `documentation` |
+| `--ipaas-env=prod\|stage\|dev` | `prod` | `--via=ipaas` only: picks the iPaaS and IMS hosts. Config key `ipaasEnv`, env `IPAAS_ENV`; anything else is refused |
+| `--bearer` | off | `--via=ipaas` only: send `Authorization: Bearer <token>` instead of the bare IMS token |
+| `--fresh-tab` | off | `form` only: ignore a tab already on the record's form and open a new one |
+| `--keep-tab` | off | `form` only: leave a form tab that `form` opened itself open afterwards (a tab you had open is never closed either way) |
 
 `CHANGE_VERBOSE=1` traces every HTTP call on stderr.
 
@@ -168,8 +177,9 @@ this tool exists to prevent:
 ### Reaching Review without `run`
 
 `Implement → Review` needs `work_start` and `work_end` — the **actual** execution window.
-`change run` measures them, which is the normal path. `repair` will not fill them: fabricating
-actuals would falsify an audit trail, and there is nothing to fabricate them from.
+`change run` measures them, which is the normal path. `repair` will not fill them unless both
+`--work-start` and `--work-end` are given (with the same disclosure as below): fabricating actuals
+would falsify an audit trail, and there is nothing to fabricate them from.
 
 When the work really did happen outside the wrapper — an incident handled by hand, a command run
 before the change was filed — supply them explicitly:
@@ -180,8 +190,17 @@ change --work-start="2026-08-18 09:00:00" --work-end="2026-08-18 09:12:00" --con
 
 Both flags are required together, the end may not precede the start, the values are written
 **verbatim** (never floored, unlike a measured window), and a work note is added to the change
-recording that the window was supplied by hand and that no command output accompanies it. If that
-disclosing note cannot be written, the hop is not attempted.
+recording that the window was supplied by hand and that no command output accompanies it. That
+note is posted and read back from the journal **first**; only then are the actuals written. If the
+note cannot be posted or read back, nothing is written to `work_start`/`work_end` and the hop is not
+attempted.
+
+On a retry where the record already carries actuals, the hop goes ahead only if they equal the
+supplied values **and** the journal holds the disclosing note for them (`work_start: … UTC` and
+`work_end: … UTC`, one display read of the record). Otherwise it is refused: different values are
+never overwritten, and undisclosed ones get the exact `change notes … --confirm` command that
+discloses them. Without `--work-start`/`--work-end`, actuals already on the record are taken as they
+are.
 
 ## Transports
 
