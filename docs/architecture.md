@@ -6,38 +6,31 @@ Helix[^1] has undergone some architectural evolution since the start of the proj
 
 1. Helix 1 – a bring-your-own (Adobe I/O) runtime framework-driven approach that would allow server-side customization
 2. [Helix 2](architecture-v2.md) – a software as a service that relies on client-side customization
-3. [Helix/Franklin 3](architecture-v3.md) – a software as a service with superior availability and performance with the same feature set as Helix 2
-4. [Franklin 4](architecture-v4.md#overview) - a dual-stack architecture that refines Franklin 3 for greater performance and availability
-5. [Helix 5](#overview) – a refactoring of the CDN/delivery stack for greater robustness and maintainability
+3. [Helix 3](architecture-v3.md) – a software as a service with superior availability and performance with the same feature set as Helix 2
+4. [Helix 4](architecture-v4.md#overview) - a dual-stack architecture that refines Helix 3 for greater performance and availability
+5. [Helix 5](architecture-v5.md) – a refactoring of the CDN/delivery stack for greater robustness and maintainability
+6. [Helix 6](#overview) – the default architecture, extending Helix 5 with a unified API service, source content storage, and integrated Document Authoring
 
-You can follow the links above to learn more about the evolution of the architecture.
+You can follow the links above to learn more about the evolution of the architecture. The previous architecture is preserved in the [Helix 5 architecture document](architecture-v5.md).
 
 ## Overview
 
-Helix 5 delivers the core feature set of Franklin 4 (dual-stack architecture with great performance and availability) with a refactored (Fastly) CDN Stack to enable easier maintainability and reduce overall complexity.
+Helix 6 is the default architecture for new sites. It builds on the delivery stack introduced in Helix 5 and extends the authoring stack with source document management and a new API Service endpoint.
 
-The key differences to Franklin 4 are:
-1. DNS is tracked as an explicit architectural component, and managed redundantly
-2. RUM collection uses no longer a separate host, but is integrated into the CDN stack
-3. The (Fastly) CDN stack is refactored to use a single Fastly service configuration instead of two stacked configurations
-4. Each underlying CDN functionality (RUM, Media, Configuration, Pipeline, Static, and Forms) is implemented through a separate, simpler service
-5. A new ConfigBus section of the ContentHub is created to store customer- and site-level configuration
-6. The ConfigBus is joined by a Config Service that resolves and merges configuration from multiple sources
-7. The Forms Collector Service is no longer part of the Pipeline Service, but a separate service
-8. Inner and Outer CDN no longer log to Google BigQuery
-9. The Run Query Service will be made available as part of the Admin API
-10. The `hlx.page` and `hlx.live` domains will be replaced by `aem.page` and `aem.live` domains
-11. (GitHub) `owner` and `repo` as the overarching identifiers for a site are replaced by (AEM) `org` and `site`
-12. New sites will be able to start without a GitHub repository (repoless) by pointing their configuration to an existing repository
+The key changes from Helix 5 are:
+1. The Helix API Service at `api.aem.live` manages the lifecycle of source content, preview and published content, code, and configuration.
+2. A Source Bus on S3 stores source documents, organized by `org` and `site`, alongside the existing Media, Config, Code, and Content Buses.
+3. Document Authoring provides editing, collaboration, and preview capabilities connected to the API service. Google Drive, SharePoint, and HTML providers remain supported content sources.
+4. Configuration can be managed at the organization, profile, and site levels, with effective configuration resolved for delivery.
 
-Until all customer projects are fully migrated, Franklin 4 and Helix 5 will be operated in parallel. New sites will default to Helix 5. Franklin 4's end of service is set to December 18, 2025.
+Sites continue to use `org` and `site` as their identifiers and the `aem.page` and `aem.live` domains for preview and published content. Code can come from a site's own GitHub repository or an existing shared repository.
 
-The details of these two delivery Stacks are described in these sections:
+The delivery stack is described in these sections:
 
 - [AWS Delivery Stack](#aws-delivery-stack)
-- [Cloudflare Delivery Stack](#cloudflare-delivery-stack)
+- [Cloudflare Delivery Stack](#cloudflare-delivery-stack) (earlier secondary-stack architecture)
 
-The authoring stack in Helix 5 runs entirely on AWS, and will be descibed as part of the [Authoring Stack](#authoring-stack) section.
+The authoring stack in Helix 6 runs on AWS and is described in the [Authoring Stack](#authoring-stack) section.
 
 ### Preface
 
@@ -45,12 +38,13 @@ Helix is based on a serverless micro-services architecture, where each service i
 
 The goal of this document is to provide this explanation and give a lay of the land of the Helix architecture.
 
-The four main areas in Project Franklin are:
+The five main areas in Helix are:
 
 - **EDGE** delivery through an edge computing platform or CDN
 - **PIPE** markdown-based content transformation into hypermedia
 - **AUTHOR** authoring of content using Google Docs and Word Online, and publishing into high-availability content stores
 - **DEV** development workflow
+- **OVERSIGHT** operational telemetry and analysis
 
 The architecture diagram at the beginning of this document uses the Fundamental Modeling Concepts structure chart notation.
 
@@ -58,15 +52,15 @@ Unless otherwise indicated, inter-service communication is based on HTTPS.
 
 ### AWS Delivery Stack
 
-The AWS Delivery Stack is the primary delivery stack for Helix 5. It is responsible for delivering the content to the end user.
+The AWS Delivery Stack is the primary delivery stack for Helix 6. It is responsible for delivering the content to the end user.
 
-![](./Franklin%20Architecture/Helix%205%20Stack%20(AWS).png)
+![Helix 6 Stack (AWS)](https://github.com/adobe/helix-home/blob/main/docs/Helix%20Architecture/Helix%206%20Stack%20(AWS).png)
 
 #### EDGE on Fastly
 
-A typical Franklin site uses three levels of CDN. The first level is the customer's own CDN (we refer to it as BYOCDN). This CDN caches contents delivered by the next level. We rely on long-lived shared caches with precise invalidation, which is triggered by `helix-admin` based on customer-provided configuration.
+A typical Helix site uses three levels of CDN. The first level is the customer's own CDN (we refer to it as BYOCDN). This CDN caches contents delivered by the next level. We rely on long-lived shared caches with precise invalidation, which is triggered by the Helix API Service based on customer-provided configuration.
 
-The second level is Fastly, we refer to it as the Outer CDN (even if it is in the middle of three layers of CDN). Here all pages on `*.aem.live` are served and cached with long-lived shared caches. In addition `*.aem.page` is served by the outer CDN, albeit with shorter cache TTLs. Whenever content gets published, the `helix-admin` service will surgically invalidate the cache for the affected pages and resources.
+The second level is Fastly, we refer to it as the Outer CDN (even if it is in the middle of three layers of CDN). Here all pages on `*.aem.live` are served and cached with long-lived shared caches. In addition `*.aem.page` is served by the outer CDN, albeit with shorter cache TTLs. Whenever content gets published, the Helix API Service will surgically invalidate the cache for the affected pages and resources.
 
 The outer CDN uses internally a multi-layer caching technique called shielding, which reduces load on the next layer.
 
@@ -74,26 +68,25 @@ The innermost CDN layer are a number of task-specific CDN services, each with a 
 
 | Name     | Domain                     | Description                                                                                                                                   |
 | -------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| RUM      | `rum.aem-fastly.page`      | The Helix RUM collector forwards RUM data to our logging services                                                                             |
-| Media    | `media.aem-fastly.page`    | The Helix Media CDN serves images and video files from the Media Bus. It applies resizing and re-encoding using Fastly Image Optimizer        |
-| Config   | `config.aem-fastly.page`   | The Helix Config CDN serves effective configurations from the Config Bus. Properties that are relevant for routing are served as HTTP headers |
-| Pipeline | `pipeline.aem-fastly.page` | The Helix Pipeline CDN serves HTML and JSON content from the Pipeline Service                                                                 |
-| Static   | `static.aem-fastly.page`   | The Helix Static CDN serves static content from the Code Bus and Content Bus                                                                  |
-| Forms    | `forms.aem-fastly.page`    | The Helix Forms CDN receives form submissions and forwards them to the Forms Collector Service                                                |
+| RUM      | `rum.aem.page`              | The Helix RUM collector forwards RUM data to our logging services                                                                             |
+| Media    | `media.aem.page`            | The Helix Media CDN serves images and video files from the Media Bus. It applies resizing and re-encoding using Fastly Image Optimizer        |
+| Config   | `config.aem.page`           | The Helix Config CDN serves effective configurations from the Config Bus. Properties that are relevant for routing are served as HTTP headers |
+| Pipeline | `pipeline.aem.page`         | The Helix Pipeline CDN serves HTML and JSON content from the Pipeline Service                                                                 |
+| Static   | `static.aem.page`           | The Helix Static CDN serves static content from the Code Bus and Content Bus                                                                  |
 
 URL pattern analysis is used to route requests to the correct request type, in particular:
 
 - Media Requests (images, videos, etc.) are served directly from the Media Bus using content-addressable storage, where the content hash forms the significant part of the URL
-- Content Requests (HTML and JSON) are served using the Pipeline Service, see the [PIPE](#pipe) section for details
+- Content Requests (HTML and JSON) are served using the Pipeline Service, see the [PIPE](#pipe-on-aws) section for details
 - Static Content is served from the Content Bus or Code Bus directly
 
 #### PIPE on AWS
 
-The key components of the PIPE zone are the Config Service, the Pipeline Service, the Forms Collector Service, and the Content Hub on S3 as storage.
+The key components of the PIPE zone are the Config Service, the Pipeline Service, and the Content Hub on S3 as storage.
 
 ##### Config Service
 
-The Config Service is a new service in Helix 5. It is responsible for resolving and merging configuration from multiple sources, in particular the `site`-specific configuration and the `org`-wide configuration. With this, `site`-configuration can override `org`-wide defaults.
+The Config Service resolves and merges configuration from multiple sources, including organization, profile, and site configuration. Site-specific configuration can override inherited defaults.
 The Config Service is also responsible for resolving the `owner` and `repo` of a site, which is needed to serve the correct static files from Code Bus.
 Finally, the Config Service is responsible for resolving the correct `contentBusID` for a given site, which is needed to serve the correct content from Content Bus.
 
@@ -107,16 +100,14 @@ The pipeline service runs as an AWS Lambda function and has these main component
 - rendering full page
 - and `.plain.html` HTML pages
 - rendering filtered JSON from spreadsheets
+- generating sitemaps
+- handling extensionless content requests
 - handling `OPTIONS` requests
 - serve redirects
 
-The pipeline service on AWS shares key parts of the implementation with the [pipeline worker on Cloudflare](#pipe-on-cloudflare). This common functionality is provided by the [`helix-html-pipeline`](https://github.com/adobe/helix-html-pipeline) library.
+The [`helix-html-pipeline`](https://github.com/adobe/helix-html-pipeline) library provides shared rendering functionality, also used by the earlier [pipeline worker on Cloudflare](#pipe-on-cloudflare).
 
-All content that is delivered through the pipeline and some content that is served straight from the CDN are stored in Franklin Content Hub on S3. For the structure of the content hub, see the [Content Hub](#content-hub) section below.
-
-##### Forms Collector Service
-
-The Forms Collector Service is a new service in Helix 5. It is responsible for receiving form submissions from the Forms CDN and forwarding them to the Forms Processing Queue.
+All content that is delivered through the pipeline and some content that is served straight from the CDN are stored in the Content Hub on S3. For the structure of the content hub, see the [Content Hub](#content-hub) section below.
 
 #### OVERSIGHT on Fastly
 
@@ -127,6 +118,8 @@ processing, the data to Google BigData, Coralogix and to S3 buckets. Each back-e
 
 Raw Data from S3 is processed using the Rum Bundler and stored in bundles in S3 again, this prepares the data for the Rum Explorer which cruches this data and presents it in
 a Web UI.
+
+The Helix 6 stack diagram also shows Outer CDN request logs flowing to Klickhaus for analysis, alongside the sampled RUM data processed through the Data Bus and RUM Bundler.
 
 ![](./Franklin%20Architecture/Operational%20Telemetry.png)
 
@@ -174,9 +167,9 @@ The bundler service is also responsible for serving completed bundles with high 
 
 ### Cloudflare Delivery Stack
 
-The Cloudflare Delivery Stack is the secondary delivery stack for Helix 5. It is responsible for delivering the content to the end user.
+The Cloudflare Delivery Stack was documented as the secondary delivery stack for Helix 5. This section describes that earlier architecture; the Helix 6 diagram above models the AWS stack.
 
-As the main focus of the Helix 5 architecture is the Fastly/AWS Stack, we have not fully modeled the setup, so please refer to this earlier architecture diagram for the details:
+For the earlier secondary-stack design, see the [Helix 5 architecture document](architecture-v5.md#cloudflare-delivery-stack) and this diagram:
 
 ![](./Franklin%20Architecture/Franklin%204%20Stack%20(Cloudflare).png)
 
@@ -211,22 +204,26 @@ All access to the Content Hub is using R2.
 
 ### Content Hub
 
-The Content Hub is a content store optimized for delivery that uses Amazon S3 and Cloudflare R2 (which share an API). It is made up of following constituent parts:
+The Content Hub uses Amazon S3 in the Helix 6 AWS stack. The earlier Cloudflare delivery stack uses R2, which shares the S3 API. The Content Hub is made up of the following constituent parts:
 
-- Config Bus (configuration for each `org` and `site`)
+- Source Bus (source documents and associated metadata)
+  - source documents are organized by `org`, `site`, and document path
+  - the Helix API Service provides source document operations, including reading, writing, listing, deleting, and managing versions
+- Config Bus (organization, profile, and site configuration)
   - within the Config Bus, there is one folder for each `org`, which can hold configuration files as JSON
-    - within each `org` folder, there is a separate folder for each `site`, holding configuration files as JSON. The `site` folder can override configuration from the `org` folder. The JSON configuration at least contains the `contentBusID` for the site, which is used to determine the correct content bus partition to serve content from and the GitHub `owner` and `repo` to serve static content from.
+    - organization profiles provide shared configuration that sites can inherit
+    - within each `org` folder, there is a separate folder for each `site`, holding configuration files as JSON. Site configuration can override inherited defaults. The effective JSON configuration contains the `contentBusID` for the site, which is used to determine the correct content bus partition to serve content from and the GitHub `owner` and `repo` to serve static content from.
 - Media Bus (content addressable storage for images, videos and other media that can be served directly from the CDN with minimal processing)
   - within the media bus, there is one folder for each `contentBusID`, so that we can delete all content for a given customer when requested
     - within each `contentBusID` folder, files are addressed by a content hash, so that duplicate content is not stored twice within a given `contentBusID` folder
 - Content Bus (path addressable storage for structured and semistructured authored content)
   - within the content bus, there is one folder for each `contentBusID`, so that we can delete all content for a given customer when requested
-    - within each `contentBusID` folder, there are two content bus partitions: `preview` and `live`. These content bus partitions separate content that can be served only on `*.hlx.page` from content that is published on `*.hlx.live`. The actual process of publishing involves copying content from `preview` to `live` and purging the attached caches.
+    - within each `contentBusID` folder, there are two content bus partitions: `preview` and `live`. These content bus partitions separate content that can be served only on `*.aem.page` from content that is published on `*.aem.live`. The actual process of publishing involves copying content from `preview` to `live` and purging the attached caches.
       - each content bus partition has folders that reflect the folder structure of the source repository (Sharepoint or Google Drive)
         - within each folder, there is a Markdown document for each published document and a JSON file for each published spreadsheet
         - documents can be marked with redirect metadata, in which case the pipeline will serve a redirect instead of the requested document
 - Code Bus (`owner`, `repo`, `ref`, and path addressable storage for code and configuration that needs to be served as part of the site)
-  - one folder for each `owner`, i.e. GitHub username or organization that has a Franklin Github bot installed
+  - one folder for each `owner`, i.e. GitHub username or organization that has the GitHub bot installed
     - one folder for each `repo` (repository)
       - one folder for each `ref` (branch or tag)
         - one folder for each folder within the repository
@@ -236,24 +233,28 @@ The Content Hub is a content store optimized for delivery that uses Amazon S3 an
 The clear structure of the Content Hub makes it possible to keep the consuming services small and simple.
 ### Authoring Stack
 
-Authoring in Franklin is handled through the interplay of three components:
+Authoring in Helix 6 is handled through the interplay of these components:
 
-1. The [Franklin Bot](https://github.com/adobe/helix-bot) watches a GitHub repository for code changes and invokes Franklin Admin
-2. The [AEM Sidekick](https://github.com/adobe/helix-sidekick) allows authors to trigger publishing actions explicitly and invokes Franklin Admin
-3. [Admin Service](https://github.com/adobe/helix-admin) does all the work which renders content from Sharepoint and Google Drive by invoking [Word Markdown Adapter](https://github.com/adobe/helix-word2md) or [Google Docs Markdown Adapter](https://github.com/adobe/helix-gdoc2md)
+1. The [GitHub Bot](https://github.com/adobe/helix-bot) watches a GitHub repository for code changes and invokes the Helix API Service to synchronize code
+2. The [AEM Sidekick](https://github.com/adobe/helix-sidekick) allows authors to trigger preview and publishing actions explicitly through the Helix API Service
+3. [Document Authoring](https://www.da.live/) provides editing, collaboration, and preview capabilities, with source content managed through the Helix API Service and stored in the Source Bus
+4. The [Helix API Service](https://github.com/adobe/helix-api-service) manages source content, authentication, configuration, caches, content, media, publishing, preview, indexing, code synchronization, and logs
+5. Content adapters convert content from SharePoint, Google Drive, and HTML providers using the [Word Markdown Adapter](https://github.com/adobe/helix-word2md), [Google Docs Markdown Adapter](https://github.com/adobe/helix-gdoc2md), and [HTML Markdown Adapter](https://github.com/adobe/helix-html2md-service)
 
-The [Admin REST API](https://www.hlx.live/docs/admin.html) is fully documented and covers the main functionality:
+The [Helix API](https://github.com/adobe/helix-api-service/blob/main/docs/openapi/api-service.yaml) is served at `https://api.aem.live` and covers the main functionality:
 
+- Source: manages source documents and their versions in the Source Bus
+- Config: manages organization, profile, and site configuration
 - Preview: generates a Markdown document from the original content source, places it in the `preview` partition of the content bus and returns the preview URL
 - Publish: copies a Markdown document from the `preview` partition into the `live` partition of the content bus
 - Code: copies code from the GitHub repository into the Code Bus storage
 - Cache: clears the Outer CDN cache
-- Index: triggers a reindexing of the content bus, see [indexing.md](detailed description of the indexing process)
-- Query: runs a query using the Helix Run Query Service
+- Index: triggers a reindexing of the content bus; the [indexing description](helix2/indexing.md) explains the original indexing model
+- Logs: provides access to operational logs
 
 #### HTML Provider
 
-In addition to enabling authoring content in Microsoft Word/Excel and Google Docs/Sheets, Helix 5 incorporates the ability to ingest content from any HTML provider, as long as the HTML provided is semantically structured and uses the same HTML tags as the HTML generated by the pipeline.
+In addition to enabling authoring content in Microsoft Word/Excel, Google Docs/Sheets, and Document Authoring, Helix 6 retains the ability to ingest content from any HTML provider, as long as the HTML provided is semantically structured and uses the same HTML tags as the HTML generated by the pipeline.
 
 This functionality has been used so far to enable authoring from:
 - Adobe Experience Manager Sites as a Cloud Service
@@ -264,6 +265,6 @@ Other content sources can be added as needed.
 
 ### Development Stack
 
-Other than in Helix 2, the Franklin CLI does not simulate a full blown Franklin setup, but simply proxies content and media requests to the inner CDN. This allows developers to see their code changes in real-time (served from the working copy), but mix it with real content from Content and Media Bus.
+The [AEM CLI](https://github.com/adobe/helix-cli) does not simulate a full Helix setup, but proxies content and media requests to the delivery stack. This allows developers to see their code changes in real-time (served from the working copy), mixed with real content from the Content and Media Buses. The Helix 6 diagram also shows locally synchronized content used by the CLI.
 
-[^1]: This project has seen many names, including Helix, Project Helix, Project Franklin, Next Generation Composability, Success Edge, Edge Delivery Services in Adobe Experience Manager Sites as a Cloud Service with document-based editing. Since the general availability of the latter, the name Franklin is no longer used, so we refer to Helix as the architecture and Adobe Experience Manager (...) as the product.
+[^1]: This project has seen many names, including Helix, Project Helix, Next Generation Composability, Success Edge, Edge Delivery Services in Adobe Experience Manager Sites as a Cloud Service with document-based editing. We refer to Helix as the architecture and Adobe Experience Manager (...) as the product.
