@@ -838,8 +838,8 @@ function hopAdvice(missing, ident) {
     out.push('  change --confirm run <command>          measures the real window (the normal path)');
     out.push(`  change --work-start="YYYY-MM-DD HH:MM:SS" --work-end="…" --confirm review ${ident}`);
     out.push('                                         hand-supplied, disclosed on the ticket');
-    out.push('The repair subcommand cannot fill them: it fills configuration fields, and fabricating actuals'
-      + ' would falsify the audit trail.');
+    out.push('The repair subcommand does not fill them unless both flags are given: it fills configuration'
+      + ' fields, and fabricating actuals would falsify the audit trail.');
   }
   return '\n' + out.join('\n');
 }
@@ -892,26 +892,23 @@ async function preflightHop(sn, io, sysId, code, o, cur, only) {
   const scope = (list) => (only ? list.filter((m) => only.includes(m.field)) : list);
   let missing = scope(await missingForHop(sn, sysId, code));
   // Hand-supplied actuals need no --repair: giving the values IS the intent. They are written
-  // verbatim (never floored, never invented) and disclosed in the work notes.
+  // verbatim (never floored, never invented) and disclosed in the work notes. The disclosure is
+  // posted and read back FIRST: actuals on the record without it are exactly what must never
+  // happen, and a retry would find them filled and hop on without a word.
   const actualsMissing = missing.filter((m) => m.actual);
-  if (actualsMissing.length && o.resolved && o.resolved.workStart && o.resolved.workEnd) {
+  const handSupplied = !!(o.resolved && o.resolved.workStart && o.resolved.workEnd);
+  if (actualsMissing.length && handSupplied) {
     const ws = o.resolved.workStart;
     const we = o.resolved.workEnd;
+    await discloseActuals(sn, sysId, ws, we, 'Recorded via --work-start/--work-end on a bare state transition,'
+      + ' so no command output accompanies this window.');
     log(c.yellow(`  writing hand-supplied actuals ${snDate(ws)} → ${snDate(we)} (UTC)`));
     await setWorkTimes(sn, sysId, ws, we, log, { verbatim: true });
-    try {
-      await postWorkNotes(sn, sysId,
-        ['Actual execution window supplied by hand, not measured by the change wrapper.',
-          `work_start: ${snDate(ws)} UTC`,
-          `work_end: ${snDate(we)} UTC`,
-          'Recorded via --work-start/--work-end on a bare state transition, so no command output'
-          + ' accompanies this window.'].join('\n'),
-        'Actual execution window supplied by hand');
-    } catch (err) {
-      throw new Error('the actuals were written but the disclosing work note failed: ' + err.message
-        + '. Undisclosed hand-supplied actuals are not acceptable, so the hop was not attempted.');
-    }
     missing = scope(await missingForHop(sn, sysId, code));
+  } else if (handSupplied && scope(requirementsFor(code)).some((r) => r.actual)) {
+    // The actuals are already on the record: most likely an earlier attempt of this very
+    // command. Hop only if they are the values given AND the journal discloses them.
+    await assertActualsDisclosed(sn, sysId, o.resolved.workStart, o.resolved.workEnd, o.ident || sysId);
   }
   if (missing.length && !o.relaxMandatory && o.repair && o.resolved) {
     // --repair: fill exactly what this hop needs, then re-check. Same rules as `change repair`.
@@ -1234,6 +1231,72 @@ async function postWorkNotes(sn, sysId, text, preferredNeedle) {
   return { verified: journal.includes(needle), needle, journal: journal.slice(0, 200) };
 }
 
+/** The work-note lines that disclose a hand-supplied actual window. */
+function disclosureLines(ws, we) {
+  return [`work_start: ${snDate(ws)} UTC`, `work_end: ${snDate(we)} UTC`];
+}
+
+function disclosureText(ws, we, how) {
+  return ['Actual execution window supplied by hand, not measured by the change wrapper.']
+    .concat(disclosureLines(ws, we), [how]).join('\n');
+}
+
+/**
+ * Post the note disclosing hand-supplied actuals and prove it landed, BEFORE the actuals are
+ * written. Throws if it cannot, and then nothing has been written to work_start/work_end.
+ */
+async function discloseActuals(sn, sysId, ws, we, how) {
+  let posted;
+  try {
+    posted = await postWorkNotes(sn, sysId, disclosureText(ws, we, how), disclosureLines(ws, we)[0]);
+  } catch (err) {
+    throw new Error('the work note disclosing the hand-supplied actuals failed: ' + err.message
+      + '. Undisclosed hand-supplied actuals are not acceptable, so work_start/work_end were NOT'
+      + ' written and nothing further was attempted.');
+  }
+  if (!posted.verified) {
+    throw new Error('the work note disclosing the hand-supplied actuals was sent, but'
+      + ` ${JSON.stringify(posted.needle)} could not be read back from the journal. Undisclosed`
+      + ' hand-supplied actuals are not acceptable, so work_start/work_end were NOT written and'
+      + ' nothing further was attempted. Check the record\'s work notes before retrying.');
+  }
+  return posted;
+}
+
+/**
+ * --work-start/--work-end were given but the record already has actuals. Proceed only if they
+ * are the supplied values and the journal carries the disclosure for them. The journal is
+ * readable only through a display read of the parent record (see postWorkNotes), one GET.
+ */
+async function assertActualsDisclosed(sn, sysId, ws, we, ident) {
+  const rec = await readChange(sn, sysId, ['work_start', 'work_end']);
+  const have = [REF(rec.work_start), REF(rec.work_end)];
+  const want = [snDate(ws), snDate(we)];
+  if (have[0] !== want[0] || have[1] !== want[1]) {
+    throw new Error(`the record already has actuals ${have[0]} → ${have[1]} (UTC), not the supplied`
+      + ` ${want[0]} → ${want[1]}. Hand-supplied actuals are never overwritten, so the hop was not`
+      + ' attempted. Check the record: if the supplied window is right, correct it there first.');
+  }
+  const res = await sn.api('GET', '/api/now/table/change_request', undefined, {
+    sysparm_query: `sys_id=${sysId}`, sysparm_limit: '1',
+    sysparm_display_value: 'true', sysparm_fields: 'work_notes',
+  });
+  if (!res.ok) {
+    throw new Error('the record already has the supplied actuals, but the journal could not be read'
+      + ` to confirm they were disclosed (${apiError('reading work notes', res).message}), so the hop`
+      + ' was not attempted.');
+  }
+  const rows = (res.body && res.body.result) || [];
+  const journal = rows.length ? REF(rows[0].work_notes) : '';
+  if (disclosureLines(ws, we).every((l) => journal.includes(l))) return true;
+  throw new Error(`the record already has the actuals ${want[0]} → ${want[1]} (UTC), but no work note`
+    + ' disclosing them as hand-supplied was found in the journal (an earlier attempt can write them'
+    + ' and then fail to post the note). Undisclosed hand-supplied actuals are not acceptable, so the'
+    + ` hop was not attempted. Post the disclosure, then retry:\n  change notes ${ident} `
+    + shellQuote(disclosureText(ws, we, 'Disclosed after the fact: an earlier attempt wrote this window'
+      + ' without its note.')) + ' --confirm');
+}
+
 /** work_start/work_end: try the internal UTC format first, fall back to the
  *  account's display format (MM-DD-YYYY HH:MM:SS) with input_display_value. */
 async function setWorkTimes(sn, sysId, start, realEnd, log, opts) {
@@ -1464,6 +1527,11 @@ async function repairChange(sn, sysId, o, opts) {
     return { plan, body, changed: [], dryRun: true };
   }
 
+  // Hand-supplied actuals are disclosed, and the disclosure proven, before they are written.
+  if (body.work_start || body.work_end) {
+    await discloseActuals(sn, sysId, o.workStart, o.workEnd, 'Recorded via --work-start/--work-end by'
+      + ' `change repair`, so no command output accompanies this window.');
+  }
   const res = await sn.api('PATCH', `/api/now/table/change_request/${sysId}`, body,
     { sysparm_display_value: 'false', sysparm_fields: Object.keys(body).join(',') });
   if (!res.ok) throw apiError('repairing the change', res);
@@ -2165,7 +2233,9 @@ function help() {
     '  cancel <CHG>             Canceled',
     '  states <CHG>             Pretty-print nextstates with per-transition conditions',
     '  form <CHG>               Read-only: open/reuse the form, time readiness, report what',
-    '                           the form holds (record value versus form node)',
+    '                           the form holds (record value versus form node).',
+    '                           --fresh-tab ignores an open form tab; --keep-tab leaves a tab',
+    '                           that form opened itself open afterwards',
     '  repair <CHG>             Fill EMPTY tracked fields on an existing change, e.g. a record',
     '                           an older client blanked. Never overwrites a populated field',
     '                           without --force-field=<name>. Works in any state',
@@ -2177,6 +2247,8 @@ function help() {
     '  --plan-url=…             Runbook URL, becomes the implementation plan',
     '  --implementation-plan=…  --backout-plan=…  --test-plan=…  --justification=…  --risk-analysis=…',
     '  --ci=…                   cmdb_ci sys_id (default: EDS Delivery)',
+    '  --chg-model=<sys_id>     chg_model on create (default: Adobe Change Model)',
+    '  --documentation=<url>    u_documentation on create (default: the IT Change Management site)',
     '  --instance=…             u_service_offering_instance sys_id',
     '  --hosting-location=USA1  --environment=production  --tenant-type=Multi',
     '  --customer-impact=none   --complexity=…  --reason=Maintenance  --backout-type=…  --validation=…',
@@ -2194,11 +2266,14 @@ function help() {
     '  --impact-minutes=0       --close-code=successful  --close-notes=…',
     '  --work-start=<UTC> --work-end=<UTC>',
     '                           Hand-supplied ACTUAL window for a bare review hop or repair.',
-    '                           Both required together; disclosed on stderr and in the work',
-    '                           notes. `change run` measures them instead',
+    '                           Both required together; disclosed on stderr and in a work note',
+    '                           that is posted and read back BEFORE the actuals are written.',
+    '                           `change run` measures them instead',
     '  --keep-open              Stop at Review instead of closing',
     '  --no-normalise-choices   Send choice values verbatim (see SKILL.md: raw vs label)',
     '  --via=servicenow|ipaas   Transport (default servicenow, needs no secrets)',
+    '  --ipaas-env=prod|stage|dev  iPaaS and IMS hosts for --via=ipaas (default prod)',
+    '  --bearer                 --via=ipaas: send Authorization: Bearer <token>, not the bare token',
     '  --repair                 On a hop or close: fill the fields that hop needs if the record',
     '                           has them empty, then continue (same rules as the repair subcommand)',
     '  --force-field=<name>     Let repair overwrite this populated field (repeatable)',
@@ -2218,7 +2293,9 @@ function help() {
 
 const { root, sub, tail } = splitArgv(process.argv.slice(2));
 
-if (!sub || sub === 'help' || root.help === true) { help(); process.exit(sub ? 0 : 1); }
+// Asking for help succeeds (`help`, `--help`, `-h`); a bare `change` is a usage error.
+const askedForHelp = sub === 'help' || sub === '-h' || root.help === true;
+if (!sub || askedForHelp) { help(); process.exit(askedForHelp ? 0 : 1); }
 if (!SUBCOMMANDS.includes(sub)) {
   console.error(`change: unknown subcommand ${JSON.stringify(sub)}. Root params must come before it and use --flag=value form.`);
   help();
