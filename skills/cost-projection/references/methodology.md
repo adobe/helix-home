@@ -112,7 +112,12 @@ Two shapes that recur:
   The full-history figure is an artefact of averaging across the step.
 
 **A sign disagreement between full-window and trailing-6-month growth is the
-signature.** `fit` warns on it, and withholds its suggested stanza.
+signature** — but sign agreement is not a clean bill of health. The sample's
+`compute_authoring` reads −24.0%/yr full and −63.6%/yr trailing: same sign,
+both artefacts. So `fit` runs the same break scan as `detect-breaks` over its
+own window and withholds its suggested stanza, with a warning naming the break
+month to pass to `--from`, whenever it finds a break there. It also withholds on
+a sign flip, on `|growth_full| > 500%`, and on an implied uncertainty above 100%.
 
 `detect-breaks` tests every split point with ≥3 points per side, comparing
 segment means and computing a Welch t on the log levels. Flag on either a large
@@ -189,11 +194,17 @@ A Dec–Nov fiscal year — FY27 = Dec 2026 – Nov 2027 — is not Jan–Dec 20
 compounding growth a window one month earlier sits one month less far along the
 growth curve, so it is cheaper.
 
-`--fiscal-year-start 12` computes both windows using **common random numbers**
-(the same seed and therefore the same draws), so the difference is a clean
-comparison rather than two independent Monte Carlo estimates with their own
-noise. On the worked example the fiscal window comes in $6,079 below the
-calendar one, **−1.3%** — well inside a ±11.1% band, but computed rather than
+`--fiscal-year-start 12` computes both windows using **common random numbers**:
+both are totalled on the same simulated paths, so the months the two windows
+share use identical draws, and only the months the later window alone reaches
+come from a separate stream. The difference is therefore a paired comparison
+rather than two independent Monte Carlo estimates with their own noise. (Two
+runs from the same seed are not enough: the later window draws a second year's
+growth at month 13, which desynchronises the streams from the first run on.
+Measured across six seeds on a one-component config, that left the delta as
+noisy as the fiscal P50 itself — sd $52 vs $50; the paired totals bring it to
+$12.) On the worked example the fiscal window comes in $5,892 below the
+calendar one, **−1.2%** — well inside a ±11.1% band, but computed rather than
 assumed. Report the difference; do not skip the fiscal window because "it is
 probably small".
 
@@ -211,12 +222,14 @@ not:
 
 The practical consequence: **the band is only as honest as the widest `g_sd` you
 were willing to write down.** Monte Carlo noise is not the limiting factor — at
-200,000 runs, reseeding moves the P50 of the worked example by well under 0.01%,
+200,000 runs, reseeding moves the P50 of the worked example by about ±0.035%
+(seeds 1–4 and the default: $469,656–$469,962, within $167 of the default's
+$469,795),
 while a 0.1 change in one `g_sd` moves the band by
 percent. Do not add runs hoping for precision; interrogate the assumptions.
 
 Hence the narrow-band warning. A one-year-ahead cloud-cost band tighter than
-about ±15% (p10–p90 width < 15% of median, scaled by `sqrt(horizon/12)`) is
+±7.5% (p10–p90 width < 15% of median, scaled by `sqrt(horizon/12)`) is
 almost always a modelling artefact rather than genuine confidence — most often
 growth drawn per month, or a `g_sd` copied from a suspiciously clean window.
 
