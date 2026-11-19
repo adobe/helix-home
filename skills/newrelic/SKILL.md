@@ -48,19 +48,21 @@ newrelic graphql "{ actor { user { name } } }"
 | `monitors` | All synthetic monitors with type, period, status, failing locations |
 | `monitor <NAME\|GUID>` | One monitor in detail, including tags |
 | `script <NAME\|GUID>` | Print a scripted monitor's source |
-| `checks <NAME>` | Result counts, failure messages, per-location breakdown |
-| `requests <NAME>` | Outbound URLs and HTTP status codes for a scripted monitor |
+| `checks <NAME> [--failed]` | Result counts, failure messages, per-location breakdown |
+| `requests <NAME> [--limit=N]` | Outbound URLs and HTTP status codes for a scripted monitor (default 25 rows) |
 | `credentials` | Secure credential key names (values are never retrievable) |
 | `nrql <QUERY>` | Run NRQL |
 | `graphql <QUERY>` | Run raw NerdGraph |
-| `set-period <NAME> <PERIOD>` | Change run frequency — needs `--confirm` |
-| `set-script <NAME> --file=F` | Replace a scripted monitor's source — needs `--confirm`, backs up the live version first |
+| `set-period <NAME> <PERIOD>` | Change run frequency — needs `--confirm`. SIMPLE, BROWSER, SCRIPT_BROWSER and SCRIPT_API monitors |
+| `set-script <NAME> --file=F` | Replace a scripted monitor's source — needs `--confirm`, backs up the live version first. SCRIPT_API and SCRIPT_BROWSER only |
 
 ## Common flags
 
 - `--account=N` — Account id (default: whatever `login` stored, else `2429334`)
 - `--range=RANGE` — `5m`, `15m`, `30m`, `1h`, `3h`, `6h`, `12h`, `24h`, `3d`, `7d` (default: `1h`)
-- `--limit=N` — Result cap
+- `--limit=N` — Row cap for `requests` only (default: `25`); other commands ignore it
+- `--failed` — `checks`: restrict the per-location breakdown to failed runs
+- `--state=STATE` — `issues`: `ACTIVATED` (default), `CLOSED`, `CREATED`
 - `--file=PATH` — Read a query or script from a file
 - `--json` — Raw JSON instead of a table
 - `--backup=PATH` — Where `set-script` saves the version it is about to replace
@@ -100,13 +102,20 @@ per-IP problems fail unevenly.
   `URL`, `responseCode`, `domain`, `minionPublicIp`, timings)
 - **Entities**: monitors are `domain = 'SYNTH' AND type = 'MONITOR'`, secure
   credentials are `domain = 'SYNTH' AND type = 'SECURE_CRED'`
+- **Pagination**: `entitySearch` (monitors, credentials, name lookup) and
+  `aiIssues` (issues) return one page at a time; every list follows `nextCursor`
+  until it is empty, capped at 50 pages with a warning on stderr.
+- **Update mutations are per monitor type**: SIMPLE ->
+  `syntheticsUpdateSimpleMonitor`, BROWSER -> `syntheticsUpdateSimpleBrowserMonitor`,
+  SCRIPT_BROWSER -> `syntheticsUpdateScriptBrowserMonitor`, SCRIPT_API ->
+  `syntheticsUpdateScriptApiMonitor`. Other types are refused.
 
 ## Don't
 
 - Don't expect a response body from `SyntheticRequest` — it stores status codes
   and timings only. To learn *why* GitHub returned 403, the script has to log the
   body itself; a bare `throw new Error('API ' + statusCode)` throws that away.
-- Don't pass `accountId` to `syntheticsUpdateScriptApiMonitor`. It takes only
+- Don't pass `accountId` to the `syntheticsUpdate*Monitor` mutations. They take only
   `guid` and `monitor`, and anything else is a schema error. Fields omitted from
   `monitor` are preserved.
 - Don't query `errors { type }` on a Synthetics mutation result. `SyntheticsError`
