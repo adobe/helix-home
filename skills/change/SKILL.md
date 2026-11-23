@@ -253,8 +253,10 @@ secret-firewall blocker: `references/ipaas.md`.
 * The captured output in `work_notes` is capped (`--notes-max`, default 4000
   chars): head and tail are kept, the middle is dropped, and the note says how
   many characters were omitted.
-* Output of the wrapped command is not streamed incrementally: the `.jsh` runtime
-  buffers a child process and returns it on exit, so `change` echoes stdout and
-  stderr in full the moment the command finishes.
+* Output of the wrapped command streams live: `change` spawns it with node's
+  `child_process` (the `.jsh` runtime provides it), tees stdout and stderr to the
+  terminal as they arrive and keeps a copy for the work notes. A command killed
+  by a signal exits 128+n and one that is not found exits 127, so neither can
+  close the change Successful.
 * Secrets are never printed, never written to disk by this skill, and iPaaS error
   reporting is limited to `error` / `error_description`.

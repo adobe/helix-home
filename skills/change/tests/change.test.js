@@ -1,6 +1,6 @@
 // Behaviour tests for scripts/change.jsh. Run from skills/change/:
 //
-//   tst tests/change.test.js
+//   tst tests/change.test.js        (or: node tests/change.test.js, with tst installed)
 //
 // The script runs inside an AsyncFunction with mocked require/process/console. The
 // ServiceNow transport calls browser.fetch(tab, url, init) in a logged-in tab, so that is the
@@ -221,4 +221,39 @@ test('change --help, -h and help exit 0; a bare change and an unknown subcommand
   }
   is((await runChange([])).exitCode, 1, 'bare change');
   is((await runChange(['bogus'])).exitCode, 1, 'unknown subcommand');
+});
+
+// ─── Real-runtime tests: these run the script under the installed jsh, not the mocked
+// AsyncFunction above, so they catch drift in the jsh runtime itself (it became node-like:
+// fs.readFile wants a callback, child_process streams). Skipped when jsh is not on PATH.
+
+import { spawnSync } from 'node:child_process';
+import os from 'node:os';
+
+const HAVE_JSH = spawnSync('sh', ['-c', 'command -v jsh'], { encoding: 'utf8' }).status === 0;
+
+function jshChange(args, env) {
+  return spawnSync('jsh', [target, ...args], { encoding: 'utf8', env: Object.assign({}, process.env, env || {}), timeout: 60000 });
+}
+
+test('CHANGE_IO_STUB loads under the real jsh runtime', async () => {
+  if (!HAVE_JSH) { ok(true, 'jsh not on PATH, skipped'); return; }
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'change-stub-'));
+  const stub = path.join(dir, 'io.js');
+  // Every side effect throws a marker: reaching it proves the stub was read and evaluated.
+  fs.writeFileSync(stub, `const hit = () => { throw new Error('STUB_REACHED'); };
+    return { now: () => new Date(), sleep: async () => {}, cwd: () => '/', listTabs: hit, openTab: hit,
+      closeTab: hit, pageEval: hit, pageFetch: hit, run: hit, fetch: hit };`);
+  const r = jshChange(['get', NUMBER], { CHANGE_IO_STUB: stub });
+  fs.rmSync(dir, { recursive: true, force: true });
+  const all = (r.stdout || '') + (r.stderr || '');
+  ok(!all.includes('ERR_INVALID_ARG_TYPE'), 'stub loader used callback-style fs.readFile: ' + all.slice(0, 300));
+  ok(all.includes('STUB_REACHED'), 'stub was never evaluated: ' + all.slice(0, 300));
+});
+
+test('the script parses under the real jsh runtime (--help exits 0)', async () => {
+  if (!HAVE_JSH) { ok(true, 'jsh not on PATH, skipped'); return; }
+  const r = jshChange(['--help']);
+  is(r.status, 0, (r.stderr || '').slice(0, 300));
+  ok((r.stdout || '').includes('Subcommands'), 'no help text');
 });

@@ -295,20 +295,63 @@ function realIo() {
 
     pageFetch: (tab, path, opts) => browser.fetch(tab, path, opts),
 
-    // No streaming: the .jsh runtime's exec()/exec.spawn() buffer a child's
-    // output and hand it over on exit (exec.start's callbacks do not exist —
-    // its `done` only resolves after stdin.end()). Output is echoed in full
-    // the moment the command finishes.
-    run: (argv) => exec.spawn(argv),
+    // Streams: the .jsh runtime now ships node's child_process, whose spawn()
+    // delivers output as it arrives (sliccy:exec still buffers until exit).
+    // Output is echoed live and also kept for the work notes; `streamed: true`
+    // tells the caller not to echo it a second time.
+    run: (argv) => runStreaming(argv),
 
     fetch: (url, opts) => fetch(url, opts),
   };
 }
 
+/**
+ * Run argv as a child, teeing stdout/stderr to ours as they arrive and collecting both.
+ * Resolves { stdout, stderr, exitCode, streamed: true }. A signal death becomes 128+n and a
+ * spawn failure (command not found) 127, so neither can read as success.
+ */
+function runStreaming(argv) {
+  const { spawn } = require('child_process');
+  return new Promise((resolve) => {
+    const out = [];
+    const err = [];
+    let settled = false;
+    const finish = (exitCode) => {
+      if (settled) return;
+      settled = true;
+      resolve({ stdout: out.join(''), stderr: err.join(''), exitCode, streamed: true });
+    };
+    let child;
+    try {
+      child = spawn(argv[0], argv.slice(1), { stdio: ['inherit', 'pipe', 'pipe'] });
+    } catch (e) {
+      const msg = `${argv[0]}: ${e.message}\n`;
+      err.push(msg);
+      process.stderr.write(msg);
+      finish(127);
+      return;
+    }
+    child.stdout.on('data', (d) => { const s = String(d); out.push(s); process.stdout.write(s); });
+    child.stderr.on('data', (d) => { const s = String(d); err.push(s); process.stderr.write(s); });
+    child.on('error', (e) => {
+      const msg = `${argv[0]}: ${e.message}\n`;
+      err.push(msg);
+      process.stderr.write(msg);
+      finish(e.code === 'ENOENT' ? 127 : 1);
+    });
+    child.on('close', (code, signal) => {
+      if (typeof code === 'number') return finish(code);
+      const sigNo = signal && require('os').constants.signals[signal];
+      finish(sigNo ? 128 + sigNo : 1);
+    });
+  });
+}
+
 async function loadIo() {
   const p = process.env.CHANGE_IO_STUB;
   if (!p) return realIo();
-  const src = await fs.readFile(p);
+  // node-style fs: readFile without a callback throws, so use the promise API.
+  const src = await fs.promises.readFile(p, 'utf8');
   const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
   const f = new AsyncFunction('require', 'fs', 'console', 'process', src);
   const io = await f(require, fs, console, process);
@@ -1833,8 +1876,10 @@ async function cmdRun(flags, argv) {
   const t0 = io.now();
   const res = await io.run(argv);
   const t1 = io.now();
-  if (res.stdout) process.stdout.write(res.stdout.endsWith('\n') ? res.stdout : res.stdout + '\n');
-  if (res.stderr) process.stderr.write(res.stderr.endsWith('\n') ? res.stderr : res.stderr + '\n');
+  if (!res.streamed) {
+    if (res.stdout) process.stdout.write(res.stdout.endsWith('\n') ? res.stdout : res.stdout + '\n');
+    if (res.stderr) process.stderr.write(res.stderr.endsWith('\n') ? res.stderr : res.stderr + '\n');
+  }
   const exitCode = res.exitCode === undefined || res.exitCode === null ? 1 : res.exitCode;
   log('');
   log(exitCode === 0 ? c.green(`command exited 0`) : c.red(`command exited ${exitCode}`));
@@ -1929,9 +1974,12 @@ async function runViaIpaas(o, argv, io, log, flags) {
   const t0 = io.now();
   const r = await io.run(argv);
   const t1 = io.now();
-  if (r.stdout) process.stdout.write(r.stdout);
-  if (r.stderr) process.stderr.write(r.stderr);
-  const exitCode = r.exitCode || 0;
+  if (!r.streamed) {
+    if (r.stdout) process.stdout.write(r.stdout);
+    if (r.stderr) process.stderr.write(r.stderr);
+  }
+  // A missing exit code (signal death) must never close the change Successful.
+  const exitCode = r.exitCode === undefined || r.exitCode === null ? 1 : r.exitCode;
   const notes = buildNotes({
     exitCode, commandLine: renderCommand(argv), cwd: io.cwd ? io.cwd() : process.cwd(),
     start: t0, end: t1, output: (r.stdout || '') + (r.stderr || ''), notesMax: o.notesMax, via: 'ipaas',
