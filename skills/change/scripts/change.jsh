@@ -1901,6 +1901,9 @@ async function cmdRun(flags, argv) {
   }
 
   // ── close or cancel ──
+  // The last line reports what happened, not what was intended: a close that threw must
+  // not be followed by "closed successful".
+  let finished = false;
   try {
     if (exitCode === 0) {
       await setWorkTimes(sn, created.sysId, t0, t1, log);
@@ -1919,6 +1922,7 @@ async function cmdRun(flags, argv) {
       await cancelChange(sn, io, created.sysId, { timeout: o.stateTimeout });
       log(`  state → Canceled (the wrapped command failed)`);
     }
+    finished = true;
   } catch (err) {
     console.error(c.yellow(`change: ${created.number} could not be ${exitCode === 0 ? 'closed' : 'cancelled'}: ${err.message}`));
     console.error(c.yellow(`MANUAL CLEANUP OF ${created.number} IS REQUIRED.`));
@@ -1926,7 +1930,15 @@ async function cmdRun(flags, argv) {
   await sn.closeFormTab();
 
   log('');
-  log(`${c.bold(c.green(created.number))}  ${exitCode === 0 ? 'closed successful' : 'canceled'} — exiting with the command's code ${exitCode}`);
+  if (!finished) {
+    const steps = exitCode === 0 ? `change review / change close ${created.number} --confirm` : `change cancel ${created.number} --confirm`;
+    log(`${c.bold(c.yellow(created.number))}  left open, NOT ${exitCode === 0 ? 'closed' : 'canceled'}: \`change get ${created.number}\` shows where it stopped, then ${steps}`
+      + ` — exiting with the command's code ${exitCode}`);
+  } else if (exitCode === 0 && o.keepOpen) {
+    log(`${c.bold(c.green(created.number))}  left in Review (--keep-open) — exiting with the command's code ${exitCode}`);
+  } else {
+    log(`${c.bold(c.green(created.number))}  ${exitCode === 0 ? 'closed successful' : 'canceled'} — exiting with the command's code ${exitCode}`);
+  }
   return exitCode;
 }
 
