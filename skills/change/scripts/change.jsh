@@ -457,6 +457,15 @@ function isCdpStale(err) {
   return /Session with given id not found|-32001|No target with given id|-32602|Target closed/i.test(String((err && err.message) || err));
 }
 
+/**
+ * Seven's guard refuses a tab whose page stopped answering CDP, most often because a JavaScript
+ * dialog (alert/confirm) is pending in it. Such a tab won't recover while the dialog is open, so
+ * it is treated as dead: never retried, never reused. Older releases send only the generic text.
+ */
+function isTabUnanswering(err) {
+  return /isn.t answering|couldn.t keep seven.s pages and the vault out of this tab/i.test(String((err && err.message) || err));
+}
+
 function pageJson(raw) {
   if (raw && typeof raw === 'object') return raw;
   try { return JSON.parse(String(raw)); } catch (e) { return { ok: false, error: 'unparseable page result: ' + String(raw).slice(0, 200) }; }
@@ -465,7 +474,7 @@ function pageJson(raw) {
 // ─── ServiceNow transport ──────────────────────────────────────────────────────
 
 function makeSn(io, opts) {
-  const state = { tab: null, token: null, formTab: null, formSysId: null, formTabOwned: false };
+  const state = { tab: null, token: null, formTab: null, formSysId: null, formTabOwned: false, deadTabs: new Set() };
   const log = opts.log || (() => {});
 
   /** Any logged-in tab on the host will do for /api/ calls: g_ck is per session, not per
@@ -477,7 +486,7 @@ function makeSn(io, opts) {
       // Avoid the form tab: right after gsftSubmit it is reloading, so its g_ck is briefly
       // unreadable. Any other tab on the host carries the same session token.
       const formId = state.formTab && state.formTab.targetId;
-      const onHost = tabs.filter((t) => t.url && t.url.includes(SN_HOST));
+      const onHost = tabs.filter((t) => t.url && t.url.includes(SN_HOST) && !state.deadTabs.has(t.targetId));
       const hit = onHost.find((t) => t.targetId !== formId) || onHost[0];
       if (hit) { state.tab = { targetId: hit.targetId, url: hit.url }; state.token = null; return state.tab; }
     }
@@ -507,7 +516,7 @@ function makeSn(io, opts) {
       try {
         raw = await io.pageEval(tab, JS_TOKEN);
       } catch (err) {
-        if (isCdpStale(err)) throw err;
+        if (isCdpStale(err) || isTabUnanswering(err)) throw err;
       }
       if (raw && typeof raw === 'string' && raw.length >= 8) { state.token = raw; return raw; }
       try { url = await io.pageEval(tab, 'location.href'); } catch (e) { /* keep the previous url */ }
@@ -540,6 +549,13 @@ function makeSn(io, opts) {
         const res = await io.pageFetch(tab, url, init);
         return { status: res.status, body: res.body, ok: res.status >= 200 && res.status < 300 };
       } catch (err) {
+        // A refused tab is refused at attach, before any request runs, so the retry can't
+        // repeat a write. The stuck tab is never picked again.
+        if (isTabUnanswering(err) && attempt === 0) {
+          state.deadTabs.add(tab.targetId);
+          console.error(c.yellow(`  ${SN_HOST} tab ${tab.targetId} isn't answering (a dialog may be open in it); using a new tab`));
+          state.tab = null; state.token = null; continue;
+        }
         if (isCdpStale(err) && attempt === 0) { state.tab = null; state.token = null; continue; }
         throw err;
       }
@@ -561,6 +577,7 @@ function makeSn(io, opts) {
         probe = pageJson(await io.pageEval(tab, jsFormState(sysId)));
       } catch (err) {
         if (isCdpStale(err)) return { probe: { ok: false, error: String(err.message || err) }, waited, stale: true };
+        if (isTabUnanswering(err)) return { probe: { ok: false, error: String(err.message || err) }, waited, stale: true, dead: true };
         throw err;
       }
       if (probe.ok) return { probe, waited };
@@ -582,13 +599,21 @@ function makeSn(io, opts) {
     if (state.formTab && state.formSysId === sysId && !fresh) {
       const r = await awaitFormReady(state.formTab, sysId, budget, 500);
       if (r.probe.ok && r.probe.sysId === sysId) return state.formTab;
-      state.formTab = null; state.formSysId = null;
+      if (r.dead) {
+        // Remember it so the URL match below can't pick the stuck tab again, and close it
+        // only if this process opened it (a tab the human had open stays).
+        state.deadTabs.add(state.formTab.targetId);
+        console.error(c.yellow(`  form tab ${state.formTab.targetId} isn't answering (a dialog may be open in it); using a new tab`));
+        if (state.formTabOwned && io.closeTab) { try { await io.closeTab(state.formTab.targetId); } catch (e) { /* best effort */ } }
+      }
+      state.formTab = null; state.formSysId = null; state.formTabOwned = false;
     }
 
     // 1. an existing tab already on this record's form
     if (!fresh) {
       const tabs = await io.listTabs();
-      const match = tabs.find((t) => t.url && t.url.includes('change_request.do') && t.url.includes(sysId));
+      const match = tabs.find((t) => t.url && t.url.includes('change_request.do') && t.url.includes(sysId)
+        && !state.deadTabs.has(t.targetId));
       if (match) {
         const tab = { targetId: match.targetId, url: match.url };
         const r = await awaitFormReady(tab, sysId, budget, 500);
@@ -597,6 +622,7 @@ function makeSn(io, opts) {
           state.formTab = tab; state.formSysId = sysId; state.formTabOwned = false;
           return tab;
         }
+        if (r.dead) state.deadTabs.add(match.targetId);
         log(c.dim(`existing tab ${match.targetId} is not usable (${r.probe.error}), opening a fresh one`));
       }
     }

@@ -83,7 +83,7 @@ function fakeServiceNow(requests, record, opts) {
   };
 }
 
-async function runChange(args, { record = baseRecord(), sn = {} } = {}) {
+async function runChange(args, { record = baseRecord(), sn = {}, patch } = {}) {
   const requests = [];
   const stdout = [];
   const stderr = [];
@@ -109,6 +109,7 @@ async function runChange(args, { record = baseRecord(), sn = {} } = {}) {
     'sliccy:fmt': { table: (rows) => rows.map((r) => r.join(' | ')).join('\n') },
     fs: { readFile: async () => { throw new Error('ENOENT'); } },
   };
+  if (patch) patch(mocks);
   const mockRequire = (id) => {
     if (Object.hasOwn(mocks, id)) return mocks[id];
     throw new Error('module not available in test: ' + id);
@@ -299,4 +300,66 @@ test('hand-supplied actuals ending in the future are refused before any PATCH', 
   try { await setWorkTimes(sn, SYS_ID, new Date(now - 60000), new Date(now + 300000), () => {}, { verbatim: true }); } catch (e) { err = e; }
   ok(err && /future/.test(err.message), 'not refused');
   is(patches.length, 0, 'PATCHed a future work_end');
+});
+
+// ─── A tab the guard refuses is dead: never retried, never reused ─────────────────────
+// A pending alert() leaves the page unable to answer CDP; seven's guard then refuses the tab
+// ("…couldn't keep seven's pages and the vault out of this tab…" / "…isn't answering…").
+
+for (const refusal of [
+  "Target.attachToTarget: slicc: refused: the guard couldn’t keep seven’s pages and the vault out of this tab, so it refuses commands there",
+  "Target.attachToTarget: slicc: refused: the guard couldn’t keep seven’s pages and the vault out of this tab, so it refuses commands there: the page isn’t answering, and a dialog may be waiting in it",
+]) {
+  test('a refused form tab falls through to a new tab, once (' + (refusal.includes('answering') ? 'new' : 'old') + ' text)', async () => {
+    const DEAD = 'DEAD0123456789';
+    let deadEvals = 0;
+    let opens = 0;
+    const r = await runChange(['form', NUMBER], {
+      patch: (mocks) => {
+        const exec = async () => ({
+          stdout: '[ABCDEF0123] https://adobe.service-now.com/now/nav/ui/home\n'
+            + `[${DEAD}] https://adobe.service-now.com/change_request.do?sys_id=${SYS_ID}\n`,
+          stderr: '', exitCode: 0,
+        });
+        exec.spawn = async () => { opens++; throw new Error(STOP + ' (playwright-cli open)'); };
+        mocks['sliccy:exec'] = exec;
+        const prevEval = mocks['sliccy:browser'].eval;
+        mocks['sliccy:browser'].eval = async (tab, expr) => {
+          if (tab && tab.targetId === DEAD && expr !== 'window.g_ck') { deadEvals++; throw new Error(refusal); }
+          return prevEval(tab, expr);
+        };
+      },
+    });
+    is(deadEvals, 1, 'the refused tab was probed more than once');
+    is(opens, 1, 'did not fall through to exactly one new tab');
+    ok(r.err.includes(STOP), 'never reached the new-tab path: ' + r.err.slice(0, 300));
+  });
+}
+
+test('a refused tab chosen for API calls is dropped, not retried five times', async () => {
+  const DEAD = 'DEAD0123456789';
+  let deadEvals = 0;
+  let opens = 0;
+  const r = await runChange(['get', NUMBER], {
+    patch: (mocks) => {
+      const exec = async () => ({
+        stdout: `[${DEAD}] https://adobe.service-now.com/change_request.do?sys_id=${SYS_ID}\n`
+          + '[ABCDEF0123] https://adobe.service-now.com/now/nav/ui/home\n',
+        stderr: '', exitCode: 0,
+      });
+      exec.spawn = async () => { opens++; throw new Error(STOP + ' (playwright-cli open)'); };
+      mocks['sliccy:exec'] = exec;
+      const prevEval = mocks['sliccy:browser'].eval;
+      mocks['sliccy:browser'].eval = async (tab, expr) => {
+        if (tab && tab.targetId === DEAD) {
+          deadEvals++;
+          throw new Error("Target.attachToTarget: slicc: refused: the guard couldn\u2019t keep seven\u2019s pages and the vault out of this tab, so it refuses commands there");
+        }
+        return prevEval(tab, expr);
+      };
+    },
+  });
+  is(deadEvals, 1, 'the refused tab was probed more than once');
+  is(opens, 1, 'did not move on to a new tab');
+  ok(r.err.includes("isn't answering"), 'no notice about the stuck tab: ' + r.err.slice(0, 300));
 });
