@@ -253,6 +253,10 @@ secret-firewall blocker: `references/ipaas.md`.
 * The captured output in `work_notes` is capped (`--notes-max`, default 4000
   chars): head and tail are kept, the middle is dropped, and the note says how
   many characters were omitted.
+* A ServiceNow tab that stops answering (most often a JavaScript `alert()` left
+  open in it) is refused by SLICC's browser guard. `change` treats such a tab as
+  dead: it never retries or reuses it, closes it only if `change` opened it, and
+  moves on to a new tab once. Close the dialog in the stuck tab yourself.
 * Output of the wrapped command streams live: `change` spawns it with node's
   `child_process` (the `.jsh` runtime provides it), tees stdout and stderr to the
   terminal as they arrive and keeps a copy for the work notes. A command killed
