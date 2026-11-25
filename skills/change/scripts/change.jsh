@@ -1401,6 +1401,9 @@ async function closeChange(sn, io, sysId, o) {
   if (REF(check.close_code) !== fields.close_code) {
     throw new Error(`close_code did not stick: wanted ${fields.close_code}, server has ${JSON.stringify(REF(check.close_code))}`);
   }
+  // A form tab kept from the previous hop predates this PATCH and submits without close_code
+  // ("mandatory fields are not filled in: Close code", CHG006771055): load the record fresh.
+  await sn.closeFormTab();
   return transition(sn, io, sysId, S_CLOSED, o);
 }
 
