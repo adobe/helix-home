@@ -1343,20 +1343,30 @@ async function assertActualsDisclosed(sn, sysId, ws, we, ident) {
 /** work_start/work_end: try the internal UTC format first, fall back to the
  *  account's display format (MM-DD-YYYY HH:MM:SS) with input_display_value. */
 async function setWorkTimes(sn, sysId, start, realEnd, log, opts) {
+  const realStart = start;
   // A command that finishes inside a second would otherwise record work_start == work_end,
   // which reads like a bug and gives reports a zero-length window. The true duration is in the
   // work notes; this only floors what the record shows.
+  //
+  // The floor moves the START back, never the END forward: ServiceNow's client script "ADB:
+  // Actual End Date validation" alert()s on a work_end in the future and clears the field. An
+  // open form tab receives this PATCH by live update, so a future end froze that tab (the
+  // alert blocks CDP; seven's guard then refused the next hop) and would have blanked work_end
+  // on the following submit. CHG006737701, CHG006770069.
   const MIN_ACTUAL_MS = 60000;
   let end = realEnd;
   if (opts && opts.verbatim) {
+    if (end.getTime() > Date.now()) {
+      throw new Error(`the supplied work_end ${snDate(end)} UTC is in the future; ServiceNow refuses a future Actual End Date`);
+    }
     if (end.getTime() - start.getTime() < 1000) {
       log(c.yellow('  the supplied actual window is under a second: the record will show it as given,'
         + ' because hand-supplied values are never adjusted'));
     }
   } else if (end.getTime() - start.getTime() < MIN_ACTUAL_MS) {
-    end = new Date(start.getTime() + MIN_ACTUAL_MS);
-    log(c.dim(`  actual window floored to ${MIN_ACTUAL_MS / 1000}s on the record`
-      + ` (real duration ${Math.round((realEnd.getTime() - start.getTime()) / 1000)}s is in the work notes)`));
+    start = new Date(end.getTime() - MIN_ACTUAL_MS);
+    log(c.dim(`  actual window floored to ${MIN_ACTUAL_MS / 1000}s on the record, start moved back`
+      + ` (real duration ${Math.round((realEnd.getTime() - realStart.getTime()) / 1000)}s is in the work notes)`));
   }
   let res = await sn.api('PATCH', `/api/now/table/change_request/${sysId}`,
     { work_start: snDate(start), work_end: snDate(end) },
@@ -1906,6 +1916,9 @@ async function cmdRun(flags, argv) {
   let finished = false;
   try {
     if (exitCode === 0) {
+      // Drop the form tab first: a form left open is live-updated by the PATCH below, and the
+      // next hop must load the record as it is now, not a stale or script-edited form.
+      await sn.closeFormTab();
       await setWorkTimes(sn, created.sysId, t0, t1, log);
       await transition(sn, io, created.sysId, S_REVIEW, { timeout: o.stateTimeout, log, expectType: o.type, leadTime: o.leadTime, repair: o.repair, resolved: o, forced: o.forced, ident: o.ident });
       log('  state → Review');

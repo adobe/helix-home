@@ -257,3 +257,46 @@ test('the script parses under the real jsh runtime (--help exits 0)', async () =
   is(r.status, 0, (r.stderr || '').slice(0, 300));
   ok((r.stdout || '').includes('Subcommands'), 'no help text');
 });
+
+// ─── setWorkTimes floor: never a work_end in the future ───────────────────────────────
+// A future work_end makes ServiceNow's "Actual End Date validation" client script alert() in
+// any open form tab (live update), which froze the tab and blanked work_end (CHG006770069).
+
+function loadSetWorkTimes() {
+  const m = source.match(/async function setWorkTimes\([\s\S]*?\n}\n/);
+  if (!m) throw new Error('setWorkTimes not found');
+  const snDate = (d) => d.toISOString().slice(0, 19).replace('T', ' ');
+  const f = new Function('c', 'snDate', 'snDisplayDate', 'REF', 'readChange', 'apiError',
+    m[0] + '\nreturn setWorkTimes;');
+  return (patches) => f(
+    { dim: String, yellow: String }, snDate, snDate, (v) => v,
+    async () => ({ work_start: patches.at(-1).work_start, work_end: patches.at(-1).work_end }),
+    (what) => new Error(what),
+  );
+}
+
+test('a sub-60 s command floors the actual window backwards, never into the future', async () => {
+  const patches = [];
+  const setWorkTimes = loadSetWorkTimes()(patches);
+  const sn = { api: async (m, p, body) => { patches.push(body); return { ok: true }; } };
+  const t1 = new Date(Date.now() - 1000);
+  const t0 = new Date(t1.getTime() - 8000);
+  await setWorkTimes(sn, SYS_ID, t0, t1, () => {});
+  is(patches.length, 1);
+  const end = new Date(patches[0].work_end.replace(' ', 'T') + 'Z');
+  const start = new Date(patches[0].work_start.replace(' ', 'T') + 'Z');
+  ok(end.getTime() <= Date.now(), 'work_end is in the future: ' + patches[0].work_end);
+  is(Math.round((end - start) / 1000), 60, 'window is not 60 s');
+  is(patches[0].work_end, t1.toISOString().slice(0, 19).replace('T', ' '), 'real end was moved');
+});
+
+test('hand-supplied actuals ending in the future are refused before any PATCH', async () => {
+  const patches = [];
+  const setWorkTimes = loadSetWorkTimes()(patches);
+  const sn = { api: async (m, p, body) => { patches.push(body); return { ok: true }; } };
+  const now = Date.now();
+  let err = null;
+  try { await setWorkTimes(sn, SYS_ID, new Date(now - 60000), new Date(now + 300000), () => {}, { verbatim: true }); } catch (e) { err = e; }
+  ok(err && /future/.test(err.message), 'not refused');
+  is(patches.length, 0, 'PATCHed a future work_end');
+});
