@@ -34,9 +34,10 @@ Recommended hotels within walking distance:
 1. https://www.marriott.com/en-us/hotels/pspak-triada-palm-springs-autograph-collection/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0 
 2. https://alcazarpalmsprings.com 
 3. https://colonypalmshotel.com
+   
 Navan/budget friendly options:
-4. Renaissance Palm Springs - https://www.marriott.com/en-us/hotels/pspbr-renaissance-palm-springs-hotel/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0
-5. Courtyard by Marriott Palm Springs - https://www.marriott.com/en-us/hotels/pspch-courtyard-palm-springs/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0
+5. Renaissance Palm Springs - https://www.marriott.com/en-us/hotels/pspbr-renaissance-palm-springs-hotel/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0
+6. Courtyard by Marriott Palm Springs - https://www.marriott.com/en-us/hotels/pspch-courtyard-palm-springs/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0
 
 #### Travel
 
@@ -89,10 +90,10 @@ If you have been invited and will come, please put your name down in the list.
 7. @shsteimer
 8. @mhaack
 9. @gilliankrause
-7. @amol-anand
-8. @usman-khalid
-9. @kmurugulla
-10.@sagarsane
+10. @amol-anand
+11. @usman-khalid
+12. @kmurugulla
+13. @sagarsane
    
 
 ### Preparation
